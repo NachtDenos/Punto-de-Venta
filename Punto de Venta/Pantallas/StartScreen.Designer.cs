@@ -40,7 +40,7 @@
             // 
             // SQLserverDBbuttonProject
             // 
-            this.SQLserverDBbuttonProject.BackColor = System.Drawing.Color.Lime;
+            this.SQLserverDBbuttonProject.BackColor = System.Drawing.Color.Aqua;
             this.SQLserverDBbuttonProject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SQLserverDBbuttonProject.Location = new System.Drawing.Point(110, 368);
             this.SQLserverDBbuttonProject.Name = "SQLserverDBbuttonProject";
@@ -52,7 +52,7 @@
             // 
             // CassandraDBProjectButton
             // 
-            this.CassandraDBProjectButton.BackColor = System.Drawing.Color.Lime;
+            this.CassandraDBProjectButton.BackColor = System.Drawing.Color.Aqua;
             this.CassandraDBProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CassandraDBProjectButton.Location = new System.Drawing.Point(538, 368);
             this.CassandraDBProjectButton.Name = "CassandraDBProjectButton";
