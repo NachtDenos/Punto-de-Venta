@@ -46,12 +46,20 @@ namespace Punto_de_Venta
         private void LoginSQLbutton_Click(object sender, EventArgs e)
         {
             if (selection == false)
-            {
                 MessageBox.Show("No seleccionó su puesto", "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             else
             {
-                MessageBox.Show("Hola guapo");
+                if(indexBox == 0)
+                {
+                    Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
+                    this.Hide();
+                    TheOtherForm.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+
+                }
             }
         }
     }

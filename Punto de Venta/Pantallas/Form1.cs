@@ -10,13 +10,16 @@ using System.Windows.Forms;
 
 namespace Punto_de_Venta.Pantallas
 {
-    public partial class MainScreenSQL : Form
+    public partial class MainMenuAdmin : Form
     {
-        public MainScreenSQL()
+        public MainMenuAdmin()
         {
             InitializeComponent();
         }
 
-
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Close();         
+        }
     }
 }
