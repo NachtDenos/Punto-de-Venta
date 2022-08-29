@@ -53,11 +53,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pantallas\Form1.cs">
+    <Compile Include="EmployeesScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="EmployeesScreen.Designer.cs">
+      <DependentUpon>EmployeesScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\MainMenuAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\MainMenuAdmin.Designer.cs">
+      <DependentUpon>MainMenuAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\StartScreen.cs">
       <SubType>Form</SubType>
@@ -73,8 +79,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Pantallas\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="EmployeesScreen.resx">
+      <DependentUpon>EmployeesScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\MainMenuAdmin.resx">
+      <DependentUpon>MainMenuAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\StartScreen.resx">
       <DependentUpon>StartScreen.cs</DependentUpon>

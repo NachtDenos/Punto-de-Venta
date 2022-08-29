@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Punto_de_Venta.Pantallas
+namespace Punto_de_Venta
 {
-    public partial class MainMenuAdmin : Form
+    public partial class EmployeesScreen : Form
     {
-        public MainMenuAdmin()
+        public EmployeesScreen()
         {
             InitializeComponent();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void buttonExitEmployees_Click(object sender, EventArgs e)
         {
-            this.Close();         
+            this.Close();
         }
     }
 }
