@@ -59,11 +59,23 @@
     <Compile Include="EmployeesScreen.Designer.cs">
       <DependentUpon>EmployeesScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\CashierMainScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\CashierMainScreen.Designer.cs">
+      <DependentUpon>CashierMainScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\CashRegisterToUseWND.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pantallas\CashRegisterToUseWND.Designer.cs">
       <DependentUpon>CashRegisterToUseWND.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\DeleteProductWnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\DeleteProductWnd.Designer.cs">
+      <DependentUpon>DeleteProductWnd.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\MainMenuAdmin.cs">
       <SubType>Form</SubType>
@@ -88,8 +100,14 @@
     <EmbeddedResource Include="EmployeesScreen.resx">
       <DependentUpon>EmployeesScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\CashierMainScreen.resx">
+      <DependentUpon>CashierMainScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\CashRegisterToUseWND.resx">
       <DependentUpon>CashRegisterToUseWND.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\DeleteProductWnd.resx">
+      <DependentUpon>DeleteProductWnd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\MainMenuAdmin.resx">
       <DependentUpon>MainMenuAdmin.cs</DependentUpon>

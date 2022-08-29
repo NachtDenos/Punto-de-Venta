@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CloseRegisterToUserWnd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.RegisterToUseCB = new System.Windows.Forms.ComboBox();
             this.GoToSellerScreenbUTTN = new System.Windows.Forms.Button();
-            this.CloseRegisterToUserWnd = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +46,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 76);
             this.panel1.TabIndex = 0;
+            // 
+            // CloseRegisterToUserWnd
+            // 
+            this.CloseRegisterToUserWnd.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.CloseRegisterToUserWnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseRegisterToUserWnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseRegisterToUserWnd.Location = new System.Drawing.Point(738, 3);
+            this.CloseRegisterToUserWnd.Name = "CloseRegisterToUserWnd";
+            this.CloseRegisterToUserWnd.Size = new System.Drawing.Size(59, 42);
+            this.CloseRegisterToUserWnd.TabIndex = 1;
+            this.CloseRegisterToUserWnd.Text = "X";
+            this.CloseRegisterToUserWnd.UseVisualStyleBackColor = true;
+            this.CloseRegisterToUserWnd.Click += new System.EventHandler(this.CloseRegisterToUserWnd_Click);
             // 
             // label1
             // 
@@ -69,6 +82,7 @@
             this.RegisterToUseCB.Size = new System.Drawing.Size(220, 24);
             this.RegisterToUseCB.TabIndex = 1;
             this.RegisterToUseCB.Text = "Seleccione la caja a cobrar";
+            this.RegisterToUseCB.SelectedIndexChanged += new System.EventHandler(this.RegisterToUseCB_SelectedIndexChanged);
             // 
             // GoToSellerScreenbUTTN
             // 
@@ -82,19 +96,7 @@
             this.GoToSellerScreenbUTTN.TabIndex = 2;
             this.GoToSellerScreenbUTTN.Text = "Listo";
             this.GoToSellerScreenbUTTN.UseVisualStyleBackColor = false;
-            // 
-            // CloseRegisterToUserWnd
-            // 
-            this.CloseRegisterToUserWnd.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.CloseRegisterToUserWnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseRegisterToUserWnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CloseRegisterToUserWnd.Location = new System.Drawing.Point(738, 3);
-            this.CloseRegisterToUserWnd.Name = "CloseRegisterToUserWnd";
-            this.CloseRegisterToUserWnd.Size = new System.Drawing.Size(59, 42);
-            this.CloseRegisterToUserWnd.TabIndex = 1;
-            this.CloseRegisterToUserWnd.Text = "X";
-            this.CloseRegisterToUserWnd.UseVisualStyleBackColor = true;
-            this.CloseRegisterToUserWnd.Click += new System.EventHandler(this.CloseRegisterToUserWnd_Click);
+            this.GoToSellerScreenbUTTN.Click += new System.EventHandler(this.GoToSellerScreenbUTTN_Click);
             // 
             // CashRegisterToUseWND
             // 
@@ -107,6 +109,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CashRegisterToUseWND";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CashRegisterToUseWND";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

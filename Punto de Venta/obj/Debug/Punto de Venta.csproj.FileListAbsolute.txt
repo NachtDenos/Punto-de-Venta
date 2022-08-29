@@ -45,3 +45,5 @@ C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\D
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto de Venta.exe
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto de Venta.pdb
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.CashRegisterToUseWND.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.CashierMainScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.DeleteProductWnd.resources
