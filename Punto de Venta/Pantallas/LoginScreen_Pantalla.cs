@@ -58,7 +58,10 @@ namespace Punto_de_Venta
                 }
                 else
                 {
-
+                    Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
+                    this.Hide();
+                    theRegisterToUse.ShowDialog();
+                    this.Show();
                 }
             }
         }
