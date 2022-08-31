@@ -12,11 +12,35 @@ namespace Punto_de_Venta.Pantallas
 {
     public partial class CashierMainScreen : Form
     {
-        int ComboBoxIndex;
-        bool IsSelected;
+
         public CashierMainScreen()
         {
             InitializeComponent();
+        }
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
+        {
+            //meter un Form dentro de otro Form
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelChildFormSales.Controls.Add(childForm);
+            panelChildFormSales.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonSales_Click(object sender, EventArgs e)
+        {
+            openChildForm(new SalesScreen());
         }
     }
 }

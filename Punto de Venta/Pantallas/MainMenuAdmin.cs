@@ -41,5 +41,30 @@ namespace Punto_de_Venta.Pantallas
         {
             openChildForm(new EmployeesScreen());
         }
+
+        private void buttonProducts_Click(object sender, EventArgs e)
+        {
+            openChildForm(new productsScreen());
+        }
+
+        private void buttonDepartaments_Click(object sender, EventArgs e)
+        {
+            openChildForm(new departamentScreen());
+        }
+
+        private void buttonReportSells_Click(object sender, EventArgs e)
+        {
+            openChildForm(new SalesReportScreen());
+        }
+
+        private void buttonInventary_Click(object sender, EventArgs e)
+        {
+            openChildForm(new InventaryScreen());
+        }
+
+        private void buttonReportSeller_Click(object sender, EventArgs e)
+        {
+            openChildForm(new SellerReportScreen());
+        }
     }
 }
