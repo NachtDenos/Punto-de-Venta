@@ -66,5 +66,20 @@ namespace Punto_de_Venta.Pantallas
         {
             openChildForm(new SellerReportScreen());
         }
+
+        private void buttonTickets_Click(object sender, EventArgs e)
+        {
+            openChildForm(new TicketReportScreen());
+        }
+
+        private void buttonDevolutions_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ReturnScreen());
+        }
+
+        private void buttonBoxes_Click(object sender, EventArgs e)
+        {
+            openChildForm(new CashRegisterScreen());
+        }
     }
 }

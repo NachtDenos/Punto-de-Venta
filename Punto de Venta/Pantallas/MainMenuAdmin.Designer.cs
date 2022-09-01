@@ -31,6 +31,7 @@ namespace Punto_de_Venta.Pantallas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenuAdmin));
             this.MainMenuVerti = new System.Windows.Forms.Panel();
+            this.buttonInventary = new System.Windows.Forms.Button();
             this.buttonDepartaments = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.buttonReportSeller = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@ namespace Punto_de_Venta.Pantallas
             this.buttonReorder = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewReorder = new System.Windows.Forms.DataGridView();
-            this.buttonInventary = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MainMenuVerti.SuspendLayout();
             this.panelChildForm.SuspendLayout();
@@ -77,6 +77,22 @@ namespace Punto_de_Venta.Pantallas
             this.MainMenuVerti.Name = "MainMenuVerti";
             this.MainMenuVerti.Size = new System.Drawing.Size(250, 670);
             this.MainMenuVerti.TabIndex = 0;
+            // 
+            // buttonInventary
+            // 
+            this.buttonInventary.FlatAppearance.BorderSize = 0;
+            this.buttonInventary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.buttonInventary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonInventary.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonInventary.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonInventary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonInventary.Location = new System.Drawing.Point(0, 480);
+            this.buttonInventary.Name = "buttonInventary";
+            this.buttonInventary.Size = new System.Drawing.Size(250, 40);
+            this.buttonInventary.TabIndex = 13;
+            this.buttonInventary.Text = "Inventario";
+            this.buttonInventary.UseVisualStyleBackColor = true;
+            this.buttonInventary.Click += new System.EventHandler(this.buttonInventary_Click);
             // 
             // buttonDepartaments
             // 
@@ -156,6 +172,7 @@ namespace Punto_de_Venta.Pantallas
             this.buttonBoxes.TabIndex = 8;
             this.buttonBoxes.Text = "Cajas";
             this.buttonBoxes.UseVisualStyleBackColor = true;
+            this.buttonBoxes.Click += new System.EventHandler(this.buttonBoxes_Click);
             // 
             // buttonDevolutions
             // 
@@ -171,6 +188,7 @@ namespace Punto_de_Venta.Pantallas
             this.buttonDevolutions.TabIndex = 7;
             this.buttonDevolutions.Text = "Devoluciones";
             this.buttonDevolutions.UseVisualStyleBackColor = true;
+            this.buttonDevolutions.Click += new System.EventHandler(this.buttonDevolutions_Click);
             // 
             // buttonTickets
             // 
@@ -186,6 +204,7 @@ namespace Punto_de_Venta.Pantallas
             this.buttonTickets.TabIndex = 6;
             this.buttonTickets.Text = "Recibos";
             this.buttonTickets.UseVisualStyleBackColor = true;
+            this.buttonTickets.Click += new System.EventHandler(this.buttonTickets_Click);
             // 
             // buttonProducts
             // 
@@ -294,22 +313,6 @@ namespace Punto_de_Venta.Pantallas
             this.dataGridViewReorder.Name = "dataGridViewReorder";
             this.dataGridViewReorder.Size = new System.Drawing.Size(751, 376);
             this.dataGridViewReorder.TabIndex = 0;
-            // 
-            // buttonInventary
-            // 
-            this.buttonInventary.FlatAppearance.BorderSize = 0;
-            this.buttonInventary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.buttonInventary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonInventary.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonInventary.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonInventary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonInventary.Location = new System.Drawing.Point(0, 480);
-            this.buttonInventary.Name = "buttonInventary";
-            this.buttonInventary.Size = new System.Drawing.Size(250, 40);
-            this.buttonInventary.TabIndex = 13;
-            this.buttonInventary.Text = "Inventario";
-            this.buttonInventary.UseVisualStyleBackColor = true;
-            this.buttonInventary.Click += new System.EventHandler(this.buttonInventary_Click);
             // 
             // pictureBox1
             // 

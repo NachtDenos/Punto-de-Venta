@@ -10,13 +10,12 @@ using System.Windows.Forms;
 
 namespace Punto_de_Venta
 {
-    public partial class SalesScreen : Form
+    public partial class TicketReportScreen : Form
     {
-        public SalesScreen()
+        public TicketReportScreen()
         {
             InitializeComponent();
         }
-
 
     }
 }

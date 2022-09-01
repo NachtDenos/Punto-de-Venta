@@ -56,3 +56,8 @@ C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\De
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.InventaryScreen.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.SellerReportScreen.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.SalesScreen.resources
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.TicketReportScreen.resources
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.ReturnScreen.resources
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.CashRegisterScreen.resources
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.WaytoPayScreen.resources
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.QuickSearchScreen.resources

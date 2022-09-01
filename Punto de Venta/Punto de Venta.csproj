@@ -53,6 +53,36 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pantallas\WaytoPayScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\WaytoPayScreen.Designer.cs">
+      <DependentUpon>WaytoPayScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\QuickSearchScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\QuickSearchScreen.Designer.cs">
+      <DependentUpon>QuickSearchScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\CashRegisterScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\CashRegisterScreen.Designer.cs">
+      <DependentUpon>CashRegisterScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\ReturnScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\ReturnScreen.Designer.cs">
+      <DependentUpon>ReturnScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\TicketReportScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\TicketReportScreen.Designer.cs">
+      <DependentUpon>TicketReportScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\SalesScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +164,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Pantallas\WaytoPayScreen.resx">
+      <DependentUpon>WaytoPayScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\QuickSearchScreen.resx">
+      <DependentUpon>QuickSearchScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\CashRegisterScreen.resx">
+      <DependentUpon>CashRegisterScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\ReturnScreen.resx">
+      <DependentUpon>ReturnScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\TicketReportScreen.resx">
+      <DependentUpon>TicketReportScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\SalesScreen.resx">
       <DependentUpon>SalesScreen.cs</DependentUpon>
     </EmbeddedResource>

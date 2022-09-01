@@ -146,7 +146,7 @@
             this.comboBoxUser.Items.AddRange(new object[] {
             "Administrador",
             "Cajero"});
-            this.comboBoxUser.Location = new System.Drawing.Point(312, 80);
+            this.comboBoxUser.Location = new System.Drawing.Point(312, 58);
             this.comboBoxUser.Name = "comboBoxUser";
             this.comboBoxUser.Size = new System.Drawing.Size(162, 21);
             this.comboBoxUser.TabIndex = 7;
