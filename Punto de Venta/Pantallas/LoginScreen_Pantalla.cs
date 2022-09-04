@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Punto_de_Venta.DatabaseBool;
 
 
 namespace Punto_de_Venta
@@ -22,9 +23,14 @@ namespace Punto_de_Venta
         {
             InitializeComponent();
         }
-
+        int dummy = -1;
         private void LoginScreenWnd_Load(object sender, EventArgs e)
         {
+            if (IsSQl == true) //It seems to work
+            {
+                MessageBox.Show("Eligio SQL", "SQL BASE DE DATOS CARGANDO");
+                dummy = -1;
+            }
             UserTextHolder = " John Doe ";
             PasswordTextHolder = "123456";
             UserNameSQLSideTextBox.Text = UserTextHolder;
@@ -45,6 +51,7 @@ namespace Punto_de_Venta
 
         private void LoginSQLbutton_Click(object sender, EventArgs e)
         {
+            
             if (selection == false)
                 MessageBox.Show("No seleccionó su puesto", "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             else

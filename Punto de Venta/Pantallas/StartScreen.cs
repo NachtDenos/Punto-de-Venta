@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Punto_de_Venta.DatabaseBool;
 
 namespace Punto_de_Venta
 {
@@ -16,11 +17,13 @@ namespace Punto_de_Venta
         {
             InitializeComponent();
         }
-
+        public bool isSQL = false;
         private void SQLserverDBbuttonProject_Click(object sender, EventArgs e)
         {
-            
+
             LoginScreenWnD TheOtherForm = new LoginScreenWnD();
+            DatabaseBool.IsSQl = true;
+            //isSQL = true;
             this.Hide();
             TheOtherForm.ShowDialog();
             //Esta parte del This.Show se encarga de cuando la forma2 se cierre regrese y muestra la forma 1 o la que sea antes o yo especifico
@@ -43,7 +46,10 @@ namespace Punto_de_Venta
 
         private void CassandraDBProjectButton_Click(object sender, EventArgs e)
         {
+            
             LoginScreenWnD TheOtherForm = new LoginScreenWnD();
+            DatabaseBool.IsSQl = false;
+            isSQL = false;
             this.Hide();
             TheOtherForm.ShowDialog();
             //Esta parte del This.Show se encarga de cuando la forma2 se cierre regrese y muestra la forma 1 o la que sea antes o yo especifico

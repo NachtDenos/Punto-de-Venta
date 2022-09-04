@@ -34,17 +34,22 @@ namespace Punto_de_Venta.Pantallas
 
         private void GoToSellerScreenbUTTN_Click(object sender, EventArgs e)
         {
+            
             if (IsSelected == false)
             {
                 MessageBox.Show("No ha seleccionado una caja en la cual cobrar", "Elija una caja", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (ComboBoxIndex == 0)
+            if (IsSelected == true)
             {
-                Pantallas.CashierMainScreen cashierMainScreen = new Pantallas.CashierMainScreen();
-                this.Hide();
-                cashierMainScreen.ShowDialog();
-                this.Show();
+
+
+                if (ComboBoxIndex == 0)
+                {
+                    Pantallas.CashierMainScreen cashierMainScreen = new Pantallas.CashierMainScreen();
+                    this.Hide();
+                    cashierMainScreen.ShowDialog();
+                    this.Show();
+                }
             }
 
         }

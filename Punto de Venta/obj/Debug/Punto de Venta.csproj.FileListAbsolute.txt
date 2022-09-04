@@ -61,3 +61,36 @@ C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\De
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.CashRegisterScreen.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.WaytoPayScreen.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.QuickSearchScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.WaytoPayScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.QuickSearchScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.CashRegisterScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.ReturnScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.TicketReportScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.SalesScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.SellerReportScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.InventaryScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.SalesReportScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.departamentScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.productsScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\Cassandra.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\Newtonsoft.Json.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Buffers.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Memory.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\Cassandra.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\Newtonsoft.Json.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Buffers.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Memory.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Threading.Tasks.Dataflow.xml
