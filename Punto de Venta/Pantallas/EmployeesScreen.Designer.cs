@@ -29,7 +29,6 @@ namespace Punto_de_Venta
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonExitEmployees = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNameEmployees = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,16 +58,6 @@ namespace Punto_de_Venta
             this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmployees)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonExitEmployees
-            // 
-            this.buttonExitEmployees.Location = new System.Drawing.Point(873, 12);
-            this.buttonExitEmployees.Name = "buttonExitEmployees";
-            this.buttonExitEmployees.Size = new System.Drawing.Size(49, 34);
-            this.buttonExitEmployees.TabIndex = 0;
-            this.buttonExitEmployees.Text = "MENU";
-            this.buttonExitEmployees.UseVisualStyleBackColor = true;
-            this.buttonExitEmployees.Click += new System.EventHandler(this.buttonExitEmployees_Click);
             // 
             // label1
             // 
@@ -359,7 +348,6 @@ namespace Punto_de_Venta
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNameEmployees);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonExitEmployees);
             this.Name = "EmployeesScreen";
             this.Text = "EmployeesScreen";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmployees)).EndInit();
@@ -369,8 +357,6 @@ namespace Punto_de_Venta
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonExitEmployees;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNameEmployees;
         private System.Windows.Forms.Label label2;

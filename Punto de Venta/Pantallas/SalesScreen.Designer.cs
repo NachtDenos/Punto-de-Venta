@@ -46,6 +46,9 @@ namespace Punto_de_Venta
             this.btnPaySales = new System.Windows.Forms.Button();
             this.btnQuickSearchSales = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtQuantityDeleteSales = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProductSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCarritoSales)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +56,7 @@ namespace Punto_de_Venta
             // dataGridProductSales
             // 
             this.dataGridProductSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridProductSales.Location = new System.Drawing.Point(228, 115);
+            this.dataGridProductSales.Location = new System.Drawing.Point(219, 115);
             this.dataGridProductSales.Name = "dataGridProductSales";
             this.dataGridProductSales.Size = new System.Drawing.Size(244, 349);
             this.dataGridProductSales.TabIndex = 0;
@@ -61,7 +64,7 @@ namespace Punto_de_Venta
             // dataGridCarritoSales
             // 
             this.dataGridCarritoSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCarritoSales.Location = new System.Drawing.Point(525, 115);
+            this.dataGridCarritoSales.Location = new System.Drawing.Point(491, 115);
             this.dataGridCarritoSales.Name = "dataGridCarritoSales";
             this.dataGridCarritoSales.Size = new System.Drawing.Size(244, 349);
             this.dataGridCarritoSales.TabIndex = 1;
@@ -72,7 +75,7 @@ namespace Punto_de_Venta
             this.btnAddSales.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddSales.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddSales.Location = new System.Drawing.Point(281, 470);
+            this.btnAddSales.Location = new System.Drawing.Point(269, 470);
             this.btnAddSales.Name = "btnAddSales";
             this.btnAddSales.Size = new System.Drawing.Size(139, 51);
             this.btnAddSales.TabIndex = 23;
@@ -85,7 +88,7 @@ namespace Punto_de_Venta
             this.btnDeleteSales.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteSales.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteSales.Location = new System.Drawing.Point(574, 470);
+            this.btnDeleteSales.Location = new System.Drawing.Point(538, 470);
             this.btnDeleteSales.Name = "btnDeleteSales";
             this.btnDeleteSales.Size = new System.Drawing.Size(139, 51);
             this.btnDeleteSales.TabIndex = 25;
@@ -96,7 +99,7 @@ namespace Punto_de_Venta
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(301, 80);
+            this.label1.Location = new System.Drawing.Point(292, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 22);
             this.label1.TabIndex = 26;
@@ -106,7 +109,7 @@ namespace Punto_de_Venta
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(616, 80);
+            this.label2.Location = new System.Drawing.Point(582, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 22);
             this.label2.TabIndex = 27;
@@ -116,7 +119,7 @@ namespace Punto_de_Venta
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 115);
+            this.label3.Location = new System.Drawing.Point(21, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(146, 22);
             this.label3.TabIndex = 28;
@@ -126,7 +129,7 @@ namespace Punto_de_Venta
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(32, 192);
+            this.label4.Location = new System.Drawing.Point(21, 324);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 22);
             this.label4.TabIndex = 29;
@@ -136,7 +139,7 @@ namespace Punto_de_Venta
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(32, 265);
+            this.label5.Location = new System.Drawing.Point(21, 202);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(190, 22);
             this.label5.TabIndex = 30;
@@ -144,7 +147,7 @@ namespace Punto_de_Venta
             // 
             // txtNumberSales
             // 
-            this.txtNumberSales.Location = new System.Drawing.Point(36, 150);
+            this.txtNumberSales.Location = new System.Drawing.Point(25, 165);
             this.txtNumberSales.Multiline = true;
             this.txtNumberSales.Name = "txtNumberSales";
             this.txtNumberSales.Size = new System.Drawing.Size(146, 22);
@@ -152,7 +155,7 @@ namespace Punto_de_Venta
             // 
             // txtQuantitySales
             // 
-            this.txtQuantitySales.Location = new System.Drawing.Point(36, 228);
+            this.txtQuantitySales.Location = new System.Drawing.Point(25, 360);
             this.txtQuantitySales.Multiline = true;
             this.txtQuantitySales.Name = "txtQuantitySales";
             this.txtQuantitySales.Size = new System.Drawing.Size(146, 22);
@@ -160,7 +163,7 @@ namespace Punto_de_Venta
             // 
             // txtNameSales
             // 
-            this.txtNameSales.Location = new System.Drawing.Point(36, 301);
+            this.txtNameSales.Location = new System.Drawing.Point(25, 238);
             this.txtNameSales.Multiline = true;
             this.txtNameSales.Name = "txtNameSales";
             this.txtNameSales.Size = new System.Drawing.Size(146, 22);
@@ -198,6 +201,7 @@ namespace Punto_de_Venta
             this.btnPaySales.TabIndex = 36;
             this.btnPaySales.Text = "Pagar";
             this.btnPaySales.UseVisualStyleBackColor = false;
+            this.btnPaySales.Click += new System.EventHandler(this.btnPaySales_Click);
             // 
             // btnQuickSearchSales
             // 
@@ -205,12 +209,13 @@ namespace Punto_de_Venta
             this.btnQuickSearchSales.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQuickSearchSales.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuickSearchSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnQuickSearchSales.Location = new System.Drawing.Point(420, 551);
+            this.btnQuickSearchSales.Location = new System.Drawing.Point(407, 551);
             this.btnQuickSearchSales.Name = "btnQuickSearchSales";
             this.btnQuickSearchSales.Size = new System.Drawing.Size(139, 51);
             this.btnQuickSearchSales.TabIndex = 37;
             this.btnQuickSearchSales.Text = "Consulta rápida";
             this.btnQuickSearchSales.UseVisualStyleBackColor = false;
+            this.btnQuickSearchSales.Click += new System.EventHandler(this.btnQuickSearchSales_Click);
             // 
             // label8
             // 
@@ -222,11 +227,42 @@ namespace Punto_de_Venta
             this.label8.TabIndex = 38;
             this.label8.Text = "Ventas";
             // 
+            // txtQuantityDeleteSales
+            // 
+            this.txtQuantityDeleteSales.Location = new System.Drawing.Point(745, 360);
+            this.txtQuantityDeleteSales.Multiline = true;
+            this.txtQuantityDeleteSales.Name = "txtQuantityDeleteSales";
+            this.txtQuantityDeleteSales.Size = new System.Drawing.Size(163, 22);
+            this.txtQuantityDeleteSales.TabIndex = 40;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(741, 324);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(191, 22);
+            this.label9.TabIndex = 39;
+            this.label9.Text = "Cantidad a eliminar";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(21, 92);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 22);
+            this.label10.TabIndex = 41;
+            this.label10.Text = "Filtros:";
+            // 
             // SalesScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtQuantityDeleteSales);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnQuickSearchSales);
             this.Controls.Add(this.btnPaySales);
@@ -272,5 +308,8 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Button btnPaySales;
         private System.Windows.Forms.Button btnQuickSearchSales;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtQuantityDeleteSales;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }

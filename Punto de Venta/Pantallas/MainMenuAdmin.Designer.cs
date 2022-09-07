@@ -45,9 +45,9 @@ namespace Punto_de_Venta.Pantallas
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelChildForm = new System.Windows.Forms.Panel();
-            this.buttonReorder = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewReorder = new System.Windows.Forms.DataGridView();
+            this.buttonDiscounts = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MainMenuVerti.SuspendLayout();
             this.panelChildForm.SuspendLayout();
@@ -58,6 +58,7 @@ namespace Punto_de_Venta.Pantallas
             // MainMenuVerti
             // 
             this.MainMenuVerti.BackColor = System.Drawing.SystemColors.Highlight;
+            this.MainMenuVerti.Controls.Add(this.buttonDiscounts);
             this.MainMenuVerti.Controls.Add(this.buttonInventary);
             this.MainMenuVerti.Controls.Add(this.buttonDepartaments);
             this.MainMenuVerti.Controls.Add(this.button8);
@@ -86,7 +87,7 @@ namespace Punto_de_Venta.Pantallas
             this.buttonInventary.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonInventary.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonInventary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonInventary.Location = new System.Drawing.Point(0, 480);
+            this.buttonInventary.Location = new System.Drawing.Point(0, 526);
             this.buttonInventary.Name = "buttonInventary";
             this.buttonInventary.Size = new System.Drawing.Size(250, 40);
             this.buttonInventary.TabIndex = 13;
@@ -134,7 +135,7 @@ namespace Punto_de_Venta.Pantallas
             this.buttonReportSeller.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReportSeller.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonReportSeller.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonReportSeller.Location = new System.Drawing.Point(0, 526);
+            this.buttonReportSeller.Location = new System.Drawing.Point(0, 572);
             this.buttonReportSeller.Name = "buttonReportSeller";
             this.buttonReportSeller.Size = new System.Drawing.Size(250, 40);
             this.buttonReportSeller.TabIndex = 10;
@@ -150,7 +151,7 @@ namespace Punto_de_Venta.Pantallas
             this.buttonReportSells.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReportSells.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonReportSells.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonReportSells.Location = new System.Drawing.Point(0, 434);
+            this.buttonReportSells.Location = new System.Drawing.Point(0, 480);
             this.buttonReportSells.Name = "buttonReportSells";
             this.buttonReportSells.Size = new System.Drawing.Size(250, 40);
             this.buttonReportSells.TabIndex = 9;
@@ -166,7 +167,7 @@ namespace Punto_de_Venta.Pantallas
             this.buttonBoxes.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBoxes.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonBoxes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonBoxes.Location = new System.Drawing.Point(0, 342);
+            this.buttonBoxes.Location = new System.Drawing.Point(0, 388);
             this.buttonBoxes.Name = "buttonBoxes";
             this.buttonBoxes.Size = new System.Drawing.Size(250, 40);
             this.buttonBoxes.TabIndex = 8;
@@ -182,7 +183,7 @@ namespace Punto_de_Venta.Pantallas
             this.buttonDevolutions.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDevolutions.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonDevolutions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDevolutions.Location = new System.Drawing.Point(0, 388);
+            this.buttonDevolutions.Location = new System.Drawing.Point(0, 434);
             this.buttonDevolutions.Name = "buttonDevolutions";
             this.buttonDevolutions.Size = new System.Drawing.Size(250, 40);
             this.buttonDevolutions.TabIndex = 7;
@@ -198,7 +199,7 @@ namespace Punto_de_Venta.Pantallas
             this.buttonTickets.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTickets.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonTickets.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonTickets.Location = new System.Drawing.Point(0, 296);
+            this.buttonTickets.Location = new System.Drawing.Point(0, 342);
             this.buttonTickets.Name = "buttonTickets";
             this.buttonTickets.Size = new System.Drawing.Size(250, 40);
             this.buttonTickets.TabIndex = 6;
@@ -272,7 +273,6 @@ namespace Punto_de_Venta.Pantallas
             // 
             // panelChildForm
             // 
-            this.panelChildForm.Controls.Add(this.buttonReorder);
             this.panelChildForm.Controls.Add(this.label4);
             this.panelChildForm.Controls.Add(this.dataGridViewReorder);
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -281,26 +281,11 @@ namespace Punto_de_Venta.Pantallas
             this.panelChildForm.Size = new System.Drawing.Size(950, 670);
             this.panelChildForm.TabIndex = 1;
             // 
-            // buttonReorder
-            // 
-            this.buttonReorder.FlatAppearance.BorderSize = 0;
-            this.buttonReorder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.buttonReorder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReorder.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonReorder.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonReorder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonReorder.Location = new System.Drawing.Point(413, 540);
-            this.buttonReorder.Name = "buttonReorder";
-            this.buttonReorder.Size = new System.Drawing.Size(210, 50);
-            this.buttonReorder.TabIndex = 12;
-            this.buttonReorder.Text = "Reordenar";
-            this.buttonReorder.UseVisualStyleBackColor = true;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(348, 76);
+            this.label4.Location = new System.Drawing.Point(309, 76);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(339, 44);
             this.label4.TabIndex = 1;
@@ -309,10 +294,26 @@ namespace Punto_de_Venta.Pantallas
             // dataGridViewReorder
             // 
             this.dataGridViewReorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewReorder.Location = new System.Drawing.Point(123, 158);
+            this.dataGridViewReorder.Location = new System.Drawing.Point(83, 158);
             this.dataGridViewReorder.Name = "dataGridViewReorder";
-            this.dataGridViewReorder.Size = new System.Drawing.Size(751, 376);
+            this.dataGridViewReorder.Size = new System.Drawing.Size(782, 376);
             this.dataGridViewReorder.TabIndex = 0;
+            // 
+            // buttonDiscounts
+            // 
+            this.buttonDiscounts.FlatAppearance.BorderSize = 0;
+            this.buttonDiscounts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.buttonDiscounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDiscounts.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDiscounts.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonDiscounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDiscounts.Location = new System.Drawing.Point(0, 296);
+            this.buttonDiscounts.Name = "buttonDiscounts";
+            this.buttonDiscounts.Size = new System.Drawing.Size(250, 40);
+            this.buttonDiscounts.TabIndex = 14;
+            this.buttonDiscounts.Text = "Descuentos";
+            this.buttonDiscounts.UseVisualStyleBackColor = true;
+            this.buttonDiscounts.Click += new System.EventHandler(this.buttonDiscounts_Click);
             // 
             // pictureBox1
             // 
@@ -362,10 +363,10 @@ namespace Punto_de_Venta.Pantallas
         private System.Windows.Forms.Button buttonProducts;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panelChildForm;
-        private System.Windows.Forms.Button buttonReorder;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridViewReorder;
         private System.Windows.Forms.Button buttonDepartaments;
         private System.Windows.Forms.Button buttonInventary;
+        private System.Windows.Forms.Button buttonDiscounts;
     }
 }

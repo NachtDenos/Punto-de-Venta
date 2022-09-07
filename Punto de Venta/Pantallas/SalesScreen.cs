@@ -17,6 +17,16 @@ namespace Punto_de_Venta
             InitializeComponent();
         }
 
+        private void btnQuickSearchSales_Click(object sender, EventArgs e)
+        {
+            QuickSearchScreen TheOtherForm = new QuickSearchScreen();
+            TheOtherForm.ShowDialog();
+        }
 
+        private void btnPaySales_Click(object sender, EventArgs e)
+        {
+            WaytoPayScreen TheOtherForm = new WaytoPayScreen();
+            TheOtherForm.ShowDialog();
+        }
     }
 }

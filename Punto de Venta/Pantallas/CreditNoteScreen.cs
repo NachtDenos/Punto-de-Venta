@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace Punto_de_Venta
 {
-    public partial class WaytoPayScreen : Form
+    public partial class CreditNoteScreen : Form
     {
-        public WaytoPayScreen()
+        public CreditNoteScreen()
         {
             InitializeComponent();
-        }
-
-        private void btnPayPay_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            ticketScreen TheOtherForm = new ticketScreen();
-            TheOtherForm.ShowDialog();   
         }
     }
 }

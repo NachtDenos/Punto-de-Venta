@@ -40,6 +40,8 @@ namespace Punto_de_Venta
             this.label1 = new System.Windows.Forms.Label();
             this.txtIdDepartament = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbDevolutionDepartament = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDepartament)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,11 +156,35 @@ namespace Punto_de_Venta
             this.label3.TabIndex = 80;
             this.label3.Text = "Clave del departamento";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(385, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(115, 22);
+            this.label4.TabIndex = 82;
+            this.label4.Text = "Devolución";
+            // 
+            // cbDevolutionDepartament
+            // 
+            this.cbDevolutionDepartament.FormattingEnabled = true;
+            this.cbDevolutionDepartament.Items.AddRange(new object[] {
+            "Si",
+            "No"});
+            this.cbDevolutionDepartament.Location = new System.Drawing.Point(389, 123);
+            this.cbDevolutionDepartament.Name = "cbDevolutionDepartament";
+            this.cbDevolutionDepartament.Size = new System.Drawing.Size(209, 21);
+            this.cbDevolutionDepartament.TabIndex = 83;
+            this.cbDevolutionDepartament.Text = "Seleccione";
+            // 
             // departamentScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.cbDevolutionDepartament);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtIdDepartament);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFilterDepartament);
@@ -190,5 +216,7 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtIdDepartament;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbDevolutionDepartament;
     }
 }

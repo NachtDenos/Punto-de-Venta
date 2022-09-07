@@ -16,5 +16,11 @@ namespace Punto_de_Venta
         {
             InitializeComponent();
         }
+
+        private void btnOkReturn_Click(object sender, EventArgs e)
+        {
+            CreditNoteScreen TheOtherForm = new CreditNoteScreen();
+            TheOtherForm.ShowDialog();
+        }
     }
 }

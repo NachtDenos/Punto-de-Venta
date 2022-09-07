@@ -32,3 +32,5 @@
 
 
         En cassandra hay una funcion que permite agrupar informacion
+
+        Epico Atte: Edson

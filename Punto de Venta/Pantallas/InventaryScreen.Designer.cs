@@ -38,8 +38,10 @@ namespace Punto_de_Venta
             this.label5 = new System.Windows.Forms.Label();
             this.txtInventaryExiste = new System.Windows.Forms.TextBox();
             this.cbInventaryDepart = new System.Windows.Forms.ComboBox();
-            this.cbInventaryProduct = new System.Windows.Forms.ComboBox();
-            this.cbInventaryMerma = new System.Windows.Forms.ComboBox();
+            this.rdYesOutInventary = new System.Windows.Forms.RadioButton();
+            this.rdNoOutInventary = new System.Windows.Forms.RadioButton();
+            this.rdNoDecreaseInventary = new System.Windows.Forms.RadioButton();
+            this.rdYesDecreaseInventary = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInventary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@ namespace Punto_de_Venta
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(204, 117);
+            this.label4.Location = new System.Drawing.Point(207, 101);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(294, 22);
             this.label4.TabIndex = 100;
@@ -57,7 +59,7 @@ namespace Punto_de_Venta
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 117);
+            this.label3.Location = new System.Drawing.Point(24, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 22);
             this.label3.TabIndex = 99;
@@ -95,7 +97,7 @@ namespace Punto_de_Venta
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(535, 117);
+            this.label1.Location = new System.Drawing.Point(537, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(197, 22);
             this.label1.TabIndex = 95;
@@ -105,7 +107,7 @@ namespace Punto_de_Venta
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(778, 117);
+            this.label5.Location = new System.Drawing.Point(780, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 22);
             this.label5.TabIndex = 105;
@@ -134,37 +136,59 @@ namespace Punto_de_Venta
             this.cbInventaryDepart.TabIndex = 108;
             this.cbInventaryDepart.Text = "Seleccionar";
             // 
-            // cbInventaryProduct
+            // rdYesOutInventary
             // 
-            this.cbInventaryProduct.FormattingEnabled = true;
-            this.cbInventaryProduct.Items.AddRange(new object[] {
-            "Si",
-            "No"});
-            this.cbInventaryProduct.Location = new System.Drawing.Point(551, 143);
-            this.cbInventaryProduct.Name = "cbInventaryProduct";
-            this.cbInventaryProduct.Size = new System.Drawing.Size(144, 21);
-            this.cbInventaryProduct.TabIndex = 109;
-            this.cbInventaryProduct.Text = "Seleccionar";
+            this.rdYesOutInventary.AutoSize = true;
+            this.rdYesOutInventary.Location = new System.Drawing.Point(610, 126);
+            this.rdYesOutInventary.Name = "rdYesOutInventary";
+            this.rdYesOutInventary.Size = new System.Drawing.Size(34, 17);
+            this.rdYesOutInventary.TabIndex = 109;
+            this.rdYesOutInventary.TabStop = true;
+            this.rdYesOutInventary.Text = "Si";
+            this.rdYesOutInventary.UseVisualStyleBackColor = true;
             // 
-            // cbInventaryMerma
+            // rdNoOutInventary
             // 
-            this.cbInventaryMerma.FormattingEnabled = true;
-            this.cbInventaryMerma.Items.AddRange(new object[] {
-            "Si",
-            "No"});
-            this.cbInventaryMerma.Location = new System.Drawing.Point(768, 143);
-            this.cbInventaryMerma.Name = "cbInventaryMerma";
-            this.cbInventaryMerma.Size = new System.Drawing.Size(144, 21);
-            this.cbInventaryMerma.TabIndex = 110;
-            this.cbInventaryMerma.Text = "Seleccionar";
+            this.rdNoOutInventary.AutoSize = true;
+            this.rdNoOutInventary.Location = new System.Drawing.Point(610, 147);
+            this.rdNoOutInventary.Name = "rdNoOutInventary";
+            this.rdNoOutInventary.Size = new System.Drawing.Size(39, 17);
+            this.rdNoOutInventary.TabIndex = 110;
+            this.rdNoOutInventary.TabStop = true;
+            this.rdNoOutInventary.Text = "No";
+            this.rdNoOutInventary.UseVisualStyleBackColor = true;
+            // 
+            // rdNoDecreaseInventary
+            // 
+            this.rdNoDecreaseInventary.AutoSize = true;
+            this.rdNoDecreaseInventary.Location = new System.Drawing.Point(827, 149);
+            this.rdNoDecreaseInventary.Name = "rdNoDecreaseInventary";
+            this.rdNoDecreaseInventary.Size = new System.Drawing.Size(39, 17);
+            this.rdNoDecreaseInventary.TabIndex = 111;
+            this.rdNoDecreaseInventary.TabStop = true;
+            this.rdNoDecreaseInventary.Text = "No";
+            this.rdNoDecreaseInventary.UseVisualStyleBackColor = true;
+            // 
+            // rdYesDecreaseInventary
+            // 
+            this.rdYesDecreaseInventary.AutoSize = true;
+            this.rdYesDecreaseInventary.Location = new System.Drawing.Point(827, 126);
+            this.rdYesDecreaseInventary.Name = "rdYesDecreaseInventary";
+            this.rdYesDecreaseInventary.Size = new System.Drawing.Size(34, 17);
+            this.rdYesDecreaseInventary.TabIndex = 112;
+            this.rdYesDecreaseInventary.TabStop = true;
+            this.rdYesDecreaseInventary.Text = "Si";
+            this.rdYesDecreaseInventary.UseVisualStyleBackColor = true;
             // 
             // InventaryScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 631);
-            this.Controls.Add(this.cbInventaryMerma);
-            this.Controls.Add(this.cbInventaryProduct);
+            this.Controls.Add(this.rdYesDecreaseInventary);
+            this.Controls.Add(this.rdNoDecreaseInventary);
+            this.Controls.Add(this.rdNoOutInventary);
+            this.Controls.Add(this.rdYesOutInventary);
             this.Controls.Add(this.cbInventaryDepart);
             this.Controls.Add(this.txtInventaryExiste);
             this.Controls.Add(this.label5);
@@ -192,7 +216,9 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtInventaryExiste;
         private System.Windows.Forms.ComboBox cbInventaryDepart;
-        private System.Windows.Forms.ComboBox cbInventaryProduct;
-        private System.Windows.Forms.ComboBox cbInventaryMerma;
+        private System.Windows.Forms.RadioButton rdYesOutInventary;
+        private System.Windows.Forms.RadioButton rdNoOutInventary;
+        private System.Windows.Forms.RadioButton rdNoDecreaseInventary;
+        private System.Windows.Forms.RadioButton rdYesDecreaseInventary;
     }
 }

@@ -49,7 +49,6 @@ C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\D
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.DeleteProductWnd.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.CashierMainScreen.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.CashRegisterToUseWND.resources
-C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.DeleteProductWnd.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.productsScreen.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.departamentScreen.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.SalesReportScreen.resources
@@ -94,3 +93,28 @@ C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\D
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\System.Threading.Tasks.Dataflow.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\Cassandra.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\Newtonsoft.Json.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\System.Buffers.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\System.Memory.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\Cassandra.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\Newtonsoft.Json.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\System.Buffers.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\System.Memory.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\System.Threading.Tasks.Dataflow.xml
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.ticketScreen.resources
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.CreditNoteScreen.resources
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.DiscountsScreen.resources

@@ -16,5 +16,7 @@ namespace Punto_de_Venta
         {
             InitializeComponent();
         }
+
+
     }
 }

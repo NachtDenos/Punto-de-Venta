@@ -126,6 +126,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseBool.cs" />
+    <Compile Include="Pantallas\DiscountsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\DiscountsScreen.Designer.cs">
+      <DependentUpon>DiscountsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\CreditNoteScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\CreditNoteScreen.Designer.cs">
+      <DependentUpon>CreditNoteScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\TicketScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\TicketScreen.Designer.cs">
+      <DependentUpon>TicketScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\WaytoPayScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,12 +229,6 @@
     <Compile Include="Pantallas\CashRegisterToUseWND.Designer.cs">
       <DependentUpon>CashRegisterToUseWND.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\DeleteProductWnd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\DeleteProductWnd.Designer.cs">
-      <DependentUpon>DeleteProductWnd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pantallas\MainMenuAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +249,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Pantallas\DiscountsScreen.resx">
+      <DependentUpon>DiscountsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\CreditNoteScreen.resx">
+      <DependentUpon>CreditNoteScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\TicketScreen.resx">
+      <DependentUpon>TicketScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\WaytoPayScreen.resx">
       <DependentUpon>WaytoPayScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -278,9 +299,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\CashRegisterToUseWND.resx">
       <DependentUpon>CashRegisterToUseWND.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\DeleteProductWnd.resx">
-      <DependentUpon>DeleteProductWnd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\MainMenuAdmin.resx">
       <DependentUpon>MainMenuAdmin.cs</DependentUpon>

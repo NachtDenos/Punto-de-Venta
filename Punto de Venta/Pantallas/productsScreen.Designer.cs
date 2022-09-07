@@ -54,6 +54,10 @@ namespace Punto_de_Venta
             this.dtpDateProduct = new System.Windows.Forms.DateTimePicker();
             this.cbDepartamentProduct = new System.Windows.Forms.ComboBox();
             this.cbMeasureProduct = new System.Windows.Forms.ComboBox();
+            this.dtpChangeDateProduct = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtActiveProduct = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +93,7 @@ namespace Punto_de_Venta
             this.btnDeleteProduct.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteProduct.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteProduct.Location = new System.Drawing.Point(564, 552);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(768, 536);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(139, 51);
             this.btnDeleteProduct.TabIndex = 51;
@@ -102,7 +106,7 @@ namespace Punto_de_Venta
             this.btnEditProduct.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditProduct.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnEditProduct.Location = new System.Drawing.Point(409, 552);
+            this.btnEditProduct.Location = new System.Drawing.Point(613, 536);
             this.btnEditProduct.Name = "btnEditProduct";
             this.btnEditProduct.Size = new System.Drawing.Size(139, 51);
             this.btnEditProduct.TabIndex = 50;
@@ -115,7 +119,7 @@ namespace Punto_de_Venta
             this.btnAddProduct.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddProduct.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddProduct.Location = new System.Drawing.Point(251, 552);
+            this.btnAddProduct.Location = new System.Drawing.Point(455, 536);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(139, 51);
             this.btnAddProduct.TabIndex = 49;
@@ -124,7 +128,7 @@ namespace Punto_de_Venta
             // 
             // txtReOrdProduct
             // 
-            this.txtReOrdProduct.Location = new System.Drawing.Point(251, 465);
+            this.txtReOrdProduct.Location = new System.Drawing.Point(261, 459);
             this.txtReOrdProduct.Multiline = true;
             this.txtReOrdProduct.Name = "txtReOrdProduct";
             this.txtReOrdProduct.Size = new System.Drawing.Size(146, 22);
@@ -132,7 +136,7 @@ namespace Punto_de_Venta
             // 
             // txtPriceProduct
             // 
-            this.txtPriceProduct.Location = new System.Drawing.Point(251, 329);
+            this.txtPriceProduct.Location = new System.Drawing.Point(261, 323);
             this.txtPriceProduct.Multiline = true;
             this.txtPriceProduct.Name = "txtPriceProduct";
             this.txtPriceProduct.Size = new System.Drawing.Size(146, 22);
@@ -140,7 +144,7 @@ namespace Punto_de_Venta
             // 
             // txtCostProduct
             // 
-            this.txtCostProduct.Location = new System.Drawing.Point(251, 286);
+            this.txtCostProduct.Location = new System.Drawing.Point(261, 280);
             this.txtCostProduct.Multiline = true;
             this.txtCostProduct.Name = "txtCostProduct";
             this.txtCostProduct.Size = new System.Drawing.Size(146, 22);
@@ -148,7 +152,7 @@ namespace Punto_de_Venta
             // 
             // txtDesProduct
             // 
-            this.txtDesProduct.Location = new System.Drawing.Point(251, 126);
+            this.txtDesProduct.Location = new System.Drawing.Point(261, 120);
             this.txtDesProduct.Multiline = true;
             this.txtDesProduct.Name = "txtDesProduct";
             this.txtDesProduct.Size = new System.Drawing.Size(146, 51);
@@ -158,7 +162,7 @@ namespace Punto_de_Venta
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(137, 418);
+            this.label11.Location = new System.Drawing.Point(147, 412);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(98, 22);
             this.label11.TabIndex = 39;
@@ -168,7 +172,7 @@ namespace Punto_de_Venta
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(96, 329);
+            this.label10.Location = new System.Drawing.Point(106, 323);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(139, 22);
             this.label10.TabIndex = 38;
@@ -178,7 +182,7 @@ namespace Punto_de_Venta
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(96, 373);
+            this.label9.Location = new System.Drawing.Point(106, 367);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(139, 22);
             this.label9.TabIndex = 37;
@@ -188,7 +192,7 @@ namespace Punto_de_Venta
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(57, 465);
+            this.label7.Location = new System.Drawing.Point(67, 459);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(178, 22);
             this.label7.TabIndex = 35;
@@ -198,7 +202,7 @@ namespace Punto_de_Venta
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(172, 286);
+            this.label6.Location = new System.Drawing.Point(182, 280);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 22);
             this.label6.TabIndex = 34;
@@ -208,7 +212,7 @@ namespace Punto_de_Venta
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(53, 240);
+            this.label5.Location = new System.Drawing.Point(63, 234);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(182, 22);
             this.label5.TabIndex = 33;
@@ -218,7 +222,7 @@ namespace Punto_de_Venta
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(87, 196);
+            this.label4.Location = new System.Drawing.Point(97, 190);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(148, 22);
             this.label4.TabIndex = 32;
@@ -228,7 +232,7 @@ namespace Punto_de_Venta
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(119, 126);
+            this.label3.Location = new System.Drawing.Point(129, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 22);
             this.label3.TabIndex = 31;
@@ -246,7 +250,7 @@ namespace Punto_de_Venta
             // 
             // txtIdProduct
             // 
-            this.txtIdProduct.Location = new System.Drawing.Point(251, 81);
+            this.txtIdProduct.Location = new System.Drawing.Point(261, 75);
             this.txtIdProduct.Multiline = true;
             this.txtIdProduct.Name = "txtIdProduct";
             this.txtIdProduct.Size = new System.Drawing.Size(146, 22);
@@ -256,7 +260,7 @@ namespace Punto_de_Venta
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(37, 81);
+            this.label1.Location = new System.Drawing.Point(47, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(198, 22);
             this.label1.TabIndex = 28;
@@ -264,7 +268,7 @@ namespace Punto_de_Venta
             // 
             // txtExistenceProduct
             // 
-            this.txtExistenceProduct.Location = new System.Drawing.Point(251, 418);
+            this.txtExistenceProduct.Location = new System.Drawing.Point(261, 412);
             this.txtExistenceProduct.Multiline = true;
             this.txtExistenceProduct.Name = "txtExistenceProduct";
             this.txtExistenceProduct.Size = new System.Drawing.Size(146, 22);
@@ -272,7 +276,7 @@ namespace Punto_de_Venta
             // 
             // dtpDateProduct
             // 
-            this.dtpDateProduct.Location = new System.Drawing.Point(251, 375);
+            this.dtpDateProduct.Location = new System.Drawing.Point(261, 369);
             this.dtpDateProduct.Name = "dtpDateProduct";
             this.dtpDateProduct.Size = new System.Drawing.Size(146, 20);
             this.dtpDateProduct.TabIndex = 56;
@@ -285,7 +289,7 @@ namespace Punto_de_Venta
             "Carnes",
             "Lacteos",
             "Bebidas"});
-            this.cbDepartamentProduct.Location = new System.Drawing.Point(251, 197);
+            this.cbDepartamentProduct.Location = new System.Drawing.Point(261, 191);
             this.cbDepartamentProduct.Name = "cbDepartamentProduct";
             this.cbDepartamentProduct.Size = new System.Drawing.Size(146, 21);
             this.cbDepartamentProduct.TabIndex = 57;
@@ -300,17 +304,57 @@ namespace Punto_de_Venta
             "Litros",
             "Mililitros",
             "Piezas"});
-            this.cbMeasureProduct.Location = new System.Drawing.Point(251, 240);
+            this.cbMeasureProduct.Location = new System.Drawing.Point(261, 234);
             this.cbMeasureProduct.Name = "cbMeasureProduct";
             this.cbMeasureProduct.Size = new System.Drawing.Size(146, 21);
             this.cbMeasureProduct.TabIndex = 58;
             this.cbMeasureProduct.Text = "Seleccionar";
+            // 
+            // dtpChangeDateProduct
+            // 
+            this.dtpChangeDateProduct.Enabled = false;
+            this.dtpChangeDateProduct.Location = new System.Drawing.Point(261, 505);
+            this.dtpChangeDateProduct.Name = "dtpChangeDateProduct";
+            this.dtpChangeDateProduct.Size = new System.Drawing.Size(146, 20);
+            this.dtpChangeDateProduct.TabIndex = 60;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(72, 503);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(173, 22);
+            this.label8.TabIndex = 59;
+            this.label8.Text = "Fecha de cambio";
+            // 
+            // txtActiveProduct
+            // 
+            this.txtActiveProduct.Location = new System.Drawing.Point(261, 553);
+            this.txtActiveProduct.Multiline = true;
+            this.txtActiveProduct.Name = "txtActiveProduct";
+            this.txtActiveProduct.Size = new System.Drawing.Size(146, 22);
+            this.txtActiveProduct.TabIndex = 62;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(83, 553);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(162, 22);
+            this.label13.TabIndex = 61;
+            this.label13.Text = "Producto Activo";
             // 
             // productsScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.txtActiveProduct);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.dtpChangeDateProduct);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.cbMeasureProduct);
             this.Controls.Add(this.cbDepartamentProduct);
             this.Controls.Add(this.dtpDateProduct);
@@ -371,5 +415,9 @@ namespace Punto_de_Venta
         private System.Windows.Forms.DateTimePicker dtpDateProduct;
         private System.Windows.Forms.ComboBox cbDepartamentProduct;
         private System.Windows.Forms.ComboBox cbMeasureProduct;
+        private System.Windows.Forms.DateTimePicker dtpChangeDateProduct;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtActiveProduct;
+        private System.Windows.Forms.Label label13;
     }
 }
