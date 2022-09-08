@@ -38,7 +38,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(115)))), ((int)(((byte)(105)))));
             this.panel1.Controls.Add(this.CloseRegisterToUserWnd);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -63,21 +63,23 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(266, 9);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(259, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(279, 51);
+            this.label1.Size = new System.Drawing.Size(320, 51);
             this.label1.TabIndex = 0;
             this.label1.Text = "Caja a cobrar";
             // 
             // RegisterToUseCB
             // 
+            this.RegisterToUseCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(166)))), ((int)(((byte)(163)))));
             this.RegisterToUseCB.FormattingEnabled = true;
             this.RegisterToUseCB.Items.AddRange(new object[] {
             "Caja 1",
             "Caja 2",
             "Caja 3"});
-            this.RegisterToUseCB.Location = new System.Drawing.Point(295, 104);
+            this.RegisterToUseCB.Location = new System.Drawing.Point(301, 138);
             this.RegisterToUseCB.Name = "RegisterToUseCB";
             this.RegisterToUseCB.Size = new System.Drawing.Size(220, 24);
             this.RegisterToUseCB.TabIndex = 1;
@@ -86,11 +88,11 @@
             // 
             // GoToSellerScreenbUTTN
             // 
-            this.GoToSellerScreenbUTTN.BackColor = System.Drawing.SystemColors.Info;
-            this.GoToSellerScreenbUTTN.FlatAppearance.BorderSize = 0;
+            this.GoToSellerScreenbUTTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(166)))), ((int)(((byte)(163)))));
+            this.GoToSellerScreenbUTTN.FlatAppearance.BorderSize = 2;
             this.GoToSellerScreenbUTTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GoToSellerScreenbUTTN.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.GoToSellerScreenbUTTN.Location = new System.Drawing.Point(340, 218);
+            this.GoToSellerScreenbUTTN.Location = new System.Drawing.Point(344, 209);
             this.GoToSellerScreenbUTTN.Name = "GoToSellerScreenbUTTN";
             this.GoToSellerScreenbUTTN.Size = new System.Drawing.Size(141, 56);
             this.GoToSellerScreenbUTTN.TabIndex = 2;
@@ -102,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(166)))), ((int)(((byte)(163)))));
             this.ClientSize = new System.Drawing.Size(800, 306);
             this.Controls.Add(this.GoToSellerScreenbUTTN);
             this.Controls.Add(this.RegisterToUseCB);

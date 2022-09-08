@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using static Punto_de_Venta.DatabaseBool;
 
 namespace Punto_de_Venta.Pantallas
 {
-   
+
     public partial class CashierMainScreen : Form
     {
+     
         //DE SUGERENCIA, EL CLIENTE SI PAGA CON MAS DINERO DE LO NORMAL, SE LE DEBE REGRESAR CAMBIO EN EL CASO DE QUE ESTE APLIUE
         //UTILIDAD: Costo - Precio Unitario
         //Producto-----> codigo y su descripcion
@@ -22,6 +24,8 @@ namespace Punto_de_Venta.Pantallas
         {
             InitializeComponent();
         }
+        string Hora = DateTime.Now.ToString();
+        string Fecha = DateTime.Now.ToString();
         private Form activeForm = null;
         private void openChildForm(Form childForm)
         {
@@ -47,5 +51,34 @@ namespace Punto_de_Venta.Pantallas
         {
             openChildForm(new SalesScreen());
         }
+
+        private void panelChildFormSales_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void CashierMainScreen_Load(object sender, EventArgs e)
+        {
+            timer1.Start();
+            timer2.Start();
+            label9.Text = Hora;
+        }
+        //private void timer1_Tick(object sender, EventArgs e)
+        //{
+        //    //Despues de inicializar el timer, mediante los ticks lo seteo en un labl y este se encarga de desplegar la hr actual
+        //    label12.Text = DateTime.Now.ToLongDateString();
+        //}
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            label7.Text = DateTime.Now.ToShortDateString().ToUpper();
+            //label9.Text = DateTime.Now.ToShortDateString();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            label9.Text = DateTime.Now.ToShortTimeString();
+        }
+
+
     }
 }

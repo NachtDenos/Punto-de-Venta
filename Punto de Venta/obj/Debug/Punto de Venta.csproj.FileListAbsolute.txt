@@ -46,7 +46,6 @@ C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\D
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto de Venta.pdb
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.CashRegisterToUseWND.resources
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.CashierMainScreen.resources
-C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.DeleteProductWnd.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.CashierMainScreen.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.Pantallas.CashRegisterToUseWND.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.productsScreen.resources
@@ -118,3 +117,6 @@ C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\De
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.ticketScreen.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.CreditNoteScreen.resources
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\Debug\Punto_de_Venta.DiscountsScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.DiscountsScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.CreditNoteScreen.resources
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.ticketScreen.resources

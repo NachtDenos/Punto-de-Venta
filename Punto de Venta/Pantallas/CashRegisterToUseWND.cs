@@ -53,5 +53,7 @@ namespace Punto_de_Venta.Pantallas
             }
 
         }
+
+    
     }
 }

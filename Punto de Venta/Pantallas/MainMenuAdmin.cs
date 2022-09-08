@@ -86,5 +86,10 @@ namespace Punto_de_Venta.Pantallas
         {
             openChildForm(new DiscountsScreen());
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

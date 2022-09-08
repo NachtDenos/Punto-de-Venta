@@ -25,10 +25,11 @@ namespace Punto_de_Venta
         }
         int dummy = -1;
         private void LoginScreenWnd_Load(object sender, EventArgs e)
-        {
+        { 
+            //borrar esta cosa
             if (IsSQl == true) //It seems to work
             {
-                MessageBox.Show("Eligio SQL", "SQL BASE DE DATOS CARGANDO");
+                MessageBox.Show("JAJAJ ESTE PENDEJO", "Me la pelas");
                 dummy = -1;
             }
             UserTextHolder = " John Doe ";
