@@ -15,6 +15,8 @@ namespace Punto_de_Venta
         public CashRegisterScreen()
         {
             InitializeComponent();
+            dataGridCashRegister.Rows[0].Cells[0].Value = "1";
+            dataGridCashRegister.Rows[0].Cells[1].Value = "Si";
         }
     }
 }

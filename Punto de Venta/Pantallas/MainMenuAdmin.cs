@@ -15,12 +15,11 @@ namespace Punto_de_Venta.Pantallas
         public MainMenuAdmin()
         {
             InitializeComponent();
+            dataGridViewReorder.Rows[0].Cells[0].Value = "Ciel 1L";
+            dataGridViewReorder.Rows[0].Cells[1].Value = "25";
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            this.Close();         
-        }
+        
         private Form activeForm = null;
         private void openChildForm(Form childForm)
         {
@@ -90,6 +89,11 @@ namespace Punto_de_Venta.Pantallas
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSignOff_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

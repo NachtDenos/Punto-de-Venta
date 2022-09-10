@@ -30,10 +30,9 @@ namespace Punto_de_Venta
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridReturn1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,8 +43,15 @@ namespace Punto_de_Venta
             this.btnAddReturn = new System.Windows.Forms.Button();
             this.btnOkReturn = new System.Windows.Forms.Button();
             this.btnDeleteReturn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.prodReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantiReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridReturn2 = new System.Windows.Forms.DataGridView();
+            this.prodReturn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantiReturn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subReturn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn2)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -58,13 +64,20 @@ namespace Punto_de_Venta
             this.label2.TabIndex = 4;
             this.label2.Text = "Devoluciones";
             // 
-            // dataGridView1
+            // dataGridReturn1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(224, 107);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(264, 445);
-            this.dataGridView1.TabIndex = 5;
+            this.dataGridReturn1.AllowUserToDeleteRows = false;
+            this.dataGridReturn1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridReturn1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridReturn1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.prodReturn,
+            this.quantiReturn,
+            this.subReturn});
+            this.dataGridReturn1.Location = new System.Drawing.Point(224, 107);
+            this.dataGridReturn1.Name = "dataGridReturn1";
+            this.dataGridReturn1.ReadOnly = true;
+            this.dataGridReturn1.Size = new System.Drawing.Size(264, 445);
+            this.dataGridReturn1.TabIndex = 5;
             // 
             // label1
             // 
@@ -85,14 +98,6 @@ namespace Punto_de_Venta
             this.label3.Size = new System.Drawing.Size(206, 22);
             this.label3.TabIndex = 30;
             this.label3.Text = "Cantidad a devolver";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(494, 107);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(264, 445);
-            this.dataGridView2.TabIndex = 31;
             // 
             // label4
             // 
@@ -202,10 +207,62 @@ namespace Punto_de_Venta
             this.btnDeleteReturn.Text = "Cancelar Producto";
             this.btnDeleteReturn.UseVisualStyleBackColor = false;
             // 
+            // prodReturn
+            // 
+            this.prodReturn.HeaderText = "Producto";
+            this.prodReturn.Name = "prodReturn";
+            this.prodReturn.ReadOnly = true;
+            // 
+            // quantiReturn
+            // 
+            this.quantiReturn.HeaderText = "Cantidad";
+            this.quantiReturn.Name = "quantiReturn";
+            this.quantiReturn.ReadOnly = true;
+            // 
+            // subReturn
+            // 
+            this.subReturn.HeaderText = "Subtotal";
+            this.subReturn.Name = "subReturn";
+            this.subReturn.ReadOnly = true;
+            // 
+            // dataGridReturn2
+            // 
+            this.dataGridReturn2.AllowUserToDeleteRows = false;
+            this.dataGridReturn2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridReturn2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridReturn2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.prodReturn2,
+            this.quantiReturn2,
+            this.subReturn2});
+            this.dataGridReturn2.Location = new System.Drawing.Point(494, 107);
+            this.dataGridReturn2.Name = "dataGridReturn2";
+            this.dataGridReturn2.ReadOnly = true;
+            this.dataGridReturn2.Size = new System.Drawing.Size(264, 445);
+            this.dataGridReturn2.TabIndex = 31;
+            // 
+            // prodReturn2
+            // 
+            this.prodReturn2.HeaderText = "Producto";
+            this.prodReturn2.Name = "prodReturn2";
+            this.prodReturn2.ReadOnly = true;
+            // 
+            // quantiReturn2
+            // 
+            this.quantiReturn2.HeaderText = "Cantidad";
+            this.quantiReturn2.Name = "quantiReturn2";
+            this.quantiReturn2.ReadOnly = true;
+            // 
+            // subReturn2
+            // 
+            this.subReturn2.HeaderText = "Subtotal";
+            this.subReturn2.Name = "subReturn2";
+            this.subReturn2.ReadOnly = true;
+            // 
             // ReturnScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
             this.Controls.Add(this.btnDeleteReturn);
             this.Controls.Add(this.btnOkReturn);
@@ -217,15 +274,15 @@ namespace Punto_de_Venta
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridReturn2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridReturn1);
             this.Controls.Add(this.label2);
             this.Name = "ReturnScreen";
             this.Text = "ReturnScreen";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,10 +291,9 @@ namespace Punto_de_Venta
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridReturn1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -248,5 +304,12 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Button btnAddReturn;
         private System.Windows.Forms.Button btnOkReturn;
         private System.Windows.Forms.Button btnDeleteReturn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodReturn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantiReturn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subReturn;
+        private System.Windows.Forms.DataGridView dataGridReturn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodReturn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantiReturn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subReturn2;
     }
 }

@@ -15,6 +15,10 @@ namespace Punto_de_Venta
         public QuickSearchScreen()
         {
             InitializeComponent();
+            dataGridQuickSearch.Rows[0].Cells[0].Value = "B412";
+            dataGridQuickSearch.Rows[0].Cells[1].Value = "Salmón";
+            dataGridQuickSearch.Rows[0].Cells[2].Value = "60.00";
+            dataGridQuickSearch.Rows[0].Cells[3].Value = "15";
         }
 
 

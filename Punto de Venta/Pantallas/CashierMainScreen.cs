@@ -60,7 +60,7 @@ namespace Punto_de_Venta.Pantallas
         {
             timer1.Start();
             timer2.Start();
-            label9.Text = Hora;
+            labelHour.Text = Hora;
         }
         //private void timer1_Tick(object sender, EventArgs e)
         //{
@@ -70,15 +70,14 @@ namespace Punto_de_Venta.Pantallas
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            label7.Text = DateTime.Now.ToShortDateString().ToUpper();
+            labelDate.Text = DateTime.Now.ToShortDateString().ToUpper();
             //label9.Text = DateTime.Now.ToShortDateString();
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            label9.Text = DateTime.Now.ToShortTimeString();
+            labelHour.Text = DateTime.Now.ToShortTimeString();
         }
-
 
     }
 }

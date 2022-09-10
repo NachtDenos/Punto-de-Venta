@@ -39,6 +39,15 @@ namespace Punto_de_Venta
             this.cbSalesReportDepart = new System.Windows.Forms.ComboBox();
             this.dtpSalesReport1 = new System.Windows.Forms.DateTimePicker();
             this.dtpSalesReport2 = new System.Windows.Forms.DateTimePicker();
+            this.fcV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UniV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sub = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ven = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Uti = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSalesReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,9 +73,22 @@ namespace Punto_de_Venta
             // 
             // dataGridSalesReport
             // 
+            this.dataGridSalesReport.AllowUserToDeleteRows = false;
+            this.dataGridSalesReport.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridSalesReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSalesReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fcV,
+            this.Dep,
+            this.Cod,
+            this.Precio,
+            this.UniV,
+            this.Sub,
+            this.Desc,
+            this.Ven,
+            this.Uti});
             this.dataGridSalesReport.Location = new System.Drawing.Point(94, 228);
             this.dataGridSalesReport.Name = "dataGridSalesReport";
+            this.dataGridSalesReport.ReadOnly = true;
             this.dataGridSalesReport.Size = new System.Drawing.Size(758, 362);
             this.dataGridSalesReport.TabIndex = 85;
             // 
@@ -144,10 +166,65 @@ namespace Punto_de_Venta
             this.dtpSalesReport2.Size = new System.Drawing.Size(110, 20);
             this.dtpSalesReport2.TabIndex = 94;
             // 
+            // fcV
+            // 
+            this.fcV.HeaderText = "Fecha de Venta";
+            this.fcV.Name = "fcV";
+            this.fcV.ReadOnly = true;
+            // 
+            // Dep
+            // 
+            this.Dep.HeaderText = "Departamento";
+            this.Dep.Name = "Dep";
+            this.Dep.ReadOnly = true;
+            // 
+            // Cod
+            // 
+            this.Cod.HeaderText = "Código de artículo";
+            this.Cod.Name = "Cod";
+            this.Cod.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio Unitario";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
+            // UniV
+            // 
+            this.UniV.HeaderText = "Unidades Vendidas";
+            this.UniV.Name = "UniV";
+            this.UniV.ReadOnly = true;
+            // 
+            // Sub
+            // 
+            this.Sub.HeaderText = "Subtotal";
+            this.Sub.Name = "Sub";
+            this.Sub.ReadOnly = true;
+            // 
+            // Desc
+            // 
+            this.Desc.HeaderText = "Descuento";
+            this.Desc.Name = "Desc";
+            this.Desc.ReadOnly = true;
+            // 
+            // Ven
+            // 
+            this.Ven.HeaderText = "Venta";
+            this.Ven.Name = "Ven";
+            this.Ven.ReadOnly = true;
+            // 
+            // Uti
+            // 
+            this.Uti.HeaderText = "Utilidad";
+            this.Uti.Name = "Uti";
+            this.Uti.ReadOnly = true;
+            // 
             // SalesReportScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
             this.Controls.Add(this.dtpSalesReport2);
             this.Controls.Add(this.dtpSalesReport1);
@@ -178,5 +255,14 @@ namespace Punto_de_Venta
         private System.Windows.Forms.ComboBox cbSalesReportDepart;
         private System.Windows.Forms.DateTimePicker dtpSalesReport1;
         private System.Windows.Forms.DateTimePicker dtpSalesReport2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fcV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dep;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UniV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sub;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Desc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ven;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Uti;
     }
 }

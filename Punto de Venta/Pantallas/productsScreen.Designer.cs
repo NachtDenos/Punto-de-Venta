@@ -31,7 +31,6 @@ namespace Punto_de_Venta
         {
             this.txtFilterProduct = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.dataGridProduct = new System.Windows.Forms.DataGridView();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnEditProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
@@ -58,6 +57,18 @@ namespace Punto_de_Venta
             this.label8 = new System.Windows.Forms.Label();
             this.txtActiveProduct = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.dataGridProduct = new System.Windows.Forms.DataGridView();
+            this.codProdProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desProdu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UniInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CosInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExisInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReorProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CambioPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actiPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,14 +89,6 @@ namespace Punto_de_Venta
             this.label12.Size = new System.Drawing.Size(55, 22);
             this.label12.TabIndex = 53;
             this.label12.Text = "Filtro:";
-            // 
-            // dataGridProduct
-            // 
-            this.dataGridProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridProduct.Location = new System.Drawing.Point(455, 130);
-            this.dataGridProduct.Name = "dataGridProduct";
-            this.dataGridProduct.Size = new System.Drawing.Size(453, 377);
-            this.dataGridProduct.TabIndex = 52;
             // 
             // btnDeleteProduct
             // 
@@ -346,11 +349,102 @@ namespace Punto_de_Venta
             this.label13.TabIndex = 61;
             this.label13.Text = "Producto Activo";
             // 
+            // dataGridProduct
+            // 
+            this.dataGridProduct.AllowUserToDeleteRows = false;
+            this.dataGridProduct.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codProdProd,
+            this.desProdu,
+            this.DepInv,
+            this.UniInv,
+            this.CosInv,
+            this.PreInv,
+            this.fechProd,
+            this.ExisInv,
+            this.ReorProd,
+            this.CambioPro,
+            this.actiPro});
+            this.dataGridProduct.Location = new System.Drawing.Point(455, 120);
+            this.dataGridProduct.Name = "dataGridProduct";
+            this.dataGridProduct.ReadOnly = true;
+            this.dataGridProduct.Size = new System.Drawing.Size(452, 389);
+            this.dataGridProduct.TabIndex = 98;
+            // 
+            // codProdProd
+            // 
+            this.codProdProd.HeaderText = "Código del Producto";
+            this.codProdProd.Name = "codProdProd";
+            this.codProdProd.ReadOnly = true;
+            // 
+            // desProdu
+            // 
+            this.desProdu.HeaderText = "Descripción";
+            this.desProdu.Name = "desProdu";
+            this.desProdu.ReadOnly = true;
+            // 
+            // DepInv
+            // 
+            this.DepInv.HeaderText = "Departamento";
+            this.DepInv.Name = "DepInv";
+            this.DepInv.ReadOnly = true;
+            // 
+            // UniInv
+            // 
+            this.UniInv.HeaderText = "Unidad de Medida";
+            this.UniInv.Name = "UniInv";
+            this.UniInv.ReadOnly = true;
+            // 
+            // CosInv
+            // 
+            this.CosInv.HeaderText = "Costo";
+            this.CosInv.Name = "CosInv";
+            this.CosInv.ReadOnly = true;
+            // 
+            // PreInv
+            // 
+            this.PreInv.HeaderText = "Precio Unitario";
+            this.PreInv.Name = "PreInv";
+            this.PreInv.ReadOnly = true;
+            // 
+            // fechProd
+            // 
+            this.fechProd.HeaderText = "Fecha de alta";
+            this.fechProd.Name = "fechProd";
+            this.fechProd.ReadOnly = true;
+            // 
+            // ExisInv
+            // 
+            this.ExisInv.HeaderText = "Existencia";
+            this.ExisInv.Name = "ExisInv";
+            this.ExisInv.ReadOnly = true;
+            // 
+            // ReorProd
+            // 
+            this.ReorProd.HeaderText = "Punto de Reorden";
+            this.ReorProd.Name = "ReorProd";
+            this.ReorProd.ReadOnly = true;
+            // 
+            // CambioPro
+            // 
+            this.CambioPro.HeaderText = "Fecha de cambio";
+            this.CambioPro.Name = "CambioPro";
+            this.CambioPro.ReadOnly = true;
+            // 
+            // actiPro
+            // 
+            this.actiPro.HeaderText = "Producto Activo";
+            this.actiPro.Name = "actiPro";
+            this.actiPro.ReadOnly = true;
+            // 
             // productsScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.dataGridProduct);
             this.Controls.Add(this.txtActiveProduct);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dtpChangeDateProduct);
@@ -361,7 +455,6 @@ namespace Punto_de_Venta
             this.Controls.Add(this.txtExistenceProduct);
             this.Controls.Add(this.txtFilterProduct);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.dataGridProduct);
             this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.btnEditProduct);
             this.Controls.Add(this.btnAddProduct);
@@ -392,7 +485,6 @@ namespace Punto_de_Venta
 
         private System.Windows.Forms.TextBox txtFilterProduct;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridView dataGridProduct;
         private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.Button btnEditProduct;
         private System.Windows.Forms.Button btnAddProduct;
@@ -419,5 +511,17 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtActiveProduct;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView dataGridProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codProdProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desProdu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UniInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CosInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PreInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExisInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReorProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CambioPro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn actiPro;
     }
 }

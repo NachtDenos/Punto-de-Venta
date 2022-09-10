@@ -30,7 +30,6 @@ namespace Punto_de_Venta
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.pbTemporal = new System.Windows.Forms.PictureBox();
             this.txtIdTicketReport = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnConsultTicketReport1 = new System.Windows.Forms.Button();
@@ -40,7 +39,8 @@ namespace Punto_de_Venta
             this.cbTicketReport = new System.Windows.Forms.ComboBox();
             this.btnConsultTicketReport2 = new System.Windows.Forms.Button();
             this.btnReprintTicket = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTemporal)).BeginInit();
+            this.pbTicketReport = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTicketReport)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -52,14 +52,6 @@ namespace Punto_de_Venta
             this.label2.Size = new System.Drawing.Size(497, 44);
             this.label2.TabIndex = 85;
             this.label2.Text = "Recibos / Notas de crédito";
-            // 
-            // pbTemporal
-            // 
-            this.pbTemporal.Location = new System.Drawing.Point(474, 95);
-            this.pbTemporal.Name = "pbTemporal";
-            this.pbTemporal.Size = new System.Drawing.Size(364, 493);
-            this.pbTemporal.TabIndex = 86;
-            this.pbTemporal.TabStop = false;
             // 
             // txtIdTicketReport
             // 
@@ -160,11 +152,23 @@ namespace Punto_de_Venta
             this.btnReprintTicket.Text = "Reimprimir";
             this.btnReprintTicket.UseVisualStyleBackColor = false;
             // 
+            // pbTicketReport
+            // 
+            this.pbTicketReport.Image = global::Punto_de_Venta.Properties.Resources.EjemploTicket;
+            this.pbTicketReport.Location = new System.Drawing.Point(476, 107);
+            this.pbTicketReport.Name = "pbTicketReport";
+            this.pbTicketReport.Size = new System.Drawing.Size(381, 463);
+            this.pbTicketReport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTicketReport.TabIndex = 96;
+            this.pbTicketReport.TabStop = false;
+            // 
             // TicketReportScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.pbTicketReport);
             this.Controls.Add(this.btnReprintTicket);
             this.Controls.Add(this.btnConsultTicketReport2);
             this.Controls.Add(this.cbTicketReport);
@@ -174,11 +178,10 @@ namespace Punto_de_Venta
             this.Controls.Add(this.btnConsultTicketReport1);
             this.Controls.Add(this.txtIdTicketReport);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pbTemporal);
             this.Controls.Add(this.label2);
             this.Name = "TicketReportScreen";
             this.Text = "Consulta de Recibos";
-            ((System.ComponentModel.ISupportInitialize)(this.pbTemporal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTicketReport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,7 +190,6 @@ namespace Punto_de_Venta
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pbTemporal;
         private System.Windows.Forms.TextBox txtIdTicketReport;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnConsultTicketReport1;
@@ -197,5 +199,6 @@ namespace Punto_de_Venta
         private System.Windows.Forms.ComboBox cbTicketReport;
         private System.Windows.Forms.Button btnConsultTicketReport2;
         private System.Windows.Forms.Button btnReprintTicket;
+        private System.Windows.Forms.PictureBox pbTicketReport;
     }
 }

@@ -29,22 +29,35 @@ namespace Punto_de_Venta
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuickSearchScreen));
+            this.dataGridQuickSearch = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIdCashRegister = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.codQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.existQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridQuickSearch)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridQuickSearch
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(236, 85);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(305, 458);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridQuickSearch.AllowUserToDeleteRows = false;
+            this.dataGridQuickSearch.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridQuickSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridQuickSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codQuick,
+            this.nameQuick,
+            this.priceQuick,
+            this.existQuick});
+            this.dataGridQuickSearch.Location = new System.Drawing.Point(236, 85);
+            this.dataGridQuickSearch.Name = "dataGridQuickSearch";
+            this.dataGridQuickSearch.ReadOnly = true;
+            this.dataGridQuickSearch.Size = new System.Drawing.Size(326, 458);
+            this.dataGridQuickSearch.TabIndex = 0;
             // 
             // label2
             // 
@@ -92,24 +105,50 @@ namespace Punto_de_Venta
             this.label3.TabIndex = 31;
             this.label3.Text = "Nombre del artículo";
             // 
+            // codQuick
+            // 
+            this.codQuick.HeaderText = "Código";
+            this.codQuick.Name = "codQuick";
+            this.codQuick.ReadOnly = true;
+            // 
+            // nameQuick
+            // 
+            this.nameQuick.HeaderText = "Nombre";
+            this.nameQuick.Name = "nameQuick";
+            this.nameQuick.ReadOnly = true;
+            // 
+            // priceQuick
+            // 
+            this.priceQuick.HeaderText = "Precio";
+            this.priceQuick.Name = "priceQuick";
+            this.priceQuick.ReadOnly = true;
+            // 
+            // existQuick
+            // 
+            this.existQuick.HeaderText = "Existencia";
+            this.existQuick.Name = "existQuick";
+            this.existQuick.ReadOnly = true;
+            // 
             // QuickSearchScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(595, 586);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtIdCashRegister);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridQuickSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "QuickSearchScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta rápida";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridQuickSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,11 +156,15 @@ namespace Punto_de_Venta
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridQuickSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtIdCashRegister;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codQuick;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameQuick;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceQuick;
+        private System.Windows.Forms.DataGridViewTextBoxColumn existQuick;
     }
 }

@@ -355,7 +355,8 @@
     <None Include="FOTOS\pngwing.com %282%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="notas.txt" />
+    <None Include="Resources\EjemploTicket.png" />
+    <None Include="Resources\dummyTicket.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

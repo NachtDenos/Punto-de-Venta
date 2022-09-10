@@ -40,11 +40,12 @@
             // 
             // SQLserverDBbuttonProject
             // 
-            this.SQLserverDBbuttonProject.BackColor = System.Drawing.Color.Aqua;
-            this.SQLserverDBbuttonProject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SQLserverDBbuttonProject.Location = new System.Drawing.Point(194, 368);
+            this.SQLserverDBbuttonProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
+            this.SQLserverDBbuttonProject.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SQLserverDBbuttonProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SQLserverDBbuttonProject.Location = new System.Drawing.Point(196, 385);
             this.SQLserverDBbuttonProject.Name = "SQLserverDBbuttonProject";
-            this.SQLserverDBbuttonProject.Size = new System.Drawing.Size(259, 124);
+            this.SQLserverDBbuttonProject.Size = new System.Drawing.Size(259, 86);
             this.SQLserverDBbuttonProject.TabIndex = 0;
             this.SQLserverDBbuttonProject.Text = "SQL SERVER";
             this.SQLserverDBbuttonProject.UseVisualStyleBackColor = false;
@@ -52,11 +53,14 @@
             // 
             // CassandraDBProjectButton
             // 
-            this.CassandraDBProjectButton.BackColor = System.Drawing.Color.Aqua;
-            this.CassandraDBProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CassandraDBProjectButton.Location = new System.Drawing.Point(754, 368);
+            this.CassandraDBProjectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
+            this.CassandraDBProjectButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CassandraDBProjectButton.FlatAppearance.BorderSize = 2;
+            this.CassandraDBProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CassandraDBProjectButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.CassandraDBProjectButton.Location = new System.Drawing.Point(760, 385);
             this.CassandraDBProjectButton.Name = "CassandraDBProjectButton";
-            this.CassandraDBProjectButton.Size = new System.Drawing.Size(259, 124);
+            this.CassandraDBProjectButton.Size = new System.Drawing.Size(259, 86);
             this.CassandraDBProjectButton.TabIndex = 1;
             this.CassandraDBProjectButton.Text = "CASSANDRA";
             this.CassandraDBProjectButton.UseVisualStyleBackColor = false;
@@ -65,17 +69,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(451, 134);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(362, 105);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(340, 26);
+            this.label1.Size = new System.Drawing.Size(499, 41);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Por favor elija la base de datos a trabajar";
+            this.label1.Text = "Elija la base de datos a usar.";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Punto_de_Venta.Properties.Resources.Cassandra;
-            this.pictureBox2.Location = new System.Drawing.Point(801, 184);
+            this.pictureBox2.Location = new System.Drawing.Point(800, 184);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(174, 178);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -84,7 +88,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.pictureBox1.Image = global::Punto_de_Venta.Properties.Resources.output_onlinepngtools__2_;
             this.pictureBox1.Location = new System.Drawing.Point(218, 184);
             this.pictureBox1.Name = "pictureBox1";
@@ -97,7 +101,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(1184, 631);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);

@@ -30,7 +30,7 @@ namespace Punto_de_Venta
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridDiscounts = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbYesNoDiscounts = new System.Windows.Forms.ComboBox();
@@ -39,26 +39,38 @@ namespace Punto_de_Venta
             this.dtpInDiscounts = new System.Windows.Forms.DateTimePicker();
             this.dtpOutDiscounts = new System.Windows.Forms.DateTimePicker();
             this.btnEditDiscounts = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.ProdDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateInitial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDiscounts)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(343, 20);
+            this.label2.Location = new System.Drawing.Point(354, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(229, 44);
             this.label2.TabIndex = 5;
             this.label2.Text = "Descuentos";
             // 
-            // dataGridView1
+            // dataGridDiscounts
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(312, 113);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(564, 474);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridDiscounts.AllowUserToDeleteRows = false;
+            this.dataGridDiscounts.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridDiscounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDiscounts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProdDiscount,
+            this.Discount,
+            this.DateInitial,
+            this.DateFinal});
+            this.dataGridDiscounts.Location = new System.Drawing.Point(329, 113);
+            this.dataGridDiscounts.Name = "dataGridDiscounts";
+            this.dataGridDiscounts.ReadOnly = true;
+            this.dataGridDiscounts.Size = new System.Drawing.Size(544, 474);
+            this.dataGridDiscounts.TabIndex = 6;
             // 
             // label6
             // 
@@ -139,10 +151,37 @@ namespace Punto_de_Venta
             this.btnEditDiscounts.Text = "Editar";
             this.btnEditDiscounts.UseVisualStyleBackColor = false;
             // 
+            // ProdDiscount
+            // 
+            this.ProdDiscount.HeaderText = "Productos";
+            this.ProdDiscount.Name = "ProdDiscount";
+            this.ProdDiscount.ReadOnly = true;
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Descuento";
+            this.Discount.Name = "Discount";
+            this.Discount.ReadOnly = true;
+            // 
+            // DateInitial
+            // 
+            this.DateInitial.HeaderText = "Fecha inicial";
+            this.DateInitial.Name = "DateInitial";
+            this.DateInitial.ReadOnly = true;
+            this.DateInitial.Width = 150;
+            // 
+            // DateFinal
+            // 
+            this.DateFinal.HeaderText = "Fecha final";
+            this.DateFinal.Name = "DateFinal";
+            this.DateFinal.ReadOnly = true;
+            this.DateFinal.Width = 150;
+            // 
             // DiscountsScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
             this.Controls.Add(this.btnEditDiscounts);
             this.Controls.Add(this.dtpOutDiscounts);
@@ -152,11 +191,11 @@ namespace Punto_de_Venta
             this.Controls.Add(this.cbYesNoDiscounts);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridDiscounts);
             this.Controls.Add(this.label2);
             this.Name = "DiscountsScreen";
             this.Text = "Descuentos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDiscounts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,7 +204,7 @@ namespace Punto_de_Venta
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridDiscounts;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbYesNoDiscounts;
@@ -174,5 +213,9 @@ namespace Punto_de_Venta
         private System.Windows.Forms.DateTimePicker dtpInDiscounts;
         private System.Windows.Forms.DateTimePicker dtpOutDiscounts;
         private System.Windows.Forms.Button btnEditDiscounts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProdDiscount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateInitial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateFinal;
     }
 }

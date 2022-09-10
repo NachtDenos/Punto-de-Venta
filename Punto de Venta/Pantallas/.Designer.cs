@@ -42,6 +42,9 @@ namespace Punto_de_Venta
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbDevolutionDepartament = new System.Windows.Forms.ComboBox();
+            this.IdDepartament = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDepartament = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.returnDepartament = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDepartament)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,10 +68,17 @@ namespace Punto_de_Venta
             // 
             // dataGridDepartament
             // 
+            this.dataGridDepartament.AllowUserToDeleteRows = false;
+            this.dataGridDepartament.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridDepartament.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDepartament.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdDepartament,
+            this.nameDepartament,
+            this.returnDepartament});
             this.dataGridDepartament.Location = new System.Drawing.Point(26, 245);
             this.dataGridDepartament.Name = "dataGridDepartament";
-            this.dataGridDepartament.Size = new System.Drawing.Size(583, 291);
+            this.dataGridDepartament.ReadOnly = true;
+            this.dataGridDepartament.Size = new System.Drawing.Size(493, 291);
             this.dataGridDepartament.TabIndex = 77;
             // 
             // btnDeleteDepartament
@@ -178,10 +188,32 @@ namespace Punto_de_Venta
             this.cbDevolutionDepartament.TabIndex = 83;
             this.cbDevolutionDepartament.Text = "Seleccione";
             // 
+            // IdDepartament
+            // 
+            this.IdDepartament.HeaderText = "Clave";
+            this.IdDepartament.Name = "IdDepartament";
+            this.IdDepartament.ReadOnly = true;
+            this.IdDepartament.Width = 150;
+            // 
+            // nameDepartament
+            // 
+            this.nameDepartament.HeaderText = "Departamento";
+            this.nameDepartament.Name = "nameDepartament";
+            this.nameDepartament.ReadOnly = true;
+            this.nameDepartament.Width = 150;
+            // 
+            // returnDepartament
+            // 
+            this.returnDepartament.HeaderText = "Devolución";
+            this.returnDepartament.Name = "returnDepartament";
+            this.returnDepartament.ReadOnly = true;
+            this.returnDepartament.Width = 150;
+            // 
             // departamentScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
             this.Controls.Add(this.cbDevolutionDepartament);
             this.Controls.Add(this.label4);
@@ -218,5 +250,8 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbDevolutionDepartament;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdDepartament;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDepartament;
+        private System.Windows.Forms.DataGridViewTextBoxColumn returnDepartament;
     }
 }

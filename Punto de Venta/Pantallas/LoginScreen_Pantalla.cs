@@ -29,10 +29,10 @@ namespace Punto_de_Venta
             //borrar esta cosa
             if (IsSQl == true) //It seems to work
             {
-                MessageBox.Show("JAJAJ ESTE PENDEJO", "Me la pelas");
+                
                 dummy = -1;
             }
-            UserTextHolder = " John Doe ";
+            UserTextHolder = " C117 ";
             PasswordTextHolder = "123456";
             UserNameSQLSideTextBox.Text = UserTextHolder;
             //Crear un label dinamico que aparezca cuando pase el mouse o el textbox este seleccionado 

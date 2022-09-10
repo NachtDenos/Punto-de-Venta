@@ -15,6 +15,10 @@ namespace Punto_de_Venta
         public DiscountsScreen()
         {
             InitializeComponent();
+            dataGridDiscounts.Rows[0].Cells[0].Value = "Agua Mineral 100ml";
+            dataGridDiscounts.Rows[0].Cells[1].Value = "10%";
+            dataGridDiscounts.Rows[0].Cells[2].Value = "08/09/2022";
+            dataGridDiscounts.Rows[0].Cells[3].Value = "10/09/2022";
         }
     }
 }

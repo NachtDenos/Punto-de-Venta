@@ -29,10 +29,11 @@ namespace Punto_de_Venta
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreditNoteScreen));
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrintCredit = new System.Windows.Forms.Button();
-            this.dataGridCreditNote = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridCreditNote)).BeginInit();
+            this.pbNote = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNote)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -58,29 +59,33 @@ namespace Punto_de_Venta
             this.btnPrintCredit.Text = "Imprimir";
             this.btnPrintCredit.UseVisualStyleBackColor = false;
             // 
-            // dataGridCreditNote
+            // pbNote
             // 
-            this.dataGridCreditNote.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCreditNote.Location = new System.Drawing.Point(73, 70);
-            this.dataGridCreditNote.Name = "dataGridCreditNote";
-            this.dataGridCreditNote.Size = new System.Drawing.Size(446, 460);
-            this.dataGridCreditNote.TabIndex = 45;
+            this.pbNote.Image = global::Punto_de_Venta.Properties.Resources.EjemploTicket;
+            this.pbNote.Location = new System.Drawing.Point(61, 56);
+            this.pbNote.Name = "pbNote";
+            this.pbNote.Size = new System.Drawing.Size(493, 474);
+            this.pbNote.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbNote.TabIndex = 48;
+            this.pbNote.TabStop = false;
             // 
             // CreditNoteScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(595, 586);
+            this.Controls.Add(this.pbNote);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPrintCredit);
-            this.Controls.Add(this.dataGridCreditNote);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CreditNoteScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nota de Crédito";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridCreditNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNote)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -90,6 +95,6 @@ namespace Punto_de_Venta
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPrintCredit;
-        private System.Windows.Forms.DataGridView dataGridCreditNote;
+        private System.Windows.Forms.PictureBox pbNote;
     }
 }

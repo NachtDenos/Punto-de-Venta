@@ -39,6 +39,12 @@ namespace Punto_de_Venta
             this.dataGridSellerReport = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UniVen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUti = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSellerReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,10 +123,20 @@ namespace Punto_de_Venta
             // 
             // dataGridSellerReport
             // 
+            this.dataGridSellerReport.AllowUserToDeleteRows = false;
+            this.dataGridSellerReport.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridSellerReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridSellerReport.Location = new System.Drawing.Point(91, 238);
+            this.dataGridSellerReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Fecha,
+            this.NombreCC,
+            this.Dep,
+            this.UniVen,
+            this.Venta,
+            this.SUti});
+            this.dataGridSellerReport.Location = new System.Drawing.Point(147, 233);
             this.dataGridSellerReport.Name = "dataGridSellerReport";
-            this.dataGridSellerReport.Size = new System.Drawing.Size(758, 362);
+            this.dataGridSellerReport.ReadOnly = true;
+            this.dataGridSellerReport.Size = new System.Drawing.Size(640, 362);
             this.dataGridSellerReport.TabIndex = 97;
             // 
             // label2
@@ -143,10 +159,47 @@ namespace Punto_de_Venta
             this.label1.TabIndex = 95;
             this.label1.Text = "Rango de fechas";
             // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha de Venta";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // NombreCC
+            // 
+            this.NombreCC.HeaderText = "Cajero";
+            this.NombreCC.Name = "NombreCC";
+            this.NombreCC.ReadOnly = true;
+            // 
+            // Dep
+            // 
+            this.Dep.HeaderText = "Departamento";
+            this.Dep.Name = "Dep";
+            this.Dep.ReadOnly = true;
+            // 
+            // UniVen
+            // 
+            this.UniVen.HeaderText = "Unidades Vendidas";
+            this.UniVen.Name = "UniVen";
+            this.UniVen.ReadOnly = true;
+            // 
+            // Venta
+            // 
+            this.Venta.HeaderText = "Suma Venta";
+            this.Venta.Name = "Venta";
+            this.Venta.ReadOnly = true;
+            // 
+            // SUti
+            // 
+            this.SUti.HeaderText = "Suma Utilidad";
+            this.SUti.Name = "SUti";
+            this.SUti.ReadOnly = true;
+            // 
             // SellerReportScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
             this.Controls.Add(this.dtpSellerReport2);
             this.Controls.Add(this.dtpSellerReport1);
@@ -178,5 +231,11 @@ namespace Punto_de_Venta
         private System.Windows.Forms.DataGridView dataGridSellerReport;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreCC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dep;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UniVen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Venta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SUti;
     }
 }

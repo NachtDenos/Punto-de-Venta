@@ -56,6 +56,16 @@ namespace Punto_de_Venta
             this.dataGridEmployees = new System.Windows.Forms.DataGridView();
             this.txtFilterEmployees = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.NameCashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastNPCashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastNMCashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curpCashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bornCashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailCashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nominaCashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateCashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passCashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmployees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -292,9 +302,23 @@ namespace Punto_de_Venta
             // 
             // dataGridEmployees
             // 
+            this.dataGridEmployees.AllowUserToDeleteRows = false;
+            this.dataGridEmployees.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameCashier,
+            this.LastNPCashier,
+            this.LastNMCashier,
+            this.curpCashier,
+            this.bornCashier,
+            this.emailCashier,
+            this.nominaCashier,
+            this.dateCashier,
+            this.idCashier,
+            this.passCashier});
             this.dataGridEmployees.Location = new System.Drawing.Point(440, 120);
             this.dataGridEmployees.Name = "dataGridEmployees";
+            this.dataGridEmployees.ReadOnly = true;
             this.dataGridEmployees.Size = new System.Drawing.Size(453, 377);
             this.dataGridEmployees.TabIndex = 25;
             // 
@@ -316,10 +340,71 @@ namespace Punto_de_Venta
             this.label12.TabIndex = 26;
             this.label12.Text = "Filtro:";
             // 
+            // NameCashier
+            // 
+            this.NameCashier.HeaderText = "Nombre";
+            this.NameCashier.Name = "NameCashier";
+            this.NameCashier.ReadOnly = true;
+            // 
+            // LastNPCashier
+            // 
+            this.LastNPCashier.HeaderText = "Apellido Paterno";
+            this.LastNPCashier.Name = "LastNPCashier";
+            this.LastNPCashier.ReadOnly = true;
+            // 
+            // LastNMCashier
+            // 
+            this.LastNMCashier.HeaderText = "Apellido Materno";
+            this.LastNMCashier.Name = "LastNMCashier";
+            this.LastNMCashier.ReadOnly = true;
+            // 
+            // curpCashier
+            // 
+            this.curpCashier.HeaderText = "CURP";
+            this.curpCashier.Name = "curpCashier";
+            this.curpCashier.ReadOnly = true;
+            // 
+            // bornCashier
+            // 
+            this.bornCashier.HeaderText = "Fecha de Nacimiento";
+            this.bornCashier.Name = "bornCashier";
+            this.bornCashier.ReadOnly = true;
+            // 
+            // emailCashier
+            // 
+            this.emailCashier.HeaderText = "Correo electrónico";
+            this.emailCashier.Name = "emailCashier";
+            this.emailCashier.ReadOnly = true;
+            // 
+            // nominaCashier
+            // 
+            this.nominaCashier.HeaderText = "Número de nómina";
+            this.nominaCashier.Name = "nominaCashier";
+            this.nominaCashier.ReadOnly = true;
+            // 
+            // dateCashier
+            // 
+            this.dateCashier.HeaderText = "Fecha de ingreso";
+            this.dateCashier.Name = "dateCashier";
+            this.dateCashier.ReadOnly = true;
+            // 
+            // idCashier
+            // 
+            this.idCashier.HeaderText = "Clave de Usuario";
+            this.idCashier.Name = "idCashier";
+            this.idCashier.ReadOnly = true;
+            // 
+            // passCashier
+            // 
+            this.passCashier.HeaderText = "Contraseña";
+            this.passCashier.Name = "passCashier";
+            this.passCashier.ReadOnly = true;
+            // 
             // EmployeesScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
             this.Controls.Add(this.txtFilterEmployees);
             this.Controls.Add(this.label12);
@@ -384,5 +469,15 @@ namespace Punto_de_Venta
         private System.Windows.Forms.DataGridView dataGridEmployees;
         private System.Windows.Forms.TextBox txtFilterEmployees;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameCashier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastNPCashier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastNMCashier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curpCashier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bornCashier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailCashier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nominaCashier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateCashier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCashier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passCashier;
     }
 }

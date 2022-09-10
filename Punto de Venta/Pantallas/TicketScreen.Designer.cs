@@ -29,19 +29,12 @@ namespace Punto_de_Venta
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridTicket = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ticketScreen));
             this.btnPrintTicket = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridTicket)).BeginInit();
+            this.pbTicketSell = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTicketSell)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridTicket
-            // 
-            this.dataGridTicket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridTicket.Location = new System.Drawing.Point(72, 64);
-            this.dataGridTicket.Name = "dataGridTicket";
-            this.dataGridTicket.Size = new System.Drawing.Size(446, 460);
-            this.dataGridTicket.TabIndex = 0;
             // 
             // btnPrintTicket
             // 
@@ -66,30 +59,41 @@ namespace Punto_de_Venta
             this.label1.TabIndex = 44;
             this.label1.Text = "Ticket";
             // 
+            // pbTicketSell
+            // 
+            this.pbTicketSell.Image = global::Punto_de_Venta.Properties.Resources.EjemploTicket;
+            this.pbTicketSell.Location = new System.Drawing.Point(73, 56);
+            this.pbTicketSell.Name = "pbTicketSell";
+            this.pbTicketSell.Size = new System.Drawing.Size(447, 459);
+            this.pbTicketSell.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTicketSell.TabIndex = 45;
+            this.pbTicketSell.TabStop = false;
+            // 
             // ticketScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(595, 586);
+            this.Controls.Add(this.pbTicketSell);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPrintTicket);
-            this.Controls.Add(this.dataGridTicket);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ticketScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ticket";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridTicket)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTicketSell)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridTicket;
         private System.Windows.Forms.Button btnPrintTicket;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pbTicketSell;
     }
 }

@@ -29,6 +29,7 @@ namespace Punto_de_Venta
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WaytoPayScreen));
             this.dataGridWayToPay = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,14 +47,30 @@ namespace Punto_de_Venta
             this.rbOtherPay = new System.Windows.Forms.RadioButton();
             this.btnPayPay = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.CodigoPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridWayToPay)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridWayToPay
             // 
+            this.dataGridWayToPay.AllowUserToDeleteRows = false;
+            this.dataGridWayToPay.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridWayToPay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridWayToPay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CodigoPro,
+            this.Nombre,
+            this.Precio_Unitario,
+            this.Cantidad,
+            this.Descuento,
+            this.Subtotal});
             this.dataGridWayToPay.Location = new System.Drawing.Point(75, 77);
             this.dataGridWayToPay.Name = "dataGridWayToPay";
+            this.dataGridWayToPay.ReadOnly = true;
             this.dataGridWayToPay.Size = new System.Drawing.Size(452, 330);
             this.dataGridWayToPay.TabIndex = 0;
             // 
@@ -215,10 +232,47 @@ namespace Punto_de_Venta
             this.label2.TabIndex = 43;
             this.label2.Text = "Seleccione los métodos de pago que usará y cuanto pagará";
             // 
+            // CodigoPro
+            // 
+            this.CodigoPro.HeaderText = "Código";
+            this.CodigoPro.Name = "CodigoPro";
+            this.CodigoPro.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Precio_Unitario
+            // 
+            this.Precio_Unitario.HeaderText = "Precio Unitario";
+            this.Precio_Unitario.Name = "Precio_Unitario";
+            this.Precio_Unitario.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // Descuento
+            // 
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            // 
+            // Subtotal
+            // 
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.ReadOnly = true;
+            // 
             // WaytoPayScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(595, 586);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnPayPay);
@@ -238,6 +292,7 @@ namespace Punto_de_Venta
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridWayToPay);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WaytoPayScreen";
@@ -268,5 +323,11 @@ namespace Punto_de_Venta
         private System.Windows.Forms.RadioButton rbOtherPay;
         private System.Windows.Forms.Button btnPayPay;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Unitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
     }
 }

@@ -42,6 +42,14 @@ namespace Punto_de_Venta
             this.rdNoOutInventary = new System.Windows.Forms.RadioButton();
             this.rdNoDecreaseInventary = new System.Windows.Forms.RadioButton();
             this.rdYesDecreaseInventary = new System.Windows.Forms.RadioButton();
+            this.DepInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UniInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CosInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExisInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uniVenInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mermaInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInventary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,9 +85,21 @@ namespace Punto_de_Venta
             // 
             // dataGridInventary
             // 
+            this.dataGridInventary.AllowUserToDeleteRows = false;
+            this.dataGridInventary.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridInventary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridInventary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DepInv,
+            this.ProdInv,
+            this.UniInv,
+            this.CosInv,
+            this.PreInv,
+            this.ExisInv,
+            this.uniVenInv,
+            this.mermaInv});
             this.dataGridInventary.Location = new System.Drawing.Point(86, 194);
             this.dataGridInventary.Name = "dataGridInventary";
+            this.dataGridInventary.ReadOnly = true;
             this.dataGridInventary.Size = new System.Drawing.Size(758, 362);
             this.dataGridInventary.TabIndex = 97;
             // 
@@ -180,10 +200,59 @@ namespace Punto_de_Venta
             this.rdYesDecreaseInventary.Text = "Si";
             this.rdYesDecreaseInventary.UseVisualStyleBackColor = true;
             // 
+            // DepInv
+            // 
+            this.DepInv.HeaderText = "Departamento";
+            this.DepInv.Name = "DepInv";
+            this.DepInv.ReadOnly = true;
+            // 
+            // ProdInv
+            // 
+            this.ProdInv.HeaderText = "Producto";
+            this.ProdInv.Name = "ProdInv";
+            this.ProdInv.ReadOnly = true;
+            // 
+            // UniInv
+            // 
+            this.UniInv.HeaderText = "Unidad de Medida";
+            this.UniInv.Name = "UniInv";
+            this.UniInv.ReadOnly = true;
+            // 
+            // CosInv
+            // 
+            this.CosInv.HeaderText = "Costo";
+            this.CosInv.Name = "CosInv";
+            this.CosInv.ReadOnly = true;
+            // 
+            // PreInv
+            // 
+            this.PreInv.HeaderText = "Precio Unitario";
+            this.PreInv.Name = "PreInv";
+            this.PreInv.ReadOnly = true;
+            // 
+            // ExisInv
+            // 
+            this.ExisInv.HeaderText = "Existencias";
+            this.ExisInv.Name = "ExisInv";
+            this.ExisInv.ReadOnly = true;
+            // 
+            // uniVenInv
+            // 
+            this.uniVenInv.HeaderText = "Unidades Vendidas";
+            this.uniVenInv.Name = "uniVenInv";
+            this.uniVenInv.ReadOnly = true;
+            // 
+            // mermaInv
+            // 
+            this.mermaInv.HeaderText = "Merma";
+            this.mermaInv.Name = "mermaInv";
+            this.mermaInv.ReadOnly = true;
+            // 
             // InventaryScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
             this.Controls.Add(this.rdYesDecreaseInventary);
             this.Controls.Add(this.rdNoDecreaseInventary);
@@ -220,5 +289,13 @@ namespace Punto_de_Venta
         private System.Windows.Forms.RadioButton rdNoOutInventary;
         private System.Windows.Forms.RadioButton rdNoDecreaseInventary;
         private System.Windows.Forms.RadioButton rdYesDecreaseInventary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProdInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UniInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CosInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PreInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExisInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uniVenInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mermaInv;
     }
 }

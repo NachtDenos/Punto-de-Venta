@@ -49,23 +49,40 @@ namespace Punto_de_Venta
             this.txtQuantityDeleteSales = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.NoArt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label11 = new System.Windows.Forms.Label();
+            this.NoPRod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProCarr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProductSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCarritoSales)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridProductSales
             // 
+            this.dataGridProductSales.AllowUserToDeleteRows = false;
+            this.dataGridProductSales.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridProductSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridProductSales.Location = new System.Drawing.Point(219, 115);
+            this.dataGridProductSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NoArt,
+            this.Pro});
+            this.dataGridProductSales.Location = new System.Drawing.Point(223, 115);
             this.dataGridProductSales.Name = "dataGridProductSales";
+            this.dataGridProductSales.ReadOnly = true;
             this.dataGridProductSales.Size = new System.Drawing.Size(244, 349);
             this.dataGridProductSales.TabIndex = 0;
             // 
             // dataGridCarritoSales
             // 
+            this.dataGridCarritoSales.AllowUserToDeleteRows = false;
+            this.dataGridCarritoSales.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridCarritoSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCarritoSales.Location = new System.Drawing.Point(491, 115);
+            this.dataGridCarritoSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NoPRod,
+            this.ProCarr});
+            this.dataGridCarritoSales.Location = new System.Drawing.Point(495, 115);
             this.dataGridCarritoSales.Name = "dataGridCarritoSales";
+            this.dataGridCarritoSales.ReadOnly = true;
             this.dataGridCarritoSales.Size = new System.Drawing.Size(244, 349);
             this.dataGridCarritoSales.TabIndex = 1;
             // 
@@ -99,7 +116,7 @@ namespace Punto_de_Venta
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(292, 80);
+            this.label1.Location = new System.Drawing.Point(296, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 22);
             this.label1.TabIndex = 26;
@@ -109,7 +126,7 @@ namespace Punto_de_Venta
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(582, 80);
+            this.label2.Location = new System.Drawing.Point(586, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 22);
             this.label2.TabIndex = 27;
@@ -121,9 +138,9 @@ namespace Punto_de_Venta
             this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(21, 130);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 22);
+            this.label3.Size = new System.Drawing.Size(163, 22);
             this.label3.TabIndex = 28;
-            this.label3.Text = "No. de Artículo";
+            this.label3.Text = "No. de producto";
             // 
             // label4
             // 
@@ -139,11 +156,11 @@ namespace Punto_de_Venta
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(21, 202);
+            this.label5.Location = new System.Drawing.Point(21, 190);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(190, 22);
+            this.label5.Size = new System.Drawing.Size(117, 22);
             this.label5.TabIndex = 30;
-            this.label5.Text = "Nombre del artículo";
+            this.label5.Text = "Nombre del";
             // 
             // txtNumberSales
             // 
@@ -255,11 +272,47 @@ namespace Punto_de_Venta
             this.label10.TabIndex = 41;
             this.label10.Text = "Filtros:";
             // 
+            // NoArt
+            // 
+            this.NoArt.HeaderText = "No. de Producto";
+            this.NoArt.Name = "NoArt";
+            this.NoArt.ReadOnly = true;
+            // 
+            // Pro
+            // 
+            this.Pro.HeaderText = "Producto";
+            this.Pro.Name = "Pro";
+            this.Pro.ReadOnly = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(21, 213);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(97, 22);
+            this.label11.TabIndex = 42;
+            this.label11.Text = "producto";
+            // 
+            // NoPRod
+            // 
+            this.NoPRod.HeaderText = "No. de Producto";
+            this.NoPRod.Name = "NoPRod";
+            this.NoPRod.ReadOnly = true;
+            // 
+            // ProCarr
+            // 
+            this.ProCarr.HeaderText = "Producto";
+            this.ProCarr.Name = "ProCarr";
+            this.ProCarr.ReadOnly = true;
+            // 
             // SalesScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtQuantityDeleteSales);
             this.Controls.Add(this.label9);
@@ -311,5 +364,10 @@ namespace Punto_de_Venta
         private System.Windows.Forms.TextBox txtQuantityDeleteSales;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoArt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pro;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoPRod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProCarr;
     }
 }
