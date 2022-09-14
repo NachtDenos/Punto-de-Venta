@@ -33,13 +33,14 @@ namespace Punto_de_Venta
             this.dataGridDiscounts = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbYesNoDiscounts = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpInDiscounts = new System.Windows.Forms.DateTimePicker();
             this.dtpOutDiscounts = new System.Windows.Forms.DateTimePicker();
             this.btnEditDiscounts = new System.Windows.Forms.Button();
+            this.txtDiscountDiscount = new System.Windows.Forms.TextBox();
             this.ProdDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateInitial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,13 +64,14 @@ namespace Punto_de_Venta
             this.dataGridDiscounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDiscounts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProdDiscount,
+            this.IdDiscount,
             this.Discount,
             this.DateInitial,
             this.DateFinal});
-            this.dataGridDiscounts.Location = new System.Drawing.Point(329, 113);
+            this.dataGridDiscounts.Location = new System.Drawing.Point(270, 113);
             this.dataGridDiscounts.Name = "dataGridDiscounts";
             this.dataGridDiscounts.ReadOnly = true;
-            this.dataGridDiscounts.Size = new System.Drawing.Size(544, 474);
+            this.dataGridDiscounts.Size = new System.Drawing.Size(643, 474);
             this.dataGridDiscounts.TabIndex = 6;
             // 
             // label6
@@ -78,9 +80,9 @@ namespace Punto_de_Venta
             this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(35, 113);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(162, 22);
+            this.label6.Size = new System.Drawing.Size(110, 22);
             this.label6.TabIndex = 35;
-            this.label6.Text = "Tiene Descuento";
+            this.label6.Text = "Descuento";
             // 
             // label1
             // 
@@ -91,18 +93,6 @@ namespace Punto_de_Venta
             this.label1.Size = new System.Drawing.Size(218, 22);
             this.label1.TabIndex = 36;
             this.label1.Text = "Fechas del Descuento:";
-            // 
-            // cbYesNoDiscounts
-            // 
-            this.cbYesNoDiscounts.FormattingEnabled = true;
-            this.cbYesNoDiscounts.Items.AddRange(new object[] {
-            "Si",
-            "No"});
-            this.cbYesNoDiscounts.Location = new System.Drawing.Point(39, 152);
-            this.cbYesNoDiscounts.Name = "cbYesNoDiscounts";
-            this.cbYesNoDiscounts.Size = new System.Drawing.Size(194, 21);
-            this.cbYesNoDiscounts.TabIndex = 37;
-            this.cbYesNoDiscounts.Text = "Seleccione";
             // 
             // label3
             // 
@@ -144,18 +134,32 @@ namespace Punto_de_Venta
             this.btnEditDiscounts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditDiscounts.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditDiscounts.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnEditDiscounts.Location = new System.Drawing.Point(39, 536);
+            this.btnEditDiscounts.Location = new System.Drawing.Point(88, 536);
             this.btnEditDiscounts.Name = "btnEditDiscounts";
             this.btnEditDiscounts.Size = new System.Drawing.Size(139, 51);
             this.btnEditDiscounts.TabIndex = 53;
             this.btnEditDiscounts.Text = "Editar";
             this.btnEditDiscounts.UseVisualStyleBackColor = false;
             // 
+            // txtDiscountDiscount
+            // 
+            this.txtDiscountDiscount.Location = new System.Drawing.Point(39, 153);
+            this.txtDiscountDiscount.Multiline = true;
+            this.txtDiscountDiscount.Name = "txtDiscountDiscount";
+            this.txtDiscountDiscount.Size = new System.Drawing.Size(200, 22);
+            this.txtDiscountDiscount.TabIndex = 54;
+            // 
             // ProdDiscount
             // 
             this.ProdDiscount.HeaderText = "Productos";
             this.ProdDiscount.Name = "ProdDiscount";
             this.ProdDiscount.ReadOnly = true;
+            // 
+            // IdDiscount
+            // 
+            this.IdDiscount.HeaderText = "ID de Descuento";
+            this.IdDiscount.Name = "IdDiscount";
+            this.IdDiscount.ReadOnly = true;
             // 
             // Discount
             // 
@@ -183,12 +187,12 @@ namespace Punto_de_Venta
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.txtDiscountDiscount);
             this.Controls.Add(this.btnEditDiscounts);
             this.Controls.Add(this.dtpOutDiscounts);
             this.Controls.Add(this.dtpInDiscounts);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbYesNoDiscounts);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dataGridDiscounts);
@@ -207,15 +211,16 @@ namespace Punto_de_Venta
         private System.Windows.Forms.DataGridView dataGridDiscounts;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbYesNoDiscounts;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpInDiscounts;
         private System.Windows.Forms.DateTimePicker dtpOutDiscounts;
         private System.Windows.Forms.Button btnEditDiscounts;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdDiscount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdDiscount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateInitial;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateFinal;
+        private System.Windows.Forms.TextBox txtDiscountDiscount;
     }
 }

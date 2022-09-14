@@ -32,6 +32,8 @@ namespace Punto_de_Venta
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashRegisterScreen));
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridCashRegister = new System.Windows.Forms.DataGridView();
+            this.NumCaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponibility = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDeleteCashRegister = new System.Windows.Forms.Button();
             this.btnEditCashRegister = new System.Windows.Forms.Button();
             this.btnAddCashResgister = new System.Windows.Forms.Button();
@@ -39,8 +41,6 @@ namespace Punto_de_Venta
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbCashRegister = new System.Windows.Forms.ComboBox();
-            this.NumCaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Disponibility = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCashRegister)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +68,20 @@ namespace Punto_de_Venta
             this.dataGridCashRegister.RowHeadersWidth = 51;
             this.dataGridCashRegister.Size = new System.Drawing.Size(456, 241);
             this.dataGridCashRegister.TabIndex = 51;
+            // 
+            // NumCaja
+            // 
+            this.NumCaja.HeaderText = "Número de Caja";
+            this.NumCaja.Name = "NumCaja";
+            this.NumCaja.ReadOnly = true;
+            this.NumCaja.Width = 200;
+            // 
+            // Disponibility
+            // 
+            this.Disponibility.HeaderText = "Disponibilidad";
+            this.Disponibility.Name = "Disponibility";
+            this.Disponibility.ReadOnly = true;
+            this.Disponibility.Width = 200;
             // 
             // btnDeleteCashRegister
             // 
@@ -146,20 +160,7 @@ namespace Punto_de_Venta
             this.cbCashRegister.Name = "cbCashRegister";
             this.cbCashRegister.Size = new System.Drawing.Size(253, 21);
             this.cbCashRegister.TabIndex = 53;
-            // 
-            // NumCaja
-            // 
-            this.NumCaja.HeaderText = "Número de Caja";
-            this.NumCaja.Name = "NumCaja";
-            this.NumCaja.ReadOnly = true;
-            this.NumCaja.Width = 200;
-            // 
-            // Disponibility
-            // 
-            this.Disponibility.HeaderText = "Disponibilidad";
-            this.Disponibility.Name = "Disponibility";
-            this.Disponibility.ReadOnly = true;
-            this.Disponibility.Width = 200;
+            this.cbCashRegister.Text = "Seleccione";
             // 
             // CashRegisterScreen
             // 
