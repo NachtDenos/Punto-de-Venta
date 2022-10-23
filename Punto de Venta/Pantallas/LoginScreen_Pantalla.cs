@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
 using static Punto_de_Venta.DatabaseBool;
-
+using Punto_de_Venta;
 
 namespace Punto_de_Venta
 {
@@ -50,28 +52,61 @@ namespace Punto_de_Venta
             selection = true;
         }
 
+        Procedures controles = new Procedures();
+
         private void LoginSQLbutton_Click(object sender, EventArgs e)
         {
-            
-            if (selection == false)
-                MessageBox.Show("No seleccionó su puesto", "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            if (IsSQl == true)
             {
-                if(indexBox == 0)
+                int result = controles.Login(UserNameSQLSideTextBox.Text, PassawordUSRsql.Text);
+                if (result == 1)
                 {
-                    Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
-                    this.Hide();
-                    TheOtherForm.ShowDialog();
-                    this.Show();
+                    if (selection == false)
+                        MessageBox.Show("No seleccionó su puesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                    {
+                        if (indexBox == 0)
+                        {
+                            Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
+                            this.Hide();
+                            TheOtherForm.ShowDialog();
+                            this.Show();
+                        }
+                        else
+                        {
+                            Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
+                            this.Hide();
+                            theRegisterToUse.ShowDialog();
+                            this.Show();
+                        }
+                    }
+
+                
+                //if (selection == false)
+                //    MessageBox.Show("No seleccionó su puesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //else
+                //{
+                //    if (indexBox == 0)
+                //    {
+                //        Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
+                //        this.Hide();
+                //        TheOtherForm.ShowDialog();
+                //        this.Show();
+                //    }
+                //    else
+                //    {
+                //        Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
+                //        this.Hide();
+                //        theRegisterToUse.ShowDialog();
+                //        this.Show();
+                //    }
                 }
-                else
+                else if (result == 0)
                 {
-                    Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
-                    this.Hide();
-                    theRegisterToUse.ShowDialog();
-                    this.Show();
+                    MessageBox.Show("Usuario o contraseña no validos error");
                 }
             }
+           
         }
     }
 }
