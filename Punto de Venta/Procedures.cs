@@ -26,7 +26,7 @@ namespace Punto_de_Venta
             return tablita;
         }
 
-        public int Login(string user, string password)
+        public bool Login(string user, string password, string puesto)
         {
             
             ConexionSqlServer conn = new ConexionSqlServer();
@@ -39,13 +39,16 @@ namespace Punto_de_Venta
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@NombreU", user);
                 cmd.Parameters.AddWithValue("@Contraseña", password);
+                cmd.Parameters.AddWithValue("@TipoU", puesto);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    return reader.GetInt32(0);
+                    return true;
                 }
+                else 
+                    return false;
             }
             catch (Exception error)
             {
@@ -55,7 +58,7 @@ namespace Punto_de_Venta
             {
                 conexion.CerrarConexion();
             }
-            return 1;
+            return true;
         }
 
     }

@@ -58,55 +58,65 @@ namespace Punto_de_Venta
         {
             if (IsSQl == true)
             {
-                int result = controles.Login(UserNameSQLSideTextBox.Text, PassawordUSRsql.Text);
-                if (result == 1)
+                if (selection == false)
+                    MessageBox.Show("No seleccionó su puesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
                 {
-                    if (selection == false)
-                        MessageBox.Show("No seleccionó su puesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
+
+                    //if (indexBox == 0)
+                    //{
+                    //    Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
+                    //    this.Hide();
+                    //    TheOtherForm.ShowDialog();
+                    //    this.Show();
+                    //}
+                    //else
+                    //{
+                    //    Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
+                    //    this.Hide();
+                    //    theRegisterToUse.ShowDialog();
+                    //    this.Show();
+                    //}
+
+                    var result = controles.Login(UserNameSQLSideTextBox.Text, PassawordUSRsql.Text, comboBoxUser.Text);
+                    if (result == true)
                     {
-                        if (indexBox == 0)
-                        {
-                            Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
-                            this.Hide();
-                            TheOtherForm.ShowDialog();
-                            this.Show();
-                        }
-                        else
+
+                        if (indexBox == 1)
                         {
                             Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
                             this.Hide();
                             theRegisterToUse.ShowDialog();
                             this.Show();
                         }
-                    }
 
-                
-                //if (selection == false)
-                //    MessageBox.Show("No seleccionó su puesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //else
-                //{
-                //    if (indexBox == 0)
-                //    {
-                //        Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
-                //        this.Hide();
-                //        TheOtherForm.ShowDialog();
-                //        this.Show();
-                //    }
-                //    else
-                //    {
-                //        Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
-                //        this.Hide();
-                //        theRegisterToUse.ShowDialog();
-                //        this.Show();
-                //    }
-                }
-                else if (result == 0)
-                {
-                    MessageBox.Show("Usuario o contraseña no validos error");
+                        //if (selection == false)
+                        //    MessageBox.Show("No seleccionó su puesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //else
+                        //{
+                        //    if (indexBox == 0)
+                        //    {
+                        //        Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
+                        //        this.Hide();
+                        //        TheOtherForm.ShowDialog();
+                        //        this.Show();
+                        //    }
+                        //    else
+                        //    {
+                        //        Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
+                        //        this.Hide();
+                        //        theRegisterToUse.ShowDialog();
+                        //        this.Show();
+                        //    }
+                    }
+                    else if (result == false)
+                    {
+                        MessageBox.Show("Usuario o contraseña no validos error");
+                    }
                 }
             }
            
         }
     }
 }
+
