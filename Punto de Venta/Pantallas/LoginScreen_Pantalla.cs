@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using static Punto_de_Venta.DatabaseBool;
 using Punto_de_Venta;
+using System.Data.SqlTypes;
 
 namespace Punto_de_Venta
 {
@@ -63,56 +64,53 @@ namespace Punto_de_Venta
                 else
                 {
 
-                    //if (indexBox == 0)
-                    //{
-                    //    Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
-                    //    this.Hide();
-                    //    TheOtherForm.ShowDialog();
-                    //    this.Show();
-                    //}
-                    //else
-                    //{
-                    //    Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
-                    //    this.Hide();
-                    //    theRegisterToUse.ShowDialog();
-                    //    this.Show();
-                    //}
-
-                    var result = controles.Login(UserNameSQLSideTextBox.Text, PassawordUSRsql.Text, comboBoxUser.Text);
-                    if (result == true)
+          
+                    if (indexBox == 1)
                     {
 
-                        if (indexBox == 1)
+                        var result = controles.Login(UserNameSQLSideTextBox.Text, PassawordUSRsql.Text, comboBoxUser.Text);
+                        if (result == true)
                         {
+
                             Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
                             this.Hide();
                             theRegisterToUse.ShowDialog();
                             this.Show();
+
+
+                        }
+                        else if (result == false)
+                        {
+                            MessageBox.Show("Usuario o contraseña no validos error");
+                        }
+                      
+                    }
+                    if (indexBox == 0)
+                    {
+                        string TipoAdmin = "1";
+                        
+
+
+                        Usuario user = new Usuario();
+                        user.Username = UserNameSQLSideTextBox.Text;
+                        user.password = PassawordUSRsql.Text;
+                        var result2 = controles.LoginAdministrador(user.Username, user.password, TipoAdmin);
+                        if (result2 == true)
+                        {
+                            Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
+                            this.Hide();
+                            TheOtherForm.ShowDialog();
+                            this.Show();
+                        }
+                        else if (result2 == false)
+                        {
+                            MessageBox.Show("Credenciales de Administrador no validos error");
                         }
 
-                        //if (selection == false)
-                        //    MessageBox.Show("No seleccionó su puesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //else
-                        //{
-                        //    if (indexBox == 0)
-                        //    {
-                        //        Pantallas.MainMenuAdmin TheOtherForm = new Pantallas.MainMenuAdmin();
-                        //        this.Hide();
-                        //        TheOtherForm.ShowDialog();
-                        //        this.Show();
-                        //    }
-                        //    else
-                        //    {
-                        //        Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
-                        //        this.Hide();
-                        //        theRegisterToUse.ShowDialog();
-                        //        this.Show();
-                        //    }
                     }
-                    else if (result == false)
-                    {
-                        MessageBox.Show("Usuario o contraseña no validos error");
-                    }
+
+
+                  
                 }
             }
            

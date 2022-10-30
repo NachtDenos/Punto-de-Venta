@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data.SqlTypes;
+
 namespace Punto_de_Venta
 {
     class Procedures
@@ -28,7 +30,7 @@ namespace Punto_de_Venta
 
         public bool Login(string user, string password, string puesto)
         {
-            
+
             ConexionSqlServer conn = new ConexionSqlServer();
             SqlConnection conectado = new SqlConnection();
             try
@@ -47,12 +49,52 @@ namespace Punto_de_Venta
                 {
                     return true;
                 }
-                else 
+                else
                     return false;
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.ToString());
+                return false;
+            }
+            finally
+            {
+                conexion.CerrarConexion();
+            }
+            return true;
+
+
+
+        }
+        public bool LoginAdministrador(string user, string password, string tipo)
+        {
+            
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                
+                SqlCommand cmd = new SqlCommand("ObtenerAdministradores", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ClaveU", user);
+                cmd.Parameters.AddWithValue("@Contra", password);
+                //Cambiar el tipo de U a int, si jalaba solo era yo de pendejo 
+                cmd.Parameters.AddWithValue("@TipoU", tipo);
+
+                SqlDataReader readerAdmin = cmd.ExecuteReader();
+
+                if (readerAdmin.HasRows)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.ToString());
+                return false;
             }
             finally
             {
@@ -60,6 +102,16 @@ namespace Punto_de_Venta
             }
             return true;
         }
+
+
+        public DataTable ListarProductos() 
+        {
+              DataTable Datagrid = new DataTable();
+              comando.Connection = conexion.AbrirConexion();
+              comando.CommandText = "";
+              return Datagrid;
+        }
+     
 
     }
 }
