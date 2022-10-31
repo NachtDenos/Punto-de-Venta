@@ -67,8 +67,8 @@ namespace Punto_de_Venta
           
                     if (indexBox == 1)
                     {
-
-                        var result = controles.Login(UserNameSQLSideTextBox.Text, PassawordUSRsql.Text, comboBoxUser.Text);
+                        string Tipo = "0";
+                        var result = controles.Login(UserNameSQLSideTextBox.Text, PassawordUSRsql.Text, Tipo);
                         if (result == true)
                         {
 

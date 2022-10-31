@@ -39,7 +39,7 @@ namespace Punto_de_Venta
 
                 SqlCommand cmd = new SqlCommand("SelectUsuarios", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@NombreU", user);
+                cmd.Parameters.AddWithValue("@ClaveU", user);
                 cmd.Parameters.AddWithValue("@Contraseña", password);
                 cmd.Parameters.AddWithValue("@TipoU", puesto);
 
@@ -65,6 +65,51 @@ namespace Punto_de_Venta
 
 
 
+        }
+
+        public DataTable ListarCajero()
+        {
+            DataTable grid = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarEmpleados";
+            comando.CommandType = CommandType.StoredProcedure;
+            leerFilas = comando.ExecuteReader();
+            grid.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return grid;
+        }
+
+        public bool InsertarEmpleados(string Nombre, string ApellidoPaterno, string ApellidoM, string claveU, string Contra,
+            DateTime fechaNac, DateTime FechaIngreso, string curp, string email, int Nomina)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("sp_InsertarEmpleado", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                cmd.Parameters.AddWithValue("@ApellidoP", ApellidoPaterno);
+                cmd.Parameters.AddWithValue("@ApellidoM", ApellidoM);
+                cmd.Parameters.AddWithValue("@FechaNac", fechaNac);
+                cmd.Parameters.AddWithValue("@NumeroNomina", Nomina);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@CURP", curp.ToCharArray());
+                cmd.Parameters.AddWithValue("@FechaIngreso", FechaIngreso);
+                cmd.Parameters.AddWithValue("@ClaveUsuario", claveU);
+                cmd.Parameters.AddWithValue("@Contraseña", Contra);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception ye)
+            {
+                MessageBox.Show(ye.ToString());
+                return false;
+            }
+            return true;
         }
         public bool LoginAdministrador(string user, string password, string tipo)
         {
