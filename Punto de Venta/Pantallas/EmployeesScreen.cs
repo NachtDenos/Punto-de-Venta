@@ -68,6 +68,7 @@ namespace Punto_de_Venta
             
             dataGridEmployees.DataSource = proc.ListarCajero();
         }
+
         int idCajeroSeleccionado;
         private void btnEditEmployees_Click(object sender, EventArgs e)
         {
@@ -89,11 +90,12 @@ namespace Punto_de_Venta
             if (pepe == true)
             {
                 MessageBox.Show("Actualizacion Realizada con exito");
-                dataGridEmployees.DataSource =  proc.ListarCajero();
+                dataGridEmployees.DataSource = proc.ListarCajero();
             }
             else
-                MessageBox.Show("NO SE REALIZO LA ACUTALIZACION", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            {
+                MessageBox.Show("NO SE REALIZO LA ACTUALIZACION", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             //if (dataGridEmployees.SelectedRows.Count > 0)
             //{
             //    string IdEmpleadoyUsuario;
@@ -134,6 +136,31 @@ namespace Punto_de_Venta
                 txtCurpEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["CURP"].Value.ToString();
                 dtpBirth.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha Nacimiento"].Value.ToString();
                 dtpJoinBusiness.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha de Ingreso"].Value.ToString();
+            }
+        }
+
+        private void btnDeleteEmployees_Click(object sender, EventArgs e)
+        {
+            var AR_152 = proc.BorrarEmpleados(idCajeroSeleccionado);
+            if (AR_152 == true)
+            {
+                MessageBox.Show("Se elimino el empleado con exito", "Exíto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtNameEmployees.Text = "";
+                txtLastName1Employees.Text = "";
+                txtLastName2Employees.Text = "";
+                txtIdEmployees.Text = "";
+                txtEmailEmployees.Text = "";
+                txtPayrollEmployees.Text = "";
+                txtPassEmployees.Text = "";
+                txtCurpEmployees.Text = "";
+                dtpBirth.Text = "";
+                dtpJoinBusiness.Text = "";
+                dataGridEmployees.DataSource = proc.ListarCajero();
+            }
+            else
+            {
+                MessageBox.Show("NO se elimino el empleado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridEmployees.DataSource = proc.ListarCajero();
             }
         }
     }

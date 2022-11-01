@@ -28,6 +28,28 @@ namespace Punto_de_Venta
             return tablita;
         }
 
+        public bool BorrarEmpleados(int id)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("BorrarEmpleados", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                return false;
+            }
+            return true;
+        }
         public bool ActualizarUsuarios(int id, string Nombre, string ApellidoP, string ApellidoM, string ClaveU, string Contra, string CURP, string Correo,
             DateTime FechaNac, DateTime FechaIngreso, int nomina)
         {

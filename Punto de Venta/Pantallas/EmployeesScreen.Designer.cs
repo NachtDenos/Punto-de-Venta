@@ -316,6 +316,7 @@ namespace Punto_de_Venta
             this.btnDeleteEmployees.TabIndex = 24;
             this.btnDeleteEmployees.Text = "Eliminar";
             this.btnDeleteEmployees.UseVisualStyleBackColor = false;
+            this.btnDeleteEmployees.Click += new System.EventHandler(this.btnDeleteEmployees_Click);
             // 
             // dataGridEmployees
             // 
