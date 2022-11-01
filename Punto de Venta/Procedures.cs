@@ -28,6 +28,41 @@ namespace Punto_de_Venta
             return tablita;
         }
 
+        public bool ActualizarUsuarios(int id, string Nombre, string ApellidoP, string ApellidoM, string ClaveU, string Contra, string CURP, string Correo,
+            DateTime FechaNac, DateTime FechaIngreso, int nomina)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("ActualizarEmpleados", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id",id);
+                cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                cmd.Parameters.AddWithValue("@ApellidoP", ApellidoP);
+                cmd.Parameters.AddWithValue("@ApellidoM", ApellidoM);
+                cmd.Parameters.AddWithValue("@ClaveU", ClaveU);
+                cmd.Parameters.AddWithValue("@Contra", Contra);
+                cmd.Parameters.AddWithValue("@FechaNac", FechaNac);
+                cmd.Parameters.AddWithValue("@FechaIng", FechaIngreso);
+                cmd.Parameters.AddWithValue("@Curp", CURP);
+                cmd.Parameters.AddWithValue("@Correo", Correo);
+                cmd.Parameters.AddWithValue("@Nomina", nomina);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+        }
+
         public bool Login(string user, string password, string puesto)
         {
 
@@ -61,10 +96,6 @@ namespace Punto_de_Venta
             {
                 conexion.CerrarConexion();
             }
-            return true;
-
-
-
         }
 
         public DataTable ListarCajero()

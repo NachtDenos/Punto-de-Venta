@@ -301,6 +301,7 @@ namespace Punto_de_Venta
             this.btnEditEmployees.TabIndex = 23;
             this.btnEditEmployees.Text = "Editar";
             this.btnEditEmployees.UseVisualStyleBackColor = false;
+            this.btnEditEmployees.Click += new System.EventHandler(this.btnEditEmployees_Click);
             // 
             // btnDeleteEmployees
             // 
@@ -328,6 +329,7 @@ namespace Punto_de_Venta
             this.dataGridEmployees.RowHeadersWidth = 51;
             this.dataGridEmployees.Size = new System.Drawing.Size(604, 464);
             this.dataGridEmployees.TabIndex = 25;
+            this.dataGridEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEmployees_CellClick);
             // 
             // txtFilterEmployees
             // 
@@ -401,6 +403,7 @@ namespace Punto_de_Venta
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "EmployeesScreen";
             this.Text = "EmployeesScreen";
+            this.Load += new System.EventHandler(this.EmployeesScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmployees)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

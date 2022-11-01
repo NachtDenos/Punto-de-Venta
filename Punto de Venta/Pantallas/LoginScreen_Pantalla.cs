@@ -35,11 +35,11 @@ namespace Punto_de_Venta
                 
                 dummy = -1;
             }
-            UserTextHolder = " C117 ";
-            PasswordTextHolder = "123456";
-            UserNameSQLSideTextBox.Text = UserTextHolder;
-            //Crear un label dinamico que aparezca cuando pase el mouse o el textbox este seleccionado 
-            PassawordUSRsql.Text = PasswordTextHolder;
+            //UserTextHolder = " C117 ";
+            //PasswordTextHolder = "123456";
+            //UserNameSQLSideTextBox.Text = UserTextHolder;
+            ////Crear un label dinamico que aparezca cuando pase el mouse o el textbox este seleccionado 
+            //PassawordUSRsql.Text = PasswordTextHolder;
         }
 
         private void LoginScreenWnD_FormClosed(object sender, FormClosedEventArgs e)

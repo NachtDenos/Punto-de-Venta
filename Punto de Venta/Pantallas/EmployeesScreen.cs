@@ -15,6 +15,7 @@ namespace Punto_de_Venta
 {
     public partial class EmployeesScreen : Form
     {
+        Procedures proc = new Procedures();
         public EmployeesScreen()
         {
             InitializeComponent();
@@ -37,7 +38,15 @@ namespace Punto_de_Venta
 
         private void btnAddEmployees_Click(object sender, EventArgs e)
         {
-            Procedures proc = new Procedures();
+            //Validacion de espacios vacios
+            if (txtNameEmployees.TextLength == 0 || txtLastName1Employees.TextLength == 0 || txtLastName2Employees.TextLength == 0 ||
+                txtPassEmployees.TextLength == 0 || txtPayrollEmployees.TextLength == 0 || txtCurpEmployees.TextLength == 0 || txtEmailEmployees.TextLength == 0
+                || txtIdEmployees.TextLength == 0)
+            {
+                MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
             string Nomina = txtPayrollEmployees.Text;
             int nomina;
             Int32.TryParse(Nomina,out nomina);
@@ -47,15 +56,85 @@ namespace Punto_de_Venta
             if (result == true)
             {
                 MessageBox.Show("Inserccion Realizada con Exito", "Exito");
+                dataGridEmployees.DataSource = proc.ListarCajero();
             }
             else
                 MessageBox.Show("No se realizo la inserccion", "Error");
+            dataGridEmployees.DataSource = proc.ListarCajero();
         }
 
         private void SearchBtton_Click(object sender, EventArgs e)
         {
-            Procedures proc = new Procedures();
+            
             dataGridEmployees.DataSource = proc.ListarCajero();
+        }
+        int idCajeroSeleccionado;
+        private void btnEditEmployees_Click(object sender, EventArgs e)
+        {
+            //Validacion de espacios vacios
+            if (txtNameEmployees.TextLength == 0 || txtLastName1Employees.TextLength == 0 || txtLastName2Employees.TextLength == 0 ||
+                txtPassEmployees.TextLength == 0 || txtPayrollEmployees.TextLength == 0 || txtCurpEmployees.TextLength == 0 || txtEmailEmployees.TextLength == 0
+                || txtIdEmployees.TextLength == 0)
+            {
+                MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            DateTime fechaN = DateTime.Parse(dtpBirth.Text);
+            DateTime fechaI = DateTime.Parse(dtpJoinBusiness.Text);
+            string Nomina = txtPayrollEmployees.Text;
+            int nomina;
+            Int32.TryParse(Nomina, out nomina);
+            var pepe = proc.ActualizarUsuarios(idCajeroSeleccionado, txtNameEmployees.Text, txtLastName1Employees.Text, txtLastName2Employees.Text, txtIdEmployees.Text, txtPassEmployees.Text,
+                txtCurpEmployees.Text, txtEmailEmployees.Text, fechaN, fechaI, nomina);
+            if (pepe == true)
+            {
+                MessageBox.Show("Actualizacion Realizada con exito");
+                dataGridEmployees.DataSource =  proc.ListarCajero();
+            }
+            else
+                MessageBox.Show("NO SE REALIZO LA ACUTALIZACION", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //if (dataGridEmployees.SelectedRows.Count > 0)
+            //{
+            //    string IdEmpleadoyUsuario;
+            //    int eseId;
+            //    IdEmpleadoyUsuario = dataGridEmployees.CurrentRow.Cells["IdEmpleado"].Value.ToString();
+            //    Int32.TryParse(IdEmpleadoyUsuario, out eseId);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Debe seleccionar una Fila", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+        }
+
+        private void EmployeesScreen_Load(object sender, EventArgs e)
+        {
+            
+            dataGridEmployees.DataSource = proc.ListarCajero();
+        }
+
+        private void dataGridEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridEmployees.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dataGridEmployees.CurrentRow.Selected = true;
+
+                string IdEmpleadoyUsuario;
+                int eseId;
+                IdEmpleadoyUsuario = dataGridEmployees.CurrentRow.Cells["IdEmpleado"].Value.ToString();
+                Int32.TryParse(IdEmpleadoyUsuario, out eseId);
+                idCajeroSeleccionado = eseId;
+                txtNameEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+                txtLastName1Employees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Apellido Paterno"].Value.ToString();
+                txtLastName2Employees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Apellido Materno"].Value.ToString();
+                txtIdEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Clave de Usuario"].Value.ToString();
+                txtEmailEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
+                txtPayrollEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Nomina"].Value.ToString();
+                txtPassEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Contraseña"].Value.ToString();
+                txtCurpEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["CURP"].Value.ToString();
+                dtpBirth.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha Nacimiento"].Value.ToString();
+                dtpJoinBusiness.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha de Ingreso"].Value.ToString();
+            }
         }
     }
 }
