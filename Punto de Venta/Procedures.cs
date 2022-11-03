@@ -164,6 +164,31 @@ namespace Punto_de_Venta
             }
             return true;
         }
+
+        public bool AltaDepartamentos(string NombreDepartamento, int claveDepartamento, string Devolucion)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("InsertarDepartamentos", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@NombreDepa",NombreDepartamento);
+                cmd.Parameters.AddWithValue("@IdDepa", claveDepartamento);
+                cmd.Parameters.AddWithValue("@Devolucion", Devolucion);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
+        }
+
         public bool LoginAdministrador(string user, string password, string tipo)
         {
             
@@ -198,7 +223,7 @@ namespace Punto_de_Venta
             {
                 conexion.CerrarConexion();
             }
-            return true;
+            //return true;
         }
 
 
@@ -206,8 +231,10 @@ namespace Punto_de_Venta
         {
               DataTable Datagrid = new DataTable();
               comando.Connection = conexion.AbrirConexion();
-              comando.CommandText = "";
+              comando.CommandText = ""; 
+              conexion.CerrarConexion();
               return Datagrid;
+             
         }
      
 

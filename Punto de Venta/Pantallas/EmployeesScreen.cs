@@ -117,26 +117,55 @@ namespace Punto_de_Venta
 
         private void dataGridEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridEmployees.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            dataGridEmployees.AllowUserToOrderColumns = false;
+            try
             {
-                dataGridEmployees.CurrentRow.Selected = true;
+                if (dataGridEmployees.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    dataGridEmployees.CurrentRow.Selected = true;
 
-                string IdEmpleadoyUsuario;
-                int eseId;
-                IdEmpleadoyUsuario = dataGridEmployees.CurrentRow.Cells["IdEmpleado"].Value.ToString();
-                Int32.TryParse(IdEmpleadoyUsuario, out eseId);
-                idCajeroSeleccionado = eseId;
-                txtNameEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
-                txtLastName1Employees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Apellido Paterno"].Value.ToString();
-                txtLastName2Employees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Apellido Materno"].Value.ToString();
-                txtIdEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Clave de Usuario"].Value.ToString();
-                txtEmailEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
-                txtPayrollEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Nomina"].Value.ToString();
-                txtPassEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Contraseña"].Value.ToString();
-                txtCurpEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["CURP"].Value.ToString();
-                dtpBirth.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha Nacimiento"].Value.ToString();
-                dtpJoinBusiness.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha de Ingreso"].Value.ToString();
+                    string IdEmpleadoyUsuario;
+                    int eseId;
+                    IdEmpleadoyUsuario = dataGridEmployees.CurrentRow.Cells["IdEmpleado"].Value.ToString();
+                    Int32.TryParse(IdEmpleadoyUsuario, out eseId);
+                    idCajeroSeleccionado = eseId;
+                    txtNameEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+                    txtLastName1Employees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Apellido Paterno"].Value.ToString();
+                    txtLastName2Employees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Apellido Materno"].Value.ToString();
+                    txtIdEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Clave de Usuario"].Value.ToString();
+                    txtEmailEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
+                    txtPayrollEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Nomina"].Value.ToString();
+                    txtPassEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Contraseña"].Value.ToString();
+                    txtCurpEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["CURP"].Value.ToString();
+                    dtpBirth.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha Nacimiento"].Value.ToString();
+                    dtpJoinBusiness.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha de Ingreso"].Value.ToString();
+                }
             }
+            catch (Exception ArgumentOutOfRangeException)
+            {
+                
+                //MessageBox.Show("SELECCIONA UNA PUTA CELDA NO LA PUTA COLUMNA");
+            }
+            //if (dataGridEmployees.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            //{
+            //    dataGridEmployees.CurrentRow.Selected = true;
+
+            //    string IdEmpleadoyUsuario;
+            //    int eseId;
+            //    IdEmpleadoyUsuario = dataGridEmployees.CurrentRow.Cells["IdEmpleado"].Value.ToString();
+            //    Int32.TryParse(IdEmpleadoyUsuario, out eseId);
+            //    idCajeroSeleccionado = eseId;
+            //    txtNameEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+            //    txtLastName1Employees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Apellido Paterno"].Value.ToString();
+            //    txtLastName2Employees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Apellido Materno"].Value.ToString();
+            //    txtIdEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Clave de Usuario"].Value.ToString();
+            //    txtEmailEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
+            //    txtPayrollEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Nomina"].Value.ToString();
+            //    txtPassEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Contraseña"].Value.ToString();
+            //    txtCurpEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["CURP"].Value.ToString();
+            //    dtpBirth.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha Nacimiento"].Value.ToString();
+            //    dtpJoinBusiness.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha de Ingreso"].Value.ToString();
+            //}
         }
 
         private void btnDeleteEmployees_Click(object sender, EventArgs e)
@@ -156,6 +185,8 @@ namespace Punto_de_Venta
                 dtpBirth.Text = "";
                 dtpJoinBusiness.Text = "";
                 dataGridEmployees.DataSource = proc.ListarCajero();
+                //NO TENGO IDEA
+           
             }
             else
             {
