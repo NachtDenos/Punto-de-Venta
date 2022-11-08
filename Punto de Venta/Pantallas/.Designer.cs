@@ -32,9 +32,6 @@ namespace Punto_de_Venta
             this.txtFilterDepartament = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridDepartament = new System.Windows.Forms.DataGridView();
-            this.IdDepartament = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDepartament = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.returnDepartament = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDeleteDepartament = new System.Windows.Forms.Button();
             this.btnEditDepartament = new System.Windows.Forms.Button();
             this.btnAddDepartament = new System.Windows.Forms.Button();
@@ -51,7 +48,7 @@ namespace Punto_de_Venta
             // txtFilterDepartament
             // 
             this.txtFilterDepartament.Location = new System.Drawing.Point(115, 688);
-            this.txtFilterDepartament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFilterDepartament.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilterDepartament.Multiline = true;
             this.txtFilterDepartament.Name = "txtFilterDepartament";
             this.txtFilterDepartament.Size = new System.Drawing.Size(320, 26);
@@ -73,41 +70,15 @@ namespace Punto_de_Venta
             this.dataGridDepartament.AllowUserToDeleteRows = false;
             this.dataGridDepartament.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridDepartament.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridDepartament.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdDepartament,
-            this.nameDepartament,
-            this.returnDepartament});
             this.dataGridDepartament.Location = new System.Drawing.Point(35, 302);
-            this.dataGridDepartament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridDepartament.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridDepartament.Name = "dataGridDepartament";
             this.dataGridDepartament.ReadOnly = true;
             this.dataGridDepartament.RowHeadersWidth = 51;
             this.dataGridDepartament.Size = new System.Drawing.Size(657, 358);
             this.dataGridDepartament.TabIndex = 77;
-            // 
-            // IdDepartament
-            // 
-            this.IdDepartament.HeaderText = "Clave";
-            this.IdDepartament.MinimumWidth = 6;
-            this.IdDepartament.Name = "IdDepartament";
-            this.IdDepartament.ReadOnly = true;
-            this.IdDepartament.Width = 150;
-            // 
-            // nameDepartament
-            // 
-            this.nameDepartament.HeaderText = "Departamento";
-            this.nameDepartament.MinimumWidth = 6;
-            this.nameDepartament.Name = "nameDepartament";
-            this.nameDepartament.ReadOnly = true;
-            this.nameDepartament.Width = 150;
-            // 
-            // returnDepartament
-            // 
-            this.returnDepartament.HeaderText = "Devolución";
-            this.returnDepartament.MinimumWidth = 6;
-            this.returnDepartament.Name = "returnDepartament";
-            this.returnDepartament.ReadOnly = true;
-            this.returnDepartament.Width = 150;
+            this.dataGridDepartament.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDepartament_CellClick);
+           // this.dataGridDepartament.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDepartament_CellLeave);
             // 
             // btnDeleteDepartament
             // 
@@ -116,7 +87,7 @@ namespace Punto_de_Venta
             this.btnDeleteDepartament.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteDepartament.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDeleteDepartament.Location = new System.Drawing.Point(1023, 672);
-            this.btnDeleteDepartament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteDepartament.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteDepartament.Name = "btnDeleteDepartament";
             this.btnDeleteDepartament.Size = new System.Drawing.Size(185, 63);
             this.btnDeleteDepartament.TabIndex = 76;
@@ -130,12 +101,13 @@ namespace Punto_de_Venta
             this.btnEditDepartament.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditDepartament.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnEditDepartament.Location = new System.Drawing.Point(816, 672);
-            this.btnEditDepartament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditDepartament.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditDepartament.Name = "btnEditDepartament";
             this.btnEditDepartament.Size = new System.Drawing.Size(185, 63);
             this.btnEditDepartament.TabIndex = 75;
             this.btnEditDepartament.Text = "Editar";
             this.btnEditDepartament.UseVisualStyleBackColor = false;
+            this.btnEditDepartament.Click += new System.EventHandler(this.btnEditDepartament_Click);
             // 
             // btnAddDepartament
             // 
@@ -144,7 +116,7 @@ namespace Punto_de_Venta
             this.btnAddDepartament.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddDepartament.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAddDepartament.Location = new System.Drawing.Point(605, 672);
-            this.btnAddDepartament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddDepartament.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddDepartament.Name = "btnAddDepartament";
             this.btnAddDepartament.Size = new System.Drawing.Size(185, 63);
             this.btnAddDepartament.TabIndex = 74;
@@ -166,7 +138,7 @@ namespace Punto_de_Venta
             // txtNameDepartament
             // 
             this.txtNameDepartament.Location = new System.Drawing.Point(48, 151);
-            this.txtNameDepartament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNameDepartament.Margin = new System.Windows.Forms.Padding(4);
             this.txtNameDepartament.Multiline = true;
             this.txtNameDepartament.Name = "txtNameDepartament";
             this.txtNameDepartament.Size = new System.Drawing.Size(387, 26);
@@ -186,7 +158,7 @@ namespace Punto_de_Venta
             // txtIdDepartament
             // 
             this.txtIdDepartament.Location = new System.Drawing.Point(48, 247);
-            this.txtIdDepartament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdDepartament.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdDepartament.Multiline = true;
             this.txtIdDepartament.Name = "txtIdDepartament";
             this.txtIdDepartament.Size = new System.Drawing.Size(387, 26);
@@ -221,7 +193,7 @@ namespace Punto_de_Venta
             "Si",
             "No"});
             this.cbDevolutionDepartament.Location = new System.Drawing.Point(519, 151);
-            this.cbDevolutionDepartament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDevolutionDepartament.Margin = new System.Windows.Forms.Padding(4);
             this.cbDevolutionDepartament.Name = "cbDevolutionDepartament";
             this.cbDevolutionDepartament.Size = new System.Drawing.Size(277, 24);
             this.cbDevolutionDepartament.TabIndex = 83;
@@ -246,9 +218,10 @@ namespace Punto_de_Venta
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNameDepartament);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "departamentScreen";
             this.Text = "Departament";
+            this.Load += new System.EventHandler(this.departamentScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDepartament)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -269,8 +242,5 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbDevolutionDepartament;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdDepartament;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDepartament;
-        private System.Windows.Forms.DataGridViewTextBoxColumn returnDepartament;
     }
 }

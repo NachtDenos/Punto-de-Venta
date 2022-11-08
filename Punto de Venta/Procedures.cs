@@ -171,12 +171,14 @@ namespace Punto_de_Venta
             SqlConnection conectado = new SqlConnection();
             try
             {
+                int idAdmin = 1;
                 conectado = conn.AbrirConexion();
                 SqlCommand cmd = new SqlCommand("InsertarDepartamentos", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@NombreDepa",NombreDepartamento);
                 cmd.Parameters.AddWithValue("@IdDepa", claveDepartamento);
                 cmd.Parameters.AddWithValue("@Devolucion", Devolucion);
+                cmd.Parameters.AddWithValue("@IdAdministrador", idAdmin);
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
                 conn.CerrarConexion();
@@ -236,7 +238,45 @@ namespace Punto_de_Venta
               return Datagrid;
              
         }
-     
 
+        public DataTable ListarDepartamentos()
+        {
+            DataTable grid = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "LeerDepartamentos";
+            comando.CommandType = CommandType.StoredProcedure;
+            leerFilas = comando.ExecuteReader();
+            grid.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return grid;
+        }
+
+        public bool ActualizarDepartamentos(string Nombre, string Devolucion, int idDepa)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("ActualizarDepartamentos", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                cmd.Parameters.AddWithValue("@Devolucion", Devolucion);
+                cmd.Parameters.AddWithValue("@IdDepa", idDepa);
+               
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+        }
     }
 }
