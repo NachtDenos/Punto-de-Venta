@@ -75,12 +75,18 @@ namespace Punto_de_Venta
 
         private void dataGridCashRegister_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridCashRegister.AllowUserToOrderColumns = false;
-            if (dataGridCashRegister.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            try { 
+                dataGridCashRegister.AllowUserToOrderColumns = false;
+                if (dataGridCashRegister.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    dataGridCashRegister.CurrentRow.Selected = true;
+                    btnEditCashRegister.Enabled = true;
+                    btnDeleteCashRegister.Enabled = true;
+                }
+            }
+            catch (Exception ArgumentOutOfRangeException)
             {
-                dataGridCashRegister.CurrentRow.Selected = true;
-                btnEditCashRegister.Enabled = true;
-                btnDeleteCashRegister.Enabled = true;
+
             }
         }
     }

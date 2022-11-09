@@ -164,12 +164,19 @@ namespace Punto_de_Venta
 
         private void dataGridProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridProduct.AllowUserToOrderColumns = false;
-            if (dataGridProduct.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            try
             {
-                dataGridProduct.CurrentRow.Selected = true;
-                btnEditProduct.Enabled = true;
-                btnDeleteProduct.Enabled = true;
+                dataGridProduct.AllowUserToOrderColumns = false;
+                if (dataGridProduct.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    dataGridProduct.CurrentRow.Selected = true;
+                    btnEditProduct.Enabled = true;
+                    btnDeleteProduct.Enabled = true;
+                }
+            }
+            catch (Exception ArgumentOutOfRangeException)
+            {
+
             }
         }
 
