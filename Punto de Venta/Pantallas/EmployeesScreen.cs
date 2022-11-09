@@ -105,6 +105,31 @@ namespace Punto_de_Venta
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (validEmail(txtEmailEmployees.Text) == false)
+            {
+                MessageBox.Show("Correo no valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (CurpValida(txtCurpEmployees.Text) == false)
+            {
+                MessageBox.Show("CURP no valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dateValidFuture(dtpBirth.Value.Date) == false)
+            {
+                MessageBox.Show("Fecha no valida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dateValidFuture(dtpJoinBusiness.Value.Date) == false)
+            {
+                MessageBox.Show("Fecha no valida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dateValidAge(dtpBirth.Value.AddYears(18)) == false)
+            {
+                MessageBox.Show("Fecha no valida. Es menor de edad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             DateTime fechaN = DateTime.Parse(dtpBirth.Text);
             DateTime fechaI = DateTime.Parse(dtpJoinBusiness.Text);
             string Nomina = txtPayrollEmployees.Text;
