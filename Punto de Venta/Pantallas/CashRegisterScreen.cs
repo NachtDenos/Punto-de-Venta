@@ -12,11 +12,50 @@ namespace Punto_de_Venta
 {
     public partial class CashRegisterScreen : Form
     {
+        int indexBox;
+        bool selection = false;
         public CashRegisterScreen()
         {
             InitializeComponent();
             dataGridCashRegister.Rows[0].Cells[0].Value = "1";
             dataGridCashRegister.Rows[0].Cells[1].Value = "Si";
+        }
+
+        private void txtIdCashRegister_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MessageBox.Show("Solo se aceptan números en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            e.Handled = true;
+            return;
+        }
+
+        private void btnAddCashResgister_Click(object sender, EventArgs e)
+        {
+            if (selection == false)
+                MessageBox.Show("No seleccionó la disponibilidad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                if (indexBox == 1)
+                {
+                }
+                if (indexBox == 0)
+                {
+                }
+            }
+        }
+
+        private void btnEditCashRegister_Click(object sender, EventArgs e)
+        {
+            if (selection == false)
+                MessageBox.Show("No seleccionó la disponibilidad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                if (indexBox == 1)
+                {
+                }
+                if (indexBox == 0)
+                {
+                }
+            }
         }
     }
 }

@@ -108,6 +108,7 @@ namespace Punto_de_Venta
             this.btnEditCashRegister.TabIndex = 49;
             this.btnEditCashRegister.Text = "Editar";
             this.btnEditCashRegister.UseVisualStyleBackColor = false;
+            this.btnEditCashRegister.Click += new System.EventHandler(this.btnEditCashRegister_Click);
             // 
             // btnAddCashResgister
             // 
@@ -121,6 +122,7 @@ namespace Punto_de_Venta
             this.btnAddCashResgister.TabIndex = 48;
             this.btnAddCashResgister.Text = "Agregar";
             this.btnAddCashResgister.UseVisualStyleBackColor = false;
+            this.btnAddCashResgister.Click += new System.EventHandler(this.btnAddCashResgister_Click);
             // 
             // txtIdCashRegister
             // 
@@ -129,6 +131,7 @@ namespace Punto_de_Venta
             this.txtIdCashRegister.Name = "txtIdCashRegister";
             this.txtIdCashRegister.Size = new System.Drawing.Size(253, 22);
             this.txtIdCashRegister.TabIndex = 29;
+            this.txtIdCashRegister.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdCashRegister_KeyPress);
             // 
             // label1
             // 
