@@ -21,6 +21,8 @@ namespace Punto_de_Venta
         public productsScreen()
         {
             InitializeComponent();
+            btnEditProduct.Enabled = false;
+            btnDeleteProduct.Enabled = false;
             //dataGridProduct.Rows[0].Cells[0].Value = "B312";
             //dataGridProduct.Rows[0].Cells[1].Value = "Salmón";
             //dataGridProduct.Rows[0].Cells[2].Value = "Pescado importado";
@@ -158,6 +160,17 @@ namespace Punto_de_Venta
         private void txtPriceProduct_KeyPress(object sender, KeyPressEventArgs e)
         {
             onePoint(e, txtPriceProduct.Text);
+        }
+
+        private void dataGridProduct_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridProduct.AllowUserToOrderColumns = false;
+            if (dataGridProduct.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dataGridProduct.CurrentRow.Selected = true;
+                btnEditProduct.Enabled = true;
+                btnDeleteProduct.Enabled = true;
+            }
         }
 
         private void onePoint(KeyPressEventArgs e, String cadena)

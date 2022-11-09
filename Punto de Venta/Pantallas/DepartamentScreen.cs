@@ -18,6 +18,8 @@ namespace Punto_de_Venta
         public departamentScreen()
         {
             InitializeComponent();
+            btnEditDepartament.Enabled = false;
+            btnDeleteDepartament.Enabled = false;
             //dataGridDepartament.Rows[0].Cells[0].Value = "D012409";
             //dataGridDepartament.Rows[0].Cells[1].Value = "Mariscos";
             //dataGridDepartament.Rows[0].Cells[2].Value = "Si";
@@ -80,7 +82,8 @@ namespace Punto_de_Venta
 
         private void dataGridDepartament_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            btnEditDepartament.Enabled = true;
+            btnDeleteDepartament.Enabled = true;
             dataGridDepartament.AllowUserToOrderColumns = false;
             try
             {
@@ -106,6 +109,9 @@ namespace Punto_de_Venta
                     //txtCurpEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["CURP"].Value.ToString();
                     //dtpBirth.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha Nacimiento"].Value.ToString();
                     //dtpJoinBusiness.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha de Ingreso"].Value.ToString();
+
+               
+
                 }
                 //else if(dataGridDepartament.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null)
                 ////{

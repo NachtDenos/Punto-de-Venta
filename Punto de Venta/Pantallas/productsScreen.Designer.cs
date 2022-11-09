@@ -384,6 +384,7 @@ namespace Punto_de_Venta
             this.dataGridProduct.ReadOnly = true;
             this.dataGridProduct.Size = new System.Drawing.Size(452, 389);
             this.dataGridProduct.TabIndex = 98;
+            this.dataGridProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProduct_CellClick);
             // 
             // codProdProd
             // 

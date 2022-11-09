@@ -68,6 +68,8 @@ namespace Punto_de_Venta
             this.dataGridCashRegister.RowHeadersWidth = 51;
             this.dataGridCashRegister.Size = new System.Drawing.Size(456, 241);
             this.dataGridCashRegister.TabIndex = 51;
+            this.dataGridCashRegister.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCashRegister_CellClick);
+           
             // 
             // NumCaja
             // 

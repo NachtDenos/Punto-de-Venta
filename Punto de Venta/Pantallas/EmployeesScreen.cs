@@ -20,6 +20,8 @@ namespace Punto_de_Venta
         public EmployeesScreen()
         {
             InitializeComponent();
+            btnEditEmployees.Enabled = false;
+            btnDeleteEmployees.Enabled = false;
             //dataGridEmployees.Rows[0].Cells[0].Value = "Juan";
             //dataGridEmployees.Rows[0].Cells[1].Value = "Pérez";
             //dataGridEmployees.Rows[0].Cells[2].Value = "Martínez";
@@ -189,6 +191,8 @@ namespace Punto_de_Venta
                     txtCurpEmployees.Text = dataGridEmployees.Rows[e.RowIndex].Cells["CURP"].Value.ToString();
                     dtpBirth.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha Nacimiento"].Value.ToString();
                     dtpJoinBusiness.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha de Ingreso"].Value.ToString();
+                    btnEditEmployees.Enabled = true;
+                    btnDeleteEmployees.Enabled = true;
                 }
             }
             catch (Exception ArgumentOutOfRangeException)

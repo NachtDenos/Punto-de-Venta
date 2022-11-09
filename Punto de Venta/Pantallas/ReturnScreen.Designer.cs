@@ -31,6 +31,9 @@ namespace Punto_de_Venta
         {
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridReturn1 = new System.Windows.Forms.DataGridView();
+            this.prodReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantiReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,9 +46,6 @@ namespace Punto_de_Venta
             this.btnAddReturn = new System.Windows.Forms.Button();
             this.btnOkReturn = new System.Windows.Forms.Button();
             this.btnDeleteReturn = new System.Windows.Forms.Button();
-            this.prodReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantiReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridReturn2 = new System.Windows.Forms.DataGridView();
             this.prodReturn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantiReturn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +78,25 @@ namespace Punto_de_Venta
             this.dataGridReturn1.ReadOnly = true;
             this.dataGridReturn1.Size = new System.Drawing.Size(264, 445);
             this.dataGridReturn1.TabIndex = 5;
+            this.dataGridReturn1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridReturn1_CellClick);
+            // 
+            // prodReturn
+            // 
+            this.prodReturn.HeaderText = "Producto";
+            this.prodReturn.Name = "prodReturn";
+            this.prodReturn.ReadOnly = true;
+            // 
+            // quantiReturn
+            // 
+            this.quantiReturn.HeaderText = "Cantidad";
+            this.quantiReturn.Name = "quantiReturn";
+            this.quantiReturn.ReadOnly = true;
+            // 
+            // subReturn
+            // 
+            this.subReturn.HeaderText = "Subtotal";
+            this.subReturn.Name = "subReturn";
+            this.subReturn.ReadOnly = true;
             // 
             // label1
             // 
@@ -136,6 +155,7 @@ namespace Punto_de_Venta
             this.txtIdReturn.Name = "txtIdReturn";
             this.txtIdReturn.Size = new System.Drawing.Size(166, 22);
             this.txtIdReturn.TabIndex = 35;
+            this.txtIdReturn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdReturn_KeyPress);
             // 
             // rbYesReturn
             // 
@@ -147,6 +167,7 @@ namespace Punto_de_Venta
             this.rbYesReturn.TabStop = true;
             this.rbYesReturn.Text = "Si";
             this.rbYesReturn.UseVisualStyleBackColor = true;
+            this.rbYesReturn.Click += new System.EventHandler(this.rbYesReturn_Click);
             // 
             // rbNoReturn
             // 
@@ -158,6 +179,7 @@ namespace Punto_de_Venta
             this.rbNoReturn.TabStop = true;
             this.rbNoReturn.Text = "No";
             this.rbNoReturn.UseVisualStyleBackColor = true;
+            this.rbNoReturn.Click += new System.EventHandler(this.rbNoReturn_Click);
             // 
             // txtQuantityReturn
             // 
@@ -166,6 +188,7 @@ namespace Punto_de_Venta
             this.txtQuantityReturn.Name = "txtQuantityReturn";
             this.txtQuantityReturn.Size = new System.Drawing.Size(166, 22);
             this.txtQuantityReturn.TabIndex = 38;
+            this.txtQuantityReturn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantityReturn_KeyPress);
             // 
             // btnAddReturn
             // 
@@ -179,6 +202,7 @@ namespace Punto_de_Venta
             this.btnAddReturn.TabIndex = 51;
             this.btnAddReturn.Text = "Devolver";
             this.btnAddReturn.UseVisualStyleBackColor = false;
+            this.btnAddReturn.Click += new System.EventHandler(this.btnAddReturn_Click);
             // 
             // btnOkReturn
             // 
@@ -207,24 +231,6 @@ namespace Punto_de_Venta
             this.btnDeleteReturn.Text = "Cancelar Producto";
             this.btnDeleteReturn.UseVisualStyleBackColor = false;
             // 
-            // prodReturn
-            // 
-            this.prodReturn.HeaderText = "Producto";
-            this.prodReturn.Name = "prodReturn";
-            this.prodReturn.ReadOnly = true;
-            // 
-            // quantiReturn
-            // 
-            this.quantiReturn.HeaderText = "Cantidad";
-            this.quantiReturn.Name = "quantiReturn";
-            this.quantiReturn.ReadOnly = true;
-            // 
-            // subReturn
-            // 
-            this.subReturn.HeaderText = "Subtotal";
-            this.subReturn.Name = "subReturn";
-            this.subReturn.ReadOnly = true;
-            // 
             // dataGridReturn2
             // 
             this.dataGridReturn2.AllowUserToDeleteRows = false;
@@ -239,6 +245,7 @@ namespace Punto_de_Venta
             this.dataGridReturn2.ReadOnly = true;
             this.dataGridReturn2.Size = new System.Drawing.Size(264, 445);
             this.dataGridReturn2.TabIndex = 31;
+            this.dataGridReturn2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridReturn2_CellClick);
             // 
             // prodReturn2
             // 

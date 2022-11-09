@@ -17,6 +17,8 @@ namespace Punto_de_Venta
         public CashRegisterScreen()
         {
             InitializeComponent();
+            btnEditCashRegister.Enabled = false;
+            btnDeleteCashRegister.Enabled = false;
             dataGridCashRegister.Rows[0].Cells[0].Value = "1";
             dataGridCashRegister.Rows[0].Cells[1].Value = "Si";
         }
@@ -68,6 +70,17 @@ namespace Punto_de_Venta
                 if (indexBox == 0)
                 {
                 }
+            }
+        }
+
+        private void dataGridCashRegister_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridCashRegister.AllowUserToOrderColumns = false;
+            if (dataGridCashRegister.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dataGridCashRegister.CurrentRow.Selected = true;
+                btnEditCashRegister.Enabled = true;
+                btnDeleteCashRegister.Enabled = true;
             }
         }
     }
