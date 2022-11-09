@@ -23,13 +23,21 @@ namespace Punto_de_Venta
 
         private void txtIdCashRegister_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MessageBox.Show("Solo se aceptan números en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            e.Handled = true;
-            return;
+            if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo se aceptan números en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+                return;
+            }
         }
 
         private void btnAddCashResgister_Click(object sender, EventArgs e)
         {
+            if (txtIdCashRegister.TextLength == 0)
+            {
+                MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (selection == false)
                 MessageBox.Show("No seleccionó la disponibilidad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
@@ -45,6 +53,11 @@ namespace Punto_de_Venta
 
         private void btnEditCashRegister_Click(object sender, EventArgs e)
         {
+            if (txtIdCashRegister.TextLength == 0)
+            {
+                MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (selection == false)
                 MessageBox.Show("No seleccionó la disponibilidad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else

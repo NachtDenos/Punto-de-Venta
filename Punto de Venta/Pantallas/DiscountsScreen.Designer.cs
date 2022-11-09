@@ -31,6 +31,11 @@ namespace Punto_de_Venta
         {
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridDiscounts = new System.Windows.Forms.DataGridView();
+            this.ProdDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateInitial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,11 +44,6 @@ namespace Punto_de_Venta
             this.dtpOutDiscounts = new System.Windows.Forms.DateTimePicker();
             this.btnEditDiscounts = new System.Windows.Forms.Button();
             this.txtDiscountDiscount = new System.Windows.Forms.TextBox();
-            this.ProdDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateInitial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDiscounts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +73,38 @@ namespace Punto_de_Venta
             this.dataGridDiscounts.ReadOnly = true;
             this.dataGridDiscounts.Size = new System.Drawing.Size(643, 474);
             this.dataGridDiscounts.TabIndex = 6;
+            // 
+            // ProdDiscount
+            // 
+            this.ProdDiscount.HeaderText = "Productos";
+            this.ProdDiscount.Name = "ProdDiscount";
+            this.ProdDiscount.ReadOnly = true;
+            // 
+            // IdDiscount
+            // 
+            this.IdDiscount.HeaderText = "ID de Descuento";
+            this.IdDiscount.Name = "IdDiscount";
+            this.IdDiscount.ReadOnly = true;
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Descuento";
+            this.Discount.Name = "Discount";
+            this.Discount.ReadOnly = true;
+            // 
+            // DateInitial
+            // 
+            this.DateInitial.HeaderText = "Fecha inicial";
+            this.DateInitial.Name = "DateInitial";
+            this.DateInitial.ReadOnly = true;
+            this.DateInitial.Width = 150;
+            // 
+            // DateFinal
+            // 
+            this.DateFinal.HeaderText = "Fecha final";
+            this.DateFinal.Name = "DateFinal";
+            this.DateFinal.ReadOnly = true;
+            this.DateFinal.Width = 150;
             // 
             // label6
             // 
@@ -140,6 +172,7 @@ namespace Punto_de_Venta
             this.btnEditDiscounts.TabIndex = 53;
             this.btnEditDiscounts.Text = "Editar";
             this.btnEditDiscounts.UseVisualStyleBackColor = false;
+            this.btnEditDiscounts.Click += new System.EventHandler(this.btnEditDiscounts_Click);
             // 
             // txtDiscountDiscount
             // 
@@ -148,38 +181,7 @@ namespace Punto_de_Venta
             this.txtDiscountDiscount.Name = "txtDiscountDiscount";
             this.txtDiscountDiscount.Size = new System.Drawing.Size(200, 22);
             this.txtDiscountDiscount.TabIndex = 54;
-            // 
-            // ProdDiscount
-            // 
-            this.ProdDiscount.HeaderText = "Productos";
-            this.ProdDiscount.Name = "ProdDiscount";
-            this.ProdDiscount.ReadOnly = true;
-            // 
-            // IdDiscount
-            // 
-            this.IdDiscount.HeaderText = "ID de Descuento";
-            this.IdDiscount.Name = "IdDiscount";
-            this.IdDiscount.ReadOnly = true;
-            // 
-            // Discount
-            // 
-            this.Discount.HeaderText = "Descuento";
-            this.Discount.Name = "Discount";
-            this.Discount.ReadOnly = true;
-            // 
-            // DateInitial
-            // 
-            this.DateInitial.HeaderText = "Fecha inicial";
-            this.DateInitial.Name = "DateInitial";
-            this.DateInitial.ReadOnly = true;
-            this.DateInitial.Width = 150;
-            // 
-            // DateFinal
-            // 
-            this.DateFinal.HeaderText = "Fecha final";
-            this.DateFinal.Name = "DateFinal";
-            this.DateFinal.ReadOnly = true;
-            this.DateFinal.Width = 150;
+            this.txtDiscountDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscountDiscount_KeyPress);
             // 
             // DiscountsScreen
             // 

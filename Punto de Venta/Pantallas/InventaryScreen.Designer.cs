@@ -33,6 +33,14 @@ namespace Punto_de_Venta
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridInventary = new System.Windows.Forms.DataGridView();
+            this.DepInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UniInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CosInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExisInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uniVenInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mermaInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,14 +50,6 @@ namespace Punto_de_Venta
             this.rdNoOutInventary = new System.Windows.Forms.RadioButton();
             this.rdNoDecreaseInventary = new System.Windows.Forms.RadioButton();
             this.rdYesDecreaseInventary = new System.Windows.Forms.RadioButton();
-            this.DepInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UniInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CosInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExisInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uniVenInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mermaInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInventary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,6 +103,54 @@ namespace Punto_de_Venta
             this.dataGridInventary.Size = new System.Drawing.Size(758, 362);
             this.dataGridInventary.TabIndex = 97;
             // 
+            // DepInv
+            // 
+            this.DepInv.HeaderText = "Departamento";
+            this.DepInv.Name = "DepInv";
+            this.DepInv.ReadOnly = true;
+            // 
+            // ProdInv
+            // 
+            this.ProdInv.HeaderText = "Producto";
+            this.ProdInv.Name = "ProdInv";
+            this.ProdInv.ReadOnly = true;
+            // 
+            // UniInv
+            // 
+            this.UniInv.HeaderText = "Unidad de Medida";
+            this.UniInv.Name = "UniInv";
+            this.UniInv.ReadOnly = true;
+            // 
+            // CosInv
+            // 
+            this.CosInv.HeaderText = "Costo";
+            this.CosInv.Name = "CosInv";
+            this.CosInv.ReadOnly = true;
+            // 
+            // PreInv
+            // 
+            this.PreInv.HeaderText = "Precio Unitario";
+            this.PreInv.Name = "PreInv";
+            this.PreInv.ReadOnly = true;
+            // 
+            // ExisInv
+            // 
+            this.ExisInv.HeaderText = "Existencias";
+            this.ExisInv.Name = "ExisInv";
+            this.ExisInv.ReadOnly = true;
+            // 
+            // uniVenInv
+            // 
+            this.uniVenInv.HeaderText = "Unidades Vendidas";
+            this.uniVenInv.Name = "uniVenInv";
+            this.uniVenInv.ReadOnly = true;
+            // 
+            // mermaInv
+            // 
+            this.mermaInv.HeaderText = "Merma";
+            this.mermaInv.Name = "mermaInv";
+            this.mermaInv.ReadOnly = true;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -140,6 +188,7 @@ namespace Punto_de_Venta
             this.txtInventaryExiste.Name = "txtInventaryExiste";
             this.txtInventaryExiste.Size = new System.Drawing.Size(144, 22);
             this.txtInventaryExiste.TabIndex = 107;
+            this.txtInventaryExiste.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInventaryExiste_KeyPress);
             // 
             // cbInventaryDepart
             // 
@@ -199,54 +248,6 @@ namespace Punto_de_Venta
             this.rdYesDecreaseInventary.TabStop = true;
             this.rdYesDecreaseInventary.Text = "Si";
             this.rdYesDecreaseInventary.UseVisualStyleBackColor = true;
-            // 
-            // DepInv
-            // 
-            this.DepInv.HeaderText = "Departamento";
-            this.DepInv.Name = "DepInv";
-            this.DepInv.ReadOnly = true;
-            // 
-            // ProdInv
-            // 
-            this.ProdInv.HeaderText = "Producto";
-            this.ProdInv.Name = "ProdInv";
-            this.ProdInv.ReadOnly = true;
-            // 
-            // UniInv
-            // 
-            this.UniInv.HeaderText = "Unidad de Medida";
-            this.UniInv.Name = "UniInv";
-            this.UniInv.ReadOnly = true;
-            // 
-            // CosInv
-            // 
-            this.CosInv.HeaderText = "Costo";
-            this.CosInv.Name = "CosInv";
-            this.CosInv.ReadOnly = true;
-            // 
-            // PreInv
-            // 
-            this.PreInv.HeaderText = "Precio Unitario";
-            this.PreInv.Name = "PreInv";
-            this.PreInv.ReadOnly = true;
-            // 
-            // ExisInv
-            // 
-            this.ExisInv.HeaderText = "Existencias";
-            this.ExisInv.Name = "ExisInv";
-            this.ExisInv.ReadOnly = true;
-            // 
-            // uniVenInv
-            // 
-            this.uniVenInv.HeaderText = "Unidades Vendidas";
-            this.uniVenInv.Name = "uniVenInv";
-            this.uniVenInv.ReadOnly = true;
-            // 
-            // mermaInv
-            // 
-            this.mermaInv.HeaderText = "Merma";
-            this.mermaInv.Name = "mermaInv";
-            this.mermaInv.ReadOnly = true;
             // 
             // InventaryScreen
             // 
