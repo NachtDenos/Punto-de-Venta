@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using System.Text.RegularExpressions;
 
 namespace Punto_de_Venta
 {
@@ -46,7 +47,31 @@ namespace Punto_de_Venta
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+            if(validEmail(txtEmailEmployees.Text) == false)
+            {
+                MessageBox.Show("Correo no valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(CurpValida(txtCurpEmployees.Text) == false)
+            {
+                MessageBox.Show("CURP no valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(dateValidFuture(dtpBirth.Value.Date) == false)
+            {
+                MessageBox.Show("Fecha no valida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dateValidFuture(dtpJoinBusiness.Value.Date) == false)
+            {
+                MessageBox.Show("Fecha no valida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dateValidAge(dtpBirth.Value.AddYears(18)) == false)
+            {
+                MessageBox.Show("Fecha no valida. Es menor de edad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string Nomina = txtPayrollEmployees.Text;
             int nomina;
             Int32.TryParse(Nomina,out nomina);
@@ -55,11 +80,11 @@ namespace Punto_de_Venta
             var result = proc.InsertarEmpleados(txtNameEmployees.Text,txtLastName1Employees.Text, txtLastName2Employees.Text, txtIdEmployees.Text, txtPassEmployees.Text, fechaN, fechaI, txtCurpEmployees.Text, txtEmailEmployees.Text, nomina);
             if (result == true)
             {
-                MessageBox.Show("Inserccion Realizada con Exito", "Exito");
+                MessageBox.Show("Inserccion Realizada con Exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridEmployees.DataSource = proc.ListarCajero();
             }
             else
-                MessageBox.Show("No se realizo la inserccion", "Error");
+                MessageBox.Show("No se realizo la inserccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             dataGridEmployees.DataSource = proc.ListarCajero();
         }
 
@@ -192,6 +217,128 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("NO se elimino el empleado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridEmployees.DataSource = proc.ListarCajero();
+            }
+        }
+
+        private void txtPayrollEmployees_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo se aceptan números en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtIdEmployees_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo se aceptan números en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtNameEmployees_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 33 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo se aceptan letras en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtLastName1Employees_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 33 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo se aceptan letras en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtLastName2Employees_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 33 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo se aceptan letras en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        public static bool validEmail(string checkEmail)
+        {
+            string emailFormato;
+            emailFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(checkEmail, emailFormato))
+            {
+                if (Regex.Replace(checkEmail, emailFormato, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool CurpValida(string curp)
+        {
+            var re = @"^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$";
+            Regex rx = new Regex(re, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            var validado = rx.IsMatch(curp);
+
+            if (!validado)  
+                return false;
+
+            //Validar que coincida el dígito verificador
+            if (!curp.EndsWith(DigitoVerificador(curp.ToUpper())))
+                return false;
+
+            return true; //Validado
+        }
+
+        private string DigitoVerificador(string curp17)
+        {
+            var dic = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+            var suma = 0.0;
+            var digito = 0.0;
+            for (var i = 0; i < 17; i++)
+                suma = suma + dic.IndexOf(curp17[i]) * (18 - i);
+            digito = 10 - suma % 10;
+            if (digito == 10) return "0";
+            return digito.ToString();
+        }
+
+        private bool dateValidFuture(DateTime fecha)
+        {
+            DateTime hoy = DateTime.Today;
+            if (fecha > hoy)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool dateValidAge(DateTime fecha)
+        {
+            DateTime hoy = DateTime.Today;
+            if(fecha <= hoy)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

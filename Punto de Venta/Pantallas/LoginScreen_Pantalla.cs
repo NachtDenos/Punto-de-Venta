@@ -81,7 +81,7 @@ namespace Punto_de_Venta
                         }
                         else if (result == false)
                         {
-                            MessageBox.Show("Usuario o contraseña no validos error");
+                            MessageBox.Show("Credenciales de Cajero no validas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                       
                     }
@@ -104,7 +104,7 @@ namespace Punto_de_Venta
                         }
                         else if (result2 == false)
                         {
-                            MessageBox.Show("Credenciales de Administrador no validos error");
+                            MessageBox.Show("Credenciales de Administrador no validas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
