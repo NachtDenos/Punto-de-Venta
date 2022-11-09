@@ -12,6 +12,8 @@ namespace Punto_de_Venta
 {
     public partial class departamentScreen : Form
     {
+        bool selectionCombo;
+        int indexBox;
         Procedures proc = new Procedures();
         public departamentScreen()
         {
@@ -23,6 +25,16 @@ namespace Punto_de_Venta
 
         private void btnAddDepartament_Click(object sender, EventArgs e)
         {
+            if (txtNameDepartament.TextLength == 0 || txtIdDepartament.TextLength == 0)
+            {
+                MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (selectionCombo == false)
+            {
+                MessageBox.Show("Seleccione un campo de Devolución", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             int id;
             string idTexto = txtIdDepartament.Text;
             Int32.TryParse(idTexto, out id);
@@ -44,6 +56,16 @@ namespace Punto_de_Venta
 
         private void btnEditDepartament_Click(object sender, EventArgs e)
         {
+            if (txtNameDepartament.TextLength == 0 || txtIdDepartament.TextLength == 0)
+            {
+                MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (selectionCombo == false)
+            {
+                MessageBox.Show("Seleccione un campo de Devolución", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             int id;
             string idTexto = txtIdDepartament.Text;
             Int32.TryParse(idTexto, out id);
@@ -96,6 +118,32 @@ namespace Punto_de_Venta
 
                 //MessageBox.Show("SELECCIONA UNA PUTA CELDA NO LA PUTA COLUMNA");
             }
+        }
+
+        private void txtNameDepartament_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 33 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo se aceptan letras en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtIdDepartament_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo se aceptan números en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void cbDevolutionDepartament_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            indexBox = cbDevolutionDepartament.SelectedIndex;
+            selectionCombo = true;
         }
 
         //private void dataGridDepartament_CellLeave(object sender, DataGridViewCellEventArgs e)
