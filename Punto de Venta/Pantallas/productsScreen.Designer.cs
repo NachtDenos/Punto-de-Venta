@@ -58,8 +58,6 @@ namespace Punto_de_Venta
             this.txtActiveProduct = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridProduct = new System.Windows.Forms.DataGridView();
-            this.txtNameProduct = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.codProdProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desProdu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +70,8 @@ namespace Punto_de_Venta
             this.ReorProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CambioPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actiPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtNameProduct = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,6 +118,7 @@ namespace Punto_de_Venta
             this.btnEditProduct.TabIndex = 50;
             this.btnEditProduct.Text = "Editar";
             this.btnEditProduct.UseVisualStyleBackColor = false;
+            this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
             // 
             // btnAddProduct
             // 
@@ -131,6 +132,7 @@ namespace Punto_de_Venta
             this.btnAddProduct.TabIndex = 49;
             this.btnAddProduct.Text = "Agregar";
             this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // txtReOrdProduct
             // 
@@ -139,6 +141,7 @@ namespace Punto_de_Venta
             this.txtReOrdProduct.Name = "txtReOrdProduct";
             this.txtReOrdProduct.Size = new System.Drawing.Size(146, 22);
             this.txtReOrdProduct.TabIndex = 45;
+            this.txtReOrdProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReOrdProduct_KeyPress);
             // 
             // txtPriceProduct
             // 
@@ -147,6 +150,7 @@ namespace Punto_de_Venta
             this.txtPriceProduct.Name = "txtPriceProduct";
             this.txtPriceProduct.Size = new System.Drawing.Size(146, 22);
             this.txtPriceProduct.TabIndex = 44;
+            this.txtPriceProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPriceProduct_KeyPress);
             // 
             // txtCostProduct
             // 
@@ -155,6 +159,7 @@ namespace Punto_de_Venta
             this.txtCostProduct.Name = "txtCostProduct";
             this.txtCostProduct.Size = new System.Drawing.Size(146, 22);
             this.txtCostProduct.TabIndex = 43;
+            this.txtCostProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostProduct_KeyPress);
             // 
             // txtDesProduct
             // 
@@ -261,6 +266,7 @@ namespace Punto_de_Venta
             this.txtIdProduct.Name = "txtIdProduct";
             this.txtIdProduct.Size = new System.Drawing.Size(146, 22);
             this.txtIdProduct.TabIndex = 29;
+            this.txtIdProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdProduct_KeyPress);
             // 
             // label1
             // 
@@ -279,6 +285,7 @@ namespace Punto_de_Venta
             this.txtExistenceProduct.Name = "txtExistenceProduct";
             this.txtExistenceProduct.Size = new System.Drawing.Size(146, 22);
             this.txtExistenceProduct.TabIndex = 55;
+            this.txtExistenceProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExistenceProduct_KeyPress);
             // 
             // dtpDateProduct
             // 
@@ -300,6 +307,7 @@ namespace Punto_de_Venta
             this.cbDepartamentProduct.Size = new System.Drawing.Size(146, 21);
             this.cbDepartamentProduct.TabIndex = 57;
             this.cbDepartamentProduct.Text = "Seleccionar";
+            this.cbDepartamentProduct.SelectedIndexChanged += new System.EventHandler(this.cbDepartamentProduct_SelectedIndexChanged);
             // 
             // cbMeasureProduct
             // 
@@ -315,6 +323,7 @@ namespace Punto_de_Venta
             this.cbMeasureProduct.Size = new System.Drawing.Size(146, 21);
             this.cbMeasureProduct.TabIndex = 58;
             this.cbMeasureProduct.Text = "Seleccionar";
+            this.cbMeasureProduct.SelectedIndexChanged += new System.EventHandler(this.cbMeasureProduct_SelectedIndexChanged);
             // 
             // dtpChangeDateProduct
             // 
@@ -375,24 +384,6 @@ namespace Punto_de_Venta
             this.dataGridProduct.ReadOnly = true;
             this.dataGridProduct.Size = new System.Drawing.Size(452, 389);
             this.dataGridProduct.TabIndex = 98;
-            // 
-            // txtNameProduct
-            // 
-            this.txtNameProduct.Location = new System.Drawing.Point(261, 108);
-            this.txtNameProduct.Multiline = true;
-            this.txtNameProduct.Name = "txtNameProduct";
-            this.txtNameProduct.Size = new System.Drawing.Size(146, 22);
-            this.txtNameProduct.TabIndex = 100;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(47, 108);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(204, 22);
-            this.label14.TabIndex = 99;
-            this.label14.Text = "Nombre de Producto";
             // 
             // codProdProd
             // 
@@ -465,6 +456,24 @@ namespace Punto_de_Venta
             this.actiPro.HeaderText = "Producto Activo";
             this.actiPro.Name = "actiPro";
             this.actiPro.ReadOnly = true;
+            // 
+            // txtNameProduct
+            // 
+            this.txtNameProduct.Location = new System.Drawing.Point(261, 108);
+            this.txtNameProduct.Multiline = true;
+            this.txtNameProduct.Name = "txtNameProduct";
+            this.txtNameProduct.Size = new System.Drawing.Size(146, 22);
+            this.txtNameProduct.TabIndex = 100;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(47, 108);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(204, 22);
+            this.label14.TabIndex = 99;
+            this.label14.Text = "Nombre de Producto";
             // 
             // productsScreen
             // 
