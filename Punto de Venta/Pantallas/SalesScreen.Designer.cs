@@ -132,6 +132,7 @@ namespace Punto_de_Venta
             this.btnAddSales.TabIndex = 23;
             this.btnAddSales.Text = "Agregar";
             this.btnAddSales.UseVisualStyleBackColor = false;
+            this.btnAddSales.Click += new System.EventHandler(this.btnAddSales_Click);
             // 
             // btnDeleteSales
             // 
@@ -145,6 +146,7 @@ namespace Punto_de_Venta
             this.btnDeleteSales.TabIndex = 25;
             this.btnDeleteSales.Text = "Eliminar";
             this.btnDeleteSales.UseVisualStyleBackColor = false;
+            this.btnDeleteSales.Click += new System.EventHandler(this.btnDeleteSales_Click);
             // 
             // label1
             // 
@@ -211,6 +213,7 @@ namespace Punto_de_Venta
             this.txtQuantitySales.Name = "txtQuantitySales";
             this.txtQuantitySales.Size = new System.Drawing.Size(146, 22);
             this.txtQuantitySales.TabIndex = 32;
+            this.txtQuantitySales.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantitySales_KeyPress);
             // 
             // txtNameSales
             // 
@@ -285,6 +288,7 @@ namespace Punto_de_Venta
             this.txtQuantityDeleteSales.Name = "txtQuantityDeleteSales";
             this.txtQuantityDeleteSales.Size = new System.Drawing.Size(163, 22);
             this.txtQuantityDeleteSales.TabIndex = 40;
+            this.txtQuantityDeleteSales.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantityDeleteSales_KeyPress);
             // 
             // label9
             // 
