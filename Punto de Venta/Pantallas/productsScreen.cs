@@ -274,7 +274,7 @@ namespace Punto_de_Venta
             ListarDepartamentos();
             dataGridProduct.DataSource = instancia.ListarProductos();
         }
-
+        //Lorem ipsum, tulius alterus aerrebius maximus
         private void ListarDepartamentos()
         {
             Procedures usuarioObj = new Procedures();
