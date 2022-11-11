@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace Punto_de_Venta
 {
     //NOTAS: LO DE FECHA DE CAMBIO NO SE SI CAMBIARLO, AHORITA LO VEMOS
-
+    //HOLA A VBER QUE PASA
     public partial class productsScreen : Form
     {
         int indexBox, indexBox2;
