@@ -12,6 +12,9 @@ namespace Punto_de_Venta
 {
     //NOTAS: LO DE FECHA DE CAMBIO NO SE SI CAMBIARLO, AHORITA LO VEMOS
     //HOLA A VBER QUE PASA
+
+
+    //HOLISS AGAIN, VILLA ES Pvto
     public partial class productsScreen : Form
     {
         int indexBox, indexBox2;
