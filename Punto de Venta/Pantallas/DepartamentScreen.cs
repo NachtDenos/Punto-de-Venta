@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Punto_de_Venta
@@ -77,7 +70,11 @@ namespace Punto_de_Venta
                 MessageBox.Show("La actualizacion se realizo con exito", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridDepartament.DataSource = proc.ListarDepartamentos();
             }
-            MessageBox.Show("ERROR NO SE ACUTALIZO", "NO ACTUALIZDOE RROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (esoTilin == false)
+            {
+                MessageBox.Show("ERROR NO SE ACUTALIZO", "NO ACTUALIZDOE RROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private void dataGridDepartament_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -150,6 +147,23 @@ namespace Punto_de_Venta
         {
             indexBox = cbDevolutionDepartament.SelectedIndex;
             selectionCombo = true;
+        }
+
+        private void btnDeleteDepartament_Click(object sender, EventArgs e)
+        {
+            int id;
+           string perro = txtIdDepartament.Text;
+            Int32.TryParse(perro, out id);
+            var estoTilin2Secuela = proc.BorrarDepartamentos(id);
+            if (estoTilin2Secuela == true)
+            {
+                MessageBox.Show("Se elimino con exito", "BAJA", MessageBoxButtons.OK);
+                dataGridDepartament.DataSource = proc.ListarDepartamentos();
+                txtFilterDepartament.Text = "";
+                txtIdDepartament.Text = "";
+                txtNameDepartament.Text = "";
+                
+            }
         }
 
         //private void dataGridDepartament_CellLeave(object sender, DataGridViewCellEventArgs e)

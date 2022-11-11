@@ -169,7 +169,7 @@ namespace Punto_de_Venta
         {
             ConexionSqlServer conn = new ConexionSqlServer();
             SqlConnection conectado = new SqlConnection();
-            try
+             try
             {
                 int idAdmin = 1;
                 conectado = conn.AbrirConexion();
@@ -178,7 +178,7 @@ namespace Punto_de_Venta
                 cmd.Parameters.AddWithValue("@NombreDepa",NombreDepartamento);
                 cmd.Parameters.AddWithValue("@IdDepa", claveDepartamento);
                 cmd.Parameters.AddWithValue("@Devolucion", Devolucion);
-                cmd.Parameters.AddWithValue("@IdAdministrador", idAdmin);
+                cmd.Parameters.AddWithValue("@IdAdmin", idAdmin);
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
                 conn.CerrarConexion();
@@ -253,7 +253,7 @@ namespace Punto_de_Venta
         }
 
         public bool ActualizarDepartamentos(string Nombre, string Devolucion, int idDepa)
-        {
+        { 
             ConexionSqlServer conn = new ConexionSqlServer();
             SqlConnection conectado = new SqlConnection();
             try
@@ -278,5 +278,80 @@ namespace Punto_de_Venta
             }
             return true;
         }
+
+        public bool BorrarDepartamentos(int idDepa)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("BorrarDepartamentos", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", idDepa);
+            
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+        }
+
+        public bool InsertarProductos(int CodigoProducto, string Nombre, string Descripcion, string UnidadMedida, DateTime fechaAlta, int existencia, int ptReorden, string activo,
+        float costo, float preciounitario,int claveDepartamento)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                int idAdmin = 1;
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("InsertarProductos", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CodigoProducto", CodigoProducto);
+                cmd.Parameters.AddWithValue("@NombreProducto", Nombre);
+                cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
+                cmd.Parameters.AddWithValue("@UniMedida", UnidadMedida);
+                cmd.Parameters.AddWithValue("@fechaAlta", fechaAlta);
+                cmd.Parameters.AddWithValue("@existencia", existencia);
+                cmd.Parameters.AddWithValue("@ptReorden", ptReorden);
+                cmd.Parameters.AddWithValue("@activo", activo);
+                cmd.Parameters.AddWithValue("@Costo", costo);
+                cmd.Parameters.AddWithValue("@PrecioUnitario", preciounitario);
+                
+                cmd.Parameters.AddWithValue("@ClaveDepartamento", claveDepartamento);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
+        }
+
+        public DataTable ListarDepartamentosCb()
+        {
+            DataTable tabla = new DataTable();
+            // Form3 access = new Form3();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarDepartamentos"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
     }
 }

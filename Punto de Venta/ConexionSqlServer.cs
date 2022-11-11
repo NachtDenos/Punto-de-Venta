@@ -30,8 +30,8 @@ namespace Punto_de_Venta
 	</connectionStrings> esto va en el appConfig
          */
         //DESKTOP-1145PHU\SQLEXPRESS <- El de Edson
-        //LAPTOP-VLDIQG6S\SQLEXPRESS <- El de Isaac
-        static private string CadenaConexion = @"Server=DESKTOP-1145PHU\SQLEXPRESS; DataBase=ProyectoMAD; Integrated Security= true";
+        //LAPTOP-VLDIQG6S\SQLEXPRESS <- El de Isaac xd ya vi pq mamo xd
+        static private string CadenaConexion = @"Server=LAPTOP-VLDIQG6S\SQLEXPRESS; DataBase=ProyectoMAD; Integrated Security= true";
         private SqlConnection Conexion = new SqlConnection(CadenaConexion);
         //NO APARECE EL NOMBRE DEL ADMIN
         public SqlConnection AbrirConexion()

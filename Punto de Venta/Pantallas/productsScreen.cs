@@ -60,7 +60,24 @@ namespace Punto_de_Venta
                 return;
             }
             //Para solo usar dos decimales en costo
+            string id = txtIdProduct.Text;
+            int CodProducto;
+            Int32.TryParse(id, out CodProducto);          
+            string exiss = txtExistenceProduct.Text;
+            int exxistencia;
+            Int32.TryParse(exiss, out exxistencia);
+
+            string ptReOrden = txtReOrdProduct.Text;
+            int reOrder;
+            Int32.TryParse(ptReOrden, out reOrder);
+
+            
+            //string ptReOrden = txtReOrdProduct.Text;
+            //int reOrder;
+            //Int32.TryParse(ptReOrden, out reOrder);
+
             string cost = txtCostProduct.Text;
+
             float costTemp = Convert.ToSingle(cost);
             string costDecimal = costTemp.ToString("0.##");
             float costFloat = Convert.ToSingle(costDecimal);
@@ -69,6 +86,12 @@ namespace Punto_de_Venta
             float precTemp = Convert.ToSingle(prec);
             string precDecimal = precTemp.ToString("0.##");
             float precFloat = Convert.ToSingle(precDecimal);
+            Procedures proc = new Procedures();
+            int ajajaja = Convert.ToInt32(cbDepartamentProduct.SelectedValue);
+            DateTime fechaAlta = DateTime.Parse(dtpDateProduct.Text);
+            //DateTime fechaCambio = DateTime.Parse(dtpChangeDateProduct.Text);
+            var Variable = proc.InsertarProductos(CodProducto, txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text,fechaAlta, 
+                exxistencia, reOrder, txtActiveProduct.Text, costFloat, precFloat, ajajaja);
         }
 
         private void txtIdProduct_KeyPress(object sender, KeyPressEventArgs e)
@@ -218,6 +241,19 @@ namespace Punto_de_Venta
                 else
                     e.Handled = true;
             }
+        }
+
+        private void productsScreen_Load(object sender, EventArgs e)
+        {
+            ListarDepartamentos();
+        }
+
+        private void ListarDepartamentos()
+        {
+            Procedures usuarioObj = new Procedures();
+            cbDepartamentProduct.DataSource = usuarioObj.ListarDepartamentosCb();
+            cbDepartamentProduct.DisplayMember = "nombreDep";
+            cbDepartamentProduct.ValueMember = "idDepa";//Valor real de l combox
         }
     }
 }
