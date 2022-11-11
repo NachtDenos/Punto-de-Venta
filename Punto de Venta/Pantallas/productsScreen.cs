@@ -16,6 +16,7 @@ namespace Punto_de_Venta
         int indexBox, indexBox2;
         bool selection = false;
         bool selection2 = false;
+        bool selection3 = false;
         bool bandera;
         int productSelection;
         public productsScreen()
@@ -36,12 +37,11 @@ namespace Punto_de_Venta
             //dataGridProduct.Rows[0].Cells[10].Value = "No aplica";
             //dataGridProduct.Rows[0].Cells[11].Value = "Si";
         }
-
+        //txtActiveProduct
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             if (txtIdProduct.TextLength == 0 || txtNameProduct.TextLength == 0 || txtDesProduct.TextLength == 0 ||
-                txtCostProduct.TextLength == 0 || txtPriceProduct.TextLength == 0 || txtExistenceProduct.TextLength == 0 || txtReOrdProduct.TextLength == 0
-                || txtActiveProduct.TextLength == 0)
+                txtCostProduct.TextLength == 0 || txtPriceProduct.TextLength == 0 || txtExistenceProduct.TextLength == 0 || txtReOrdProduct.TextLength == 0)
             {
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -51,12 +51,14 @@ namespace Punto_de_Venta
                 MessageBox.Show("Fecha no valida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (selection == false || selection2 == false)
+            if (selection == false || selection2 == false || selection3 == false)
             {
                 if (selection == false)
                     MessageBox.Show("Seleccione un campo de Departamento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else if(selection2 == false)
                     MessageBox.Show("Seleccione una Unidad de Medida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else if(selection3 == false)
+                    MessageBox.Show("Seleccione si es activo o no", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             //Para solo usar dos decimales en costo
@@ -91,7 +93,7 @@ namespace Punto_de_Venta
             DateTime fechaAlta = DateTime.Parse(dtpDateProduct.Text);
             //DateTime fechaCambio = DateTime.Parse(dtpChangeDateProduct.Text);
             var Variable = proc.InsertarProductos(CodProducto, txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text,fechaAlta, 
-                exxistencia, reOrder, txtActiveProduct.Text, costFloat, precFloat, ajajaja);
+                exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, ajajaja);
         }
 
         private void txtIdProduct_KeyPress(object sender, KeyPressEventArgs e)
@@ -137,8 +139,7 @@ namespace Punto_de_Venta
         private void btnEditProduct_Click(object sender, EventArgs e)
         {
             if (txtIdProduct.TextLength == 0 || txtNameProduct.TextLength == 0 || txtDesProduct.TextLength == 0 ||
-                txtCostProduct.TextLength == 0 || txtPriceProduct.TextLength == 0 || txtExistenceProduct.TextLength == 0 || txtReOrdProduct.TextLength == 0
-                || txtActiveProduct.TextLength == 0)
+                txtCostProduct.TextLength == 0 || txtPriceProduct.TextLength == 0 || txtExistenceProduct.TextLength == 0 || txtReOrdProduct.TextLength == 0)
             {
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -148,11 +149,13 @@ namespace Punto_de_Venta
                 MessageBox.Show("Fecha no valida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (selection == false || selection2 == false)
+            if (selection == false || selection2 == false || selection3 == false)
             {
                 if (selection == false)
                     MessageBox.Show("Seleccione un campo de Departamento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else if (selection2 == false)
+                    MessageBox.Show("Seleccione una Unidad de Medida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else if (selection3 == false)
                     MessageBox.Show("Seleccione una Unidad de Medida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -180,7 +183,7 @@ namespace Punto_de_Venta
             Int32.TryParse(ptReOrden, out reOrder);
             DateTime fechaCambio = DateTime.Parse(dtpDateProduct.Text);
             int Arsene = Convert.ToInt32(cbDepartamentProduct.SelectedValue);
-            var LaGuerraDeLasGalaxias = proc.ActualizarProductos(txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text, fechaCambio, exxistencia, reOrder, txtActiveProduct.Text, costFloat, precFloat, Arsene); ;
+            var LaGuerraDeLasGalaxias = proc.ActualizarProductos(txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text, fechaCambio, exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, Arsene); ;
             if (LaGuerraDeLasGalaxias)
             {
                 MessageBox.Show("Actualizacion de producto exitosa", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -226,18 +229,20 @@ namespace Punto_de_Venta
                     txtIdProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                     txtNameProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
                     txtDesProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Descripción"].Value.ToString();
-                  //  txtIdEmployees.Text = dataGridProduct.Rows[e.RowIndex].Cells["Clave de Usuario"].Value.ToString();
-                  //  txtEmailEmployees.Text = dataGridProduct.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
-                  //  txtPayrollEmployees.Text = dataGridProduct.Rows[e.RowIndex].Cells["Nomina"].Value.ToString();
-                  //  txtPassEmployees.Text = dataGridProduct.Rows[e.RowIndex].Cells["Contraseña"].Value.ToString();
-                  //  txtCurpEmployees.Text = dataGridProduct.Rows[e.RowIndex].Cells["CURP"].Value.ToString();
-                  //  dtpBirth.Text = dataGridProduct.Rows[e.RowIndex].Cells["Fecha Nacimiento"].Value.ToString();
-                  //  dtpJoinBusiness.Text = dataGridProduct.Rows[e.RowIndex].Cells["Fecha de Ingreso"].Value.ToString();
+                    txtPriceProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Precio Unitario"].Value.ToString();
+                    txtCostProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Costo"].Value.ToString();
+                    txtExistenceProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Stock"].Value.ToString();
+                    txtReOrdProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Punto de Reorden"].Value.ToString();
+                    cbDepartamentProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Departamento"].Value.ToString();
+                    cbMeasureProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Unidad de Medida"].Value.ToString();
+                    cbActiveProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Activo"].Value.ToString();
+                    dtpDateProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Fecha de Alta"].Value.ToString();
                     dataGridProduct.CurrentRow.Selected = true;
                     dtpChangeDateProduct.Enabled = true;
                     dtpDateProduct.Enabled = false;
                     btnEditProduct.Enabled = true;
                     btnDeleteProduct.Enabled = true;
+                    txtIdProduct.Enabled = false;
                 }
             }
             catch (Exception ArgumentOutOfRangeException)
@@ -305,6 +310,12 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("NO se elimino el producto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void cbActiveProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //indexBox2 = cbMeasureProduct.SelectedIndex;
+            selection3 = true;
         }
 
         //Lorem ipsum, tulius alterus aerrebius maximus
