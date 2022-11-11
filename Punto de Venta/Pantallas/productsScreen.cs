@@ -94,6 +94,14 @@ namespace Punto_de_Venta
             //DateTime fechaCambio = DateTime.Parse(dtpChangeDateProduct.Text);
             var Variable = proc.InsertarProductos(CodProducto, txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text,fechaAlta, 
                 exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, ajajaja);
+            if (Variable)
+            {
+                MessageBox.Show("Inserccion Realizada con Exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridProduct.DataSource = proc.ListarProductos();
+            }
+            else
+                MessageBox.Show("No se realizo la inserccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            dataGridProduct.DataSource = proc.ListarProductos();
         }
 
         private void txtIdProduct_KeyPress(object sender, KeyPressEventArgs e)
@@ -187,6 +195,7 @@ namespace Punto_de_Venta
             if (LaGuerraDeLasGalaxias)
             {
                 MessageBox.Show("Actualizacion de producto exitosa", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridProduct.DataSource = proc.ListarProductos();
             }
             else
             {
@@ -303,6 +312,7 @@ namespace Punto_de_Venta
             if(eliminado == true)
             {
                 MessageBox.Show("Se elimino el producto con exito", "Exíto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridProduct.DataSource = proc.ListarProductos();
             }
             else
             {
