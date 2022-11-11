@@ -22,6 +22,7 @@ namespace Punto_de_Venta
             InitializeComponent();
             btnEditEmployees.Enabled = false;
             btnDeleteEmployees.Enabled = false;
+            dataGridEmployees.ClearSelection();
             //dataGridEmployees.Rows[0].Cells[0].Value = "Juan";
             //dataGridEmployees.Rows[0].Cells[1].Value = "Pérez";
             //dataGridEmployees.Rows[0].Cells[2].Value = "Martínez";
@@ -84,6 +85,16 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("Inserccion Realizada con Exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridEmployees.DataSource = proc.ListarCajero();
+                txtNameEmployees.Text = "";
+                txtLastName1Employees.Text = "";
+                txtLastName2Employees.Text = "";
+                txtIdEmployees.Text = "";
+                txtEmailEmployees.Text = "";
+                txtPayrollEmployees.Text = "";
+                txtPassEmployees.Text = "";
+                txtCurpEmployees.Text = "";
+                dtpBirth.Text = "";
+                dtpJoinBusiness.Text = "";
             }
             else
                 MessageBox.Show("No se realizo la inserccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -143,6 +154,16 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("Actualizacion Realizada con exito");
                 dataGridEmployees.DataSource = proc.ListarCajero();
+                txtNameEmployees.Text = "";
+                txtLastName1Employees.Text = "";
+                txtLastName2Employees.Text = "";
+                txtIdEmployees.Text = "";
+                txtEmailEmployees.Text = "";
+                txtPayrollEmployees.Text = "";
+                txtPassEmployees.Text = "";
+                txtCurpEmployees.Text = "";
+                dtpBirth.Text = "";
+                dtpJoinBusiness.Text = "";
             }
             else
             {
@@ -159,6 +180,8 @@ namespace Punto_de_Venta
             //{
             //    MessageBox.Show("Debe seleccionar una Fila", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //}
+            btnAddEmployees.Enabled = true;
+            dataGridEmployees.ClearSelection();
         }
 
         private void EmployeesScreen_Load(object sender, EventArgs e)
@@ -193,6 +216,7 @@ namespace Punto_de_Venta
                     dtpJoinBusiness.Text = dataGridEmployees.Rows[e.RowIndex].Cells["Fecha de Ingreso"].Value.ToString();
                     btnEditEmployees.Enabled = true;
                     btnDeleteEmployees.Enabled = true;
+                    btnAddEmployees.Enabled = false;
                 }
             }
             catch (Exception ArgumentOutOfRangeException)
@@ -247,6 +271,8 @@ namespace Punto_de_Venta
                 MessageBox.Show("NO se elimino el empleado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridEmployees.DataSource = proc.ListarCajero();
             }
+            btnAddEmployees.Enabled = true;
+            dataGridEmployees.ClearSelection();
         }
 
         private void txtPayrollEmployees_KeyPress(object sender, KeyPressEventArgs e)

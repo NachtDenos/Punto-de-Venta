@@ -456,7 +456,6 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtExistenceProduct;
         private System.Windows.Forms.DateTimePicker dtpDateProduct;
-        private System.Windows.Forms.ComboBox cbDepartamentProduct;
         private System.Windows.Forms.ComboBox cbMeasureProduct;
         private System.Windows.Forms.DateTimePicker dtpChangeDateProduct;
         private System.Windows.Forms.Label label8;
@@ -465,5 +464,6 @@ namespace Punto_de_Venta
         private System.Windows.Forms.TextBox txtNameProduct;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cbActiveProduct;
+        private System.Windows.Forms.ComboBox cbDepartamentProduct;
     }
 }

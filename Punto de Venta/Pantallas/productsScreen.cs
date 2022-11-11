@@ -24,6 +24,8 @@ namespace Punto_de_Venta
             InitializeComponent();
             btnEditProduct.Enabled = false;
             btnDeleteProduct.Enabled = false;
+            dataGridProduct.ClearSelection();
+            //cbActiveProduct.DropDownStyle = ComboBoxStyle.DropDownList;
             //dataGridProduct.Rows[0].Cells[0].Value = "B312";
             //dataGridProduct.Rows[0].Cells[1].Value = "Salmón";
             //dataGridProduct.Rows[0].Cells[2].Value = "Pescado importado";
@@ -98,6 +100,7 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("Inserccion Realizada con Exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridProduct.DataSource = proc.ListarProductos();
+                clearTxt();
             }
             else
                 MessageBox.Show("No se realizo la inserccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -254,6 +257,7 @@ namespace Punto_de_Venta
                     btnEditProduct.Enabled = true;
                     btnDeleteProduct.Enabled = true;
                     txtIdProduct.Enabled = false;
+                    btnAddProduct.Enabled = false;
                 }
             }
             catch (Exception ArgumentOutOfRangeException)
@@ -348,6 +352,24 @@ namespace Punto_de_Venta
             dtpChangeDateProduct.Enabled = false;
             btnEditProduct.Enabled = false;
             btnDeleteProduct.Enabled = false;
+            btnAddProduct.Enabled = true;
+        }
+
+        private void clearTxt()
+        {
+            txtIdProduct.Text = "";
+            txtNameProduct.Text = "";
+            txtDesProduct.Text = "";
+            cbDepartamentProduct.Text = "Seleccionar";
+            cbMeasureProduct.Text = "Seleccionar";
+            txtCostProduct.Text = "";
+            txtPriceProduct.Text = "";
+            dtpDateProduct.Text = "";
+            txtExistenceProduct.Text = "";
+            txtReOrdProduct.Text = "";
+            dtpChangeDateProduct.Text = "";
+            cbActiveProduct.Text = "Seleccionar";
+            
         }
     }
 }
