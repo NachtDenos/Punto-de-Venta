@@ -32,17 +32,17 @@ CREATE TABLE Usuario
 
 
 
-select  A.idAdmin , B.idUser, B.nombreU, B.claveUsuario, B.contraU, B.tipoU  from Usuario B
-join Administrador A
-on a.idUserA = b.idUser
-where B.tipoU = '1'
+--select  A.idAdmin , B.idUser, B.nombreU, B.claveUsuario, B.contraU, B.tipoU  from Usuario B
+--join Administrador A
+--on a.idUserA = b.idUser
+--where B.tipoU = '1'
 
-select * from Usuario
+--select * from Usuario
 
-insert into Administrador(idUserA)
-values ('1');
+--insert into Administrador(idUserA)
+--values ('1');
 
-SELECT * FROM Departamento
+--SELECT * FROM Departamento
 
 
 IF OBJECT_ID('Administrador') IS NOT NULL
@@ -696,13 +696,15 @@ where A.claveDepa = B.idDepa
 
 
 --exec ActualizarEmpleados '8', 'Ivan', 'Alexis', 'Cantu', 'Arlender', 'Pelon', 'IvanACantu@netpay.com', '1992-10-07', '2012-05-17', 'IVAC09128921098743', '123456789'
---Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
---values ('Isaac','Espinoza','Morales','Wonder','123456',1)
+Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
+values ('Isaac','Espinoza','Morales','Wonder','123456',1)
 --select * from Usuario --Se insertaron los usuario de manera correcta, los cajeros no pero ya estan, checar el select para poder juntarlos
 --insert into Usuario(nombreU,apellidoPU,apellidoMU,contraU,tipoU)
 --values('Isaac','Espinoza','Morales','1234', 'Cajero')
 --SelectUsuarios 'Natch','123456','0'
 --Pensar en si matar o no el tipo bit no entiendo como hacerlo jalar
---insert into Administrador(ClaveUsuario, Contraseña)
---values ('Wonderedcoot4', '1234')
+insert into Administrador(idUserA)
+values (1)
 --ObtenerAdministradores 'Wonderedcoot4','1234'
+
+select * from Usuario

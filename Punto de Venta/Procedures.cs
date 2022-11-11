@@ -411,7 +411,7 @@ namespace Punto_de_Venta
                 conectado = conn.AbrirConexion();
                 SqlCommand cmd = new SqlCommand("BajaProductos", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CodigoProducto", CodigoProducto);
+                cmd.Parameters.AddWithValue("@CodigProduc", CodigoProducto);
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
                 conn.CerrarConexion();

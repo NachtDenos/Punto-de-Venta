@@ -11,16 +11,13 @@ using System.Windows.Forms;
 namespace Punto_de_Venta
 {
     //NOTAS: LO DE FECHA DE CAMBIO NO SE SI CAMBIARLO, AHORITA LO VEMOS
-    //HOLA A VBER QUE PASA
-
-
-    //HOLISS AGAIN, VILLA ES Pvto
     public partial class productsScreen : Form
     {
         int indexBox, indexBox2;
         bool selection = false;
         bool selection2 = false;
         bool bandera;
+        int productSelection;
         public productsScreen()
         {
             InitializeComponent();
@@ -188,7 +185,10 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("Actualizacion de producto exitosa", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            MessageBox.Show("ACTUALIZACION FALLIDA", "NO ACTUALIZADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                MessageBox.Show("ACTUALIZACION FALLIDA", "NO ACTUALIZADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             //proc.InsertarProductos(CodProducto, txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text, fechaAlta,
             //    exxistencia, reOrder, txtActiveProduct.Text, costFloat, precFloat, ajajaja);
 
@@ -218,6 +218,21 @@ namespace Punto_de_Venta
                 dataGridProduct.AllowUserToOrderColumns = false;
                 if (dataGridProduct.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
+                    string idProductoData;
+                    int eseId;
+                    idProductoData = dataGridProduct.CurrentRow.Cells["Codigo"].Value.ToString();
+                    Int32.TryParse(idProductoData, out eseId);
+                    productSelection = eseId;
+                    txtIdProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+                    txtNameProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
+                    txtDesProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Descripción"].Value.ToString();
+                  //  txtIdEmployees.Text = dataGridProduct.Rows[e.RowIndex].Cells["Clave de Usuario"].Value.ToString();
+                  //  txtEmailEmployees.Text = dataGridProduct.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
+                  //  txtPayrollEmployees.Text = dataGridProduct.Rows[e.RowIndex].Cells["Nomina"].Value.ToString();
+                  //  txtPassEmployees.Text = dataGridProduct.Rows[e.RowIndex].Cells["Contraseña"].Value.ToString();
+                  //  txtCurpEmployees.Text = dataGridProduct.Rows[e.RowIndex].Cells["CURP"].Value.ToString();
+                  //  dtpBirth.Text = dataGridProduct.Rows[e.RowIndex].Cells["Fecha Nacimiento"].Value.ToString();
+                  //  dtpJoinBusiness.Text = dataGridProduct.Rows[e.RowIndex].Cells["Fecha de Ingreso"].Value.ToString();
                     dataGridProduct.CurrentRow.Selected = true;
                     dtpChangeDateProduct.Enabled = true;
                     dtpDateProduct.Enabled = false;
@@ -281,13 +296,15 @@ namespace Punto_de_Venta
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
             Procedures proc = new Procedures();
-            string codigo = txtIdProduct.Text;
-            int cod;
-            Int32.TryParse(codigo, out cod);
-            var pREUABS = proc.BajaProductos(cod);
-            //kjkas
-            //Prueba de github branch, esto puede mamar o morir
-            //Prueba d pull request
+            var eliminado = proc.BajaProductos(productSelection);
+            if(eliminado == true)
+            {
+                MessageBox.Show("Se elimino el producto con exito", "Exíto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("NO se elimino el producto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //Lorem ipsum, tulius alterus aerrebius maximus

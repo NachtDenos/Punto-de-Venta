@@ -21,7 +21,7 @@ namespace Punto_de_Venta
         string PasswordTextHolder;
         int indexBox;
         bool selection = false;
-        //Pruebas locas de las ramas de progra para ver si no se rompe este pedo;
+        
         public LoginScreenWnD()
         {
             InitializeComponent();
