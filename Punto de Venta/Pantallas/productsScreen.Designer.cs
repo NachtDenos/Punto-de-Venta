@@ -58,18 +58,6 @@ namespace Punto_de_Venta
             this.txtActiveProduct = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridProduct = new System.Windows.Forms.DataGridView();
-            this.codProdProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desProdu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UniInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CosInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExisInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReorProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CambioPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actiPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtNameProduct = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).BeginInit();
@@ -78,7 +66,7 @@ namespace Punto_de_Venta
             // txtFilterProduct
             // 
             this.txtFilterProduct.Location = new System.Drawing.Point(853, 105);
-            this.txtFilterProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFilterProduct.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilterProduct.Multiline = true;
             this.txtFilterProduct.Name = "txtFilterProduct";
             this.txtFilterProduct.Size = new System.Drawing.Size(193, 26);
@@ -102,7 +90,7 @@ namespace Punto_de_Venta
             this.btnDeleteProduct.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDeleteProduct.Location = new System.Drawing.Point(1024, 660);
-            this.btnDeleteProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(185, 63);
             this.btnDeleteProduct.TabIndex = 51;
@@ -116,7 +104,7 @@ namespace Punto_de_Venta
             this.btnEditProduct.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnEditProduct.Location = new System.Drawing.Point(817, 660);
-            this.btnEditProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditProduct.Name = "btnEditProduct";
             this.btnEditProduct.Size = new System.Drawing.Size(185, 63);
             this.btnEditProduct.TabIndex = 50;
@@ -131,7 +119,7 @@ namespace Punto_de_Venta
             this.btnAddProduct.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAddProduct.Location = new System.Drawing.Point(607, 660);
-            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(185, 63);
             this.btnAddProduct.TabIndex = 49;
@@ -142,7 +130,7 @@ namespace Punto_de_Venta
             // txtReOrdProduct
             // 
             this.txtReOrdProduct.Location = new System.Drawing.Point(348, 597);
-            this.txtReOrdProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtReOrdProduct.Margin = new System.Windows.Forms.Padding(4);
             this.txtReOrdProduct.Multiline = true;
             this.txtReOrdProduct.Name = "txtReOrdProduct";
             this.txtReOrdProduct.Size = new System.Drawing.Size(193, 26);
@@ -152,7 +140,7 @@ namespace Punto_de_Venta
             // txtPriceProduct
             // 
             this.txtPriceProduct.Location = new System.Drawing.Point(348, 430);
-            this.txtPriceProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPriceProduct.Margin = new System.Windows.Forms.Padding(4);
             this.txtPriceProduct.Multiline = true;
             this.txtPriceProduct.Name = "txtPriceProduct";
             this.txtPriceProduct.Size = new System.Drawing.Size(193, 26);
@@ -162,7 +150,7 @@ namespace Punto_de_Venta
             // txtCostProduct
             // 
             this.txtCostProduct.Location = new System.Drawing.Point(348, 377);
-            this.txtCostProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCostProduct.Margin = new System.Windows.Forms.Padding(4);
             this.txtCostProduct.Multiline = true;
             this.txtCostProduct.Name = "txtCostProduct";
             this.txtCostProduct.Size = new System.Drawing.Size(193, 26);
@@ -172,7 +160,7 @@ namespace Punto_de_Venta
             // txtDesProduct
             // 
             this.txtDesProduct.Location = new System.Drawing.Point(348, 180);
-            this.txtDesProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDesProduct.Margin = new System.Windows.Forms.Padding(4);
             this.txtDesProduct.Multiline = true;
             this.txtDesProduct.Name = "txtDesProduct";
             this.txtDesProduct.Size = new System.Drawing.Size(193, 62);
@@ -280,7 +268,7 @@ namespace Punto_de_Venta
             // txtIdProduct
             // 
             this.txtIdProduct.Location = new System.Drawing.Point(348, 87);
-            this.txtIdProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdProduct.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdProduct.Multiline = true;
             this.txtIdProduct.Name = "txtIdProduct";
             this.txtIdProduct.Size = new System.Drawing.Size(193, 26);
@@ -301,7 +289,7 @@ namespace Punto_de_Venta
             // txtExistenceProduct
             // 
             this.txtExistenceProduct.Location = new System.Drawing.Point(348, 539);
-            this.txtExistenceProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtExistenceProduct.Margin = new System.Windows.Forms.Padding(4);
             this.txtExistenceProduct.Multiline = true;
             this.txtExistenceProduct.Name = "txtExistenceProduct";
             this.txtExistenceProduct.Size = new System.Drawing.Size(193, 26);
@@ -311,7 +299,7 @@ namespace Punto_de_Venta
             // dtpDateProduct
             // 
             this.dtpDateProduct.Location = new System.Drawing.Point(348, 486);
-            this.dtpDateProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDateProduct.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDateProduct.Name = "dtpDateProduct";
             this.dtpDateProduct.Size = new System.Drawing.Size(193, 22);
             this.dtpDateProduct.TabIndex = 56;
@@ -325,7 +313,7 @@ namespace Punto_de_Venta
             "Lacteos",
             "Bebidas"});
             this.cbDepartamentProduct.Location = new System.Drawing.Point(348, 267);
-            this.cbDepartamentProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDepartamentProduct.Margin = new System.Windows.Forms.Padding(4);
             this.cbDepartamentProduct.Name = "cbDepartamentProduct";
             this.cbDepartamentProduct.Size = new System.Drawing.Size(193, 24);
             this.cbDepartamentProduct.TabIndex = 57;
@@ -342,7 +330,7 @@ namespace Punto_de_Venta
             "Mililitros",
             "Piezas"});
             this.cbMeasureProduct.Location = new System.Drawing.Point(348, 320);
-            this.cbMeasureProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMeasureProduct.Margin = new System.Windows.Forms.Padding(4);
             this.cbMeasureProduct.Name = "cbMeasureProduct";
             this.cbMeasureProduct.Size = new System.Drawing.Size(193, 24);
             this.cbMeasureProduct.TabIndex = 58;
@@ -353,7 +341,7 @@ namespace Punto_de_Venta
             // 
             this.dtpChangeDateProduct.Enabled = false;
             this.dtpChangeDateProduct.Location = new System.Drawing.Point(348, 654);
-            this.dtpChangeDateProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpChangeDateProduct.Margin = new System.Windows.Forms.Padding(4);
             this.dtpChangeDateProduct.Name = "dtpChangeDateProduct";
             this.dtpChangeDateProduct.Size = new System.Drawing.Size(193, 22);
             this.dtpChangeDateProduct.TabIndex = 60;
@@ -372,7 +360,7 @@ namespace Punto_de_Venta
             // txtActiveProduct
             // 
             this.txtActiveProduct.Location = new System.Drawing.Point(348, 713);
-            this.txtActiveProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtActiveProduct.Margin = new System.Windows.Forms.Padding(4);
             this.txtActiveProduct.Multiline = true;
             this.txtActiveProduct.Name = "txtActiveProduct";
             this.txtActiveProduct.Size = new System.Drawing.Size(193, 26);
@@ -394,21 +382,8 @@ namespace Punto_de_Venta
             this.dataGridProduct.AllowUserToDeleteRows = false;
             this.dataGridProduct.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codProdProd,
-            this.nameProduct,
-            this.desProdu,
-            this.DepInv,
-            this.UniInv,
-            this.CosInv,
-            this.PreInv,
-            this.fechProd,
-            this.ExisInv,
-            this.ReorProd,
-            this.CambioPro,
-            this.actiPro});
             this.dataGridProduct.Location = new System.Drawing.Point(607, 148);
-            this.dataGridProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridProduct.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridProduct.Name = "dataGridProduct";
             this.dataGridProduct.ReadOnly = true;
             this.dataGridProduct.RowHeadersWidth = 51;
@@ -416,106 +391,10 @@ namespace Punto_de_Venta
             this.dataGridProduct.TabIndex = 98;
             this.dataGridProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProduct_CellClick);
             // 
-            // codProdProd
-            // 
-            this.codProdProd.HeaderText = "Código del Producto";
-            this.codProdProd.MinimumWidth = 6;
-            this.codProdProd.Name = "codProdProd";
-            this.codProdProd.ReadOnly = true;
-            this.codProdProd.Width = 125;
-            // 
-            // nameProduct
-            // 
-            this.nameProduct.HeaderText = "Nombre";
-            this.nameProduct.MinimumWidth = 6;
-            this.nameProduct.Name = "nameProduct";
-            this.nameProduct.ReadOnly = true;
-            this.nameProduct.Width = 125;
-            // 
-            // desProdu
-            // 
-            this.desProdu.HeaderText = "Descripción";
-            this.desProdu.MinimumWidth = 6;
-            this.desProdu.Name = "desProdu";
-            this.desProdu.ReadOnly = true;
-            this.desProdu.Width = 125;
-            // 
-            // DepInv
-            // 
-            this.DepInv.HeaderText = "Departamento";
-            this.DepInv.MinimumWidth = 6;
-            this.DepInv.Name = "DepInv";
-            this.DepInv.ReadOnly = true;
-            this.DepInv.Width = 125;
-            // 
-            // UniInv
-            // 
-            this.UniInv.HeaderText = "Unidad de Medida";
-            this.UniInv.MinimumWidth = 6;
-            this.UniInv.Name = "UniInv";
-            this.UniInv.ReadOnly = true;
-            this.UniInv.Width = 125;
-            // 
-            // CosInv
-            // 
-            this.CosInv.HeaderText = "Costo";
-            this.CosInv.MinimumWidth = 6;
-            this.CosInv.Name = "CosInv";
-            this.CosInv.ReadOnly = true;
-            this.CosInv.Width = 125;
-            // 
-            // PreInv
-            // 
-            this.PreInv.HeaderText = "Precio Unitario";
-            this.PreInv.MinimumWidth = 6;
-            this.PreInv.Name = "PreInv";
-            this.PreInv.ReadOnly = true;
-            this.PreInv.Width = 125;
-            // 
-            // fechProd
-            // 
-            this.fechProd.HeaderText = "Fecha de alta";
-            this.fechProd.MinimumWidth = 6;
-            this.fechProd.Name = "fechProd";
-            this.fechProd.ReadOnly = true;
-            this.fechProd.Width = 125;
-            // 
-            // ExisInv
-            // 
-            this.ExisInv.HeaderText = "Existencia";
-            this.ExisInv.MinimumWidth = 6;
-            this.ExisInv.Name = "ExisInv";
-            this.ExisInv.ReadOnly = true;
-            this.ExisInv.Width = 125;
-            // 
-            // ReorProd
-            // 
-            this.ReorProd.HeaderText = "Punto de Reorden";
-            this.ReorProd.MinimumWidth = 6;
-            this.ReorProd.Name = "ReorProd";
-            this.ReorProd.ReadOnly = true;
-            this.ReorProd.Width = 125;
-            // 
-            // CambioPro
-            // 
-            this.CambioPro.HeaderText = "Fecha de cambio";
-            this.CambioPro.MinimumWidth = 6;
-            this.CambioPro.Name = "CambioPro";
-            this.CambioPro.ReadOnly = true;
-            this.CambioPro.Width = 125;
-            // 
-            // actiPro
-            // 
-            this.actiPro.HeaderText = "Producto Activo";
-            this.actiPro.MinimumWidth = 6;
-            this.actiPro.Name = "actiPro";
-            this.actiPro.ReadOnly = true;
-            this.actiPro.Width = 125;
-            // 
             // txtNameProduct
             // 
             this.txtNameProduct.Location = new System.Drawing.Point(348, 133);
-            this.txtNameProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNameProduct.Margin = new System.Windows.Forms.Padding(4);
             this.txtNameProduct.Multiline = true;
             this.txtNameProduct.Name = "txtNameProduct";
             this.txtNameProduct.Size = new System.Drawing.Size(193, 26);
@@ -569,7 +448,7 @@ namespace Punto_de_Venta
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtIdProduct);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "productsScreen";
             this.Text = "Products";
             this.Load += new System.EventHandler(this.productsScreen_Load);
@@ -610,18 +489,6 @@ namespace Punto_de_Venta
         private System.Windows.Forms.TextBox txtActiveProduct;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codProdProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn desProdu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DepInv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UniInv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CosInv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PreInv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExisInv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReorProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CambioPro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn actiPro;
         private System.Windows.Forms.TextBox txtNameProduct;
         private System.Windows.Forms.Label label14;
     }

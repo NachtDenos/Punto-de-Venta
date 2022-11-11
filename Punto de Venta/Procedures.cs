@@ -229,15 +229,15 @@ namespace Punto_de_Venta
         }
 
 
-        public DataTable ListarProductos() 
-        {
-              DataTable Datagrid = new DataTable();
-              comando.Connection = conexion.AbrirConexion();
-              comando.CommandText = ""; 
-              conexion.CerrarConexion();
-              return Datagrid;
+        //public DataTable ListarProductos() 
+        //{
+        //      DataTable Datagrid = new DataTable();
+        //      comando.Connection = conexion.AbrirConexion();
+        //      comando.CommandText = ""; 
+        //      conexion.CerrarConexion();
+        //      return Datagrid;
              
-        }
+        //}
 
         public DataTable ListarDepartamentos()
         {
@@ -304,6 +304,41 @@ namespace Punto_de_Venta
             return true;
         }
 
+        public bool ActualizarProductos(string NombreProd, string descripcion, string uMedida, DateTime fechaCambio,
+            int existencia, int ptReOrden, string Activo, float costo, float precioUnitario, int ClaveDepa)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("ActualizarProductos", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@NombreProducto", NombreProd);
+                cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+                cmd.Parameters.AddWithValue("@UnidadMedida", uMedida);
+                cmd.Parameters.AddWithValue("@FechaCambio", fechaCambio);
+                cmd.Parameters.AddWithValue("@existencia", existencia);
+                cmd.Parameters.AddWithValue("@ptReorden", ptReOrden);
+                cmd.Parameters.AddWithValue("@Activo", Activo);
+                cmd.Parameters.AddWithValue("@costo", costo);
+                cmd.Parameters.AddWithValue("@PrecioUnitario", precioUnitario);
+                cmd.Parameters.AddWithValue("@ClaveDeparmento", ClaveDepa   );
+
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+        }
+
         public bool InsertarProductos(int CodigoProducto, string Nombre, string Descripcion, string UnidadMedida, DateTime fechaAlta, int existencia, int ptReorden, string activo,
         float costo, float preciounitario,int claveDepartamento)
         {
@@ -345,6 +380,20 @@ namespace Punto_de_Venta
             // Form3 access = new Form3();
             comando.Connection = conexion.AbrirConexion();
             comando.CommandText = "ListarDepartamentos"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public DataTable ListarProductos()
+        {
+            DataTable tabla = new DataTable();
+            // Form3 access = new Form3();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarProductos"; //Para el procedure
             comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
             leerFilas = comando.ExecuteReader();
             tabla.Load(leerFilas);

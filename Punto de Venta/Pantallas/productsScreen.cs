@@ -166,6 +166,29 @@ namespace Punto_de_Venta
             float precTemp = Convert.ToSingle(prec);
             string precDecimal = precTemp.ToString("0.##");
             float precFloat = Convert.ToSingle(precDecimal);
+            Procedures proc = new Procedures();
+
+            string id = txtIdProduct.Text;
+            int CodProducto;
+            Int32.TryParse(id, out CodProducto);
+            string exiss = txtExistenceProduct.Text;
+            int exxistencia;
+            Int32.TryParse(exiss, out exxistencia);
+
+            string ptReOrden = txtReOrdProduct.Text;
+            int reOrder;
+            Int32.TryParse(ptReOrden, out reOrder);
+            DateTime fechaCambio = DateTime.Parse(dtpDateProduct.Text);
+            int Arsene = Convert.ToInt32(cbDepartamentProduct.SelectedValue);
+            var LaGuerraDeLasGalaxias = proc.ActualizarProductos(txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text, fechaCambio, exxistencia, reOrder, txtActiveProduct.Text, costFloat, precFloat, Arsene); ;
+            if (LaGuerraDeLasGalaxias)
+            {
+                MessageBox.Show("Actualizacion de producto exitosa", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            MessageBox.Show("ACTUALIZACION FALLIDA", "NO ACTUALIZADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //proc.InsertarProductos(CodProducto, txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text, fechaAlta,
+            //    exxistencia, reOrder, txtActiveProduct.Text, costFloat, precFloat, ajajaja);
+
         }
 
         private void cbDepartamentProduct_SelectedIndexChanged(object sender, EventArgs e)
@@ -193,6 +216,8 @@ namespace Punto_de_Venta
                 if (dataGridProduct.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
                     dataGridProduct.CurrentRow.Selected = true;
+                    dtpChangeDateProduct.Enabled = true;
+                    dtpDateProduct.Enabled = false;
                     btnEditProduct.Enabled = true;
                     btnDeleteProduct.Enabled = true;
                 }
@@ -245,7 +270,9 @@ namespace Punto_de_Venta
 
         private void productsScreen_Load(object sender, EventArgs e)
         {
+            Procedures instancia = new Procedures();
             ListarDepartamentos();
+            dataGridProduct.DataSource = instancia.ListarProductos();
         }
 
         private void ListarDepartamentos()
