@@ -274,6 +274,12 @@ namespace Punto_de_Venta
             ListarDepartamentos();
             dataGridProduct.DataSource = instancia.ListarProductos();
         }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            //kjkas
+        }
+
         //Lorem ipsum, tulius alterus aerrebius maximus
         private void ListarDepartamentos()
         {

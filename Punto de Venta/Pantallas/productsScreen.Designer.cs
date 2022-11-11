@@ -96,6 +96,7 @@ namespace Punto_de_Venta
             this.btnDeleteProduct.TabIndex = 51;
             this.btnDeleteProduct.Text = "Eliminar";
             this.btnDeleteProduct.UseVisualStyleBackColor = false;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // btnEditProduct
             // 

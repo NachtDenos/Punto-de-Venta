@@ -674,7 +674,13 @@ Begin
 update Producto set nombrePro = @NombreProducto, descripcion = @Descripcion, uniMedida = @UnidadMedida,
 FechaCambio = @FechaCambio, existencia = @existencia, ptReorden = @ptReorden, activo = @Activo, Costo = @costo, claveDepa = @ClaveDeparmento
 end;
-
+go
+create proc BajaProductos
+(@CodigProduc int)
+as
+Begin
+update Producto set activo = 'Inactivo' where Producto.idProduct = @CodigProduc
+end;
 --insert into Producto(idProduct, descripcion, nombrePro, uniMedida, fechaAlta, existencia, ptReorden, claveGest,activo,merma, 
 --uniVendida, claveAdmin, claveDepa, clavePre, fechaDesc,claveDesc, PrecioUnitario, Costo)
 --values('10001','Control remoto de tv', 'Control Remoto', 'pza', GETDATE(), '125','50','1','1','10','225','1','1','0',GETDATE(), '1', '120.00','50.00')

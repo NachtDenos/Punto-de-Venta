@@ -401,6 +401,28 @@ namespace Punto_de_Venta
             conexion.CerrarConexion();
             return tabla;
         }
+        public bool BajaProductos(int CodigoProducto)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+               
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("BajaProductos", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CodigoProducto", CodigoProducto);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
+        }
 
     }
 }
