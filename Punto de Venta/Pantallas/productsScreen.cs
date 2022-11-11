@@ -280,6 +280,11 @@ namespace Punto_de_Venta
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
+            Procedures proc = new Procedures();
+            string codigo = txtIdProduct.Text;
+            int cod;
+            Int32.TryParse(codigo, out cod);
+            var pREUABS = proc.BajaProductos(cod);
             //kjkas
             //Prueba de github branch, esto puede mamar o morir
             //Prueba d pull request
