@@ -304,7 +304,7 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool ActualizarProductos(string NombreProd, string descripcion, string uMedida, DateTime fechaCambio,
+        public bool ActualizarProductos(int ID, string NombreProd, string descripcion, string uMedida, DateTime fechaCambio,
             int existencia, int ptReOrden, string Activo, float costo, float precioUnitario, int ClaveDepa)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
@@ -315,6 +315,7 @@ namespace Punto_de_Venta
 
                 SqlCommand cmd = new SqlCommand("ActualizarProductos", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idP", ID);
                 cmd.Parameters.AddWithValue("@NombreProducto", NombreProd);
                 cmd.Parameters.AddWithValue("@Descripcion", descripcion);
                 cmd.Parameters.AddWithValue("@UnidadMedida", uMedida);

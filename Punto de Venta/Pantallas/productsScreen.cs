@@ -186,12 +186,16 @@ namespace Punto_de_Venta
             int exxistencia;
             Int32.TryParse(exiss, out exxistencia);
 
+            string idProdu = txtIdProduct.Text;
+            int idIntPro;
+            Int32.TryParse(idProdu, out idIntPro);
+
             string ptReOrden = txtReOrdProduct.Text;
             int reOrder;
             Int32.TryParse(ptReOrden, out reOrder);
             DateTime fechaCambio = DateTime.Parse(dtpDateProduct.Text);
             int Arsene = Convert.ToInt32(cbDepartamentProduct.SelectedValue);
-            var LaGuerraDeLasGalaxias = proc.ActualizarProductos(txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text, fechaCambio, exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, Arsene); ;
+            var LaGuerraDeLasGalaxias = proc.ActualizarProductos(idIntPro, txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text, fechaCambio, exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, Arsene); ;
             if (LaGuerraDeLasGalaxias)
             {
                 MessageBox.Show("Actualizacion de producto exitosa", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);

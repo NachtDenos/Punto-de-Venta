@@ -656,8 +656,10 @@ values(@CodigoProducto, @NombreProducto, @Descripcion, @UniMedida, @fechaAlta, @
 
 End;
 go
+
 create proc ActualizarProductos
 (
+@IdP int,
 @NombreProducto varchar(30),
 @Descripcion varchar(60),
 @UnidadMedida varchar(10),
@@ -673,6 +675,7 @@ as
 Begin
 update Producto set nombrePro = @NombreProducto, descripcion = @Descripcion, uniMedida = @UnidadMedida,
 FechaCambio = @FechaCambio, existencia = @existencia, ptReorden = @ptReorden, activo = @Activo, Costo = @costo, claveDepa = @ClaveDeparmento
+where idProduct = @IdP
 end;
 go
 create proc BajaProductos
@@ -707,4 +710,4 @@ insert into Administrador(idUserA)
 values (1)
 --ObtenerAdministradores 'Wonderedcoot4','1234'
 
-select * from Usuario
+select * from Producto
