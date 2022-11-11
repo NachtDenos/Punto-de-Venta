@@ -192,9 +192,7 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("ACTUALIZACION FALLIDA", "NO ACTUALIZADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //proc.InsertarProductos(CodProducto, txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text, fechaAlta,
-            //    exxistencia, reOrder, txtActiveProduct.Text, costFloat, precFloat, ajajaja);
-
+            limpiarDataGrid();
         }
 
         private void cbDepartamentProduct_SelectedIndexChanged(object sender, EventArgs e)
@@ -310,6 +308,7 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("NO se elimino el producto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            limpiarDataGrid();
         }
 
         private void cbActiveProduct_SelectedIndexChanged(object sender, EventArgs e)
@@ -325,6 +324,16 @@ namespace Punto_de_Venta
             cbDepartamentProduct.DataSource = usuarioObj.ListarDepartamentosCb();
             cbDepartamentProduct.DisplayMember = "nombreDep";
             cbDepartamentProduct.ValueMember = "idDepa";//Valor real de l combox
+        }
+
+        private void limpiarDataGrid()
+        {
+            dataGridProduct.ClearSelection();
+            txtIdProduct.Enabled = true;
+            dtpDateProduct.Enabled = true;
+            dtpChangeDateProduct.Enabled = false;
+            btnEditProduct.Enabled = false;
+            btnDeleteProduct.Enabled = false;
         }
     }
 }
