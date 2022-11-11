@@ -278,6 +278,7 @@ namespace Punto_de_Venta
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
             //kjkas
+            //Prueba de github branch, esto puede mamar o morir
         }
 
         //Lorem ipsum, tulius alterus aerrebius maximus
