@@ -330,7 +330,7 @@ CREATE TABLE Descuento
 (
    idDesc INT IDENTITY (0, 1) NOT NULL,
    cantidad INT NOT NULL,
-   claveFechaD INT NOT NULL 
+   claveFechaD INT NULL, 
    CONSTRAINT PK_idDesc
    PRIMARY KEY (idDesc),
    CONSTRAINT CK_cantidad
@@ -684,9 +684,6 @@ as
 Begin
 update Producto set activo = 'Inactivo' where Producto.idProduct = @CodigProduc
 end;
---insert into Producto(idProduct, descripcion, nombrePro, uniMedida, fechaAlta, existencia, ptReorden, claveGest,activo,merma, 
---uniVendida, claveAdmin, claveDepa, clavePre, fechaDesc,claveDesc, PrecioUnitario, Costo)
---values('10001','Control remoto de tv', 'Control Remoto', 'pza', GETDATE(), '125','50','1','1','10','225','1','1','0',GETDATE(), '1', '120.00','50.00')
 
 --Este es el select para departamentos y productos, probar hacerlo stored procedure
 select A.idProduct [Id], A.nombrePro [Nombre del Producto], A.descripcion [Descripcion], A.claveDepa [Id Departamento], A.existencia [Stock], A.uniVendida [Unidades Vendidas], B.nombreDep [Departamento]
@@ -695,19 +692,33 @@ join Departamento B
 on A.claveDepa = B.idDepa
 where A.claveDepa = B.idDepa
 --smn est select jala pra eso, solo hazlo procedure y que reciba el id que buscamos y con eso buscamos el producto y su depa
---pedazo de imbecil -isaapcuto pinche dislexico webo con fijol yum no pos....xd
 
+create proc RealizarDescuento
+(@Porcentaje int,
+@Fecha1 date,
+@Fecha2 date
+)
+as
+Begin
+	DECLARE @iDdis int;
+	select @iDdis= idDesc
+	from Descuento
+insert into Descuento(cantidad, claveFechaD)
+values (@Porcentaje, @iDdis)
+insert into descFecha(fechaIni, fechaFin)
+values (@Fecha1, @Fecha2)
+end;
 
---exec ActualizarEmpleados '8', 'Ivan', 'Alexis', 'Cantu', 'Arlender', 'Pelon', 'IvanACantu@netpay.com', '1992-10-07', '2012-05-17', 'IVAC09128921098743', '123456789'
+RealizarDescuento 10, '2018-12-15', '2022-12-10'
+select * from Descuento
+select * from descFecha
 Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
 values ('Isaac','Espinoza','Morales','Wonder','123456',1)
+
 --select * from Usuario --Se insertaron los usuario de manera correcta, los cajeros no pero ya estan, checar el select para poder juntarlos
 --insert into Usuario(nombreU,apellidoPU,apellidoMU,contraU,tipoU)
 --values('Isaac','Espinoza','Morales','1234', 'Cajero')
 --SelectUsuarios 'Natch','123456','0'
---Pensar en si matar o no el tipo bit no entiendo como hacerlo jalar
-insert into Administrador(idUserA)
-values (1)
---ObtenerAdministradores 'Wonderedcoot4','1234'
 
-select * from Producto
+--insert into Administrador(idUserA)
+--values (1)
