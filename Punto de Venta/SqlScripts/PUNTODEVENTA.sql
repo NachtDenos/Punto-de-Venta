@@ -328,9 +328,9 @@ END
 go
 CREATE TABLE Descuento
 (
-   idDesc INT IDENTITY (0, 1) NOT NULL,
+   idDesc INT IDENTITY (1, 1) NOT NULL,
    cantidad INT NOT NULL,
-   claveFechaD INT NULL, 
+   claveFechaD INT default(1) NULL, 
    CONSTRAINT PK_idDesc
    PRIMARY KEY (idDesc),
    CONSTRAINT CK_cantidad
@@ -345,7 +345,7 @@ END
 go
 CREATE TABLE descFecha
 (
-   idFechaDesc INT IDENTITY (0, 1) NOT NULL,
+   idFechaDesc INT IDENTITY (1, 1) NOT NULL,
    fechaIni DATE NOT NULL,
    fechaFin DATE NOT NULL,
    CONSTRAINT PK_idFechaDesc
@@ -692,6 +692,7 @@ join Departamento B
 on A.claveDepa = B.idDepa
 where A.claveDepa = B.idDepa
 --smn est select jala pra eso, solo hazlo procedure y que reciba el id que buscamos y con eso buscamos el producto y su depa
+go
 
 create proc RealizarDescuento
 (@Porcentaje int,
@@ -703,17 +704,17 @@ Begin
 	DECLARE @iDdis int;
 	select @iDdis= idDesc
 	from Descuento
-insert into Descuento(cantidad, claveFechaD)
-values (@Porcentaje, @iDdis)
 insert into descFecha(fechaIni, fechaFin)
 values (@Fecha1, @Fecha2)
-end;
+insert into Descuento(cantidad, claveFechaD)
+values (@Porcentaje, @iDdis)
 
-RealizarDescuento 10, '2018-12-15', '2022-12-10'
-select * from Descuento
+end;
+	RealizarDescuento 30, '2018-12-17', '2022-12-09'
+	select * from Descuento
 select * from descFecha
-Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
-values ('Isaac','Espinoza','Morales','Wonder','123456',1)
+--Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
+--values ('Isaac','Espinoza','Morales','Wonder','123456',1)
 
 --select * from Usuario --Se insertaron los usuario de manera correcta, los cajeros no pero ya estan, checar el select para poder juntarlos
 --insert into Usuario(nombreU,apellidoPU,apellidoMU,contraU,tipoU)
