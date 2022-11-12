@@ -723,3 +723,32 @@ select * from descFecha
 
 --insert into Administrador(idUserA)
 --values (1)
+
+--Intentare hacer la vista del inventario
+
+create view vwInventary
+as
+select A.idProduct [Codigo], A.nombrePro [Nombre Producto], A.descripcion [Descripción], A.PrecioUnitario [Precio Unitario], A.Costo [Costo],
+A.activo [Activo], A.claveAdmin [Gestor], B.nombreDep [Departamento], A.existencia [Stock], A.fechaAlta [Fecha de Alta],
+A.FechaCambio [Fecha de Actualizacion], A.ptReorden [Punto de Reorden], A.uniMedida [Unidad de Medida], A.merma[Merma], A.uniVendida [Cantidades Vendidas], c.claveUsuario [Usuario] from Producto A
+join Departamento B
+on B.idDepa = A.claveDepa
+join Usuario C
+ON c.idUser = a.claveAdmin
+
+
+
+--create proc ListarInventario
+--as
+--Begin
+
+
+
+--select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
+  --     [Cantidades Vendidas], [Merma] from vwInventary
+
+
+
+
+--end;
+
