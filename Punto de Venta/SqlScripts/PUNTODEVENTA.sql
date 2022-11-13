@@ -334,7 +334,10 @@ CREATE TABLE Descuento
    CONSTRAINT PK_idDesc
    PRIMARY KEY (idDesc),
    CONSTRAINT CK_cantidad
-   CHECK (0 < cantidad)
+   CHECK (0 < cantidad),
+   CONSTRAINT FK_claveFechaD
+   FOREIGN KEY (claveFechaD)
+   REFERENCES descFecha (idFechaDesc)
 );
 go
 
@@ -352,10 +355,7 @@ CREATE TABLE descFecha
    PRIMARY KEY (idFechaDesc)
 );
 go
-ALTER TABLE Descuento
-  ADD CONSTRAINT FK_claveFechaD
-  FOREIGN KEY (claveFechaD)
-  REFERENCES descFecha (idFechaDesc);
+
   go
 IF OBJECT_ID('Caje_Pro') IS NOT NULL
 BEGIN
@@ -711,7 +711,11 @@ values (@Porcentaje, @iDdis)
 
 end;
 	RealizarDescuento 30, '2018-12-17', '2022-12-09'
+	
 	select * from Descuento
+	SELECT Descuento.idDesc, descFecha.idFechaDesc, descFecha.fechaIni, descFecha.fechaFin, Descuento.cantidad from Descuento
+	join descFecha
+	on descFecha.idFechaDesc = Descuento.idDesc
 select * from descFecha
 --Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
 --values ('Isaac','Espinoza','Morales','Wonder','123456',1)
