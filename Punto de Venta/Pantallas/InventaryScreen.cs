@@ -12,9 +12,11 @@ namespace Punto_de_Venta
 {
     public partial class InventaryScreen : Form
     {
+        Procedures proc = new Procedures();
         public InventaryScreen()
         {
             InitializeComponent();
+            dataGridInventary.DataSource = proc.ListarInventario();
             //dataGridInventary.Rows[0].Cells[0].Value = "Mariscos";
             //dataGridInventary.Rows[0].Cells[1].Value = "Salmón";
             //dataGridInventary.Rows[0].Cells[2].Value = "kilogramos";
@@ -32,6 +34,19 @@ namespace Punto_de_Venta
                 MessageBox.Show("Solo se aceptan números en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Handled = true;
                 return;
+            }
+        }
+
+        private void txtInventaryExiste_TextChanged(object sender, EventArgs e)
+        {
+            if(txtInventaryExiste.Text != "")
+            {
+                int filtro = Int32.Parse(txtInventaryExiste.Text);
+                dataGridInventary.DataSource = proc.filtroExist(filtro);
+            }
+            else
+            {
+                dataGridInventary.DataSource = proc.ListarInventario();
             }
         }
     }
