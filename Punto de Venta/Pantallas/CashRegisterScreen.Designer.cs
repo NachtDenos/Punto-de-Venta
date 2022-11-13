@@ -32,8 +32,6 @@ namespace Punto_de_Venta
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashRegisterScreen));
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridCashRegister = new System.Windows.Forms.DataGridView();
-            this.NumCaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Disponibility = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDeleteCashRegister = new System.Windows.Forms.Button();
             this.btnEditCashRegister = new System.Windows.Forms.Button();
             this.btnAddCashResgister = new System.Windows.Forms.Button();
@@ -59,9 +57,6 @@ namespace Punto_de_Venta
             this.dataGridCashRegister.AllowUserToDeleteRows = false;
             this.dataGridCashRegister.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridCashRegister.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCashRegister.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NumCaja,
-            this.Disponibility});
             this.dataGridCashRegister.Location = new System.Drawing.Point(246, 278);
             this.dataGridCashRegister.Name = "dataGridCashRegister";
             this.dataGridCashRegister.ReadOnly = true;
@@ -69,21 +64,6 @@ namespace Punto_de_Venta
             this.dataGridCashRegister.Size = new System.Drawing.Size(456, 241);
             this.dataGridCashRegister.TabIndex = 51;
             this.dataGridCashRegister.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCashRegister_CellClick);
-           
-            // 
-            // NumCaja
-            // 
-            this.NumCaja.HeaderText = "Número de Caja";
-            this.NumCaja.Name = "NumCaja";
-            this.NumCaja.ReadOnly = true;
-            this.NumCaja.Width = 200;
-            // 
-            // Disponibility
-            // 
-            this.Disponibility.HeaderText = "Disponibilidad";
-            this.Disponibility.Name = "Disponibility";
-            this.Disponibility.ReadOnly = true;
-            this.Disponibility.Width = 200;
             // 
             // btnDeleteCashRegister
             // 
@@ -97,6 +77,7 @@ namespace Punto_de_Venta
             this.btnDeleteCashRegister.TabIndex = 50;
             this.btnDeleteCashRegister.Text = "Eliminar";
             this.btnDeleteCashRegister.UseVisualStyleBackColor = false;
+            this.btnDeleteCashRegister.Click += new System.EventHandler(this.btnDeleteCashRegister_Click);
             // 
             // btnEditCashRegister
             // 
@@ -159,13 +140,14 @@ namespace Punto_de_Venta
             // 
             this.cbCashRegister.FormattingEnabled = true;
             this.cbCashRegister.Items.AddRange(new object[] {
-            "Habilitada",
-            "Deshabilitada"});
+            "Activo",
+            "Inactivo"});
             this.cbCashRegister.Location = new System.Drawing.Point(340, 227);
             this.cbCashRegister.Name = "cbCashRegister";
             this.cbCashRegister.Size = new System.Drawing.Size(253, 21);
             this.cbCashRegister.TabIndex = 53;
             this.cbCashRegister.Text = "Seleccione";
+            this.cbCashRegister.SelectedIndexChanged += new System.EventHandler(this.cbCashRegister_SelectedIndexChanged);
             // 
             // CashRegisterScreen
             // 
@@ -202,7 +184,5 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbCashRegister;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumCaja;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Disponibility;
     }
 }
