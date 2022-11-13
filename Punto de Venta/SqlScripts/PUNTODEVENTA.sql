@@ -738,17 +738,20 @@ ON c.idUser = a.claveAdmin
 
 
 
---create proc ListarInventario
---as
---Begin
+create proc ListarInventario
+as
+Begin
+select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
+       [Cantidades Vendidas], [Merma] from vwInventary
+end;
 
+create procedure filtro_existenciaI
+(@filtroI int)
+as
+Begin
+select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
+       [Cantidades Vendidas], [Merma] from vwInventary
+where [stock] like @filtroI 
+end;
 
-
---select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
-  --     [Cantidades Vendidas], [Merma] from vwInventary
-
-
-
-
---end;
-
+drop procedure filtro_existenciaI
