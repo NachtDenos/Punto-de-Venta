@@ -754,4 +754,32 @@ select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio U
 where [stock] like @filtroI 
 end;
 
-drop procedure filtro_existenciaI
+create procedure filtro_DepartamentoI
+(@filtroI varchar (200))
+as
+Begin
+select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
+       [Cantidades Vendidas], [Merma] from vwInventary
+where [Departamento] like @filtroI + '%'
+end;
+
+create procedure filtro_agotadoI
+(@filtroI int)
+as
+Begin
+select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
+       [Cantidades Vendidas], [Merma] from vwInventary
+where [stock] = @filtroI or (1 = @filtroI and [stock] > 0)
+end;
+
+create procedure filtro_mermaI
+(@filtroI int)
+as
+Begin
+select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
+       [Cantidades Vendidas], [Merma] from vwInventary
+where (0 = @filtroI and [Merma] is null) or (1 = @filtroI and [Merma] > 0)
+end;
+
+drop procedure filtro_mermaI
+

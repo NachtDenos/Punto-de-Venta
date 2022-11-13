@@ -49,5 +49,73 @@ namespace Punto_de_Venta
                 dataGridInventary.DataSource = proc.ListarInventario();
             }
         }
+
+        private void txtInventaryDepart_TextChanged(object sender, EventArgs e)
+        {
+            if (txtInventaryDepart.Text != "")
+            {
+                dataGridInventary.DataSource = proc.filtroDepaIn(txtInventaryDepart.Text);
+            }
+            else
+            {
+                dataGridInventary.DataSource = proc.ListarInventario();
+            }
+        }
+
+        private void rdYesOutInventary_Click(object sender, EventArgs e)
+        {
+            if (rdNoOutInventary.Enabled == false)
+            {
+                rdNoOutInventary.Enabled = true;
+                dataGridInventary.DataSource = proc.ListarInventario();
+            }
+            else
+            {
+                rdNoOutInventary.Enabled = false;
+                dataGridInventary.DataSource = proc.filtroAgotado(0);
+            }
+        }
+
+        private void rdNoOutInventary_Click(object sender, EventArgs e)
+        {
+            if (rdYesOutInventary.Enabled == false)
+            {
+                rdYesOutInventary.Enabled = true;
+                dataGridInventary.DataSource = proc.ListarInventario();
+            }
+            else
+            {
+                rdYesOutInventary.Enabled = false;
+                dataGridInventary.DataSource = proc.filtroAgotado(1);
+            }
+        }
+
+        private void rdYesDecreaseInventary_Click(object sender, EventArgs e)
+        {
+            if (rdNoDecreaseInventary.Enabled == false)
+            {
+                rdNoDecreaseInventary.Enabled = true;
+                dataGridInventary.DataSource = proc.ListarInventario();
+            }
+            else
+            {
+                rdNoDecreaseInventary.Enabled = false;
+                dataGridInventary.DataSource = proc.filtroMerma(1);
+            }
+        }
+
+        private void rdNoDecreaseInventary_Click(object sender, EventArgs e)
+        {
+            if (rdYesDecreaseInventary.Enabled == false)
+            {
+                rdYesDecreaseInventary.Enabled = true;
+                dataGridInventary.DataSource = proc.ListarInventario();
+            }
+            else
+            {
+                rdYesDecreaseInventary.Enabled = false;
+                dataGridInventary.DataSource = proc.filtroMerma(0);
+            }
+        }
     }
 }

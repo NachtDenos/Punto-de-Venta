@@ -37,11 +37,11 @@ namespace Punto_de_Venta
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtInventaryExiste = new System.Windows.Forms.TextBox();
-            this.cbInventaryDepart = new System.Windows.Forms.ComboBox();
-            this.rdYesOutInventary = new System.Windows.Forms.RadioButton();
-            this.rdNoOutInventary = new System.Windows.Forms.RadioButton();
-            this.rdNoDecreaseInventary = new System.Windows.Forms.RadioButton();
-            this.rdYesDecreaseInventary = new System.Windows.Forms.RadioButton();
+            this.txtInventaryDepart = new System.Windows.Forms.TextBox();
+            this.rdYesOutInventary = new System.Windows.Forms.CheckBox();
+            this.rdNoOutInventary = new System.Windows.Forms.CheckBox();
+            this.rdNoDecreaseInventary = new System.Windows.Forms.CheckBox();
+            this.rdYesDecreaseInventary = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInventary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,64 +126,58 @@ namespace Punto_de_Venta
             this.txtInventaryExiste.TextChanged += new System.EventHandler(this.txtInventaryExiste_TextChanged);
             this.txtInventaryExiste.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInventaryExiste_KeyPress);
             // 
-            // cbInventaryDepart
+            // txtInventaryDepart
             // 
-            this.cbInventaryDepart.FormattingEnabled = true;
-            this.cbInventaryDepart.Items.AddRange(new object[] {
-            "Frutería",
-            "Carnes",
-            "Lacteos",
-            "Bebidas",
-            "Todos los departamentos"});
-            this.cbInventaryDepart.Location = new System.Drawing.Point(28, 143);
-            this.cbInventaryDepart.Name = "cbInventaryDepart";
-            this.cbInventaryDepart.Size = new System.Drawing.Size(144, 21);
-            this.cbInventaryDepart.TabIndex = 108;
-            this.cbInventaryDepart.Text = "Seleccionar";
+            this.txtInventaryDepart.Location = new System.Drawing.Point(28, 142);
+            this.txtInventaryDepart.Multiline = true;
+            this.txtInventaryDepart.Name = "txtInventaryDepart";
+            this.txtInventaryDepart.Size = new System.Drawing.Size(144, 22);
+            this.txtInventaryDepart.TabIndex = 113;
+            this.txtInventaryDepart.TextChanged += new System.EventHandler(this.txtInventaryDepart_TextChanged);
             // 
             // rdYesOutInventary
             // 
             this.rdYesOutInventary.AutoSize = true;
-            this.rdYesOutInventary.Location = new System.Drawing.Point(610, 126);
+            this.rdYesOutInventary.Location = new System.Drawing.Point(610, 124);
             this.rdYesOutInventary.Name = "rdYesOutInventary";
-            this.rdYesOutInventary.Size = new System.Drawing.Size(34, 17);
-            this.rdYesOutInventary.TabIndex = 109;
-            this.rdYesOutInventary.TabStop = true;
+            this.rdYesOutInventary.Size = new System.Drawing.Size(35, 17);
+            this.rdYesOutInventary.TabIndex = 114;
             this.rdYesOutInventary.Text = "Si";
             this.rdYesOutInventary.UseVisualStyleBackColor = true;
+            this.rdYesOutInventary.Click += new System.EventHandler(this.rdYesOutInventary_Click);
             // 
             // rdNoOutInventary
             // 
             this.rdNoOutInventary.AutoSize = true;
-            this.rdNoOutInventary.Location = new System.Drawing.Point(610, 147);
+            this.rdNoOutInventary.Location = new System.Drawing.Point(610, 150);
             this.rdNoOutInventary.Name = "rdNoOutInventary";
-            this.rdNoOutInventary.Size = new System.Drawing.Size(39, 17);
-            this.rdNoOutInventary.TabIndex = 110;
-            this.rdNoOutInventary.TabStop = true;
+            this.rdNoOutInventary.Size = new System.Drawing.Size(40, 17);
+            this.rdNoOutInventary.TabIndex = 115;
             this.rdNoOutInventary.Text = "No";
             this.rdNoOutInventary.UseVisualStyleBackColor = true;
+            this.rdNoOutInventary.Click += new System.EventHandler(this.rdNoOutInventary_Click);
             // 
             // rdNoDecreaseInventary
             // 
             this.rdNoDecreaseInventary.AutoSize = true;
-            this.rdNoDecreaseInventary.Location = new System.Drawing.Point(827, 149);
+            this.rdNoDecreaseInventary.Location = new System.Drawing.Point(827, 147);
             this.rdNoDecreaseInventary.Name = "rdNoDecreaseInventary";
-            this.rdNoDecreaseInventary.Size = new System.Drawing.Size(39, 17);
-            this.rdNoDecreaseInventary.TabIndex = 111;
-            this.rdNoDecreaseInventary.TabStop = true;
+            this.rdNoDecreaseInventary.Size = new System.Drawing.Size(40, 17);
+            this.rdNoDecreaseInventary.TabIndex = 117;
             this.rdNoDecreaseInventary.Text = "No";
             this.rdNoDecreaseInventary.UseVisualStyleBackColor = true;
+            this.rdNoDecreaseInventary.Click += new System.EventHandler(this.rdNoDecreaseInventary_Click);
             // 
             // rdYesDecreaseInventary
             // 
             this.rdYesDecreaseInventary.AutoSize = true;
-            this.rdYesDecreaseInventary.Location = new System.Drawing.Point(827, 126);
+            this.rdYesDecreaseInventary.Location = new System.Drawing.Point(827, 124);
             this.rdYesDecreaseInventary.Name = "rdYesDecreaseInventary";
-            this.rdYesDecreaseInventary.Size = new System.Drawing.Size(34, 17);
-            this.rdYesDecreaseInventary.TabIndex = 112;
-            this.rdYesDecreaseInventary.TabStop = true;
+            this.rdYesDecreaseInventary.Size = new System.Drawing.Size(35, 17);
+            this.rdYesDecreaseInventary.TabIndex = 116;
             this.rdYesDecreaseInventary.Text = "Si";
             this.rdYesDecreaseInventary.UseVisualStyleBackColor = true;
+            this.rdYesDecreaseInventary.Click += new System.EventHandler(this.rdYesDecreaseInventary_Click);
             // 
             // InventaryScreen
             // 
@@ -191,11 +185,11 @@ namespace Punto_de_Venta
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
-            this.Controls.Add(this.rdYesDecreaseInventary);
             this.Controls.Add(this.rdNoDecreaseInventary);
+            this.Controls.Add(this.rdYesDecreaseInventary);
             this.Controls.Add(this.rdNoOutInventary);
             this.Controls.Add(this.rdYesOutInventary);
-            this.Controls.Add(this.cbInventaryDepart);
+            this.Controls.Add(this.txtInventaryDepart);
             this.Controls.Add(this.txtInventaryExiste);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -221,10 +215,10 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtInventaryExiste;
-        private System.Windows.Forms.ComboBox cbInventaryDepart;
-        private System.Windows.Forms.RadioButton rdYesOutInventary;
-        private System.Windows.Forms.RadioButton rdNoOutInventary;
-        private System.Windows.Forms.RadioButton rdNoDecreaseInventary;
-        private System.Windows.Forms.RadioButton rdYesDecreaseInventary;
+        private System.Windows.Forms.TextBox txtInventaryDepart;
+        private System.Windows.Forms.CheckBox rdYesOutInventary;
+        private System.Windows.Forms.CheckBox rdNoOutInventary;
+        private System.Windows.Forms.CheckBox rdNoDecreaseInventary;
+        private System.Windows.Forms.CheckBox rdYesDecreaseInventary;
     }
 }
