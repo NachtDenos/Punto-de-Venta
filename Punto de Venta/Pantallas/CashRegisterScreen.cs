@@ -86,7 +86,9 @@ namespace Punto_de_Venta
             else
                 MessageBox.Show("No se realizo la edicion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             dataGridCashRegister.DataSource = proc.ListarCaja();
-
+            btnEditCashRegister.Enabled = false;
+            btnDeleteCashRegister.Enabled = false;
+            btnAddCashResgister.Enabled = true;
         }
 
         private void dataGridCashRegister_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -105,6 +107,7 @@ namespace Punto_de_Venta
                     dataGridCashRegister.CurrentRow.Selected = true;
                     btnEditCashRegister.Enabled = true;
                     btnDeleteCashRegister.Enabled = true;
+                    btnAddCashResgister.Enabled = false;
                 }
             }
             catch (Exception ArgumentOutOfRangeException)
@@ -133,12 +136,16 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("Se elimino la caja con exito", "Exíto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridCashRegister.DataSource = proc.ListarCaja();
+                clearText();
             }
             else
             {
                 MessageBox.Show("NO se elimino la caja", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             dataGridCashRegister.ClearSelection();
+            btnEditCashRegister.Enabled = false;
+            btnDeleteCashRegister.Enabled = false;
+            btnAddCashResgister.Enabled = true;
         }
     }
 }

@@ -375,7 +375,7 @@ namespace Punto_de_Venta
             }
             return true;
         }
-
+        
         public DataTable ListarDepartamentosCb()
         {
             DataTable tabla = new DataTable();

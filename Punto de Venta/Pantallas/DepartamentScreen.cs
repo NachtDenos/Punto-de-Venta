@@ -36,7 +36,11 @@ namespace Punto_de_Venta
            var aja = proc.AltaDepartamentos(txtNameDepartament.Text, id,cbDevolutionDepartament.Text);
             if (aja == true)
             {
-                MessageBox.Show("Se inserto ");
+                MessageBox.Show("Inserccion Realizada con Exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtFilterDepartament.Text = "";
+                txtIdDepartament.Text = "";
+                txtNameDepartament.Text = "";
+                cbDevolutionDepartament.Text = "Seleccionar";
             }
             dataGridDepartament.DataSource = proc.ListarDepartamentos();
 
@@ -69,6 +73,10 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("La actualizacion se realizo con exito", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridDepartament.DataSource = proc.ListarDepartamentos();
+                txtFilterDepartament.Text = "";
+                txtIdDepartament.Text = "";
+                txtNameDepartament.Text = "";
+                cbDevolutionDepartament.Text = "Seleccionar";
             }
             else if (esoTilin == false)
             {
@@ -161,11 +169,12 @@ namespace Punto_de_Venta
             var estoTilin2Secuela = proc.BorrarDepartamentos(id);
             if (estoTilin2Secuela == true)
             {
-                MessageBox.Show("Se elimino con exito", "BAJA", MessageBoxButtons.OK);
+                MessageBox.Show("Baja realizada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridDepartament.DataSource = proc.ListarDepartamentos();
                 txtFilterDepartament.Text = "";
                 txtIdDepartament.Text = "";
                 txtNameDepartament.Text = "";
+                cbDevolutionDepartament.Text = "Seleccionar";
                 
             }
             txtIdDepartament.Enabled = true;

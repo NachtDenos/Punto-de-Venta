@@ -152,7 +152,7 @@ namespace Punto_de_Venta
                 txtCurpEmployees.Text, txtEmailEmployees.Text, fechaN, fechaI, nomina);
             if (pepe == true)
             {
-                MessageBox.Show("Actualizacion Realizada con exito");
+                MessageBox.Show("Edicion realizada con Exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridEmployees.DataSource = proc.ListarCajero();
                 txtNameEmployees.Text = "";
                 txtLastName1Employees.Text = "";

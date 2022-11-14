@@ -203,6 +203,7 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("Actualizacion de producto exitosa", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridProduct.DataSource = proc.ListarProductos();
+                clearTxt();
             }
             else
             {
@@ -321,6 +322,7 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("Se elimino el producto con exito", "Exíto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridProduct.DataSource = proc.ListarProductos();
+                clearTxt();
             }
             else
             {
