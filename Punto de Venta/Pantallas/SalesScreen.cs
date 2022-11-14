@@ -15,10 +15,10 @@ namespace Punto_de_Venta
         public SalesScreen()
         {
             InitializeComponent();
-            dataGridProductSales.Rows[0].Cells[0].Value = "B312";
-            dataGridProductSales.Rows[0].Cells[1].Value = "Jamón";
-            dataGridCarritoSales.Rows[0].Cells[0].Value = "B412";
-            dataGridCarritoSales.Rows[0].Cells[1].Value = "Salmón";
+            //dataGridProductSales.Rows[0].Cells[0].Value = "B312";
+            //dataGridProductSales.Rows[0].Cells[1].Value = "Jamón";
+            //dataGridCarritoSales.Rows[0].Cells[0].Value = "B412";
+            //dataGridCarritoSales.Rows[0].Cells[1].Value = "Salmón";
         }
 
         private void btnQuickSearchSales_Click(object sender, EventArgs e)

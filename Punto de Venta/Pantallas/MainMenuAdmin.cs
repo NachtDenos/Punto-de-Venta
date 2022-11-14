@@ -15,8 +15,8 @@ namespace Punto_de_Venta.Pantallas
         public MainMenuAdmin()
         {
             InitializeComponent();
-            dataGridViewReorder.Rows[0].Cells[0].Value = "Ciel 1L";
-            dataGridViewReorder.Rows[0].Cells[1].Value = "25";
+            //dataGridViewReorder.Rows[0].Cells[0].Value = "Ciel 1L";
+            //dataGridViewReorder.Rows[0].Cells[1].Value = "25";
         }
 
         

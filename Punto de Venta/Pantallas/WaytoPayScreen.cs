@@ -21,12 +21,12 @@ namespace Punto_de_Venta
             txtDebitCardPay.Enabled = false;
             txtCheckPay.Enabled = false;
             txtOtherPay.Enabled = false;
-            dataGridWayToPay.Rows[0].Cells[0].Value = "B312";
-            dataGridWayToPay.Rows[0].Cells[1].Value = "Jamón";
-            dataGridWayToPay.Rows[0].Cells[2].Value = "30.00";
-            dataGridWayToPay.Rows[0].Cells[3].Value = "2";
-            dataGridWayToPay.Rows[0].Cells[4].Value = "0.00";
-            dataGridWayToPay.Rows[0].Cells[5].Value = "60.00";
+            //dataGridWayToPay.Rows[0].Cells[0].Value = "B312";
+            //dataGridWayToPay.Rows[0].Cells[1].Value = "Jamón";
+            //dataGridWayToPay.Rows[0].Cells[2].Value = "30.00";
+            //dataGridWayToPay.Rows[0].Cells[3].Value = "2";
+            //dataGridWayToPay.Rows[0].Cells[4].Value = "0.00";
+            //dataGridWayToPay.Rows[0].Cells[5].Value = "60.00";
             
         }
 
