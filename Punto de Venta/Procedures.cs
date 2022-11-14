@@ -584,5 +584,29 @@ namespace Punto_de_Venta
             return true;
         }
 
+
+        public bool InsertarDescuentos(int porcentaje, DateTime FechaInicial, DateTime FechaFinal)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conected = new SqlConnection();
+            try
+            {
+                conected = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("RealizarDescuento", conected);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Porcentaje",porcentaje);
+                cmd.Parameters.AddWithValue("@Fecha1", FechaInicial);
+                cmd.Parameters.AddWithValue("@Fecha2", FechaFinal);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception Barabas)
+            {
+                MessageBox.Show("Excepcion de base de datos" + Barabas.ToString());
+                return false;
+            }
+            return true;
+        }
     }
 }
