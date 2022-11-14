@@ -702,21 +702,25 @@ create proc RealizarDescuento
 as
 Begin
 	DECLARE @iDdis int;
-	select @iDdis= idDesc
-	from Descuento
+	select @iDdis= SCOPE_IDENTITY();
+	Print @iDdis
 insert into descFecha(fechaIni, fechaFin)
-values (@Fecha1, @Fecha2)
+values (@Fecha1, @Fecha2)	
+
 insert into Descuento(cantidad, claveFechaD)
 values (@Porcentaje, @iDdis)
 
 end;
-	RealizarDescuento 30, '2018-12-17', '2022-12-09'
-	
-	select * from Descuento
-	SELECT Descuento.idDesc, descFecha.idFechaDesc, descFecha.fechaIni, descFecha.fechaFin, Descuento.cantidad from Descuento
+go
+	--RealizarDescuento 50, '1999-04-16', '2024-10-22'
+go	
+create proc ListarDescuentosFecha
+as
+Begin
+	SELECT Descuento.idDesc [Id Descuento], descFecha.fechaIni [Inicia], descFecha.fechaFin [Termina], Descuento.cantidad [Porcentaje] from Descuento
 	join descFecha
 	on descFecha.idFechaDesc = Descuento.idDesc
-select * from descFecha
+end;
 --Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
 --values ('Isaac','Espinoza','Morales','Wonder','123456',1)
 
