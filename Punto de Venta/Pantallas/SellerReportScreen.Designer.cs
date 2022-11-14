@@ -37,14 +37,14 @@ namespace Punto_de_Venta
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridSellerReport = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UniVen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SUti = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSellerReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,7 +123,9 @@ namespace Punto_de_Venta
             // 
             // dataGridSellerReport
             // 
+            this.dataGridSellerReport.AllowUserToAddRows = false;
             this.dataGridSellerReport.AllowUserToDeleteRows = false;
+            this.dataGridSellerReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridSellerReport.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridSellerReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSellerReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -138,26 +140,6 @@ namespace Punto_de_Venta
             this.dataGridSellerReport.ReadOnly = true;
             this.dataGridSellerReport.Size = new System.Drawing.Size(640, 362);
             this.dataGridSellerReport.TabIndex = 97;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(295, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(367, 44);
-            this.label2.TabIndex = 96;
-            this.label2.Text = "Reporte de Cajeros";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(661, 148);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 22);
-            this.label1.TabIndex = 95;
-            this.label1.Text = "Rango de fechas";
             // 
             // Fecha
             // 
@@ -194,6 +176,26 @@ namespace Punto_de_Venta
             this.SUti.HeaderText = "Suma Utilidad";
             this.SUti.Name = "SUti";
             this.SUti.ReadOnly = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(295, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(367, 44);
+            this.label2.TabIndex = 96;
+            this.label2.Text = "Reporte de Cajeros";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(661, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(169, 22);
+            this.label1.TabIndex = 95;
+            this.label1.Text = "Rango de fechas";
             // 
             // SellerReportScreen
             // 

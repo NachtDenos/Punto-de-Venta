@@ -77,6 +77,7 @@ namespace Punto_de_Venta
             // 
             // dataGridInventary
             // 
+            this.dataGridInventary.AllowUserToAddRows = false;
             this.dataGridInventary.AllowUserToDeleteRows = false;
             this.dataGridInventary.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridInventary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

@@ -369,6 +369,7 @@ namespace Punto_de_Venta
             }
             catch (Exception err)
             {
+                //MessageBox.Show("El ID del producto no se puede repetir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // <-- Usar una vez acabado todo
                 MessageBox.Show(err.ToString());
                 return false;
             }

@@ -66,7 +66,9 @@ namespace Punto_de_Venta
             // 
             // dataGridReturn1
             // 
+            this.dataGridReturn1.AllowUserToAddRows = false;
             this.dataGridReturn1.AllowUserToDeleteRows = false;
+            this.dataGridReturn1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridReturn1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridReturn1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridReturn1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -233,7 +235,9 @@ namespace Punto_de_Venta
             // 
             // dataGridReturn2
             // 
+            this.dataGridReturn2.AllowUserToAddRows = false;
             this.dataGridReturn2.AllowUserToDeleteRows = false;
+            this.dataGridReturn2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridReturn2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridReturn2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridReturn2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

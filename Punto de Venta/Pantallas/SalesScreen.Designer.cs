@@ -60,6 +60,7 @@ namespace Punto_de_Venta
             // 
             // dataGridProductSales
             // 
+            this.dataGridProductSales.AllowUserToAddRows = false;
             this.dataGridProductSales.AllowUserToDeleteRows = false;
             this.dataGridProductSales.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridProductSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -91,6 +92,7 @@ namespace Punto_de_Venta
             // 
             // dataGridCarritoSales
             // 
+            this.dataGridCarritoSales.AllowUserToAddRows = false;
             this.dataGridCarritoSales.AllowUserToDeleteRows = false;
             this.dataGridCarritoSales.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridCarritoSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

@@ -58,6 +58,7 @@ namespace Punto_de_Venta
             // 
             // dataGridWayToPay
             // 
+            this.dataGridWayToPay.AllowUserToAddRows = false;
             this.dataGridWayToPay.AllowUserToDeleteRows = false;
             this.dataGridWayToPay.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridWayToPay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

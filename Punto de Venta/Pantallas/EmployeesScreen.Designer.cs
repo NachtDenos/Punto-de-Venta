@@ -301,6 +301,7 @@ namespace Punto_de_Venta
             // 
             // dataGridEmployees
             // 
+            this.dataGridEmployees.AllowUserToAddRows = false;
             this.dataGridEmployees.AllowUserToDeleteRows = false;
             this.dataGridEmployees.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridEmployees.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;

@@ -335,7 +335,9 @@ namespace Punto_de_Venta.Pantallas
             // 
             // dataGridViewReorder
             // 
+            this.dataGridViewReorder.AllowUserToAddRows = false;
             this.dataGridViewReorder.AllowUserToDeleteRows = false;
+            this.dataGridViewReorder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewReorder.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewReorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReorder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -354,14 +356,12 @@ namespace Punto_de_Venta.Pantallas
             this.productReorder.HeaderText = "Producto";
             this.productReorder.Name = "productReorder";
             this.productReorder.ReadOnly = true;
-            this.productReorder.Width = 350;
             // 
             // existReorder
             // 
             this.existReorder.HeaderText = "Existencia";
             this.existReorder.Name = "existReorder";
             this.existReorder.ReadOnly = true;
-            this.existReorder.Width = 350;
             // 
             // MainMenuAdmin
             // 

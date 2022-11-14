@@ -54,7 +54,9 @@ namespace Punto_de_Venta
             // 
             // dataGridCashRegister
             // 
+            this.dataGridCashRegister.AllowUserToAddRows = false;
             this.dataGridCashRegister.AllowUserToDeleteRows = false;
+            this.dataGridCashRegister.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridCashRegister.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridCashRegister.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCashRegister.Location = new System.Drawing.Point(246, 278);

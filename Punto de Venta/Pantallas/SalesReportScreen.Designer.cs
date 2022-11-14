@@ -32,13 +32,6 @@ namespace Punto_de_Venta
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridSalesReport = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbSalesReportCaja = new System.Windows.Forms.ComboBox();
-            this.cbSalesReportDepart = new System.Windows.Forms.ComboBox();
-            this.dtpSalesReport1 = new System.Windows.Forms.DateTimePicker();
-            this.dtpSalesReport2 = new System.Windows.Forms.DateTimePicker();
             this.fcV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +41,13 @@ namespace Punto_de_Venta
             this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ven = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uti = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbSalesReportCaja = new System.Windows.Forms.ComboBox();
+            this.cbSalesReportDepart = new System.Windows.Forms.ComboBox();
+            this.dtpSalesReport1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpSalesReport2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSalesReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +73,7 @@ namespace Punto_de_Venta
             // 
             // dataGridSalesReport
             // 
+            this.dataGridSalesReport.AllowUserToAddRows = false;
             this.dataGridSalesReport.AllowUserToDeleteRows = false;
             this.dataGridSalesReport.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridSalesReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -91,6 +92,60 @@ namespace Punto_de_Venta
             this.dataGridSalesReport.ReadOnly = true;
             this.dataGridSalesReport.Size = new System.Drawing.Size(758, 362);
             this.dataGridSalesReport.TabIndex = 85;
+            // 
+            // fcV
+            // 
+            this.fcV.HeaderText = "Fecha de Venta";
+            this.fcV.Name = "fcV";
+            this.fcV.ReadOnly = true;
+            // 
+            // Dep
+            // 
+            this.Dep.HeaderText = "Departamento";
+            this.Dep.Name = "Dep";
+            this.Dep.ReadOnly = true;
+            // 
+            // Cod
+            // 
+            this.Cod.HeaderText = "Código de artículo";
+            this.Cod.Name = "Cod";
+            this.Cod.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio Unitario";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
+            // UniV
+            // 
+            this.UniV.HeaderText = "Unidades Vendidas";
+            this.UniV.Name = "UniV";
+            this.UniV.ReadOnly = true;
+            // 
+            // Sub
+            // 
+            this.Sub.HeaderText = "Subtotal";
+            this.Sub.Name = "Sub";
+            this.Sub.ReadOnly = true;
+            // 
+            // Desc
+            // 
+            this.Desc.HeaderText = "Descuento";
+            this.Desc.Name = "Desc";
+            this.Desc.ReadOnly = true;
+            // 
+            // Ven
+            // 
+            this.Ven.HeaderText = "Venta";
+            this.Ven.Name = "Ven";
+            this.Ven.ReadOnly = true;
+            // 
+            // Uti
+            // 
+            this.Uti.HeaderText = "Utilidad";
+            this.Uti.Name = "Uti";
+            this.Uti.ReadOnly = true;
             // 
             // label2
             // 
@@ -165,60 +220,6 @@ namespace Punto_de_Venta
             this.dtpSalesReport2.Name = "dtpSalesReport2";
             this.dtpSalesReport2.Size = new System.Drawing.Size(110, 20);
             this.dtpSalesReport2.TabIndex = 94;
-            // 
-            // fcV
-            // 
-            this.fcV.HeaderText = "Fecha de Venta";
-            this.fcV.Name = "fcV";
-            this.fcV.ReadOnly = true;
-            // 
-            // Dep
-            // 
-            this.Dep.HeaderText = "Departamento";
-            this.Dep.Name = "Dep";
-            this.Dep.ReadOnly = true;
-            // 
-            // Cod
-            // 
-            this.Cod.HeaderText = "Código de artículo";
-            this.Cod.Name = "Cod";
-            this.Cod.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio Unitario";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            // 
-            // UniV
-            // 
-            this.UniV.HeaderText = "Unidades Vendidas";
-            this.UniV.Name = "UniV";
-            this.UniV.ReadOnly = true;
-            // 
-            // Sub
-            // 
-            this.Sub.HeaderText = "Subtotal";
-            this.Sub.Name = "Sub";
-            this.Sub.ReadOnly = true;
-            // 
-            // Desc
-            // 
-            this.Desc.HeaderText = "Descuento";
-            this.Desc.Name = "Desc";
-            this.Desc.ReadOnly = true;
-            // 
-            // Ven
-            // 
-            this.Ven.HeaderText = "Venta";
-            this.Ven.Name = "Ven";
-            this.Ven.ReadOnly = true;
-            // 
-            // Uti
-            // 
-            this.Uti.HeaderText = "Utilidad";
-            this.Uti.Name = "Uti";
-            this.Uti.ReadOnly = true;
             // 
             // SalesReportScreen
             // 
