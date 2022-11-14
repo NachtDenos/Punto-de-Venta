@@ -74,7 +74,10 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("ERROR NO SE ACUTALIZO", "NO ACTUALIZDOE RROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+            txtIdDepartament.Enabled = true;
+            btnAddDepartament.Enabled = true;
+            btnDeleteDepartament.Enabled = false;
+            btnEditDepartament.Enabled = false;
         }
 
         private void dataGridDepartament_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -88,6 +91,7 @@ namespace Punto_de_Venta
                 {
                     dataGridDepartament.CurrentRow.Selected = true;
                     txtIdDepartament.Enabled = false;
+                    btnAddDepartament.Enabled = false;
                     txtIdDepartament.Text = dataGridDepartament.Rows[e.RowIndex].Cells["Id Departamento"].Value.ToString();
                     txtNameDepartament.Text = dataGridDepartament.Rows[e.RowIndex].Cells["Departamento"].Value.ToString();
                     cbDevolutionDepartament.Text = dataGridDepartament.Rows[e.RowIndex].Cells["Acepta devoluciones"].Value.ToString();
@@ -164,6 +168,10 @@ namespace Punto_de_Venta
                 txtNameDepartament.Text = "";
                 
             }
+            txtIdDepartament.Enabled = true;
+            btnAddDepartament.Enabled = true;
+            btnDeleteDepartament.Enabled = false;
+            btnEditDepartament.Enabled = false;
         }
 
         //private void dataGridDepartament_CellLeave(object sender, DataGridViewCellEventArgs e)

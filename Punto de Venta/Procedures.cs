@@ -289,7 +289,7 @@ namespace Punto_de_Venta
 
                 SqlCommand cmd = new SqlCommand("BorrarDepartamentos", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Id", idDepa);
+                cmd.Parameters.AddWithValue("@IdCaja", idDepa);
             
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
