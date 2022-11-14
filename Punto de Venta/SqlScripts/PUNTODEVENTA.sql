@@ -595,6 +595,9 @@ idDepa INT NOT NULL,
    claveAdminDepa INT NOT NULL,
 */
 
+
+-----------------CAJAS EN DESARROLLO--------------
+
 create proc CrearCajas
 (@Id int,
 @Disponibilidad varchar(20)
@@ -605,14 +608,31 @@ Insert into Caja(idCaja, disponi, claveAdminCa)
 values(@Id, @Disponibilidad, 1) 
 end;
 
-Create proc BajaCajas
+Create proc EditarCajas
 (
-@Id int
+@Id int, @Disponibilidad varchar(20)
 )
 as
 Begin
-update Caja set disponi = 'Inactivo' where idCaja = @Id
+update Caja set disponi = @Disponibilidad where idCaja = @Id
 end;
+
+create proc bajaCajas
+(@idC int)
+as
+Begin
+delete Caja where idCaja = @idC
+end;
+
+select * from Caja
+
+create proc ListarCaja
+as
+Begin
+select idCaja[Numero de Caja], disponi[Disponibilidad] from Caja
+end;
+
+
 go
 --Considerar hacerlo view y meterlo e el proc pero lo hare mañana a
 create proc ListarProductos

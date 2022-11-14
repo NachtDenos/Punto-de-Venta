@@ -31,21 +31,23 @@ namespace Punto_de_Venta
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuickSearchScreen));
             this.dataGridQuickSearch = new System.Windows.Forms.DataGridView();
+            this.codQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.existQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIdCashRegister = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.codQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.existQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridQuickSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridQuickSearch
             // 
+            this.dataGridQuickSearch.AllowUserToAddRows = false;
             this.dataGridQuickSearch.AllowUserToDeleteRows = false;
+            this.dataGridQuickSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridQuickSearch.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridQuickSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridQuickSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -58,6 +60,30 @@ namespace Punto_de_Venta
             this.dataGridQuickSearch.ReadOnly = true;
             this.dataGridQuickSearch.Size = new System.Drawing.Size(326, 458);
             this.dataGridQuickSearch.TabIndex = 0;
+            // 
+            // codQuick
+            // 
+            this.codQuick.HeaderText = "Código";
+            this.codQuick.Name = "codQuick";
+            this.codQuick.ReadOnly = true;
+            // 
+            // nameQuick
+            // 
+            this.nameQuick.HeaderText = "Nombre";
+            this.nameQuick.Name = "nameQuick";
+            this.nameQuick.ReadOnly = true;
+            // 
+            // priceQuick
+            // 
+            this.priceQuick.HeaderText = "Precio";
+            this.priceQuick.Name = "priceQuick";
+            this.priceQuick.ReadOnly = true;
+            // 
+            // existQuick
+            // 
+            this.existQuick.HeaderText = "Existencia";
+            this.existQuick.Name = "existQuick";
+            this.existQuick.ReadOnly = true;
             // 
             // label2
             // 
@@ -104,30 +130,6 @@ namespace Punto_de_Venta
             this.label3.Size = new System.Drawing.Size(190, 22);
             this.label3.TabIndex = 31;
             this.label3.Text = "Nombre del artículo";
-            // 
-            // codQuick
-            // 
-            this.codQuick.HeaderText = "Código";
-            this.codQuick.Name = "codQuick";
-            this.codQuick.ReadOnly = true;
-            // 
-            // nameQuick
-            // 
-            this.nameQuick.HeaderText = "Nombre";
-            this.nameQuick.Name = "nameQuick";
-            this.nameQuick.ReadOnly = true;
-            // 
-            // priceQuick
-            // 
-            this.priceQuick.HeaderText = "Precio";
-            this.priceQuick.Name = "priceQuick";
-            this.priceQuick.ReadOnly = true;
-            // 
-            // existQuick
-            // 
-            this.existQuick.HeaderText = "Existencia";
-            this.existQuick.Name = "existQuick";
-            this.existQuick.ReadOnly = true;
             // 
             // QuickSearchScreen
             // 

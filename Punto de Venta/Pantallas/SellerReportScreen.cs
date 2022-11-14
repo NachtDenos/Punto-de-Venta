@@ -15,12 +15,12 @@ namespace Punto_de_Venta
         public SellerReportScreen()
         {
             InitializeComponent();
-            dataGridSellerReport.Rows[0].Cells[0].Value = "09/09/2022"; //
-            dataGridSellerReport.Rows[0].Cells[1].Value = "Juan"; //Juan
-            dataGridSellerReport.Rows[0].Cells[2].Value = "Mariscos";
-            dataGridSellerReport.Rows[0].Cells[3].Value = "13";
-            dataGridSellerReport.Rows[0].Cells[4].Value = "10.00";
-            dataGridSellerReport.Rows[0].Cells[5].Value = "20.00";
+            //dataGridSellerReport.Rows[0].Cells[0].Value = "09/09/2022"; //
+            //dataGridSellerReport.Rows[0].Cells[1].Value = "Juan"; //Juan
+            //dataGridSellerReport.Rows[0].Cells[2].Value = "Mariscos";
+            //dataGridSellerReport.Rows[0].Cells[3].Value = "13";
+            //dataGridSellerReport.Rows[0].Cells[4].Value = "10.00";
+            //dataGridSellerReport.Rows[0].Cells[5].Value = "20.00";
         }
     }
 }

@@ -289,7 +289,7 @@ namespace Punto_de_Venta
 
                 SqlCommand cmd = new SqlCommand("BorrarDepartamentos", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Id", idDepa);
+                cmd.Parameters.AddWithValue("@IdCaja", idDepa);
             
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
@@ -369,6 +369,7 @@ namespace Punto_de_Venta
             }
             catch (Exception err)
             {
+                //MessageBox.Show("El ID del producto no se puede repetir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // <-- Usar una vez acabado todo
                 MessageBox.Show(err.ToString());
                 return false;
             }
@@ -500,6 +501,87 @@ namespace Punto_de_Venta
             comando.Parameters.Clear();
             conexion.CerrarConexion();
             return tabla;
+        }
+
+        public bool AltaCaja(int numCaja, string disponibilidad)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("CrearCajas", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", numCaja);
+                cmd.Parameters.AddWithValue("@Disponibilidad", disponibilidad);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
+        }
+
+        public bool EditarCaja(int numCaja, string disponibilidad)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("EditarCajas", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", numCaja);
+                cmd.Parameters.AddWithValue("@Disponibilidad", disponibilidad);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
+        }
+
+        public DataTable ListarCaja()
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarCaja"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public bool BajaCaja(int numCaja)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("bajaCajas", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idC", numCaja);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
         }
 
     }

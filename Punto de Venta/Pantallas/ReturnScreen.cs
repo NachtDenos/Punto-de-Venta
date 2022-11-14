@@ -18,12 +18,12 @@ namespace Punto_de_Venta
             InitializeComponent();
             btnAddReturn.Enabled = false;
             btnDeleteReturn.Enabled = false;
-            dataGridReturn1.Rows[0].Cells[0].Value = "Salmón";
-            dataGridReturn1.Rows[0].Cells[1].Value = "2";
-            dataGridReturn1.Rows[0].Cells[2].Value = "120.00";
-            dataGridReturn2.Rows[0].Cells[0].Value = "Jamón";
-            dataGridReturn2.Rows[0].Cells[1].Value = "3";
-            dataGridReturn2.Rows[0].Cells[2].Value = "90.00";
+            //dataGridReturn1.Rows[0].Cells[0].Value = "Salmón";
+            //dataGridReturn1.Rows[0].Cells[1].Value = "2";
+            //dataGridReturn1.Rows[0].Cells[2].Value = "120.00";
+            //dataGridReturn2.Rows[0].Cells[0].Value = "Jamón";
+            //dataGridReturn2.Rows[0].Cells[1].Value = "3";
+            //dataGridReturn2.Rows[0].Cells[2].Value = "90.00";
         }
 
         private void btnOkReturn_Click(object sender, EventArgs e)

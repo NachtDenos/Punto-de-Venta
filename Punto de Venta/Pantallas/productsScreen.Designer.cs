@@ -344,6 +344,7 @@ namespace Punto_de_Venta
             // 
             // dataGridProduct
             // 
+            this.dataGridProduct.AllowUserToAddRows = false;
             this.dataGridProduct.AllowUserToDeleteRows = false;
             this.dataGridProduct.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
