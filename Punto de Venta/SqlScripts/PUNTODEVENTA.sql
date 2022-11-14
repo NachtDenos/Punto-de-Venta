@@ -50,6 +50,7 @@ BEGIN
    DROP TABLE Administrador;
 END
 go
+--puto si no te jalaa
 CREATE TABLE Administrador
 (
    idAdmin INT IDENTITY (1, 1) NOT NULL,
