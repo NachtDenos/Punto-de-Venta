@@ -15,11 +15,7 @@ namespace Punto_de_Venta
         public DiscountsScreen()
         {
             InitializeComponent();
-            dataGridDiscounts.Rows[0].Cells[0].Value = "Agua Mineral 100ml";
-            dataGridDiscounts.Rows[0].Cells[1].Value = "1";
-            dataGridDiscounts.Rows[0].Cells[2].Value = "10%";
-            dataGridDiscounts.Rows[0].Cells[3].Value = "08/09/2022";
-            dataGridDiscounts.Rows[0].Cells[4].Value = "10/09/2022";
+          
         }
 
         private void txtDiscountDiscount_KeyPress(object sender, KeyPressEventArgs e)
@@ -33,6 +29,15 @@ namespace Punto_de_Venta
         }
 
         private void btnEditDiscounts_Click(object sender, EventArgs e)
+        {
+            if (txtDiscountDiscount.TextLength == 0)
+            {
+                MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
+
+        private void addDiscountBtton_Click(object sender, EventArgs e)
         {
             if (txtDiscountDiscount.TextLength == 0)
             {

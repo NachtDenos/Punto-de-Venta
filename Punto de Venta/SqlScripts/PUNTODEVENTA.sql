@@ -706,11 +706,11 @@ update Producto set activo = 'Inactivo' where Producto.idProduct = @CodigProduc
 end;
 
 --Este es el select para departamentos y productos, probar hacerlo stored procedure
-select A.idProduct [Id], A.nombrePro [Nombre del Producto], A.descripcion [Descripcion], A.claveDepa [Id Departamento], A.existencia [Stock], A.uniVendida [Unidades Vendidas], B.nombreDep [Departamento]
-from Producto A
-join Departamento B
-on A.claveDepa = B.idDepa
-where A.claveDepa = B.idDepa
+--select A.idProduct [Id], A.nombrePro [Nombre del Producto], A.descripcion [Descripcion], A.claveDepa [Id Departamento], A.existencia [Stock], A.uniVendida [Unidades Vendidas], B.nombreDep [Departamento]
+--from Producto A
+--join Departamento B
+--on A.claveDepa = B.idDepa
+--where A.claveDepa = B.idDepa
 --smn est select jala pra eso, solo hazlo procedure y que reciba el id que buscamos y con eso buscamos el producto y su depa
 go
 
@@ -722,21 +722,27 @@ create proc RealizarDescuento
 as
 Begin
 	DECLARE @iDdis int;
-	select @iDdis= idDesc
-	from Descuento
+	
+	Print @iDdis
 insert into descFecha(fechaIni, fechaFin)
-values (@Fecha1, @Fecha2)
+values (@Fecha1, @Fecha2)	
+select @iDdis= SCOPE_IDENTITY(); --Nesecario ponerlo aqui para que aqui reciba la ultima identity creada 
 insert into Descuento(cantidad, claveFechaD)
 values (@Porcentaje, @iDdis)
 
 end;
-	RealizarDescuento 30, '2018-12-17', '2022-12-09'
-	
-	select * from Descuento
-	SELECT Descuento.idDesc, descFecha.idFechaDesc, descFecha.fechaIni, descFecha.fechaFin, Descuento.cantidad from Descuento
+
+go
+	--RealizarDescuento 50, '1999-04-16', '2024-10-22'
+go	
+select * from Descuento
+create proc ListarDescuentosFecha
+as
+Begin
+	SELECT Descuento.idDesc [Id Descuento], descFecha.fechaIni [Inicia], descFecha.fechaFin [Termina], Descuento.cantidad [Porcentaje] from Descuento
 	join descFecha
 	on descFecha.idFechaDesc = Descuento.idDesc
-select * from descFecha
+end;
 --Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
 --values ('Isaac','Espinoza','Morales','Wonder','123456',1)
 
