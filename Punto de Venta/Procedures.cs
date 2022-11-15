@@ -606,6 +606,19 @@ namespace Punto_de_Venta
             return true;
         }
 
+        public DataTable ListarDescuentos()
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarDescuentosFecha"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
         public DataTable ListarCaja()
         {
             DataTable tabla = new DataTable();

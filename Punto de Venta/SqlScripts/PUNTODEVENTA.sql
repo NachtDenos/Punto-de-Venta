@@ -761,6 +761,7 @@ Begin
 	on Descuento.idDesc = P.idDesc
 end;
 
+
 --Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
 --values ('Isaac','Espinoza','Morales','Wonder','123456',1)
 

@@ -48,7 +48,11 @@ namespace Punto_de_Venta
             cbProductDiscount.ValueMember = "Codigo";//Valor real de l combox
         }
 
-
+        private void ListaDescuentosGrid()
+        {
+            Procedures gridDesc = new Procedures();
+            dataGridDiscounts.DataSource = gridDesc.ListarDescuentos();      
+        }
         private void addDiscountBtton_Click(object sender, EventArgs e)
         {
             Procedures proc = new Procedures();
@@ -78,6 +82,7 @@ namespace Punto_de_Venta
         private void DiscountsScreen_Load(object sender, EventArgs e)
         {
             ListarProductos();
+            ListaDescuentosGrid();
         }
     }
 }
