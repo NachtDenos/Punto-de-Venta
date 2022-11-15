@@ -403,6 +403,21 @@ namespace Punto_de_Venta
             conexion.CerrarConexion();
             return tabla;
         }
+
+        public DataTable ListarProductosCb()
+        {
+            DataTable tabla = new DataTable();
+            // Form3 access = new Form3();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarProductos"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
         public bool BajaProductos(int CodigoProducto)
         {
             ConexionSqlServer conn = new ConexionSqlServer();

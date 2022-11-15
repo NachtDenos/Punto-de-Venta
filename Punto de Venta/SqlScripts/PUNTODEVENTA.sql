@@ -734,7 +734,7 @@ values (@Porcentaje, @iDdis)
 end;
 
 go
-	--RealizarDescuento 50, '1999-04-16', '2024-10-22'
+	--RealizarDescuento 30, '1998-04-16', '2777-10-22'
 go	
 select * from Descuento
 create proc ListarDescuentosFecha

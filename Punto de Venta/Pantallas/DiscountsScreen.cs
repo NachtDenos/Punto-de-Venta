@@ -37,6 +37,15 @@ namespace Punto_de_Venta
             }
         }
 
+        private void ListarProductos()
+        {
+            Procedures usuarioObj = new Procedures();
+            cbProductDiscount.DataSource = usuarioObj.ListarProductosCb();
+            cbProductDiscount.DisplayMember = "Nombre Producto";
+            cbProductDiscount.ValueMember = "Codigo";//Valor real de l combox
+        }
+
+
         private void addDiscountBtton_Click(object sender, EventArgs e)
         {
             if (txtDiscountDiscount.TextLength == 0)
@@ -44,6 +53,11 @@ namespace Punto_de_Venta
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        private void DiscountsScreen_Load(object sender, EventArgs e)
+        {
+            ListarProductos();
         }
     }
 }
