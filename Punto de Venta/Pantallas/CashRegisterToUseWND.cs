@@ -17,6 +17,8 @@ namespace Punto_de_Venta.Pantallas
         public CashRegisterToUseWND()
         {
             InitializeComponent();
+            ListarCajasCombo();
+            RegisterToUseCB.Text = "Seleccionar";
         }
 
         private void CloseRegisterToUserWnd_Click(object sender, EventArgs e)
@@ -41,19 +43,22 @@ namespace Punto_de_Venta.Pantallas
             }
             if (IsSelected == true)
             {
-
-
-                if (ComboBoxIndex == 0)
-                {
-                    Pantallas.CashierMainScreen cashierMainScreen = new Pantallas.CashierMainScreen();
-                    this.Hide();
-                    cashierMainScreen.ShowDialog();
-                    this.Show();
-                }
+                CashierMainScreen formu = new CashierMainScreen();
+                formu.labelIdCashRegister.Text = "234";
+                Pantallas.CashierMainScreen cashierMainScreen = new Pantallas.CashierMainScreen();
+                this.Hide();
+                cashierMainScreen.ShowDialog();
+                this.Show();
             }
 
         }
+        private void ListarCajasCombo()
+        {
+            Procedures usuarioObj = new Procedures();
+            RegisterToUseCB.DataSource = usuarioObj.ListarCajaCombo();
+            RegisterToUseCB.DisplayMember = "Numero de Caja";
+            RegisterToUseCB.ValueMember = "Numero de Caja";//Valor real de l combox
+        }
 
-    
     }
 }

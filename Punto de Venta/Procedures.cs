@@ -390,6 +390,20 @@ namespace Punto_de_Venta
             return tabla;
         }
 
+        public DataTable ListarCajasCb()
+        {
+            DataTable tabla = new DataTable();
+            // Form3 access = new Form3();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarCaja"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
         public DataTable ListarProductos()
         {
             DataTable tabla = new DataTable();
@@ -597,6 +611,19 @@ namespace Punto_de_Venta
             DataTable tabla = new DataTable();
             comando.Connection = conexion.AbrirConexion();
             comando.CommandText = "ListarCaja"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public DataTable ListarCajaCombo()
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarCajaCombo"; //Para el procedure
             comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
             leerFilas = comando.ExecuteReader();
             tabla.Load(leerFilas);

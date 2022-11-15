@@ -78,10 +78,6 @@
             // 
             this.RegisterToUseCB.BackColor = System.Drawing.Color.White;
             this.RegisterToUseCB.FormattingEnabled = true;
-            this.RegisterToUseCB.Items.AddRange(new object[] {
-            "Caja 1",
-            "Caja 2",
-            "Caja 3"});
             this.RegisterToUseCB.Location = new System.Drawing.Point(226, 112);
             this.RegisterToUseCB.Margin = new System.Windows.Forms.Padding(2);
             this.RegisterToUseCB.Name = "RegisterToUseCB";
