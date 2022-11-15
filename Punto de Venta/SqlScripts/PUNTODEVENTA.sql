@@ -29,7 +29,7 @@ CREATE TABLE Usuario
    PRIMARY KEY (idUser)
 );
 
-
+select * from Caja
 
 
 --select  A.idAdmin , B.idUser, B.nombreU, B.claveUsuario, B.contraU, B.tipoU  from Usuario B
@@ -633,6 +633,11 @@ Begin
 select idCaja[Numero de Caja], disponi[Disponibilidad] from Caja
 end;
 
+create proc ListarCajaCombo
+as
+Begin
+select idCaja[Numero de Caja] from Caja where disponi = 'Activo'
+end;
 
 go
 --Considerar hacerlo view y meterlo e el proc pero lo hare mañana a

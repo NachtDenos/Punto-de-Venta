@@ -13,9 +13,9 @@ using static Punto_de_Venta.DatabaseBool;
 namespace Punto_de_Venta.Pantallas
 {
 
-    public partial class CashierMainScreen : Form
+    public partial class CashierMainScreen : Form 
     {
-     
+
         //DE SUGERENCIA, EL CLIENTE SI PAGA CON MAS DINERO DE LO NORMAL, SE LE DEBE REGRESAR CAMBIO EN EL CASO DE QUE ESTE APLIUE
         //UTILIDAD: Costo - Precio Unitario
         //Producto-----> codigo y su descripcion
