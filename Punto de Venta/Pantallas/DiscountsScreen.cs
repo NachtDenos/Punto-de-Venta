@@ -37,6 +37,9 @@ namespace Punto_de_Venta
             }
         }
 
+
+
+
         private void ListarProductos()
         {
             Procedures usuarioObj = new Procedures();
@@ -48,12 +51,29 @@ namespace Punto_de_Venta
 
         private void addDiscountBtton_Click(object sender, EventArgs e)
         {
+            Procedures proc = new Procedures();
             if (txtDiscountDiscount.TextLength == 0)
             {
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            int idProducto = Convert.ToInt32(cbProductDiscount.SelectedValue);
+
+            string porcentajeTxt = txtDiscountDiscount.Text;
+            int porcentaje;
+            Int32.TryParse(porcentajeTxt, out porcentaje);
+            DateTime fecha1 = DateTime.Parse(dtpInDiscounts.Text);
+            DateTime fecha2 = DateTime.Parse(dtpOutDiscounts.Text);
+            var tilin2 = proc.InsertarDescuentos(porcentaje, fecha1, fecha2, idProducto);
+            if (tilin2)
+            {
+                MessageBox.Show("Inserccion exitosa", "Exito", MessageBoxButtons.OK);
+            }
+            else
+                MessageBox.Show("No se inserto el descuento");
         }
+        
+
 
         private void DiscountsScreen_Load(object sender, EventArgs e)
         {

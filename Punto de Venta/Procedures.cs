@@ -454,6 +454,7 @@ namespace Punto_de_Venta
             return tabla;
         }
 
+
         public DataTable filtroExist(int filtro)
         {
             DataTable tabla = new DataTable();
@@ -538,6 +539,33 @@ namespace Punto_de_Venta
                 MessageBox.Show(err.ToString());
                 return false;
             }
+            return true;
+        }
+
+        public bool InsertarDescuentos(int Porcentaje, DateTime fecha1, DateTime fecha2, int codigo)
+        {
+            ConexionSqlServer conn =  new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("RealizarDescuento", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Porcentaje", Porcentaje);
+                cmd.Parameters.AddWithValue("@Fecha1", fecha1);
+                cmd.Parameters.AddWithValue("@Fecha2", fecha2);
+                cmd.Parameters.AddWithValue("@ClaveProd", codigo);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Excepcion de base de datos");
+                MessageBox.Show(e.ToString());
+                return false;
+            }
+
             return true;
         }
 
