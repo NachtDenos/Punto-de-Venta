@@ -124,6 +124,7 @@ CREATE TABLE Producto
 	claveDepa INT NOT NULL,
 	--claveDesc INT NOT NULL,
 	--clavePre INT NOT NULL,   
+	idDesc int null,
 	fechaDesc DATE,
 	FechaCambio date null,
 	CONSTRAINT PK_idProd
@@ -150,12 +151,12 @@ CREATE TABLE gestioProd
    CONSTRAINT PK_idGest
    PRIMARY KEY (idGest)
 );
-/*
+
 ALTER TABLE Producto
-  ADD CONSTRAINT FK_idGest
-  FOREIGN KEY (claveGest)
-  REFERENCES gestioProd (idGest);
-  */
+  ADD CONSTRAINT FK_idDesc 
+  FOREIGN KEY (idDesc)
+  REFERENCES Descuento (idDesc);
+
   go
 IF OBJECT_ID('Caja') IS NOT NULL
 BEGIN
@@ -718,7 +719,8 @@ go
 create proc RealizarDescuento
 (@Porcentaje int,
 @Fecha1 date,
-@Fecha2 date
+@Fecha2 date,
+@ClaveProd int
 )
 as
 Begin
@@ -730,12 +732,20 @@ values (@Fecha1, @Fecha2)
 select @iDdis= SCOPE_IDENTITY(); --Nesecario ponerlo aqui para que aqui reciba la ultima identity creada 
 insert into Descuento(cantidad, claveFechaD)
 values (@Porcentaje, @iDdis)
+update Producto set idDesc = @iDdis where Producto.idProduct = @ClaveProd
 
 end;
 
 go
-	--RealizarDescuento 30, '1998-04-16', '2777-10-22'
+	--RealizarDescuento 30, '1998-04-16', '2777-10-22', 1
 go	
+
+SELECT Descuento.idDesc [Id Descuento], descFecha.fechaIni [Inicia], descFecha.fechaFin [Termina], Descuento.cantidad [Porcentaje], P.nombrePro, P.idProduct from Descuento
+	join descFecha
+	on descFecha.idFechaDesc = Descuento.idDesc
+	join Producto P
+	on Descuento.idDesc = P.idDesc
+
 select * from Descuento
 create proc ListarDescuentosFecha
 as
