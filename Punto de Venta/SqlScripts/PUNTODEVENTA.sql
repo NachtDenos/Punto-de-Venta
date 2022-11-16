@@ -29,8 +29,6 @@ CREATE TABLE Usuario
    PRIMARY KEY (idUser)
 );
 
-select * from Caja
-
 
 --select  A.idAdmin , B.idUser, B.nombreU, B.claveUsuario, B.contraU, B.tipoU  from Usuario B
 --join Administrador A
@@ -151,11 +149,6 @@ CREATE TABLE gestioProd
    CONSTRAINT PK_idGest
    PRIMARY KEY (idGest)
 );
-
-ALTER TABLE Producto
-  ADD CONSTRAINT FK_idDesc 
-  FOREIGN KEY (idDesc)
-  REFERENCES Descuento (idDesc);
 
   go
 IF OBJECT_ID('Caja') IS NOT NULL
@@ -328,20 +321,6 @@ BEGIN
    DROP TABLE Descuento;
 END
 go
-CREATE TABLE Descuento
-(
-   idDesc INT IDENTITY (1, 1) NOT NULL,
-   cantidad INT NOT NULL,
-   claveFechaD INT default(1) NULL, 
-   CONSTRAINT PK_idDesc
-   PRIMARY KEY (idDesc),
-   CONSTRAINT CK_cantidad
-   CHECK (0 < cantidad),
-   CONSTRAINT FK_claveFechaD
-   FOREIGN KEY (claveFechaD)
-   REFERENCES descFecha (idFechaDesc)
-);
-go
 
 IF OBJECT_ID('descFecha') IS NOT NULL
 BEGIN
@@ -355,6 +334,21 @@ CREATE TABLE descFecha
    fechaFin DATE NOT NULL,
    CONSTRAINT PK_idFechaDesc
    PRIMARY KEY (idFechaDesc)
+);
+go
+
+CREATE TABLE Descuento
+(
+   idDesc INT IDENTITY (1, 1) NOT NULL,
+   cantidad INT NOT NULL,
+   claveFechaD INT default(1) NULL, 
+   CONSTRAINT PK_idDesc
+   PRIMARY KEY (idDesc),
+   CONSTRAINT CK_cantidad
+   CHECK (0 < cantidad),
+   CONSTRAINT FK_claveFechaD
+   FOREIGN KEY (claveFechaD)
+   REFERENCES descFecha (idFechaDesc)
 );
 go
 
@@ -433,6 +427,11 @@ CREATE TABLE devolucion
    FOREIGN KEY (codigoProDev)
    REFERENCES Producto (idProduct)
 );
+
+ALTER TABLE Producto
+  ADD CONSTRAINT FK_idDesc 
+  FOREIGN KEY (idDesc)
+  REFERENCES Descuento (idDesc);
 go
 create proc SelectUsuarios
 (
@@ -760,6 +759,32 @@ Begin
 	on Descuento.idDesc = P.idDesc
 end;
 
+create proc BorrarDescuento
+(
+@idDes int
+)
+as
+Begin
+delete Descuento where idDesc = @idDes
+end;
+
+CREATE TRIGGER tr_bajaDescuentoPro ON Descuento
+INSTEAD OF DELETE
+AS
+BEGIN
+DECLARE @ID INT
+Select @ID = idDesc
+FROM deleted
+update Producto set idDesc = null where @ID = idDesc
+end;
+
+drop trigger tr_bajaDescuentoPro
+
+--exec BorrarDescuento 4
+
+--select * from Descuento
+
+--select * from Producto
 
 --Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
 --values ('Isaac','Espinoza','Morales','Wonder','123456',1)
@@ -860,4 +885,3 @@ select [Codigo], [Nombre Producto] from vwInventary
 where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%') and [Activo] = 'Activo'
 end;
 
-drop proc ConsultaRapida

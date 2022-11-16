@@ -12,9 +12,13 @@ namespace Punto_de_Venta
 {
     public partial class DiscountsScreen : Form
     {
+        Procedures proc = new Procedures();
+        int idDescuentoSeleccionado;
         public DiscountsScreen()
         {
             InitializeComponent();
+            btnEditDiscounts.Enabled = false;
+            DeleteDiscountBtton.Enabled = false;
           
         }
 
@@ -71,10 +75,12 @@ namespace Punto_de_Venta
             var tilin2 = proc.InsertarDescuentos(porcentaje, fecha1, fecha2, idProducto);
             if (tilin2)
             {
-                MessageBox.Show("Inserccion exitosa", "Exito", MessageBoxButtons.OK);
+                MessageBox.Show("Inserccion Realizada con Exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                MessageBox.Show("No se inserto el descuento");
+                MessageBox.Show("No se realizo la inserccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            ListaDescuentosGrid();
         }
         
 
@@ -83,6 +89,51 @@ namespace Punto_de_Venta
         {
             ListarProductos();
             ListaDescuentosGrid();
+        }
+
+        private void DeleteDiscountBtton_Click(object sender, EventArgs e)
+        {
+            var deleteDescuento = proc.BorrarDescuento(idDescuentoSeleccionado);
+            if (deleteDescuento == true)
+            {
+                MessageBox.Show("Se elimino el descuento con exito", "Exíto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDiscountDiscount.Text = "";
+                dataGridDiscounts.DataSource = proc.ListarDescuentos();
+
+            }
+            else
+            {
+                MessageBox.Show("NO se elimino el descuento", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridDiscounts.DataSource = proc.ListarDescuentos();
+            }
+            btnEditDiscounts.Enabled = false;
+            DeleteDiscountBtton.Enabled = false;
+            addDiscountBtton.Enabled = true;
+            dataGridDiscounts.ClearSelection();
+        }
+
+        private void dataGridDiscounts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridDiscounts.AllowUserToOrderColumns = false;
+            try
+            {
+                if (dataGridDiscounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    dataGridDiscounts.CurrentRow.Selected = true;
+
+                    string idDiscount;
+                    int eseId;
+                    idDiscount = dataGridDiscounts.CurrentRow.Cells["Id Descuento"].Value.ToString();
+                    Int32.TryParse(idDiscount, out eseId);
+                    idDescuentoSeleccionado = eseId;
+                    btnEditDiscounts.Enabled = true;
+                    DeleteDiscountBtton.Enabled = true;
+                    addDiscountBtton.Enabled = false;
+                }
+            }
+            catch (Exception ArgumentOutOfRangeException)
+            {
+            }
         }
     }
 }

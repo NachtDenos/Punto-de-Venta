@@ -56,7 +56,6 @@ namespace Punto_de_Venta
             this.dataGridEmployees = new System.Windows.Forms.DataGridView();
             this.txtFilterEmployees = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.SearchBtton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmployees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -332,27 +331,12 @@ namespace Punto_de_Venta
             this.label12.TabIndex = 26;
             this.label12.Text = "Filtro:";
             // 
-            // SearchBtton
-            // 
-            this.SearchBtton.BackColor = System.Drawing.Color.Olive;
-            this.SearchBtton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SearchBtton.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchBtton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SearchBtton.Location = new System.Drawing.Point(647, 542);
-            this.SearchBtton.Name = "SearchBtton";
-            this.SearchBtton.Size = new System.Drawing.Size(139, 51);
-            this.SearchBtton.TabIndex = 28;
-            this.SearchBtton.Text = "Buscar";
-            this.SearchBtton.UseVisualStyleBackColor = false;
-            this.SearchBtton.Click += new System.EventHandler(this.SearchBtton_Click);
-            // 
             // EmployeesScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
-            this.Controls.Add(this.SearchBtton);
             this.Controls.Add(this.txtFilterEmployees);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.dataGridEmployees);
@@ -417,6 +401,5 @@ namespace Punto_de_Venta
         private System.Windows.Forms.DataGridView dataGridEmployees;
         private System.Windows.Forms.TextBox txtFilterEmployees;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button SearchBtton;
     }
 }
