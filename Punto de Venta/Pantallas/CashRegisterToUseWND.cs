@@ -14,6 +14,7 @@ namespace Punto_de_Venta.Pantallas
     {
         int ComboBoxIndex;
         bool IsSelected;
+        public string prueba;
         public CashRegisterToUseWND()
         {
             InitializeComponent();
@@ -43,9 +44,9 @@ namespace Punto_de_Venta.Pantallas
             }
             if (IsSelected == true)
             {
-                CashierMainScreen formu = new CashierMainScreen();
-                formu.labelIdCashRegister.Text = "234";
-                Pantallas.CashierMainScreen cashierMainScreen = new Pantallas.CashierMainScreen();
+                string prueba = dtpCajaCobro.Text;
+                string cajaString = RegisterToUseCB.Text;
+                Pantallas.CashierMainScreen cashierMainScreen = new Pantallas.CashierMainScreen(prueba, cajaString);
                 this.Hide();
                 cashierMainScreen.ShowDialog();
                 this.Show();

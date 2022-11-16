@@ -276,7 +276,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelHour;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelChildFormSales;
@@ -285,5 +284,6 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.Label labelIdCashRegister;
+        public System.Windows.Forms.Label labelDate;
     }
 }

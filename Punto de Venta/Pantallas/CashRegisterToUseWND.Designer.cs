@@ -33,6 +33,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.RegisterToUseCB = new System.Windows.Forms.ComboBox();
             this.GoToSellerScreenbUTTN = new System.Windows.Forms.Button();
+            this.dtpCajaCobro = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +81,7 @@
             // 
             this.RegisterToUseCB.BackColor = System.Drawing.Color.White;
             this.RegisterToUseCB.FormattingEnabled = true;
-            this.RegisterToUseCB.Location = new System.Drawing.Point(226, 112);
+            this.RegisterToUseCB.Location = new System.Drawing.Point(107, 125);
             this.RegisterToUseCB.Margin = new System.Windows.Forms.Padding(2);
             this.RegisterToUseCB.Name = "RegisterToUseCB";
             this.RegisterToUseCB.Size = new System.Drawing.Size(166, 21);
@@ -101,12 +104,41 @@
             this.GoToSellerScreenbUTTN.UseVisualStyleBackColor = false;
             this.GoToSellerScreenbUTTN.Click += new System.EventHandler(this.GoToSellerScreenbUTTN_Click);
             // 
+            // dtpCajaCobro
+            // 
+            this.dtpCajaCobro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpCajaCobro.Location = new System.Drawing.Point(359, 126);
+            this.dtpCajaCobro.Name = "dtpCajaCobro";
+            this.dtpCajaCobro.Size = new System.Drawing.Size(158, 20);
+            this.dtpCajaCobro.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(121, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Seleccione la caja a cobrar";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(369, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(136, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Seleccione la fecha de hoy";
+            // 
             // CashRegisterToUseWND
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(600, 249);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtpCajaCobro);
             this.Controls.Add(this.GoToSellerScreenbUTTN);
             this.Controls.Add(this.RegisterToUseCB);
             this.Controls.Add(this.panel1);
@@ -118,6 +150,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -128,5 +161,8 @@
         private System.Windows.Forms.ComboBox RegisterToUseCB;
         private System.Windows.Forms.Button GoToSellerScreenbUTTN;
         private System.Windows.Forms.Button CloseRegisterToUserWnd;
+        private System.Windows.Forms.DateTimePicker dtpCajaCobro;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

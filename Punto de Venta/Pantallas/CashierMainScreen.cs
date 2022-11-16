@@ -24,6 +24,12 @@ namespace Punto_de_Venta.Pantallas
         {
             InitializeComponent();
         }
+        public CashierMainScreen(string text, string caja)
+        {
+            InitializeComponent();
+            labelDate.Text = text;
+            labelIdCashRegister.Text = caja;
+        }
         string Hora = DateTime.Now.ToString();
         string Fecha = DateTime.Now.ToString();
         private Form activeForm = null;
@@ -71,7 +77,7 @@ namespace Punto_de_Venta.Pantallas
         private void timer1_Tick_1(object sender, EventArgs e)
         {
             
-            labelDate.Text = DateTime.Now.ToShortDateString().ToUpper();
+            //labelDate.Text = DateTime.Now.ToShortDateString().ToUpper();
             //label9.Text = DateTime.Now.ToShortDateString();
         }
 
