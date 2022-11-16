@@ -790,7 +790,7 @@ create proc ListarInventario
 as
 Begin
 select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
-       [Cantidades Vendidas], [Merma] from vwInventary
+       [Cantidades Vendidas], [Merma] from vwInventary where [Activo] = 'Activo'
 end;
 
 create procedure filtro_existenciaI
@@ -835,7 +835,7 @@ end;
 create proc ConsultaRapida
 as
 Begin
-select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary
+select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary where [Activo] = 'Activo'
 end;
 
 create proc filtroConsultaRapida
@@ -843,13 +843,13 @@ create proc filtroConsultaRapida
 as
 Begin
 select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary 
-where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%')
+where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%') and [Activo] = 'Activo'
 end;
 
 create proc productosVenta
 as
 Begin
-select [Codigo], [Nombre Producto] from vwInventary
+select [Codigo], [Nombre Producto] from vwInventary where [Activo] = 'Activo'
 end;
 
 create proc filtroSelectProduct
@@ -857,9 +857,7 @@ create proc filtroSelectProduct
 as
 Begin
 select [Codigo], [Nombre Producto] from vwInventary 
-where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%')
+where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%') and [Activo] = 'Activo'
 end;
 
-exec filtroConsultaRapida 1, 'Leche'
-
-select * from vwInventary
+drop proc ConsultaRapida
