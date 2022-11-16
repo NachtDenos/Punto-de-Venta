@@ -362,5 +362,8 @@
     <None Include="Resources\EjemploTicket.png" />
     <None Include="Resources\dummyTicket.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cotejo.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

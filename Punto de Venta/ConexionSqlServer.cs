@@ -13,7 +13,7 @@ namespace Punto_de_Venta
         //* simbolo universal para ue me traiga todas las carreras y en general todo todito
         // daa source =
         //persist security info true; Integrated Security true esto es para poder entrar con el sistema de autentificaion de windows
-        //pINCHE ALYLIN
+        
 
         /*<add name="ConexionHistorial2"
             connectionString="Data Source=LAPTOP-VLDIQG6S\SQLEXPRESS;Initial Catalog=HistorialMedicoRJcodeAdvanced; persist security info true; Integrated Security true"
@@ -30,10 +30,10 @@ namespace Punto_de_Venta
 	</connectionStrings> esto va en el appConfig
          */
         //DESKTOP-1145PHU\SQLEXPRESS <- El de Edson
-        //LAPTOP-VLDIQG6S\SQLEXPRESS <- El de Isaac xd ya vi pq mamo xd
+        //LAPTOP-VLDIQG6S\SQLEXPRESS <- El de Isaac
         static private string CadenaConexion = @"Server=LAPTOP-VLDIQG6S\SQLEXPRESS; DataBase=ProyectoMAD; Integrated Security= true";
         private SqlConnection Conexion = new SqlConnection(CadenaConexion);
-        //NO APARECE EL NOMBRE DEL ADMIN
+        
         public SqlConnection AbrirConexion()
         {
             if (Conexion.State == ConnectionState.Closed)
