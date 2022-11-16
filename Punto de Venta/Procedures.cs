@@ -691,5 +691,68 @@ namespace Punto_de_Venta
             }
             return true;
         }
+
+        public DataTable consultaRapida()
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ConsultaRapida"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public DataTable filtroConsultaRapida(int filtro, string nombre)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtroConsultaRapida"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filID", filtro);
+            comando.Parameters.AddWithValue("@filName", nombre);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+        public DataTable filtroConsultaRapida(int filtro)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtroConsultaRapida"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filID", filtro);
+            comando.Parameters.AddWithValue("@filName", "");
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+        public DataTable filtroConsultaRapida(string nombre)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtroConsultaRapida"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filID", "");
+            comando.Parameters.AddWithValue("@filName", nombre);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
     }
 }

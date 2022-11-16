@@ -31,15 +31,12 @@ namespace Punto_de_Venta
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuickSearchScreen));
             this.dataGridQuickSearch = new System.Windows.Forms.DataGridView();
-            this.codQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.existQuick = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIdCashRegister = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNameQuickSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnFilterQuickSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridQuickSearch)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,40 +47,11 @@ namespace Punto_de_Venta
             this.dataGridQuickSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridQuickSearch.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridQuickSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridQuickSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codQuick,
-            this.nameQuick,
-            this.priceQuick,
-            this.existQuick});
             this.dataGridQuickSearch.Location = new System.Drawing.Point(236, 85);
             this.dataGridQuickSearch.Name = "dataGridQuickSearch";
             this.dataGridQuickSearch.ReadOnly = true;
             this.dataGridQuickSearch.Size = new System.Drawing.Size(326, 458);
             this.dataGridQuickSearch.TabIndex = 0;
-            // 
-            // codQuick
-            // 
-            this.codQuick.HeaderText = "Código";
-            this.codQuick.Name = "codQuick";
-            this.codQuick.ReadOnly = true;
-            // 
-            // nameQuick
-            // 
-            this.nameQuick.HeaderText = "Nombre";
-            this.nameQuick.Name = "nameQuick";
-            this.nameQuick.ReadOnly = true;
-            // 
-            // priceQuick
-            // 
-            this.priceQuick.HeaderText = "Precio";
-            this.priceQuick.Name = "priceQuick";
-            this.priceQuick.ReadOnly = true;
-            // 
-            // existQuick
-            // 
-            this.existQuick.HeaderText = "Existencia";
-            this.existQuick.Name = "existQuick";
-            this.existQuick.ReadOnly = true;
             // 
             // label2
             // 
@@ -112,14 +80,15 @@ namespace Punto_de_Venta
             this.txtIdCashRegister.Name = "txtIdCashRegister";
             this.txtIdCashRegister.Size = new System.Drawing.Size(194, 22);
             this.txtIdCashRegister.TabIndex = 30;
+            this.txtIdCashRegister.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdCashRegister_KeyPress);
             // 
-            // textBox1
+            // txtNameQuickSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 196);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 22);
-            this.textBox1.TabIndex = 32;
+            this.txtNameQuickSearch.Location = new System.Drawing.Point(16, 196);
+            this.txtNameQuickSearch.Multiline = true;
+            this.txtNameQuickSearch.Name = "txtNameQuickSearch";
+            this.txtNameQuickSearch.Size = new System.Drawing.Size(194, 22);
+            this.txtNameQuickSearch.TabIndex = 32;
             // 
             // label3
             // 
@@ -131,13 +100,28 @@ namespace Punto_de_Venta
             this.label3.TabIndex = 31;
             this.label3.Text = "Nombre del artículo";
             // 
+            // btnFilterQuickSearch
+            // 
+            this.btnFilterQuickSearch.BackColor = System.Drawing.Color.Navy;
+            this.btnFilterQuickSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFilterQuickSearch.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilterQuickSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFilterQuickSearch.Location = new System.Drawing.Point(44, 492);
+            this.btnFilterQuickSearch.Name = "btnFilterQuickSearch";
+            this.btnFilterQuickSearch.Size = new System.Drawing.Size(139, 51);
+            this.btnFilterQuickSearch.TabIndex = 33;
+            this.btnFilterQuickSearch.Text = "Filtrar";
+            this.btnFilterQuickSearch.UseVisualStyleBackColor = false;
+            this.btnFilterQuickSearch.Click += new System.EventHandler(this.btnFilterQuickSearch_Click);
+            // 
             // QuickSearchScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(595, 586);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnFilterQuickSearch);
+            this.Controls.Add(this.txtNameQuickSearch);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtIdCashRegister);
             this.Controls.Add(this.label1);
@@ -162,11 +146,8 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtIdCashRegister;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNameQuickSearch;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codQuick;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameQuick;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceQuick;
-        private System.Windows.Forms.DataGridViewTextBoxColumn existQuick;
+        private System.Windows.Forms.Button btnFilterQuickSearch;
     }
 }

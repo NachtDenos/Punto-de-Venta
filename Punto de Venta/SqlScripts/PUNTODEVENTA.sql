@@ -750,7 +750,6 @@ go
 go	
 
 
-
 create proc ListarDescuentosFecha
 as
 Begin
@@ -830,5 +829,25 @@ select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio U
 where (0 = @filtroI and [Merma] is null) or (1 = @filtroI and [Merma] > 0)
 end;
 
-drop procedure filtro_mermaI
 
+--PROCEDURES PARA VER EN LAS VENTAS
+
+create proc ConsultaRapida
+as
+Begin
+select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary
+end;
+
+create proc filtroConsultaRapida
+(@filID int, @filName varchar(200))
+as
+Begin
+select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary 
+where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%')
+end;
+
+
+
+exec filtroConsultaRapida 1, 'Leche'
+
+select * from vwInventary
