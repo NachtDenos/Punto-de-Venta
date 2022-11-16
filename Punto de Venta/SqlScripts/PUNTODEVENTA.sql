@@ -846,7 +846,19 @@ select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary
 where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%')
 end;
 
+create proc productosVenta
+as
+Begin
+select [Codigo], [Nombre Producto] from vwInventary
+end;
 
+create proc filtroSelectProduct
+(@filID int, @filName varchar(200))
+as
+Begin
+select [Codigo], [Nombre Producto] from vwInventary 
+where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%')
+end;
 
 exec filtroConsultaRapida 1, 'Leche'
 

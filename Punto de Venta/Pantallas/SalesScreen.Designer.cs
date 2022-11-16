@@ -30,8 +30,6 @@ namespace Punto_de_Venta
         private void InitializeComponent()
         {
             this.dataGridProductSales = new System.Windows.Forms.DataGridView();
-            this.NoArt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridCarritoSales = new System.Windows.Forms.DataGridView();
             this.NoPRod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProCarr = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +52,7 @@ namespace Punto_de_Venta
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnFilterSales = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProductSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCarritoSales)).BeginInit();
             this.SuspendLayout();
@@ -62,33 +61,16 @@ namespace Punto_de_Venta
             // 
             this.dataGridProductSales.AllowUserToAddRows = false;
             this.dataGridProductSales.AllowUserToDeleteRows = false;
+            this.dataGridProductSales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridProductSales.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridProductSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridProductSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NoArt,
-            this.Pro});
             this.dataGridProductSales.Location = new System.Drawing.Point(223, 115);
             this.dataGridProductSales.Name = "dataGridProductSales";
             this.dataGridProductSales.ReadOnly = true;
             this.dataGridProductSales.RowHeadersWidth = 51;
             this.dataGridProductSales.Size = new System.Drawing.Size(244, 349);
             this.dataGridProductSales.TabIndex = 0;
-            // 
-            // NoArt
-            // 
-            this.NoArt.HeaderText = "No. de Producto";
-            this.NoArt.MinimumWidth = 6;
-            this.NoArt.Name = "NoArt";
-            this.NoArt.ReadOnly = true;
-            this.NoArt.Width = 125;
-            // 
-            // Pro
-            // 
-            this.Pro.HeaderText = "Producto";
-            this.Pro.MinimumWidth = 6;
-            this.Pro.Name = "Pro";
-            this.Pro.ReadOnly = true;
-            this.Pro.Width = 125;
+            this.dataGridProductSales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProductSales_CellClick);
             // 
             // dataGridCarritoSales
             // 
@@ -184,7 +166,7 @@ namespace Punto_de_Venta
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(21, 324);
+            this.label4.Location = new System.Drawing.Point(21, 374);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 22);
             this.label4.TabIndex = 29;
@@ -207,10 +189,11 @@ namespace Punto_de_Venta
             this.txtNumberSales.Name = "txtNumberSales";
             this.txtNumberSales.Size = new System.Drawing.Size(146, 22);
             this.txtNumberSales.TabIndex = 31;
+            this.txtNumberSales.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumberSales_KeyPress);
             // 
             // txtQuantitySales
             // 
-            this.txtQuantitySales.Location = new System.Drawing.Point(25, 360);
+            this.txtQuantitySales.Location = new System.Drawing.Point(25, 410);
             this.txtQuantitySales.Multiline = true;
             this.txtQuantitySales.Name = "txtQuantitySales";
             this.txtQuantitySales.Size = new System.Drawing.Size(146, 22);
@@ -322,12 +305,27 @@ namespace Punto_de_Venta
             this.label11.TabIndex = 42;
             this.label11.Text = "producto";
             // 
+            // btnFilterSales
+            // 
+            this.btnFilterSales.BackColor = System.Drawing.Color.Navy;
+            this.btnFilterSales.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFilterSales.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilterSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFilterSales.Location = new System.Drawing.Point(40, 291);
+            this.btnFilterSales.Name = "btnFilterSales";
+            this.btnFilterSales.Size = new System.Drawing.Size(112, 39);
+            this.btnFilterSales.TabIndex = 43;
+            this.btnFilterSales.Text = "Filtrar";
+            this.btnFilterSales.UseVisualStyleBackColor = false;
+            this.btnFilterSales.Click += new System.EventHandler(this.btnFilterSales_Click);
+            // 
             // SalesScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.btnFilterSales);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtQuantityDeleteSales);
@@ -380,10 +378,9 @@ namespace Punto_de_Venta
         private System.Windows.Forms.TextBox txtQuantityDeleteSales;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoArt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pro;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoPRod;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProCarr;
+        private System.Windows.Forms.Button btnFilterSales;
     }
 }

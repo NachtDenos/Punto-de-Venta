@@ -754,5 +754,67 @@ namespace Punto_de_Venta
             return tabla;
         }
 
+        public DataTable productoSales()
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "productosVenta"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public DataTable filtroSelectProduct(int filtro, string nombre)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtroSelectProduct"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filID", filtro);
+            comando.Parameters.AddWithValue("@filName", nombre);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+        public DataTable filtroSelectProduct(int filtro)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtroSelectProduct"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filID", filtro);
+            comando.Parameters.AddWithValue("@filName", "");
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+        public DataTable filtroSelectProduct(string nombre)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtroSelectProduct"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filID", "");
+            comando.Parameters.AddWithValue("@filName", nombre);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
     }
 }

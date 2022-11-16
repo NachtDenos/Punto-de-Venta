@@ -12,9 +12,13 @@ namespace Punto_de_Venta
 {
     public partial class SalesScreen : Form
     {
+        Procedures proc = new Procedures();
         public SalesScreen()
         {
             InitializeComponent();
+            dataGridProductSales.DataSource = proc.productoSales();
+            btnAddSales.Enabled = false;
+            txtQuantitySales.Enabled = false;
             //dataGridProductSales.Rows[0].Cells[0].Value = "B312";
             //dataGridProductSales.Rows[0].Cells[1].Value = "Jamón";
             //dataGridCarritoSales.Rows[0].Cells[0].Value = "B412";
@@ -68,6 +72,10 @@ namespace Punto_de_Venta
                 MessageBox.Show("No se puede ingresar un valor en cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            txtQuantitySales.Text = "";
+            txtQuantitySales.Enabled = false;
+            btnAddSales.Enabled = false;
+            dataGridProductSales.ClearSelection();
         }
 
         private void btnDeleteSales_Click(object sender, EventArgs e)
@@ -83,6 +91,56 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("No se puede ingresar un valor en cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+        }
+
+        private void txtNumberSales_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo se aceptan números en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void dataGridProductSales_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridProductSales.AllowUserToOrderColumns = false;
+            try
+            {
+                if (dataGridProductSales.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    dataGridProductSales.CurrentRow.Selected = true;
+                    btnAddSales.Enabled = true;
+                    txtQuantitySales.Enabled = true;
+                }
+            }
+            catch (Exception ArgumentOutOfRangeException)
+            {
+
+            }
+        }
+
+        private void btnFilterSales_Click(object sender, EventArgs e)
+        {
+            if (txtNameSales.Text != "" && txtNumberSales.Text != "")
+            {
+                int filtro = Int32.Parse(txtNumberSales.Text);
+                dataGridProductSales.DataSource = proc.filtroSelectProduct(filtro, txtNameSales.Text);
+            }
+            else if (txtNumberSales.Text == "" && txtNameSales.Text != "")
+            {
+                dataGridProductSales.DataSource = proc.filtroSelectProduct(txtNameSales.Text);
+            }
+            else if (txtNumberSales.Text != "" && txtNameSales.Text == "")
+            {
+                int filtro = Int32.Parse(txtNumberSales.Text);
+                dataGridProductSales.DataSource = proc.filtroSelectProduct(filtro);
+            }
+            else
+            {
+                dataGridProductSales.DataSource = proc.productoSales();
             }
         }
     }
