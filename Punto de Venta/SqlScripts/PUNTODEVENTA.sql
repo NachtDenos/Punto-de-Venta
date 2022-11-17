@@ -433,6 +433,18 @@ ALTER TABLE Producto
   FOREIGN KEY (idDesc)
   REFERENCES Descuento (idDesc);
 go
+
+create table VentaTemporal
+(
+  idVentaTemp int identity (0,1) not null,
+  CodigoProducto int not null,
+  IdProducto int not null,
+  FechaVenta date not null,
+  Caja int not null,
+
+);
+go
+
 create proc SelectUsuarios
 (
 @ClaveU varchar(50),
@@ -885,3 +897,10 @@ select [Codigo], [Nombre Producto] from vwInventary
 where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%') and [Activo] = 'Activo'
 end;
 
+
+create proc SeleccionarProducto
+(@CodigoProd int )
+as
+Begin
+Select Producto.idProduct [Codigo], nombrePro [Nombre Producto] from Producto where Producto.idProduct = @CodigoProd
+end;

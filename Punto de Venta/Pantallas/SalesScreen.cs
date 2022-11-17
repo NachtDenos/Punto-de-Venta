@@ -60,6 +60,7 @@ namespace Punto_de_Venta
 
         private void btnAddSales_Click(object sender, EventArgs e)
         {
+            Procedures proc = new Procedures();
             if (txtQuantitySales.TextLength == 0)
             {
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -76,6 +77,12 @@ namespace Punto_de_Venta
             txtQuantitySales.Enabled = false;
             btnAddSales.Enabled = false;
             dataGridProductSales.ClearSelection();
+
+            string numCod;
+            numCod = txtNumberSales.Text;
+            int codigoProdc = Int32.Parse(numCod);
+            var InsertData = proc.SeleccionarProducto(codigoProdc);
+            dataGridCarritoSales.DataSource = proc.SeleccionarProducto(codigoProdc);
         }
 
         private void btnDeleteSales_Click(object sender, EventArgs e)
