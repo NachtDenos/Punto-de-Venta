@@ -302,12 +302,6 @@ namespace Punto_de_Venta
             // cbMeasureProduct
             // 
             this.cbMeasureProduct.FormattingEnabled = true;
-            this.cbMeasureProduct.Items.AddRange(new object[] {
-            "Kilogramos",
-            "Gramos",
-            "Litros",
-            "Mililitros",
-            "Piezas"});
             this.cbMeasureProduct.Location = new System.Drawing.Point(261, 260);
             this.cbMeasureProduct.Name = "cbMeasureProduct";
             this.cbMeasureProduct.Size = new System.Drawing.Size(146, 21);

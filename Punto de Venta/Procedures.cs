@@ -317,7 +317,7 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool ActualizarProductos(int ID, string NombreProd, string descripcion, string uMedida, DateTime fechaCambio,
+        public bool ActualizarProductos(int ID, string NombreProd, string descripcion, int uMedida, DateTime fechaCambio,
             int existencia, int ptReOrden, string Activo, float costo, float precioUnitario, int ClaveDepa)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
@@ -353,7 +353,7 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool InsertarProductos(int CodigoProducto, string Nombre, string Descripcion, string UnidadMedida, DateTime fechaAlta, int existencia, int ptReorden, string activo,
+        public bool InsertarProductos(int CodigoProducto, string Nombre, string Descripcion, int UnidadMedida, DateTime fechaAlta, int existencia, int ptReorden, string activo,
         float costo, float preciounitario,int claveDepartamento)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
@@ -395,6 +395,20 @@ namespace Punto_de_Venta
             // Form3 access = new Form3();
             comando.Connection = conexion.AbrirConexion();
             comando.CommandText = "ListarDepartamentos"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public DataTable ListarUnidadesMedidaCb()
+        {
+            DataTable tabla = new DataTable();
+            // Form3 access = new Form3();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarUnidadesMedida"; //Para el procedure
             comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
             leerFilas = comando.ExecuteReader();
             tabla.Load(leerFilas);

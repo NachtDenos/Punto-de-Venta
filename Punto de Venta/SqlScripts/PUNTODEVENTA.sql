@@ -108,7 +108,7 @@ CREATE TABLE Producto
     idProduct INT NOT NULL,
 	nombrePro VARCHAR (30) NOT NULL,
 	descripcion VARCHAR (60) NOT NULL,
-	uniMedida VARCHAR (10) NOT NULL,
+	uniMedida INT NOT NULL,
 	fechaAlta DATE NOT NULL,
 	existencia INT NOT NULL,
 	ptReorden INT NOT NULL,
@@ -136,6 +136,31 @@ CREATE TABLE Producto
 
 
 go
+
+
+IF OBJECT_ID('uniMedidaPro') IS NOT NULL
+BEGIN
+   DROP TABLE uniMedidaPro;
+END
+go
+
+CREATE TABLE uniMedidaPro
+(
+   idMedida INT IDENTITY (0,1) NOT NULL,
+   unidadMedida VARCHAR (70)
+   CONSTRAINT PK_idMedida
+   PRIMARY KEY (idMedida)
+);
+
+go
+ALTER TABLE Producto
+  ADD CONSTRAINT FK_idMedida
+  FOREIGN KEY (uniMedida)
+  REFERENCES uniMedidaPro (idMedida);
+  go
+
+go
+
 IF OBJECT_ID('gestioProd') IS NOT NULL
 BEGIN
    DROP TABLE gestioProd;
@@ -447,7 +472,10 @@ create table VentaTemporal
 );
 go
 
+--insert into uniMedidaPro (unidadMedida)
+--values ('Pieza')
 
+--select * from uniMedidaPro
 
 create proc SelectUsuarios
 (
@@ -641,8 +669,6 @@ Begin
 delete Caja where idCaja = @idC
 end;
 
-select * from Caja
-
 create proc ListarCaja
 as
 Begin
@@ -656,19 +682,21 @@ select idCaja[Numero de Caja] from Caja where disponi = 'Activo'
 end;
 
 go
---Considerar hacerlo view y meterlo e el proc pero lo hare mañana a
+
 create proc ListarProductos
 as
 Begin
 select A.idProduct [Codigo], A.nombrePro [Nombre Producto], A.descripcion [Descripción], A.PrecioUnitario [Precio Unitario], A.Costo [Costo],
 A.activo [Activo], A.claveAdmin [Gestor], B.nombreDep [Departamento], A.existencia [Stock], A.fechaAlta [Fecha de Alta],
-A.FechaCambio [Fecha de Actualizacion], A.ptReorden [Punto de Reorden], A.uniMedida [Unidad de Medida], A.uniVendida [Cantidades Vendidas], c.claveUsuario [Usuario], D.idDesc [Id descuento] from Producto A
+A.FechaCambio [Fecha de Actualizacion], A.ptReorden [Punto de Reorden], E.unidadMedida [Unidad de Medida], A.uniVendida [Cantidades Vendidas], c.claveUsuario [Usuario], D.idDesc [Id descuento] from Producto A
 join Departamento B
 on B.idDepa = A.claveDepa
 join Usuario C
 ON c.idUser = a.claveAdmin
 left join Descuento D
 ON D.idDesc = A.idDesc
+join uniMedidaPro E
+ON E.idMedida = A.uniMedida
 
 end;
 
@@ -679,12 +707,21 @@ Begin
 SELECT Departamento.idDepa, Departamento.nombreDep from Departamento
 end;
 go
+
+create proc ListarUnidadesMedida
+as
+Begin
+SELECT uniMedidaPro.idMedida, uniMedidaPro.unidadMedida from uniMedidaPro
+end;
+
+go
+
 create proc InsertarProductos
 (
 @CodigoProducto int,
 @NombreProducto varchar(30),
 @Descripcion varchar(60),
-@UniMedida varchar(10),
+@UniMedida int,
 @fechaAlta date ,
 @existencia int ,
 @ptReorden int ,
@@ -708,7 +745,7 @@ create proc ActualizarProductos
 @IdP int,
 @NombreProducto varchar(30),
 @Descripcion varchar(60),
-@UnidadMedida varchar(10),
+@UnidadMedida int,
 @FechaCambio date,
 @existencia int,
 @ptReorden int,
@@ -838,12 +875,14 @@ create view vwInventary
 as
 select A.idProduct [Codigo], A.nombrePro [Nombre Producto], A.descripcion [Descripción], A.PrecioUnitario [Precio Unitario], A.Costo [Costo],
 A.activo [Activo], A.claveAdmin [Gestor], B.nombreDep [Departamento], A.existencia [Stock], A.fechaAlta [Fecha de Alta],
-A.FechaCambio [Fecha de Actualizacion], A.ptReorden [Punto de Reorden], A.uniMedida [Unidad de Medida], A.merma[Merma], A.uniVendida [Cantidades Vendidas], c.claveUsuario [Usuario], 
+A.FechaCambio [Fecha de Actualizacion], A.ptReorden [Punto de Reorden], D.unidadMedida [Unidad de Medida], A.merma[Merma], A.uniVendida [Cantidades Vendidas], c.claveUsuario [Usuario], 
 A.idDesc [id Descuento] from Producto A
 join Departamento B
 on B.idDepa = A.claveDepa
 join Usuario C
 ON c.idUser = a.claveAdmin
+join uniMedidaPro D
+ON D.idMedida = A.uniMedida
 
 create proc ListarInventario
 as
