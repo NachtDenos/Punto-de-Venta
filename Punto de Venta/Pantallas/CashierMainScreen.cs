@@ -15,29 +15,38 @@ namespace Punto_de_Venta.Pantallas
 
     public partial class CashierMainScreen : Form 
     {
-        VentasTemp instancia = new VentasTemp();
+
+
         //DE SUGERENCIA, EL CLIENTE SI PAGA CON MAS DINERO DE LO NORMAL, SE LE DEBE REGRESAR CAMBIO EN EL CASO DE QUE ESTE APLIUE
         //UTILIDAD: Costo - Precio Unitario
         //Producto-----> codigo y su descripcion
         //Antes de pagar el cliente puede cancelar un producto
+        //VentasTemp temporal = new VentasTemp();
         public CashierMainScreen()
         {
             InitializeComponent();
-        }
+        } 
+        DateTime FechaNextScreen;
         public CashierMainScreen(string text, string caja)
         {
             InitializeComponent();
             labelDate.Text = text;
+            //string fecha;
+            //fecha = labelDate.Text;
             labelIdCashRegister.Text = caja;
             int cajita;
             Int32.TryParse(caja, out cajita);
-            instancia.Caja = cajita;
             DateTime Fecha = DateTime.Parse(labelDate.Text);
-            instancia.fecha = Fecha;
+            //temporal.fecha = fecha;
+            FechaNextScreen = Fecha;
+            //instancia.fecha = FechaNextScreen;
         }
+       
+       
         string Hora = DateTime.Now.ToString();
         string Fecha = DateTime.Now.ToString();
         private Form activeForm = null;
+        
         private void openChildForm(Form childForm)
         {
             //meter un Form dentro de otro Form
