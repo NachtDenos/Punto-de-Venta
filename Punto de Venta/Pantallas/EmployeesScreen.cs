@@ -396,5 +396,17 @@ namespace Punto_de_Venta
                 return false;
             }
         }
+
+        private void txtFilterEmployees_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFilterEmployees.Text != "")
+            {
+                dataGridEmployees.DataSource = proc.filtroScreenEmpleados(txtFilterEmployees.Text);
+            }
+            else
+            {
+                dataGridEmployees.DataSource = proc.ListarCajero();
+            }
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace Punto_de_Venta
         bool selection3 = false;
         bool bandera;
         int productSelection;
+        Procedures proc1 = new Procedures();
         public productsScreen()
         {
             InitializeComponent();
@@ -355,6 +356,18 @@ namespace Punto_de_Venta
             btnEditProduct.Enabled = false;
             btnDeleteProduct.Enabled = false;
             btnAddProduct.Enabled = true;
+        }
+
+        private void txtFilterProduct_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFilterProduct.Text != "")
+            {
+                dataGridProduct.DataSource = proc1.filtroScreenProduct(txtFilterProduct.Text);
+            }
+            else
+            {
+                dataGridProduct.DataSource = proc1.ListarProductos();
+            }
         }
 
         private void clearTxt()

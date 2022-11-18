@@ -876,5 +876,53 @@ namespace Punto_de_Venta
             return tabla;
         }
 
+        public DataTable filtroScreenDepa(string filtro)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtro_DepartamentoScreen"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filtroI", filtro);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public DataTable filtroScreenProduct(string filtro)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtro_ProductoScreen"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filtroI", filtro);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public DataTable filtroScreenEmpleados(string filtro)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtro_EmpleadosScreen"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filtroI", filtro);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
     }
 }
