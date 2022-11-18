@@ -70,19 +70,17 @@
             this.panelLeftSales.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeftSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panelLeftSales.Location = new System.Drawing.Point(0, 0);
-            this.panelLeftSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelLeftSales.Name = "panelLeftSales";
-            this.panelLeftSales.Size = new System.Drawing.Size(333, 825);
+            this.panelLeftSales.Size = new System.Drawing.Size(250, 670);
             this.panelLeftSales.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(119, 66);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(89, 54);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(103, 90);
+            this.pictureBox1.Size = new System.Drawing.Size(77, 73);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
@@ -91,10 +89,9 @@
             // 
             this.labelHour.AutoSize = true;
             this.labelHour.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelHour.Location = new System.Drawing.Point(233, 183);
-            this.labelHour.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelHour.Location = new System.Drawing.Point(175, 149);
             this.labelHour.Name = "labelHour";
-            this.labelHour.Size = new System.Drawing.Size(44, 17);
+            this.labelHour.Size = new System.Drawing.Size(34, 13);
             this.labelHour.TabIndex = 31;
             this.labelHour.Text = "12:40";
             // 
@@ -102,10 +99,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(193, 183);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(145, 149);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 17);
+            this.label8.Size = new System.Drawing.Size(33, 13);
             this.label8.TabIndex = 30;
             this.label8.Text = "Hora:";
             // 
@@ -113,10 +109,9 @@
             // 
             this.labelDate.AutoSize = true;
             this.labelDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelDate.Location = new System.Drawing.Point(80, 183);
-            this.labelDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDate.Location = new System.Drawing.Point(60, 149);
             this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(64, 17);
+            this.labelDate.Size = new System.Drawing.Size(53, 13);
             this.labelDate.TabIndex = 29;
             this.labelDate.Text = "31/08/22";
             // 
@@ -124,10 +119,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(31, 183);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(23, 149);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 17);
+            this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 28;
             this.label6.Text = "Fecha:";
             // 
@@ -135,10 +129,9 @@
             // 
             this.labelIdCashRegister.AutoSize = true;
             this.labelIdCashRegister.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelIdCashRegister.Location = new System.Drawing.Point(255, 160);
-            this.labelIdCashRegister.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelIdCashRegister.Location = new System.Drawing.Point(191, 130);
             this.labelIdCashRegister.Name = "labelIdCashRegister";
-            this.labelIdCashRegister.Size = new System.Drawing.Size(16, 17);
+            this.labelIdCashRegister.Size = new System.Drawing.Size(13, 13);
             this.labelIdCashRegister.TabIndex = 27;
             this.labelIdCashRegister.Text = "1";
             // 
@@ -146,10 +139,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(193, 160);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(145, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 17);
+            this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 26;
             this.label4.Text = "N. Caja:";
             // 
@@ -162,10 +154,9 @@
             this.button8.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(0, 767);
-            this.button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button8.Location = new System.Drawing.Point(0, 623);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(333, 49);
+            this.button8.Size = new System.Drawing.Size(250, 40);
             this.button8.TabIndex = 25;
             this.button8.Text = "Cerrar Sesión";
             this.button8.UseVisualStyleBackColor = true;
@@ -180,10 +171,9 @@
             this.buttonSales.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSales.Location = new System.Drawing.Point(0, 203);
-            this.buttonSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSales.Location = new System.Drawing.Point(0, 165);
             this.buttonSales.Name = "buttonSales";
-            this.buttonSales.Size = new System.Drawing.Size(333, 49);
+            this.buttonSales.Size = new System.Drawing.Size(250, 40);
             this.buttonSales.TabIndex = 18;
             this.buttonSales.Text = "Ventas";
             this.buttonSales.UseVisualStyleBackColor = true;
@@ -193,10 +183,9 @@
             // 
             this.labelNamePerson.AutoSize = true;
             this.labelNamePerson.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelNamePerson.Location = new System.Drawing.Point(80, 160);
-            this.labelNamePerson.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNamePerson.Location = new System.Drawing.Point(60, 130);
             this.labelNamePerson.Name = "labelNamePerson";
-            this.labelNamePerson.Size = new System.Drawing.Size(80, 17);
+            this.labelNamePerson.Size = new System.Drawing.Size(60, 13);
             this.labelNamePerson.TabIndex = 17;
             this.labelNamePerson.Text = "Juan Perez";
             // 
@@ -204,10 +193,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(31, 160);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(23, 130);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 17);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 16;
             this.label2.Text = "Cajero:";
             // 
@@ -217,10 +205,9 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(100)))), ((int)(((byte)(145)))));
             this.label1.Font = new System.Drawing.Font("Broadway", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(56, -5);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(42, -4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 68);
+            this.label1.Size = new System.Drawing.Size(176, 55);
             this.label1.TabIndex = 15;
             this.label1.Text = "AXXA";
             // 
@@ -230,10 +217,9 @@
             this.panelChildFormSales.Controls.Add(this.label10);
             this.panelChildFormSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildFormSales.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panelChildFormSales.Location = new System.Drawing.Point(333, 0);
-            this.panelChildFormSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelChildFormSales.Location = new System.Drawing.Point(250, 0);
             this.panelChildFormSales.Name = "panelChildFormSales";
-            this.panelChildFormSales.Size = new System.Drawing.Size(1267, 825);
+            this.panelChildFormSales.Size = new System.Drawing.Size(950, 670);
             this.panelChildFormSales.TabIndex = 1;
             this.panelChildFormSales.Paint += new System.Windows.Forms.PaintEventHandler(this.panelChildFormSales_Paint);
             // 
@@ -242,10 +228,9 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(275, 340);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(206, 276);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(709, 141);
+            this.label10.Size = new System.Drawing.Size(565, 112);
             this.label10.TabIndex = 2;
             this.label10.Text = "Bienvenido";
             // 
@@ -261,14 +246,14 @@
             // 
             // CashierMainScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(1600, 825);
+            this.ClientSize = new System.Drawing.Size(1200, 670);
             this.Controls.Add(this.panelChildFormSales);
             this.Controls.Add(this.panelLeftSales);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CashierMainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CashierMainScreen";

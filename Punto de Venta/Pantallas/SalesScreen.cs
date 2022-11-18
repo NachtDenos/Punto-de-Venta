@@ -10,11 +10,8 @@ using System.Windows.Forms;
 
 namespace Punto_de_Venta
 {
-   
     public partial class SalesScreen : Form
     {
-        VentasTemp INSTANCIA = new VentasTemp();
-        FechaTempVenta laBenditaFecha = new FechaTempVenta();
         Procedures proc = new Procedures();
         int CodProd;
         public SalesScreen()
@@ -81,17 +78,15 @@ namespace Punto_de_Venta
             txtQuantitySales.Enabled = false;
             btnAddSales.Enabled = false;
             dataGridProductSales.ClearSelection();
-            
+            VentasTemp INSTANCIA = new VentasTemp();
             string numCod;
             string numCaja;
-            string lAPUTAFECHADEMIERDA;
-            lAPUTAFECHADEMIERDA = INSTANCIA.fecha;
-            int caja = Int32.Parse(INSTANCIA.Caja);
+         
             numCod = txtNumberSales.Text;
-            //CATALGOS VENTAS DEVOLUCIONES Y REPORTES Y YA LUEGO UNO POR UNo
-            //o hacmeos un variable global o arreglamos la clase
-           DateTime lafecha = DateTime.Parse(lAPUTAFECHADEMIERDA);
-           var InsertData = proc.AgregarCarrito(CodProd, INSTANCIA.NombreProd, caja, lafecha);
+           
+                //CATALGOS VENTAS DEVOLUCIONES Y REPORTES Y YA LUEGO UNO POR UNo
+                //o hacmeos un variable global o arreglamos la clase
+           var InsertData = proc.AgregarCarrito(CodProd, INSTANCIA.NombreProd, INSTANCIA.Caja, INSTANCIA.fecha);
            dataGridCarritoSales.DataSource = proc.ListarCarrito();
         }
 
@@ -131,12 +126,12 @@ namespace Punto_de_Venta
                     dataGridProductSales.CurrentRow.Selected = true;
                     btnAddSales.Enabled = true;
                     txtQuantitySales.Enabled = true;
-                  
+                    VentasTemp instancia = new VentasTemp();
 
-                    INSTANCIA.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
-                    INSTANCIA.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+                    instancia.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
+                    instancia.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                     int codigo;
-                    Int32.TryParse(INSTANCIA.CodProducto, out codigo);
+                    Int32.TryParse(instancia.CodProducto, out codigo);
                     CodProd = codigo;
 
                 }

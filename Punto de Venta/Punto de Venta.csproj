@@ -128,9 +128,6 @@
   <ItemGroup>
     <Compile Include="ConexionSqlServer.cs" />
     <Compile Include="DatabaseBool.cs" />
-    <Compile Include="FechaTempVenta.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Pantallas\DiscountsScreen.cs">
       <SubType>Form</SubType>
     </Compile>

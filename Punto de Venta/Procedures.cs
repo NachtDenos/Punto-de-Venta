@@ -862,10 +862,7 @@ namespace Punto_de_Venta
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@CodigoProd", codigo);
             comando.Parameters.AddWithValue("@NombreProd", NombreProd);
-           
-            int cajita;
-            Int32.TryParse(Caja.ToString(), out cajita);
-            comando.Parameters.AddWithValue("@Caja", cajita);
+            comando.Parameters.AddWithValue("@Caja", Caja);
             comando.Parameters.AddWithValue("@Fecha", Fecha);
             leerFilas = comando.ExecuteReader();
             tabla.Load(leerFilas);

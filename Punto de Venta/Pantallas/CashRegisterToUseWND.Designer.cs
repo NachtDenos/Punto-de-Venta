@@ -161,7 +161,7 @@
         private System.Windows.Forms.ComboBox RegisterToUseCB;
         private System.Windows.Forms.Button GoToSellerScreenbUTTN;
         private System.Windows.Forms.Button CloseRegisterToUserWnd;
-        public System.Windows.Forms.DateTimePicker dtpCajaCobro;
+        private System.Windows.Forms.DateTimePicker dtpCajaCobro;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
     }
