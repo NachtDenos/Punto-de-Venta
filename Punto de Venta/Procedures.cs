@@ -436,7 +436,7 @@ namespace Punto_de_Venta
             DataTable tabla = new DataTable();
             // Form3 access = new Form3();
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "ListarProductos"; //Para el procedure
+            comando.CommandText = "listarProdDescCB"; //Para el procedure
             comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
             leerFilas = comando.ExecuteReader();
             tabla.Load(leerFilas);
@@ -922,6 +922,34 @@ namespace Punto_de_Venta
             comando.Parameters.Clear();
             conexion.CerrarConexion();
             return tabla;
+        }
+
+        public bool ActualizarDescuento(int idDesc, DateTime fecha1, DateTime fecha2, int porcentaje)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("editDescuento", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idDesc", idDesc);
+                cmd.Parameters.AddWithValue("@Fecha1", fecha1);
+                cmd.Parameters.AddWithValue("@Fecha2", fecha2);
+                cmd.Parameters.AddWithValue("@porcentaje", porcentaje);
+
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
         }
 
     }

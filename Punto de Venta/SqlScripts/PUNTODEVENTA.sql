@@ -763,8 +763,19 @@ update Producto set idDesc = @iDdis where Producto.idProduct = @ClaveProd
 end;
 
 go
-	--RealizarDescuento 30, '1998-04-16', '2777-10-22', 1
-go	
+
+create proc editDescuento
+(@idDesc int, @Fecha1 date,
+ @Fecha2 date, @porcentaje int)
+as
+Begin
+update Descuento set cantidad = @porcentaje where idDesc = @idDesc
+update descFecha set fechaIni = @Fecha1, fechaFin = @Fecha2 where @idDesc = idFechaDesc
+end;
+
+select * from Descuento
+
+exec editDescuento 8, '08/08/2000', '09/09/2000', 12
 
 
 create proc ListarDescuentosFecha
@@ -777,6 +788,8 @@ Begin
 	on Descuento.idDesc = P.idDesc
 end;
 
+go
+
 create proc BorrarDescuento
 (
 @idDes int
@@ -785,6 +798,8 @@ as
 Begin
 delete Descuento where idDesc = @idDes
 end;
+
+go
 
 CREATE TRIGGER tr_bajaDescuentoPro ON Descuento
 INSTEAD OF DELETE
@@ -795,9 +810,6 @@ Select @ID = idDesc
 FROM deleted
 update Producto set idDesc = null where @ID = idDesc
 end;
-
-drop trigger tr_bajaDescuentoPro
-
 --exec BorrarDescuento 4
 
 --select * from Descuento
