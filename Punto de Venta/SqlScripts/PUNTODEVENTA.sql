@@ -773,9 +773,6 @@ update Descuento set cantidad = @porcentaje where idDesc = @idDesc
 update descFecha set fechaIni = @Fecha1, fechaFin = @Fecha2 where @idDesc = idFechaDesc
 end;
 
-select * from Descuento
-
-exec editDescuento 8, '08/08/2000', '09/09/2000', 12
 
 
 create proc ListarDescuentosFecha
@@ -798,6 +795,14 @@ as
 Begin
 delete Descuento where idDesc = @idDes
 end;
+
+create proc listarProdDescCB
+as
+Begin
+select [Codigo], [Nombre Producto] from vwInventary where [id Descuento] is null
+end;
+
+drop proc listarProdDescCB
 
 go
 

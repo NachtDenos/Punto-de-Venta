@@ -8,6 +8,13 @@ C.fechaNaci [Fecha Nacimiento] from Cajero C
 join Usuario U
 ON C.idCajero = U.idUser
 
+create view vwDescuento
+as
+SELECT Descuento.idDesc [Id Descuento], descFecha.fechaIni [Inicia], descFecha.fechaFin [Termina], Descuento.cantidad [Porcentaje], P.nombrePro [Nombre Producto], P.idProduct [Codigo] from Descuento
+	join descFecha
+	on descFecha.idFechaDesc = Descuento.idDesc
+	join Producto P
+	on Descuento.idDesc = P.idDesc
 
 --------------------------------------------------
 create proc SeleccionarProductoInsertarProducto
