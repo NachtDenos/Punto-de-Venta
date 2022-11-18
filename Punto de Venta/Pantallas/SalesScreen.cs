@@ -13,6 +13,7 @@ namespace Punto_de_Venta
     public partial class SalesScreen : Form
     {
         Procedures proc = new Procedures();
+        int CodProd;
         public SalesScreen()
         {
             InitializeComponent();
@@ -77,12 +78,16 @@ namespace Punto_de_Venta
             txtQuantitySales.Enabled = false;
             btnAddSales.Enabled = false;
             dataGridProductSales.ClearSelection();
-
+            VentasTemp INSTANCIA = new VentasTemp();
             string numCod;
+            string numCaja;
+         
             numCod = txtNumberSales.Text;
-            int codigoProdc = Int32.Parse(numCod);
-            var InsertData = proc.SeleccionarProducto(codigoProdc);
-            dataGridCarritoSales.DataSource = proc.SeleccionarProducto(codigoProdc);
+           
+                //CATALGOS VENTAS DEVOLUCIONES Y REPORTES Y YA LUEGO UNO POR UNo
+                //o hacmeos un variable global o arreglamos la clase
+           var InsertData = proc.AgregarCarrito(CodProd, INSTANCIA.NombreProd, INSTANCIA.Caja, INSTANCIA.fecha);
+           dataGridCarritoSales.DataSource = proc.ListarCarrito();
         }
 
         private void btnDeleteSales_Click(object sender, EventArgs e)
@@ -121,6 +126,14 @@ namespace Punto_de_Venta
                     dataGridProductSales.CurrentRow.Selected = true;
                     btnAddSales.Enabled = true;
                     txtQuantitySales.Enabled = true;
+                    VentasTemp instancia = new VentasTemp();
+
+                    instancia.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
+                    instancia.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+                    int codigo;
+                    Int32.TryParse(instancia.CodProducto, out codigo);
+                    CodProd = codigo;
+
                 }
             }
             catch (Exception ArgumentOutOfRangeException)
@@ -128,7 +141,8 @@ namespace Punto_de_Venta
 
             }
         }
-
+        //Hacer que lo que seleccione al datagrid sea lo que se meta a la tabla temporal,
+        //Ya sabes como es el datgriceelclick, obtener lo seleccionado de esa celda y con eso nada mas le decimos que cuanta cantidad y ya
         private void btnFilterSales_Click(object sender, EventArgs e)
         {
             if (txtNameSales.Text != "" && txtNumberSales.Text != "")

@@ -57,7 +57,7 @@ namespace Punto_de_Venta.Pantallas
         {
             Procedures usuarioObj = new Procedures();
             RegisterToUseCB.DataSource = usuarioObj.ListarCajaCombo();
-            RegisterToUseCB.DisplayMember = "Numero de Caja";
+            RegisterToUseCB.DisplayMember = "Numero de Caja"; //Nombre
             RegisterToUseCB.ValueMember = "Numero de Caja";//Valor real de l combox
         }
 

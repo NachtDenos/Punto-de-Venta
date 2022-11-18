@@ -252,6 +252,19 @@ namespace Punto_de_Venta
             return grid;
         }
 
+        public DataTable ListarCarrito()
+        {
+            DataTable grid = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "InsertarCarrito";
+            comando.CommandType = CommandType.StoredProcedure;
+            leerFilas = comando.ExecuteReader();
+            grid.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return grid;
+        }
+
         public bool ActualizarDepartamentos(string Nombre, string Devolucion, int idDepa)
         { 
             ConexionSqlServer conn = new ConexionSqlServer();
@@ -841,13 +854,16 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public DataTable SeleccionarProducto(int codigo)
+        public DataTable AgregarCarrito(int codigo, string NombreProd, int Caja, DateTime Fecha)
         {
             DataTable tabla = new DataTable();
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "SeleccionarProducto"; //Para el procedure
+            comando.CommandText = "SeleccionarProductoInsertarProducto"; //Para el procedure
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@CodigoProd", codigo);
+            comando.Parameters.AddWithValue("@NombreProd", NombreProd);
+            comando.Parameters.AddWithValue("@Caja", Caja);
+            comando.Parameters.AddWithValue("@Fecha", Fecha);
             leerFilas = comando.ExecuteReader();
             tabla.Load(leerFilas);
             leerFilas.Close();

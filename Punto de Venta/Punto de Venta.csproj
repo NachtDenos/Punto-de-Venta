@@ -253,6 +253,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="VentasTemp.cs" />
     <EmbeddedResource Include="Pantallas\DiscountsScreen.resx">
       <DependentUpon>DiscountsScreen.cs</DependentUpon>
     </EmbeddedResource>

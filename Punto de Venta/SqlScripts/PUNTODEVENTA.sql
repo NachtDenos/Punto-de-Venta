@@ -438,12 +438,16 @@ create table VentaTemporal
 (
   idVentaTemp int identity (0,1) not null,
   CodigoProducto int not null,
-  IdProducto int not null,
-  FechaVenta date not null,
-  Caja int not null,
+  NombreProducto varchar(50) not null,
+  ExistenciaProducto varchar(200) not null,
+  PrecioUnitario int not null,
+  FechaVenta date null,
+  Caja int null,
 
 );
 go
+
+
 
 create proc SelectUsuarios
 (
@@ -736,6 +740,8 @@ end;
 --smn est select jala pra eso, solo hazlo procedure y que reciba el id que buscamos y con eso buscamos el producto y su depa
 go
 
+
+
 create proc RealizarDescuento
 (@Porcentaje int,
 @Fecha1 date,
@@ -897,10 +903,4 @@ select [Codigo], [Nombre Producto] from vwInventary
 where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%') and [Activo] = 'Activo'
 end;
 
-
-create proc SeleccionarProducto
-(@CodigoProd int )
-as
-Begin
-Select Producto.idProduct [Codigo], nombrePro [Nombre Producto] from Producto where Producto.idProduct = @CodigoProd
-end;
+--EN EL CASE DEL DATAGRID TENER UN STRING QUE SE ENCARGUE DE OBTENER EL NOMBRE DEL PRODUCTO ACTUAL SELECCIONADO Y CON ESO HACEERLE INSERT

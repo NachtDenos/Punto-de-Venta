@@ -15,7 +15,7 @@ namespace Punto_de_Venta.Pantallas
 
     public partial class CashierMainScreen : Form 
     {
-
+        VentasTemp instancia = new VentasTemp();
         //DE SUGERENCIA, EL CLIENTE SI PAGA CON MAS DINERO DE LO NORMAL, SE LE DEBE REGRESAR CAMBIO EN EL CASO DE QUE ESTE APLIUE
         //UTILIDAD: Costo - Precio Unitario
         //Producto-----> codigo y su descripcion
@@ -29,6 +29,11 @@ namespace Punto_de_Venta.Pantallas
             InitializeComponent();
             labelDate.Text = text;
             labelIdCashRegister.Text = caja;
+            int cajita;
+            Int32.TryParse(caja, out cajita);
+            instancia.Caja = cajita;
+            DateTime Fecha = DateTime.Parse(labelDate.Text);
+            instancia.fecha = Fecha;
         }
         string Hora = DateTime.Now.ToString();
         string Fecha = DateTime.Now.ToString();
