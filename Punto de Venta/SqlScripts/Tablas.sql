@@ -1,0 +1,472 @@
+create database ProyectoMAD
+go
+
+IF OBJECT_ID('ProyectoMAD') IS NOT NULL
+BEGIN
+   DROP DATABASE ProyectoMAD;
+END
+
+--ctrl r para bajar la ventana de mensajes
+use ProyectoMAD
+go
+IF OBJECT_ID('Usuario') IS NOT NULL
+BEGIN
+   DROP TABLE Usuario;
+END
+
+
+
+CREATE TABLE Usuario 
+(
+   idUser INT IDENTITY (1, 1) NOT NULL,
+   nombreU  VARCHAR (30) NOT NULL,
+   apellidoPU VARCHAR (30) NOT NULL,
+   apellidoMU VARCHAR (30) NOT NULL,
+   claveUsuario varchar(50) not null,
+   contraU VARCHAR (30) NOT NULL,
+   tipoU varchar(1)  not null,
+   CONSTRAINT PK_user 
+   PRIMARY KEY (idUser)
+);
+
+
+--select  A.idAdmin , B.idUser, B.nombreU, B.claveUsuario, B.contraU, B.tipoU  from Usuario B
+--join Administrador A
+--on a.idUserA = b.idUser
+--where B.tipoU = '1'
+
+--select * from Usuario
+
+--insert into Administrador(idUserA)
+--values ('1');
+
+--SELECT * FROM Departamento
+
+
+IF OBJECT_ID('Administrador') IS NOT NULL
+BEGIN
+   DROP TABLE Administrador;
+END
+go
+--puto si no te jalaa
+CREATE TABLE Administrador
+(
+   idAdmin INT IDENTITY (1, 1) NOT NULL,
+   idUserA  INT not NULL,
+   CONSTRAINT PK_admin
+   PRIMARY KEY (idAdmin), --I mean esta esta bien pero las otras jsjsj
+   CONSTRAINT FK_idUser
+   FOREIGN KEY (idUserA) --Ver que pedo con estas id, si no podemos dejarla solo sin FK aislada de los demas
+   REFERENCES Usuario (idUser)
+);
+
+--on A.idAdmin = B.idUser parte del query de arriba
+--insert into Administrador(idUserA) values ('1');
+
+IF OBJECT_ID('Cajero') IS NOT NULL
+BEGIN
+   DROP TABLE Cajero;
+END
+
+CREATE TABLE Cajero
+(
+   idCajero INT Identity(2,1)  NOT NULL,
+   CURP CHAR (18) NOT NULL,
+   fechaNaci DATE NOT NULL,
+   numeroNomi INT NOT NULL,
+   email VARCHAR (25) NOT NULL,
+   fechaIngr DATE NOT NULL,
+   uniVend INT,
+   ventas INT,
+   claveAdmin INT NOT NULL,
+   --claveUser INT NOT NULL,
+   CONSTRAINT PK_Cajero
+   PRIMARY KEY (idCajero),
+
+   CONSTRAINT FK_claveAdmin
+   FOREIGN KEY (claveAdmin)
+   REFERENCES Administrador (idAdmin),
+
+   --CONSTRAINT FK_claveUser
+   --FOREIGN KEY (claveUser)
+   --REFERENCES Usuario (idUser),
+   --Constraint
+   CONSTRAINT CK_uniVend
+   CHECK (-1 <= uniVend),
+   CONSTRAINT CK_ventas
+   CHECK (-1 <= ventas)
+);
+go
+
+IF OBJECT_ID('Producto') IS NOT NULL
+BEGIN
+   DROP TABLE Producto;
+END
+go
+CREATE TABLE Producto
+(
+    idProduct INT NOT NULL,
+	nombrePro VARCHAR (30) NOT NULL,
+	descripcion VARCHAR (60) NOT NULL,
+	uniMedida INT NOT NULL,
+	fechaAlta DATE NOT NULL,
+	existencia INT NOT NULL,
+	ptReorden INT NOT NULL,
+	claveGest INT NOT NULL, 
+	activo varchar(30),
+	merma INT,
+	Costo float not null,
+	PrecioUnitario float not null,
+	uniVendida INT,
+	claveAdmin INT NOT NULL, 
+	claveDepa INT NOT NULL,
+	--claveDesc INT NOT NULL,
+	--clavePre INT NOT NULL,   
+	idDesc int null,
+	fechaDesc DATE,
+	FechaCambio date null,
+	CONSTRAINT PK_idProd
+	PRIMARY KEY (idProduct),
+	CONSTRAINT CK_activo
+	CHECK (activo = 'Activo' OR activo = 'Inactivo'),
+	CONSTRAINT FK_claveUserPro
+    FOREIGN KEY (claveAdmin)
+    REFERENCES Administrador (idAdmin)
+)
+
+
+go
+
+
+IF OBJECT_ID('uniMedidaPro') IS NOT NULL
+BEGIN
+   DROP TABLE uniMedidaPro;
+END
+go
+
+CREATE TABLE uniMedidaPro
+(
+   idMedida INT IDENTITY (0,1) NOT NULL,
+   unidadMedida VARCHAR (70)
+   CONSTRAINT PK_idMedida
+   PRIMARY KEY (idMedida)
+);
+
+go
+ALTER TABLE Producto
+  ADD CONSTRAINT FK_idMedida
+  FOREIGN KEY (uniMedida)
+  REFERENCES uniMedidaPro (idMedida);
+  go
+
+go
+
+IF OBJECT_ID('gestioProd') IS NOT NULL
+BEGIN
+   DROP TABLE gestioProd;
+END
+go
+CREATE TABLE gestioProd
+(
+   idGest INT IDENTITY (0, 1) NOT NULL,
+   fechaCambio DATE,
+   usuarioCambio VARCHAR (30),
+   CONSTRAINT PK_idGest
+   PRIMARY KEY (idGest)
+);
+
+  go
+IF OBJECT_ID('Caja') IS NOT NULL
+BEGIN
+   DROP TABLE Caja;
+END
+go
+CREATE TABLE Caja
+(
+   idCaja INT NOT NULL,
+   disponi varchar(20),
+   claveAdminCa INT NOT NULL,
+   CONSTRAINT PK_idCaja
+   PRIMARY KEY (idCaja),
+   CONSTRAINT FK_claveAdminCa
+   FOREIGN KEY (claveAdminCa)
+   REFERENCES Administrador (idAdmin),
+   CONSTRAINT CK_disponi
+   CHECK (disponi = 'Activo' OR disponi = 'Inactivo')
+);
+go
+IF OBJECT_ID('Recibo') IS NOT NULL
+BEGIN
+   DROP TABLE Recibo;
+END
+go
+CREATE TABLE Recibo
+(
+   noVenta INT IDENTITY (10000, 1) NOT NULL,
+   fechaVenta DATE NOT NULL,
+   total INT NOT NULL,
+   claveCajePro INT NOT NULL,
+   CONSTRAINT PK_noVenta
+   PRIMARY KEY (noVenta),
+   CONSTRAINT CK_total
+   CHECK (0 <= total)
+);
+go
+IF OBJECT_ID('Venta') IS NOT NULL
+BEGIN
+   DROP TABLE Venta;
+END
+go
+CREATE TABLE Venta
+(
+   idVenta INT IDENTITY (0, 1) NOT NULL,
+   noVentaVen INT NOT NULL,
+   claveVentaPro INT NOT NULL, 
+   precioProd INT NOT NULL,
+   descProdut INT NOT NULL,
+   cantidadVen INT NOT NULL,
+   subtotal INT NOT NULL,
+   CONSTRAINT PK_idVenta
+   PRIMARY KEY (idVenta),
+   CONSTRAINT FK_noVentaPro
+   FOREIGN KEY (claveVentaPro)
+   REFERENCES Recibo (noVenta),
+   CONSTRAINT CK_precioProd
+   CHECK (0 <= precioProd),
+   CONSTRAINT CK_descProduct
+   CHECK (0 <= descProdut),
+   CONSTRAINT CK_cantVend
+   CHECK (0 <= cantidadVen)
+);
+go
+IF OBJECT_ID('VentaProduct') IS NOT NULL
+BEGIN
+   DROP TABLE VentaProduct;
+END
+go
+CREATE TABLE VentaProduct
+(
+   idVentaProd INT IDENTITY (0, 1) NOT NULL,
+   nombreProdVenta VARCHAR (30) NOT NULL,
+   CONSTRAINT PK_idVentaProd
+   PRIMARY KEY (idVentaProd)
+);
+go
+ALTER TABLE Venta
+  ADD CONSTRAINT FK_claveVentaProd
+  FOREIGN KEY (claveVentaPro)
+  REFERENCES VentaProduct (idVentaProd);
+  go
+IF OBJECT_ID('NotaCred') IS NOT NULL
+BEGIN
+   DROP TABLE NotaCred;
+END
+go
+CREATE TABLE NotaCred
+(
+   noCredit INT IDENTITY (10000, 1) NOT NULL,
+   total INT NOT NULL,
+   numeroRecibo INT NOT NULL,
+   fechaNota DATE NOT NULL,
+   claveAdminNota INT NOT NULL,
+   codigoProNota INT NOT NULL,
+   CONSTRAINT PK_noCredit
+   PRIMARY KEY (noCredit),
+   CONSTRAINT FK_claveAdminNota
+   FOREIGN KEY (claveAdminNota)
+   REFERENCES Administrador (idAdmin),
+   CONSTRAINT FK_codigoProNota
+   FOREIGN KEY (codigoProNota)
+   REFERENCES Producto (idProduct)
+);
+go
+IF OBJECT_ID('ProductNota') IS NOT NULL
+BEGIN
+   DROP TABLE ProductNota;
+END
+go
+CREATE TABLE ProductNota
+(
+   idNotaP INT IDENTITY (0, 1) NOT NULL,
+   idNoCredit INT NOT NULL,
+   proRegresa VARCHAR (30) NOT NULL,
+   cantidadNota INT NOT NULL,
+   subtotalNota INT NOT NULL,
+   CONSTRAINT PK_idNotaP
+   PRIMARY KEY (idNotaP),
+   CONSTRAINT FK_idNoCredit
+   FOREIGN KEY (idNoCredit)
+   REFERENCES NotaCred (noCredit),
+   CONSTRAINT CK_cantidadNota
+   CHECK (0 <= cantidadNota),
+   CONSTRAINT CK_subtotalNota
+   CHECK (0 <= subtotalNota)
+);
+go
+IF OBJECT_ID('Departamento') IS NOT NULL
+BEGIN
+   DROP TABLE Departamento;
+END
+go
+CREATE TABLE Departamento
+(
+   idDepa INT NOT NULL,
+   nombreDep VARCHAR (30) NOT NULL,
+   devoluDepa varchar(10) not null,
+   claveAdminDepa INT NULL,
+   CONSTRAINT PK_idDepa
+   PRIMARY KEY (idDepa),
+   --CONSTRAINT FK_claveAdminDepa
+   --FOREIGN KEY (claveAdminDepa)
+   --REFERENCES Administrador (idAdmin),
+   --CONSTRAINT CK_devoluDepa
+   CHECK ('No' = devoluDepa OR 'Si' = devoluDepa)
+);
+go
+ALTER TABLE Producto
+  ADD CONSTRAINT FK_claveDepa
+  FOREIGN KEY (claveDepa)
+  REFERENCES Departamento (idDepa);
+  go
+IF OBJECT_ID('MetodPago') IS NOT NULL
+BEGIN
+   DROP TABLE MetodPago;
+END
+go
+CREATE TABLE MetodPago
+(
+   idPago INT IDENTITY (0, 1) NOT NULL,
+   tipoMetod VARCHAR (30) NOT NULL,
+   CONSTRAINT PK_idPago
+   PRIMARY KEY (idPago),
+);
+go
+IF OBJECT_ID('Descuento') IS NOT NULL
+BEGIN
+   DROP TABLE Descuento;
+END
+go
+
+IF OBJECT_ID('descFecha') IS NOT NULL
+BEGIN
+   DROP TABLE descFecha;
+END
+go
+CREATE TABLE descFecha
+(
+   idFechaDesc INT IDENTITY (1, 1) NOT NULL,
+   fechaIni DATE NOT NULL,
+   fechaFin DATE NOT NULL,
+   CONSTRAINT PK_idFechaDesc
+   PRIMARY KEY (idFechaDesc)
+);
+go
+
+CREATE TABLE Descuento
+(
+   idDesc INT IDENTITY (1, 1) NOT NULL,
+   cantidad INT NOT NULL,
+   claveFechaD INT default(1) NULL, 
+   CONSTRAINT PK_idDesc
+   PRIMARY KEY (idDesc),
+   CONSTRAINT CK_cantidad
+   CHECK (0 < cantidad),
+   CONSTRAINT FK_claveFechaD
+   FOREIGN KEY (claveFechaD)
+   REFERENCES descFecha (idFechaDesc)
+);
+go
+
+  go
+IF OBJECT_ID('Caje_Pro') IS NOT NULL
+BEGIN
+   DROP TABLE Caje_Pro;
+END
+go
+CREATE TABLE Caje_Pro
+(
+   idCajePro INT IDENTITY (0, 1) NOT NULL,
+   claveCajeroCP INT NOT NULL,
+   codigoProCP INT NOT NULL,
+   noCajaCP INT NOT NULL,
+   activoCP BIT DEFAULT (1),
+   existenciaCP INT NOT NULL, 
+   CONSTRAINT PK_idCajePro
+   PRIMARY KEY (idCajePro),
+   CONSTRAINT FK_claveCajeroCP
+   FOREIGN KEY (claveCajeroCP)
+   REFERENCES Cajero (idCajero),
+   CONSTRAINT FK_codigoProCP
+   FOREIGN KEY (codigoProCP)
+   REFERENCES Producto (idProduct),
+   CONSTRAINT FK_noCajaCP
+   FOREIGN KEY (noCajaCP)
+   REFERENCES Caja (idCaja),
+   CONSTRAINT CK_activoCP
+   CHECK (0 = activoCP OR 1 = activoCP)
+);
+go
+ALTER TABLE Recibo
+  ADD CONSTRAINT FK_claveCajePro
+  FOREIGN KEY (claveCajePro)
+  REFERENCES Caje_Pro (idCajePro);
+go
+IF OBJECT_ID('ticket') IS NOT NULL
+BEGIN
+   DROP TABLE ticket;
+END
+go
+CREATE TABLE ticket
+(
+   idTicket INT IDENTITY (10000, 1) NOT NULL,
+   noVentaTic INT NOT NULL,
+   clavePagoTic INT NOT NULL,
+   fechaTic DATE NOT NULL,
+   CONSTRAINT PK_idTicket
+   PRIMARY KEY (idTicket),
+   CONSTRAINT FK_noVentaTic
+   FOREIGN KEY (noVentaTic)
+   REFERENCES Recibo (noVenta),
+   CONSTRAINT FK_clavePagoTic
+   FOREIGN KEY (clavePagoTic)
+   REFERENCES MetodPago (idPago)
+);
+go
+IF OBJECT_ID('devolucion') IS NOT NULL
+BEGIN
+   DROP TABLE devolucion;
+END
+go
+CREATE TABLE devolucion
+(
+   idDev INT IDENTITY (0, 1) NOT NULL,
+   noCredDev INT NOT NULL,
+   codigoProDev INT NOT NULL,
+   fechaDev DATE NOT NULL,
+   CONSTRAINT PK_idDev
+   PRIMARY KEY (idDev),
+   CONSTRAINT FK_noCredDev
+   FOREIGN KEY (noCredDev)
+   REFERENCES NotaCred (noCredit),
+   CONSTRAINT FK_codigoProDev
+   FOREIGN KEY (codigoProDev)
+   REFERENCES Producto (idProduct)
+);
+
+ALTER TABLE Producto
+  ADD CONSTRAINT FK_idDesc 
+  FOREIGN KEY (idDesc)
+  REFERENCES Descuento (idDesc);
+go
+
+create table VentaTemporal
+(
+  idVentaTemp int identity (0,1) not null,
+  CodigoProducto int not null,
+  NombreProducto varchar(50) not null,
+  ExistenciaProducto varchar(200) not null,
+  PrecioUnitario int not null,
+  FechaVenta date null,
+  Caja int null,
+
+);
