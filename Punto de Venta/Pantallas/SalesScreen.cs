@@ -29,6 +29,15 @@ namespace Punto_de_Venta
             //dataGridCarritoSales.Rows[0].Cells[1].Value = "Salmón";
         }
 
+        public SalesScreen(string txt)
+        {
+            InitializeComponent();
+            dataGridProductSales.DataSource = proc.productoSales();
+            btnAddSales.Enabled = false;
+            txtQuantitySales.Enabled = false;
+            string prueba = txt;
+        }
+
         private void btnQuickSearchSales_Click(object sender, EventArgs e)
         {
             QuickSearchScreen TheOtherForm = new QuickSearchScreen();
