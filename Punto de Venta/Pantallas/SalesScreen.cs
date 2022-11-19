@@ -102,12 +102,22 @@ namespace Punto_de_Venta
 
             //CATALGOS VENTAS DEVOLUCIONES Y REPORTES Y YA LUEGO UNO POR UNo
             //o hacmeos un variable global o arreglamos la clase
+            
 
+            //AHI VENGO DOLRODE NUEZ
             if (dataGridCarritoSales.Rows.Count > 0)
             {
                 foreach (DataGridViewRow fila in dataGridCarritoSales.Rows)
                 {
-
+                    if (NombreProducto == fila.Cells["Producto"].Value.ToString())
+                    {
+                        MessageBox.Show("Error este producto ya existe");
+                        itExists = true;
+                        break;
+                    }
+                    else
+                        itExists = false;
+                   // NombreProducto = fila.Cells["Producto"].Value.ToString();
                 }
             }
 
@@ -135,6 +145,7 @@ namespace Punto_de_Venta
             if (itExists == true)
             {
                 MessageBox.Show("Este producto ya esta en el carrito");
+               
             }
             else if (itExists == false)
             {
