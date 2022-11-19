@@ -60,7 +60,8 @@ namespace Punto_de_Venta.Pantallas
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
-            openChildForm(new SalesScreen());
+            openChildForm(new SalesScreen(labelDate.Text));
+            //Mandar aqui este pedo
         }
 
         private void panelChildFormSales_Paint(object sender, PaintEventArgs e)
