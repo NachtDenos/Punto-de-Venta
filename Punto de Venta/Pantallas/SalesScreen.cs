@@ -14,6 +14,10 @@ namespace Punto_de_Venta
     {
         Procedures proc = new Procedures();
         int CodProd;
+        string fecha;
+        string NombreProducto;
+        int Caja;
+        bool itExists;
         public SalesScreen()
         {
             InitializeComponent();
@@ -26,13 +30,16 @@ namespace Punto_de_Venta
             //dataGridCarritoSales.Rows[0].Cells[1].Value = "Salmón";
         }
 
-        public SalesScreen(string txt)
+        public SalesScreen(string txt, string caja)
         {
             InitializeComponent();
             dataGridProductSales.DataSource = proc.productoSales();
             btnAddSales.Enabled = false;
             txtQuantitySales.Enabled = false;
             string prueba = txt;
+            string prueba2 = caja;
+            fecha = prueba;
+            Int32.TryParse(prueba2, out Caja);
         }
 
         private void btnQuickSearchSales_Click(object sender, EventArgs e)
@@ -90,13 +97,59 @@ namespace Punto_de_Venta
             VentasTemp INSTANCIA = new VentasTemp();
             string numCod;
             string numCaja;
-         
+            DateTime unaFecha = DateTime.Parse(fecha);
             numCod = txtNumberSales.Text;
+
+            //CATALGOS VENTAS DEVOLUCIONES Y REPORTES Y YA LUEGO UNO POR UNo
+            //o hacmeos un variable global o arreglamos la clase
+
+            if (dataGridCarritoSales.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow fila in dataGridCarritoSales.Rows)
+                {
+
+                }
+            }
+
+            //for (int i = 1; i < dataGridCarritoSales.Rows.Count; i++)
+            //{
+            //    for (int j = 1; j < dataGridProductSales.Columns.Count; j++)
+            //    {
+            //        if (dataGridProductSales.Rows[i].Cells[j].Value.ToString() == NombreProducto)
+            //        {
+            //            MessageBox.Show("Este producto ya esta en el carrito");
+            //            NombreProducto = "";
+            //            itExists = true;
+            //            break;
+                        
+            //        }
+            //    }
+            //}
+            //foreach (DataGridViewRow row in dataGridCarritoSales.Rows)
+            //{   
+            //    if (row.Cells[row])
+            //    {
+
+            //    }
+            //}
+            if (itExists == true)
+            {
+                MessageBox.Show("Este producto ya esta en el carrito");
+            }
+            else if (itExists == false)
+            {
+                    var InsertData = proc.AgregarCarrito(CodProd, NombreProducto, Caja, unaFecha);
+                if (InsertData)
+                {
+                    MessageBox.Show("Exito");
+                    dataGridCarritoSales.DataSource = proc.ListarCarrito();
+                }
+                else
+                    MessageBox.Show("Puñetas");
+
+
+            }
            
-                //CATALGOS VENTAS DEVOLUCIONES Y REPORTES Y YA LUEGO UNO POR UNo
-                //o hacmeos un variable global o arreglamos la clase
-           var InsertData = proc.AgregarCarrito(CodProd, INSTANCIA.NombreProd, INSTANCIA.Caja, INSTANCIA.fecha);
-           dataGridCarritoSales.DataSource = proc.ListarCarrito();
         }
 
         private void btnDeleteSales_Click(object sender, EventArgs e)
@@ -138,6 +191,7 @@ namespace Punto_de_Venta
                     VentasTemp instancia = new VentasTemp();
 
                     instancia.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
+                    NombreProducto = instancia.NombreProd;
                     instancia.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                     int codigo;
                     Int32.TryParse(instancia.CodProducto, out codigo);

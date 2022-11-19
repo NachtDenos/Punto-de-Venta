@@ -60,7 +60,7 @@ namespace Punto_de_Venta.Pantallas
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
-            openChildForm(new SalesScreen(labelDate.Text));
+            openChildForm(new SalesScreen(labelDate.Text, labelIdCashRegister.Text));
             //Mandar aqui este pedo
         }
 

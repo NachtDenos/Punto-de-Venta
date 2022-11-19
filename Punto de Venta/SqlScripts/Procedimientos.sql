@@ -448,13 +448,15 @@ create proc SeleccionarProductoInsertarProducto
 @Fecha date)
 as
 Begin
-insert into VentaTemporal(CodigoProducto,NombreProducto, PrecioUnitario, ExistenciaProducto)
-Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario [Precio], Producto.existencia [Existencia] from Producto where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd
-Update VentaTemporal set Caja = @Caja, FechaVenta = @Fecha where VentaTemporal.CodigoProducto = @CodigoProd
+insert into VentaTemporal(CodigoProducto,NombreProducto, PrecioUnitario, ExistenciaProducto, FechaVenta, Caja)
+Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario [Precio], Producto.existencia [Existencia], @Fecha, @Caja from Producto where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd
+--Update VentaTemporal set Caja = @Caja, FechaVenta = @Fecha where VentaTemporal.CodigoProducto = @CodigoProd
 end;
+
 go
-SeleccionarProductoInsertarProducto 1,'Television LED4K', 1, '2022-11-17'
+SeleccionarProductoInsertarProducto 2,'Helado Oreo', 1, '2022-11-17'
 select * FROM VentaTemporal
+drop table VentaTemporal
 go
 create proc InsertarCarrito
 as

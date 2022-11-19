@@ -867,25 +867,58 @@ namespace Punto_de_Venta
             }
             return true;
         }
-
-        public DataTable AgregarCarrito(int codigo, string NombreProd, int Caja, DateTime Fecha)
+        public bool AgregarCarrito(int codigo, string NombreProd, int Caja, DateTime Fecha)
         {
-            DataTable tabla = new DataTable();
-            comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "SeleccionarProductoInsertarProducto"; //Para el procedure
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@CodigoProd", codigo);
-            comando.Parameters.AddWithValue("@NombreProd", NombreProd);
-            comando.Parameters.AddWithValue("@Caja", Caja);
-            comando.Parameters.AddWithValue("@Fecha", Fecha);
-            leerFilas = comando.ExecuteReader();
-            tabla.Load(leerFilas);
-            leerFilas.Close();
-            comando.ExecuteNonQuery();
-            comando.Parameters.Clear();
-            conexion.CerrarConexion();
-            return tabla;
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "SeleccionarProductoInsertarProducto"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@CodigoProd", codigo);
+                comando.Parameters.AddWithValue("@NombreProd", NombreProd);
+                comando.Parameters.AddWithValue("@Caja", Caja);
+                comando.Parameters.AddWithValue("@Fecha", Fecha);
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+            
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+
         }
+
+        //public bool AgregarCarrito(int codigo, string NombreProd, int Caja, DateTime Fecha)
+        //{
+        //    try
+        //    {
+        //        comando.Connection = conexion.AbrirConexion();
+        //        comando.CommandText = "SeleccionarProductoInsertarProducto"; //Para el procedure
+        //        comando.CommandType = CommandType.StoredProcedure;
+        //        comando.Parameters.AddWithValue("@CodigoProd", codigo);
+        //        comando.Parameters.AddWithValue("@NombreProd", NombreProd);
+        //        comando.Parameters.AddWithValue("@Caja", Caja);
+        //        comando.Parameters.AddWithValue("@Fecha", Fecha);
+
+        //        comando.ExecuteNonQuery();
+        //        comando.Parameters.Clear();
+        //        conexion.CerrarConexion();
+        //    }
+        //    catch (Exception error)
+        //    {
+
+        //        MessageBox.Show(error.ToString());
+        //        return false;
+        //    }
+
+        //}
 
         public DataTable filtroScreenDepa(string filtro)
         {
