@@ -183,6 +183,18 @@ namespace Punto_de_Venta
             btnEditDepartament.Enabled = false;
         }
 
+        private void txtFilterDepartament_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFilterDepartament.Text != "")
+            {
+                dataGridDepartament.DataSource = proc.filtroScreenDepa(txtFilterDepartament.Text);
+            }
+            else
+            {
+                dataGridDepartament.DataSource = proc.ListarDepartamentos();
+            }
+        }
+
         //private void dataGridDepartament_CellLeave(object sender, DataGridViewCellEventArgs e)
         //{
 

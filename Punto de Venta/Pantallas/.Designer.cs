@@ -52,6 +52,7 @@ namespace Punto_de_Venta
             this.txtFilterDepartament.Name = "txtFilterDepartament";
             this.txtFilterDepartament.Size = new System.Drawing.Size(241, 22);
             this.txtFilterDepartament.TabIndex = 79;
+            this.txtFilterDepartament.TextChanged += new System.EventHandler(this.txtFilterDepartament_TextChanged);
             // 
             // label12
             // 

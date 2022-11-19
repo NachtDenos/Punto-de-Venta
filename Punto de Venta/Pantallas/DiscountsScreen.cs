@@ -34,11 +34,44 @@ namespace Punto_de_Venta
 
         private void btnEditDiscounts_Click(object sender, EventArgs e)
         {
+            Procedures proc = new Procedures();
             if (txtDiscountDiscount.TextLength == 0)
             {
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            int numberDiscount = Convert.ToInt32(txtDiscountDiscount.Text);
+            if (numberDiscount <= 0 || numberDiscount >= 101)
+            {
+                MessageBox.Show("El descuento no puede ser 0 o menor, ni mayor a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dtpInDiscounts.Value >= dtpOutDiscounts.Value)
+            {
+                MessageBox.Show("La fecha inicial debe ser menor que la fecha final", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string porcentajeTxt = txtDiscountDiscount.Text;
+            int porcentaje;
+            Int32.TryParse(porcentajeTxt, out porcentaje);
+            DateTime fecha1 = DateTime.Parse(dtpInDiscounts.Text);
+            DateTime fecha2 = DateTime.Parse(dtpOutDiscounts.Text);
+            var editD = proc.ActualizarDescuento(idDescuentoSeleccionado, fecha1, fecha2, porcentaje);
+            if (editD)
+            {
+                MessageBox.Show("Edicion realizada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("No se realizo la edicion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            clearTxtDataCB();
+            ListaDescuentosGrid();
+            btnEditDiscounts.Enabled = false;
+            DeleteDiscountBtton.Enabled = false;
+            addDiscountBtton.Enabled = true;
+            cbProductDiscount.Enabled = true;
         }
 
 
@@ -65,6 +98,17 @@ namespace Punto_de_Venta
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            int numberDiscount = Convert.ToInt32(txtDiscountDiscount.Text);
+            if (numberDiscount <= 0 || numberDiscount >= 101)
+            {
+                MessageBox.Show("El descuento no puede ser 0 o menor, ni mayor a 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dtpInDiscounts.Value >= dtpOutDiscounts.Value)
+            {
+                MessageBox.Show("La fecha inicial debe ser menor que la fecha final", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             int idProducto = Convert.ToInt32(cbProductDiscount.SelectedValue);
 
             string porcentajeTxt = txtDiscountDiscount.Text;
@@ -81,6 +125,8 @@ namespace Punto_de_Venta
                 MessageBox.Show("No se realizo la inserccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             ListaDescuentosGrid();
+            ListarProductos();
+            clearTxtDataCB();
         }
         
 
@@ -109,7 +155,9 @@ namespace Punto_de_Venta
             btnEditDiscounts.Enabled = false;
             DeleteDiscountBtton.Enabled = false;
             addDiscountBtton.Enabled = true;
-            dataGridDiscounts.ClearSelection();
+            cbProductDiscount.Enabled = true;
+            ListarProductos();
+            clearTxtDataCB();
         }
 
         private void dataGridDiscounts_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -125,15 +173,27 @@ namespace Punto_de_Venta
                     int eseId;
                     idDiscount = dataGridDiscounts.CurrentRow.Cells["Id Descuento"].Value.ToString();
                     Int32.TryParse(idDiscount, out eseId);
+                    txtDiscountDiscount.Text = dataGridDiscounts.Rows[e.RowIndex].Cells["Porcentaje"].Value.ToString();
+                    dtpInDiscounts.Text = dataGridDiscounts.Rows[e.RowIndex].Cells["Inicia"].Value.ToString();
+                    dtpOutDiscounts.Text = dataGridDiscounts.Rows[e.RowIndex].Cells["Termina"].Value.ToString();
+                    cbProductDiscount.Text = dataGridDiscounts.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
                     idDescuentoSeleccionado = eseId;
                     btnEditDiscounts.Enabled = true;
                     DeleteDiscountBtton.Enabled = true;
                     addDiscountBtton.Enabled = false;
+                    cbProductDiscount.Enabled = false;
                 }
             }
             catch (Exception ArgumentOutOfRangeException)
             {
             }
+        }
+
+        private void clearTxtDataCB()
+        {
+            dataGridDiscounts.ClearSelection();
+            txtDiscountDiscount.Text = "";
+            cbProductDiscount.Text = "Seleccionar";
         }
     }
 }

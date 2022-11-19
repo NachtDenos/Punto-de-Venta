@@ -320,6 +320,7 @@ namespace Punto_de_Venta
             this.txtFilterEmployees.Name = "txtFilterEmployees";
             this.txtFilterEmployees.Size = new System.Drawing.Size(146, 22);
             this.txtFilterEmployees.TabIndex = 27;
+            this.txtFilterEmployees.TextChanged += new System.EventHandler(this.txtFilterEmployees_TextChanged);
             // 
             // label12
             // 

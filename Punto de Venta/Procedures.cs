@@ -317,7 +317,7 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool ActualizarProductos(int ID, string NombreProd, string descripcion, string uMedida, DateTime fechaCambio,
+        public bool ActualizarProductos(int ID, string NombreProd, string descripcion, int uMedida, DateTime fechaCambio,
             int existencia, int ptReOrden, string Activo, float costo, float precioUnitario, int ClaveDepa)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
@@ -353,7 +353,7 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool InsertarProductos(int CodigoProducto, string Nombre, string Descripcion, string UnidadMedida, DateTime fechaAlta, int existencia, int ptReorden, string activo,
+        public bool InsertarProductos(int CodigoProducto, string Nombre, string Descripcion, int UnidadMedida, DateTime fechaAlta, int existencia, int ptReorden, string activo,
         float costo, float preciounitario,int claveDepartamento)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
@@ -403,6 +403,20 @@ namespace Punto_de_Venta
             return tabla;
         }
 
+        public DataTable ListarUnidadesMedidaCb()
+        {
+            DataTable tabla = new DataTable();
+            // Form3 access = new Form3();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarUnidadesMedida"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
         public DataTable ListarCajasCb()
         {
             DataTable tabla = new DataTable();
@@ -436,7 +450,7 @@ namespace Punto_de_Venta
             DataTable tabla = new DataTable();
             // Form3 access = new Form3();
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "ListarProductos"; //Para el procedure
+            comando.CommandText = "listarProdDescCB"; //Para el procedure
             comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
             leerFilas = comando.ExecuteReader();
             tabla.Load(leerFilas);
@@ -871,6 +885,82 @@ namespace Punto_de_Venta
             comando.Parameters.Clear();
             conexion.CerrarConexion();
             return tabla;
+        }
+
+        public DataTable filtroScreenDepa(string filtro)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtro_DepartamentoScreen"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filtroI", filtro);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public DataTable filtroScreenProduct(string filtro)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtro_ProductoScreen"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filtroI", filtro);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public DataTable filtroScreenEmpleados(string filtro)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "filtro_EmpleadosScreen"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filtroI", filtro);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public bool ActualizarDescuento(int idDesc, DateTime fecha1, DateTime fecha2, int porcentaje)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("editDescuento", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idDesc", idDesc);
+                cmd.Parameters.AddWithValue("@Fecha1", fecha1);
+                cmd.Parameters.AddWithValue("@Fecha2", fecha2);
+                cmd.Parameters.AddWithValue("@porcentaje", porcentaje);
+
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
         }
 
     }

@@ -19,6 +19,7 @@ namespace Punto_de_Venta
         bool selection3 = false;
         bool bandera;
         int productSelection;
+        Procedures proc1 = new Procedures();
         public productsScreen()
         {
             InitializeComponent();
@@ -92,9 +93,10 @@ namespace Punto_de_Venta
             float precFloat = Convert.ToSingle(precDecimal);
             Procedures proc = new Procedures();
             int ajajaja = Convert.ToInt32(cbDepartamentProduct.SelectedValue);
+            int uniMedida = Convert.ToInt32(cbMeasureProduct.SelectedValue);
             DateTime fechaAlta = DateTime.Parse(dtpDateProduct.Text);
             //DateTime fechaCambio = DateTime.Parse(dtpChangeDateProduct.Text);
-            var Variable = proc.InsertarProductos(CodProducto, txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text,fechaAlta, 
+            var Variable = proc.InsertarProductos(CodProducto, txtNameProduct.Text, txtDesProduct.Text, uniMedida, fechaAlta, 
                 exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, ajajaja);
             if (Variable)
             {
@@ -198,7 +200,8 @@ namespace Punto_de_Venta
             Int32.TryParse(ptReOrden, out reOrder);
             DateTime fechaCambio = DateTime.Parse(dtpDateProduct.Text);
             int Arsene = Convert.ToInt32(cbDepartamentProduct.SelectedValue);
-            var LaGuerraDeLasGalaxias = proc.ActualizarProductos(idIntPro, txtNameProduct.Text, txtDesProduct.Text, cbMeasureProduct.Text, fechaCambio, exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, Arsene); ;
+            int uniMedida = Convert.ToInt32(cbMeasureProduct.SelectedValue);
+            var LaGuerraDeLasGalaxias = proc.ActualizarProductos(idIntPro, txtNameProduct.Text, txtDesProduct.Text, uniMedida, fechaCambio, exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, Arsene); ;
             if (LaGuerraDeLasGalaxias)
             {
                 MessageBox.Show("Actualizacion de producto exitosa", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -311,6 +314,7 @@ namespace Punto_de_Venta
         {
             Procedures instancia = new Procedures();
             ListarDepartamentos();
+            ListarUnidadesMedida();
             dataGridProduct.DataSource = instancia.ListarProductos();
         }
 
@@ -346,6 +350,14 @@ namespace Punto_de_Venta
             cbDepartamentProduct.ValueMember = "idDepa";//Valor real de l combox
         }
 
+        private void ListarUnidadesMedida()
+        {
+            Procedures usuarioObj = new Procedures();
+            cbMeasureProduct.DataSource = usuarioObj.ListarUnidadesMedidaCb();
+            cbMeasureProduct.DisplayMember = "unidadMedida";
+            cbMeasureProduct.ValueMember = "idMedida";//Valor real de l combox
+        }
+
         private void limpiarDataGrid()
         {
             dataGridProduct.ClearSelection();
@@ -355,6 +367,18 @@ namespace Punto_de_Venta
             btnEditProduct.Enabled = false;
             btnDeleteProduct.Enabled = false;
             btnAddProduct.Enabled = true;
+        }
+
+        private void txtFilterProduct_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFilterProduct.Text != "")
+            {
+                dataGridProduct.DataSource = proc1.filtroScreenProduct(txtFilterProduct.Text);
+            }
+            else
+            {
+                dataGridProduct.DataSource = proc1.ListarProductos();
+            }
         }
 
         private void clearTxt()
