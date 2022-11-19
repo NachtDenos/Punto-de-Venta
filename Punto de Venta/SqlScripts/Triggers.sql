@@ -7,3 +7,5 @@ Select @ID = idDesc
 FROM deleted
 update Producto set idDesc = null where @ID = idDesc
 end;
+
+go
