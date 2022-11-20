@@ -85,6 +85,7 @@ namespace Punto_de_Venta
             this.dataGridCarritoSales.Size = new System.Drawing.Size(325, 430);
             this.dataGridCarritoSales.TabIndex = 1;
             this.dataGridCarritoSales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCarritoSales_CellClick);
+            this.dataGridCarritoSales.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridCarritoSales_RowsAdded);
             // 
             // btnAddSales
             // 

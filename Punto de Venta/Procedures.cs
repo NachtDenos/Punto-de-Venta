@@ -924,6 +924,62 @@ namespace Punto_de_Venta
 
         }
 
+        public bool EliminarProductoCarrito(string NombreCod, int Cant)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "EliminarProductoCarrito"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@NombreProd", NombreCod);
+                comando.Parameters.AddWithValue("@Cant", Cant);
+            
+
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+
+        }
+
+        public bool EliminarCantidadProductoCarrito(string NombreCod, int CantidadEliminar)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "EliminarCantidad"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@NombreProd", NombreCod);
+                comando.Parameters.AddWithValue("@Cantidad", CantidadEliminar);
+
+
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+
+        }
+
 
         //public bool AgregarCarrito(int codigo, string NombreProd, int Caja, DateTime Fecha)
         //{

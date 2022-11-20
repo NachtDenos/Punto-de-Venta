@@ -16,10 +16,16 @@ namespace Punto_de_Venta
         int CodProd;
         string fecha;
         string NombreProducto;
+        string NombreProductoEliminar;
         int Caja;
         bool itExists;
         int catnAllevarFinal;
         int cantCarritoEliminar;
+        string Precio;
+        float PrecioInicial;
+        
+        int CantAmultiplicar;
+        float precioLbl = 0.0f;
         public SalesScreen()
         {
             InitializeComponent();
@@ -155,6 +161,7 @@ namespace Punto_de_Venta
                 {
                     MessageBox.Show("Actualizacion exitosa", "Actualizado");
                     dataGridCarritoSales.DataSource = proc.ListarCarrito();
+                    
                 }
                
             }
@@ -165,6 +172,11 @@ namespace Punto_de_Venta
                 {
                     MessageBox.Show("Exito");
                     dataGridCarritoSales.DataSource = proc.ListarCarrito();
+                    txtQuantitySales.Text = "";
+                    label7.Text = "";
+                    label7.Text += "$ ";
+                    label7.Text += precioLbl.ToString("N2");    /*precioLbl.ToString().;*/
+                    
                 }
                 else
                     MessageBox.Show("Puñetas");
@@ -188,6 +200,26 @@ namespace Punto_de_Venta
                 MessageBox.Show("No se puede ingresar un valor en cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            int eliminarCant = cantCarritoEliminar - cantInt;
+            if (eliminarCant < 0)
+            {
+                MessageBox.Show("La cantidad a eliminar o regresar no coincide", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (eliminarCant == 0)
+            {
+                proc.EliminarProductoCarrito(NombreProductoEliminar, cantInt);
+                MessageBox.Show("Producto Eliminado", "Realizado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dataGridCarritoSales.DataSource = proc.ListarCarrito();
+                return;
+            }
+            else if (eliminarCant >= cantInt)
+            {
+                MessageBox.Show("Cantidad Actualizada", "Entendido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                proc.EliminarCantidadProductoCarrito(NombreProductoEliminar, cantInt);
+                dataGridCarritoSales.DataSource = proc.ListarCarrito();
+            }
+                
         }
 
         private void txtNumberSales_KeyPress(object sender, KeyPressEventArgs e)
@@ -252,29 +284,55 @@ namespace Punto_de_Venta
 
         private void dataGridCarritoSales_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridProductSales.AllowUserToOrderColumns = false;
+            dataGridCarritoSales.AllowUserToOrderColumns = false;
 
             if (dataGridCarritoSales.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                dataGridCarritoSales.CurrentRow.Selected = true;
-                txtQuantitySales.Enabled = true;
-                txtQuantitySales.Enabled = true;
-                string aLllevar;
-                //dataGridProductSales.CurrentRow.Selected = true;
-                //btnAddSales.Enabled = true;
-                //txtQuantitySales.Enabled = true;
-                //VentasTemp instancia = new VentasTemp();
-                aLllevar = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
-                Int32.TryParse(aLllevar, out cantCarritoEliminar);
-                NombreProducto = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
-                //instancia.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
-                //NombreProducto = instancia.NombreProd;
-                //instancia.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
-                //int codigo;
-                //Int32.TryParse(instancia.CodProducto, out codigo);
-                //CodProd = codigo;
+                try
+                {
+                    dataGridCarritoSales.CurrentRow.Selected = true;
+                    txtQuantitySales.Enabled = false;
+                    txtQuantityDeleteSales.Enabled = true;
+                    string aLllevar;
+                   
+                    //dataGridProductSales.CurrentRow.Selected = true;
+                    //btnAddSales.Enabled = true;
+                    //txtQuantitySales.Enabled = true;
+                    //VentasTemp instancia = new VentasTemp();
+                    aLllevar = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
+                   
+                    Int32.TryParse(aLllevar, out cantCarritoEliminar);
+                    
+                    NombreProductoEliminar = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
+                    
+                    float.TryParse(Precio, out PrecioInicial);
+                    precioLbl = PrecioInicial * catnAllevarFinal;
+                   
+                    //instancia.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
+                    //NombreProducto = instancia.NombreProd;
+                    //instancia.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+                    //int codigo;
+                    //Int32.TryParse(instancia.CodProducto, out codigo);
+                    //CodProd = codigo;
+                }
+                catch (Exception ArgumentOutOfRangeException)
+                {
 
+                }
             }
+        }
+
+        private void dataGridCarritoSales_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            string aLllevar2;
+            aLllevar2 = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
+            NombreProducto = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
+            Precio = dataGridCarritoSales.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
+            Int32.TryParse(aLllevar2, out catnAllevarFinal);
+            float cantFinalDec = (float)catnAllevarFinal;
+           // float.TryParse(catnAllevarFinal, out cantFinalDec);
+            float.TryParse(Precio, out PrecioInicial);
+            precioLbl = PrecioInicial * cantFinalDec + precioLbl;
         }
     }
 }

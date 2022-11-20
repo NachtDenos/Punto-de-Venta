@@ -465,7 +465,7 @@ create table VentaTemporal
   CodigoProducto int not null,
   NombreProducto varchar(50) not null,
   ExistenciaProducto varchar(200) not null,
-  PrecioUnitario int not null,
+  PrecioUnitario money not null,
   FechaVenta date null,
   Caja int null,
   CantidadAllevar int not null
