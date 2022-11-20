@@ -510,5 +510,15 @@ as
 Begin
 update VentaTemporal set CantidadAllevar = CantidadAllevar+ @Cantidad where NombreProducto = @NombreProd
 end;
-ActualizarCantidad 'Helado Oreo', 10
-select * from VentaTemporal
+--ActualizarCantidad 'Helado Oreo', 10
+--select * from VentaTemporal
+--drop VentaTemporal
+--EliminarCantidad 'Control Remoto', 100
+go
+create procedure EliminarCantidad 
+(@NombreProd varchar(30),
+@Cantidad int)
+as
+begin
+update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cantidad where NombreProducto = @NombreProd
+end;

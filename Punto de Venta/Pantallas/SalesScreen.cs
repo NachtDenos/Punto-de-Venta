@@ -19,6 +19,7 @@ namespace Punto_de_Venta
         int Caja;
         bool itExists;
         int catnAllevarFinal;
+        int cantCarritoEliminar;
         public SalesScreen()
         {
             InitializeComponent();
@@ -246,6 +247,33 @@ namespace Punto_de_Venta
             else
             {
                 dataGridProductSales.DataSource = proc.productoSales();
+            }
+        }
+
+        private void dataGridCarritoSales_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridProductSales.AllowUserToOrderColumns = false;
+
+            if (dataGridCarritoSales.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dataGridCarritoSales.CurrentRow.Selected = true;
+                txtQuantitySales.Enabled = true;
+                txtQuantitySales.Enabled = true;
+                string aLllevar;
+                //dataGridProductSales.CurrentRow.Selected = true;
+                //btnAddSales.Enabled = true;
+                //txtQuantitySales.Enabled = true;
+                //VentasTemp instancia = new VentasTemp();
+                aLllevar = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
+                Int32.TryParse(aLllevar, out cantCarritoEliminar);
+                NombreProducto = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
+                //instancia.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
+                //NombreProducto = instancia.NombreProd;
+                //instancia.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+                //int codigo;
+                //Int32.TryParse(instancia.CodProducto, out codigo);
+                //CodProd = codigo;
+
             }
         }
     }

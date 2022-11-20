@@ -63,7 +63,7 @@ namespace Punto_de_Venta
             this.dataGridProductSales.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridProductSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProductSales.Location = new System.Drawing.Point(297, 142);
-            this.dataGridProductSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridProductSales.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridProductSales.Name = "dataGridProductSales";
             this.dataGridProductSales.ReadOnly = true;
             this.dataGridProductSales.RowHeadersWidth = 51;
@@ -78,12 +78,13 @@ namespace Punto_de_Venta
             this.dataGridCarritoSales.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridCarritoSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCarritoSales.Location = new System.Drawing.Point(660, 142);
-            this.dataGridCarritoSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridCarritoSales.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridCarritoSales.Name = "dataGridCarritoSales";
             this.dataGridCarritoSales.ReadOnly = true;
             this.dataGridCarritoSales.RowHeadersWidth = 51;
             this.dataGridCarritoSales.Size = new System.Drawing.Size(325, 430);
             this.dataGridCarritoSales.TabIndex = 1;
+            this.dataGridCarritoSales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCarritoSales_CellClick);
             // 
             // btnAddSales
             // 
@@ -92,7 +93,7 @@ namespace Punto_de_Venta
             this.btnAddSales.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAddSales.Location = new System.Drawing.Point(359, 578);
-            this.btnAddSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddSales.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddSales.Name = "btnAddSales";
             this.btnAddSales.Size = new System.Drawing.Size(185, 63);
             this.btnAddSales.TabIndex = 23;
@@ -107,7 +108,7 @@ namespace Punto_de_Venta
             this.btnDeleteSales.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDeleteSales.Location = new System.Drawing.Point(717, 578);
-            this.btnDeleteSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteSales.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteSales.Name = "btnDeleteSales";
             this.btnDeleteSales.Size = new System.Drawing.Size(185, 63);
             this.btnDeleteSales.TabIndex = 25;
@@ -173,7 +174,7 @@ namespace Punto_de_Venta
             // txtNumberSales
             // 
             this.txtNumberSales.Location = new System.Drawing.Point(33, 203);
-            this.txtNumberSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNumberSales.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumberSales.Multiline = true;
             this.txtNumberSales.Name = "txtNumberSales";
             this.txtNumberSales.Size = new System.Drawing.Size(193, 26);
@@ -183,7 +184,7 @@ namespace Punto_de_Venta
             // txtQuantitySales
             // 
             this.txtQuantitySales.Location = new System.Drawing.Point(33, 505);
-            this.txtQuantitySales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQuantitySales.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuantitySales.Multiline = true;
             this.txtQuantitySales.Name = "txtQuantitySales";
             this.txtQuantitySales.Size = new System.Drawing.Size(193, 26);
@@ -193,7 +194,7 @@ namespace Punto_de_Venta
             // txtNameSales
             // 
             this.txtNameSales.Location = new System.Drawing.Point(33, 293);
-            this.txtNameSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNameSales.Margin = new System.Windows.Forms.Padding(4);
             this.txtNameSales.Multiline = true;
             this.txtNameSales.Name = "txtNameSales";
             this.txtNameSales.Size = new System.Drawing.Size(193, 26);
@@ -228,7 +229,7 @@ namespace Punto_de_Venta
             this.btnPaySales.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPaySales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPaySales.Location = new System.Drawing.Point(1025, 678);
-            this.btnPaySales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPaySales.Margin = new System.Windows.Forms.Padding(4);
             this.btnPaySales.Name = "btnPaySales";
             this.btnPaySales.Size = new System.Drawing.Size(185, 63);
             this.btnPaySales.TabIndex = 36;
@@ -243,7 +244,7 @@ namespace Punto_de_Venta
             this.btnQuickSearchSales.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuickSearchSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnQuickSearchSales.Location = new System.Drawing.Point(543, 678);
-            this.btnQuickSearchSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuickSearchSales.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuickSearchSales.Name = "btnQuickSearchSales";
             this.btnQuickSearchSales.Size = new System.Drawing.Size(185, 63);
             this.btnQuickSearchSales.TabIndex = 37;
@@ -265,7 +266,7 @@ namespace Punto_de_Venta
             // txtQuantityDeleteSales
             // 
             this.txtQuantityDeleteSales.Location = new System.Drawing.Point(993, 443);
-            this.txtQuantityDeleteSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQuantityDeleteSales.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuantityDeleteSales.Multiline = true;
             this.txtQuantityDeleteSales.Name = "txtQuantityDeleteSales";
             this.txtQuantityDeleteSales.Size = new System.Drawing.Size(216, 26);
@@ -312,7 +313,7 @@ namespace Punto_de_Venta
             this.btnFilterSales.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFilterSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnFilterSales.Location = new System.Drawing.Point(53, 358);
-            this.btnFilterSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFilterSales.Margin = new System.Windows.Forms.Padding(4);
             this.btnFilterSales.Name = "btnFilterSales";
             this.btnFilterSales.Size = new System.Drawing.Size(149, 48);
             this.btnFilterSales.TabIndex = 43;
@@ -348,7 +349,7 @@ namespace Punto_de_Venta
             this.Controls.Add(this.btnAddSales);
             this.Controls.Add(this.dataGridCarritoSales);
             this.Controls.Add(this.dataGridProductSales);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SalesScreen";
             this.Text = "Ventas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProductSales)).EndInit();
