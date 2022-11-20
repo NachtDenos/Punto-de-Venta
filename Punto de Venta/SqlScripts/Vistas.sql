@@ -11,6 +11,8 @@ ON c.idUser = a.claveAdmin
 join uniMedidaPro D
 ON D.idMedida = A.uniMedida
 
+go
+
 create view vwEmpleados
 as
 select C.idCajero as IdEmpleado, U.nombreU [Nombre], U.apellidoPU [Apellido Paterno], U.apellidoMU [Apellido Materno],
@@ -18,6 +20,8 @@ U.claveUsuario [Clave de Usuario], U.contraU [Contraseña], C.CURP [CURP], C.emai
 C.fechaNaci [Fecha Nacimiento] from Cajero C
 join Usuario U
 ON C.idCajero = U.idUser
+
+go
 
 create view vwDescuento
 as
