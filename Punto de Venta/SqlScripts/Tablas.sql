@@ -468,5 +468,6 @@ create table VentaTemporal
   PrecioUnitario int not null,
   FechaVenta date null,
   Caja int null,
-
+  CantidadAllevar int not null
 );
+

@@ -18,6 +18,7 @@ namespace Punto_de_Venta
         string NombreProducto;
         int Caja;
         bool itExists;
+        int catnAllevarFinal;
         public SalesScreen()
         {
             InitializeComponent();
@@ -90,13 +91,16 @@ namespace Punto_de_Venta
                 MessageBox.Show("No se puede ingresar un valor en cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            txtQuantitySales.Text = "";
+           // txtQuantitySales.Text = "";
             txtQuantitySales.Enabled = false;
             btnAddSales.Enabled = false;
             dataGridProductSales.ClearSelection();
             VentasTemp INSTANCIA = new VentasTemp();
             string numCod;
             string numCaja;
+            string CantidadAllevarLbl = txtQuantitySales.Text;
+           
+            Int32.TryParse(CantidadAllevarLbl, out catnAllevarFinal);
             DateTime unaFecha = DateTime.Parse(fecha);
             numCod = txtNumberSales.Text;
 
@@ -115,7 +119,7 @@ namespace Punto_de_Venta
                         itExists = true;
                         break;
                     }
-                    else
+                    else 
                         itExists = false;
                    // NombreProducto = fila.Cells["Producto"].Value.ToString();
                 }
@@ -144,12 +148,18 @@ namespace Punto_de_Venta
             //}
             if (itExists == true)
             {
-                MessageBox.Show("Este producto ya esta en el carrito");
+                MessageBox.Show("Este producto ya esta en el carrito", "Actualizando");
+                 var actual = proc.ActualizarCarrito(NombreProducto, catnAllevarFinal);
+                if (actual)
+                {
+                    MessageBox.Show("Actualizacion exitosa", "Actualizado");
+                    dataGridCarritoSales.DataSource = proc.ListarCarrito();
+                }
                
             }
             else if (itExists == false)
             {
-                    var InsertData = proc.AgregarCarrito(CodProd, NombreProducto, Caja, unaFecha);
+                    var InsertData = proc.AgregarCarrito(CodProd, NombreProducto, Caja, unaFecha, catnAllevarFinal);
                 if (InsertData)
                 {
                     MessageBox.Show("Exito");

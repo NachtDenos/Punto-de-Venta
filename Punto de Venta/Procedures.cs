@@ -867,7 +867,8 @@ namespace Punto_de_Venta
             }
             return true;
         }
-        public bool AgregarCarrito(int codigo, string NombreProd, int Caja, DateTime Fecha)
+        public bool AgregarCarrito(int codigo, string NombreProd, 
+            int Caja, DateTime Fecha, int Cantidad)
         {
             try
             {
@@ -878,6 +879,7 @@ namespace Punto_de_Venta
                 comando.Parameters.AddWithValue("@NombreProd", NombreProd);
                 comando.Parameters.AddWithValue("@Caja", Caja);
                 comando.Parameters.AddWithValue("@Fecha", Fecha);
+                comando.Parameters.AddWithValue("@CantidadAllevar", Cantidad);
 
                 comando.ExecuteNonQuery();
                 comando.Parameters.Clear();
@@ -894,6 +896,34 @@ namespace Punto_de_Venta
             return true;
 
         }
+
+        public bool ActualizarCarrito(string NombreCod, int cant)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "ActualizarCantidad"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@NombreProd", NombreCod);
+                comando.Parameters.AddWithValue("@Cantidad", cant);
+                
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+
+        }
+
 
         //public bool AgregarCarrito(int codigo, string NombreProd, int Caja, DateTime Fecha)
         //{

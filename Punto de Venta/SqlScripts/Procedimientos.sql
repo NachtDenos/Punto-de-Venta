@@ -330,7 +330,7 @@ Begin
 update Descuento set cantidad = @porcentaje where idDesc = @idDesc
 update descFecha set fechaIni = @Fecha1, fechaFin = @Fecha2 where @idDesc = idFechaDesc
 end;
-
+go
 
 
 create proc ListarDescuentosFecha
@@ -353,24 +353,23 @@ as
 Begin
 delete Descuento where idDesc = @idDes
 end;
-
+go
 create proc listarProdDescCB
 as
 Begin
 select [Codigo], [Nombre Producto] from vwInventary where [id Descuento] is null
 end;
-
-drop proc listarProdDescCB
+go
+--drop proc listarProdDescCB
 
 go
-
 create proc ListarInventario
 as
 Begin
 select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
        [Cantidades Vendidas], [Merma] from vwInventary where [Activo] = 'Activo'
 end;
-
+go
 create procedure filtro_existenciaI
 (@filtroI int)
 as
@@ -440,28 +439,30 @@ end;
 
 --EN EL CASE DEL DATAGRID TENER UN STRING QUE SE ENCARGUE DE OBTENER EL NOMBRE DEL PRODUCTO ACTUAL SELECCIONADO Y CON ESO HACEERLE INSERT
 
-
 create proc SeleccionarProductoInsertarProducto
 (@CodigoProd int,
 @NombreProd varchar(30),
 @Caja int,
-@Fecha date)
+@Fecha date,
+@CantidadAllevar int)
 as
 Begin
-insert into VentaTemporal(CodigoProducto,NombreProducto, PrecioUnitario, ExistenciaProducto, FechaVenta, Caja)
-Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario [Precio], Producto.existencia [Existencia], @Fecha, @Caja from Producto where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd
+insert into VentaTemporal(CodigoProducto,NombreProducto, PrecioUnitario, ExistenciaProducto, FechaVenta, Caja, CantidadAllevar)
+Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario [Precio], Producto.existencia [Existencia], @Fecha, @Caja, @CantidadAllevar from Producto where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd
 --Update VentaTemporal set Caja = @Caja, FechaVenta = @Fecha where VentaTemporal.CodigoProducto = @CodigoProd
 end;
 
 go
-SeleccionarProductoInsertarProducto 2,'Helado Oreo', 1, '2022-11-17'
-select * FROM VentaTemporal
-drop table VentaTemporal
+
+--SeleccionarProductoInsertarProducto 2,'Helado Oreo', 1, '2022-11-17', 10
+--select * FROM VentaTemporal
+--delete VentaTemporal
 go
 create proc InsertarCarrito
 as
 Begin
-Select idVentaTemp [Id], CodigoProducto [Codigo], NombreProducto [Producto], PrecioUnitario [Precio], ExistenciaProducto [Stock] from VentaTemporal
+Select idVentaTemp [Id], CodigoProducto [Codigo],  NombreProducto [Producto],  CantidadAllevar [A llevar], 
+PrecioUnitario [Precio], ExistenciaProducto [Stock] from VentaTemporal
 end;
 
 -----Filtros de Empleados, Productos y Departamentos
@@ -498,3 +499,16 @@ select [idEmpleado], [Nombre], [Apellido Paterno], [Apellido Materno], [Clave de
 from vwEmpleados
 where  [Nombre] like @filtroI + '%'
 end;
+
+go
+
+
+create procedure ActualizarCantidad
+(@NombreProd varchar(30),
+@Cantidad int)
+as
+Begin
+update VentaTemporal set CantidadAllevar = CantidadAllevar+ @Cantidad where NombreProducto = @NombreProd
+end;
+ActualizarCantidad 'Helado Oreo', 10
+select * from VentaTemporal
