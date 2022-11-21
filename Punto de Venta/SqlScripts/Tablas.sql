@@ -115,8 +115,8 @@ CREATE TABLE Producto
 	claveGest INT NOT NULL, 
 	activo varchar(30),
 	merma INT,
-	Costo float not null,
-	PrecioUnitario float not null,
+	Costo decimal(10,2) not null,
+	PrecioUnitario decimal(10,2) not null,
 	uniVendida INT,
 	claveAdmin INT NOT NULL, 
 	claveDepa INT NOT NULL,
@@ -474,7 +474,11 @@ create table VentaTemporal
   PrecioUnitario money not null,
   FechaVenta date null,
   Caja int null,
-  CantidadAllevar int not null
+  CantidadAllevar int not null,
+  idDescuento int null
+  Constraint FK_IdDescProdTemp
+  Foreign key (idDescuento)
+  References Descuento(idDesc)
 );
 
-drop table VentaTemporal
+--drop table VentaTemporal

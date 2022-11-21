@@ -146,6 +146,7 @@ end;
 go
 
 ---Crear un view, o una proc
+go
 create proc LeerDepartamentos
 as
 Begin
@@ -248,8 +249,8 @@ create proc InsertarProductos
 @existencia int ,
 @ptReorden int ,
 @activo varchar(30),
-@Costo float,
-@PrecioUnitario float ,
+@Costo decimal(10,2),
+@PrecioUnitario decimal(10,2),
 @ClaveDepartamento int
 )
 as 
@@ -272,14 +273,14 @@ create proc ActualizarProductos
 @existencia int,
 @ptReorden int,
 @Activo varchar(30),
-@costo float,
-@PrecioUnitario float,
+@costo decimal(10,2),
+@PrecioUnitario decimal(10,2),
 @ClaveDeparmento int null
 )
 as
 Begin
 update Producto set nombrePro = @NombreProducto, descripcion = @Descripcion, uniMedida = @UnidadMedida,
-FechaCambio = @FechaCambio, existencia = @existencia, ptReorden = @ptReorden, activo = @Activo, Costo = @costo, claveDepa = @ClaveDeparmento
+FechaCambio = @FechaCambio, existencia = @existencia, ptReorden = @ptReorden, activo = @Activo, Costo = @costo, PrecioUnitario =  @PrecioUnitario, claveDepa = @ClaveDeparmento
 where idProduct = @IdP
 end;
 go
@@ -449,7 +450,8 @@ create proc SeleccionarProductoInsertarProducto
 as
 Begin
 insert into VentaTemporal(CodigoProducto,NombreProducto, PrecioUnitario, ExistenciaProducto, FechaVenta, Caja, CantidadAllevar)
-Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario [Precio], Producto.existencia [Existencia], @Fecha, @Caja, @CantidadAllevar from Producto where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd
+Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario [Precio], Producto.existencia [Existencia], @Fecha, @Caja, @CantidadAllevar, idDescuento from Producto where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd
+left join 
 --Update VentaTemporal set Caja = @Caja, FechaVenta = @Fecha where VentaTemporal.CodigoProducto = @CodigoProd
 end;
 
@@ -513,7 +515,7 @@ update VentaTemporal set CantidadAllevar = CantidadAllevar+ @Cantidad where Nomb
 end;
 --ActualizarCantidad 'Helado Oreo', 10
 --select * from VentaTemporal
---delete VentaTemporal
+--delete VentaTemporal 
 --EliminarCantidad 'Control Remoto', 111
 go
 create procedure EliminarCantidad 
@@ -531,7 +533,14 @@ create procedure EliminarProductoCarrito
 @Cant int)
 as
 begin
-Update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cant where NombreProducto = @NombreProd
+Update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cant whrere NombreProducto = @NombreProd
 delete VentaTemporal where VentaTemporal.CantidadAllevar = 0 and NombreProducto = @NombreProd 
+end;
+
+create procedure InsertarParaPagar
+as
+Begin
+select from
+
 end;
 --EliminarProductoCarrito 'Control Remoto'

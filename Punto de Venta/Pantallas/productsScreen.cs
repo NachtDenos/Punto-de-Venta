@@ -87,7 +87,7 @@ namespace Punto_de_Venta
             string costDecimal = costTemp.ToString("0.##");
             float costFloat = Convert.ToSingle(costDecimal);
             //Para precio
-            string prec = txtCostProduct.Text;
+            string prec = txtPriceProduct.Text;
             float precTemp = Convert.ToSingle(prec);
             string precDecimal = precTemp.ToString("0.##");
             float precFloat = Convert.ToSingle(precDecimal);
@@ -178,8 +178,8 @@ namespace Punto_de_Venta
             string costDecimal = costTemp.ToString("0.##");
             float costFloat = Convert.ToSingle(costDecimal);
             //Para precio
-            string prec = txtCostProduct.Text;
-            float precTemp = Convert.ToSingle(prec);
+            string prec2 = txtPriceProduct.Text;
+            float precTemp = Convert.ToSingle(prec2);
             string precDecimal = precTemp.ToString("0.##");
             float precFloat = Convert.ToSingle(precDecimal);
             Procedures proc = new Procedures();

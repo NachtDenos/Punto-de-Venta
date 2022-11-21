@@ -338,7 +338,7 @@ namespace Punto_de_Venta
                 cmd.Parameters.AddWithValue("@Activo", Activo);
                 cmd.Parameters.AddWithValue("@costo", costo);
                 cmd.Parameters.AddWithValue("@PrecioUnitario", precioUnitario);
-                cmd.Parameters.AddWithValue("@ClaveDeparmento", ClaveDepa   );
+                cmd.Parameters.AddWithValue("@ClaveDeparmento", ClaveDepa);
 
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
