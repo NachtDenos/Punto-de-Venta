@@ -26,6 +26,7 @@ namespace Punto_de_Venta
         
         int CantAmultiplicar;
         float precioLbl = 0.0f;
+        float UltimoPrecio;
         public SalesScreen()
         {
             InitializeComponent();
@@ -175,6 +176,7 @@ namespace Punto_de_Venta
                     txtQuantitySales.Text = "";
                     label7.Text = "";
                     label7.Text += "$ ";
+                   // precioLbl = precioLbl + UltimoPrecio;
                     label7.Text += precioLbl.ToString("N2");    /*precioLbl.ToString().;*/
                     
                 }
@@ -332,7 +334,8 @@ namespace Punto_de_Venta
             float cantFinalDec = (float)catnAllevarFinal;
            // float.TryParse(catnAllevarFinal, out cantFinalDec);
             float.TryParse(Precio, out PrecioInicial);
-            precioLbl = PrecioInicial * cantFinalDec + precioLbl;
+            precioLbl = (PrecioInicial * cantFinalDec);
+            UltimoPrecio = precioLbl;
         }
     }
 }

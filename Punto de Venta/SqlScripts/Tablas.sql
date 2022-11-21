@@ -206,6 +206,8 @@ CREATE TABLE Recibo
    fechaVenta DATE NOT NULL,
    total INT NOT NULL,
    claveCajePro INT NOT NULL,
+   MontoPago Money null,
+   IDmetodoPago int not null,
    CONSTRAINT PK_noVenta
    PRIMARY KEY (noVenta),
    CONSTRAINT CK_total
@@ -217,46 +219,48 @@ BEGIN
    DROP TABLE Venta;
 END
 go
-CREATE TABLE Venta
+create table VentaDetalle
 (
-   idVenta INT IDENTITY (0, 1) NOT NULL,
-   noVentaVen INT NOT NULL,
-   claveVentaPro INT NOT NULL, 
-   precioProd INT NOT NULL,
-   descProdut INT NOT NULL,
-   cantidadVen INT NOT NULL,
-   subtotal INT NOT NULL,
-   CONSTRAINT PK_idVenta
-   PRIMARY KEY (idVenta),
-   CONSTRAINT FK_noVentaPro
-   FOREIGN KEY (claveVentaPro)
-   REFERENCES Recibo (noVenta),
-   CONSTRAINT CK_precioProd
-   CHECK (0 <= precioProd),
-   CONSTRAINT CK_descProduct
-   CHECK (0 <= descProdut),
-   CONSTRAINT CK_cantVend
-   CHECK (0 <= cantidadVen)
+  idVentaDetalle int identity(0,1) not null,
+  noDeVenta int not null,
+  CodProducto int not null,
+  DepartamentoId int not null,
+  UnidadesVendidas int not null,
+  Subtotal money not null,
+  DescuentoId int null,
+  PrecioUnitario money not null,
+  Utilidad money not null, 
+  Constraint Pk_VentaDetail
+  Primary key(idVentaDetalle),
+  Constraint FK_noDeVenta
+  Foreign key (noDeVenta)
+  references MetodPago(idPago)
+
 );
+
+
+--CREATE TABLE Venta
+--(
+--   idVenta INT IDENTITY (0, 1) NOT NULL,
+--   noVentaVen INT NOT NULL,
+--   claveVentaPro INT NOT NULL, 
+--   precioProd INT NOT NULL,
+--   descProdut INT NOT NULL,
+--   cantidadVen INT NOT NULL,
+--   subtotal INT NOT NULL,
+--   CONSTRAINT PK_idVenta
+--   PRIMARY KEY (idVenta),
+--   CONSTRAINT FK_noVentaPro
+--   FOREIGN KEY (claveVentaPro)
+--   REFERENCES Recibo (noVenta),
+--   CONSTRAINT CK_precioProd
+--   CHECK (0 <= precioProd),
+--   CONSTRAINT CK_descProduct
+--   CHECK (0 <= descProdut),
+--   CONSTRAINT CK_cantVend
+--   CHECK (0 <= cantidadVen)
+--);
 go
-IF OBJECT_ID('VentaProduct') IS NOT NULL
-BEGIN
-   DROP TABLE VentaProduct;
-END
-go
-CREATE TABLE VentaProduct
-(
-   idVentaProd INT IDENTITY (0, 1) NOT NULL,
-   nombreProdVenta VARCHAR (30) NOT NULL,
-   CONSTRAINT PK_idVentaProd
-   PRIMARY KEY (idVentaProd)
-);
-go
-ALTER TABLE Venta
-  ADD CONSTRAINT FK_claveVentaProd
-  FOREIGN KEY (claveVentaPro)
-  REFERENCES VentaProduct (idVentaProd);
-  go
 IF OBJECT_ID('NotaCred') IS NOT NULL
 BEGIN
    DROP TABLE NotaCred;
@@ -383,13 +387,13 @@ BEGIN
    DROP TABLE Caje_Pro;
 END
 go
-CREATE TABLE Caje_Pro
+Create TABLE Caje_Pro
 (
    idCajePro INT IDENTITY (0, 1) NOT NULL,
    claveCajeroCP INT NOT NULL,
    codigoProCP INT NOT NULL,
    noCajaCP INT NOT NULL,
-   activoCP BIT DEFAULT (1),
+   activoCP varchar(40),
    existenciaCP INT NOT NULL, 
    CONSTRAINT PK_idCajePro
    PRIMARY KEY (idCajePro),
@@ -403,7 +407,7 @@ CREATE TABLE Caje_Pro
    FOREIGN KEY (noCajaCP)
    REFERENCES Caja (idCaja),
    CONSTRAINT CK_activoCP
-   CHECK (0 = activoCP OR 1 = activoCP)
+   CHECK (activoCP = 'Activo' OR activoCP = 'Inactivo')
 );
 go
 ALTER TABLE Recibo
@@ -422,6 +426,8 @@ CREATE TABLE ticket
    noVentaTic INT NOT NULL,
    clavePagoTic INT NOT NULL,
    fechaTic DATE NOT NULL,
+   montoPago money not null,
+   Total money not null,
    CONSTRAINT PK_idTicket
    PRIMARY KEY (idTicket),
    CONSTRAINT FK_noVentaTic

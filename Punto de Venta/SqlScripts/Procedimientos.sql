@@ -1,3 +1,4 @@
+go
 create proc SelectUsuarios
 (
 @ClaveU varchar(50),
@@ -195,7 +196,7 @@ as
 Begin
 select idCaja[Numero de Caja], disponi[Disponibilidad] from Caja
 end;
-
+go
 create proc ListarCajaCombo
 as
 Begin
