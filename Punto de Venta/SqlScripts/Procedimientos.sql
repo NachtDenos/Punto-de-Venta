@@ -523,6 +523,7 @@ as
 begin
 update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cantidad where NombreProducto = @NombreProd
 end;
+
 go
 
 create procedure EliminarProductoCarrito 

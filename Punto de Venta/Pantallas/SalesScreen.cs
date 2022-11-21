@@ -22,10 +22,12 @@ namespace Punto_de_Venta
         int catnAllevarFinal;
         int cantCarritoEliminar;
         string Precio;
+        string PrecioNUEVO;
         float PrecioInicial;
         
         int CantAmultiplicar;
         float precioLbl = 0.0f;
+        float precioLblAux = 0.0f;
         float UltimoPrecio;
         public SalesScreen()
         {
@@ -124,6 +126,7 @@ namespace Punto_de_Venta
                     if (NombreProducto == fila.Cells["Producto"].Value.ToString())
                     {
                         MessageBox.Show("Error este producto ya existe");
+                        PrecioNUEVO = fila.Cells["Precio"].Value.ToString();
                         itExists = true;
                         break;
                     }
@@ -160,9 +163,21 @@ namespace Punto_de_Venta
                  var actual = proc.ActualizarCarrito(NombreProducto, catnAllevarFinal);
                 if (actual)
                 {
+                    
                     MessageBox.Show("Actualizacion exitosa", "Actualizado");
                     dataGridCarritoSales.DataSource = proc.ListarCarrito();
-                    
+
+                    int auxInt = Int32.Parse(txtQuantitySales.Text);
+                    float cantidadNueva = (float)auxInt;
+                    float agregar;
+                    float.TryParse(PrecioNUEVO, out agregar);
+                    precioLbl = (agregar * cantidadNueva);
+                    precioLblAux = precioLbl + precioLblAux;
+                    precioLbl = precioLblAux;
+                    label7.Text = "";
+                    label7.Text += "$ ";
+                    label7.Text += precioLbl.ToString("N2");
+                    //UltimoPrecio = precioLbl;
                 }
                
             }
@@ -173,17 +188,18 @@ namespace Punto_de_Venta
                 {
                     MessageBox.Show("Exito");
                     dataGridCarritoSales.DataSource = proc.ListarCarrito();
-                    txtQuantitySales.Text = "";
                     label7.Text = "";
                     label7.Text += "$ ";
-                   // precioLbl = precioLbl + UltimoPrecio;
+                    // precioLbl = precioLbl + UltimoPrecio;
+                    precioLblAux = precioLbl + precioLblAux;
+                    precioLbl = precioLblAux;
                     label7.Text += precioLbl.ToString("N2");    /*precioLbl.ToString().;*/
                     
                 }
                 else
                     MessageBox.Show("Puñetas");
 
-
+                txtQuantitySales.Text = "";
             }
            
         }
@@ -309,7 +325,9 @@ namespace Punto_de_Venta
                     
                     float.TryParse(Precio, out PrecioInicial);
                     precioLbl = PrecioInicial * catnAllevarFinal;
-                   
+                    precioLblAux =+ precioLbl;
+                    precioLbl = precioLblAux;
+
                     //instancia.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
                     //NombreProducto = instancia.NombreProd;
                     //instancia.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();

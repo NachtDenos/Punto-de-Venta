@@ -477,3 +477,4 @@ create table VentaTemporal
   CantidadAllevar int not null
 );
 
+drop table VentaTemporal
