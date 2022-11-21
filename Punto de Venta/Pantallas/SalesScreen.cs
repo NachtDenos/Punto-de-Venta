@@ -23,6 +23,7 @@ namespace Punto_de_Venta
         int cantCarritoEliminar;
         string Precio;
         string PrecioNUEVO;
+        string PrecioAEliminar;
         float PrecioInicial;
         
         int CantAmultiplicar;
@@ -34,6 +35,7 @@ namespace Punto_de_Venta
             InitializeComponent();
             dataGridProductSales.DataSource = proc.productoSales();
             btnAddSales.Enabled = false;
+            btnDeleteSales.Enabled = false;
             txtQuantitySales.Enabled = false;
             //dataGridProductSales.Rows[0].Cells[0].Value = "B312";
             //dataGridProductSales.Rows[0].Cells[1].Value = "Jamón";
@@ -47,6 +49,7 @@ namespace Punto_de_Venta
             dataGridProductSales.DataSource = proc.productoSales();
             btnAddSales.Enabled = false;
             txtQuantitySales.Enabled = false;
+            btnDeleteSales.Enabled = false;
             string prueba = txt;
             string prueba2 = caja;
             fecha = prueba;
@@ -229,15 +232,42 @@ namespace Punto_de_Venta
                 proc.EliminarProductoCarrito(NombreProductoEliminar, cantInt);
                 MessageBox.Show("Producto Eliminado", "Realizado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dataGridCarritoSales.DataSource = proc.ListarCarrito();
+
+                int auxInt = Int32.Parse(txtQuantityDeleteSales.Text);
+                float cantidadEliminar = (float)auxInt;
+                float restar;
+                float.TryParse(PrecioAEliminar, out restar);
+                precioLbl = (restar * cantidadEliminar);
+                precioLblAux = precioLblAux - precioLbl;
+                precioLbl = precioLblAux;
+
+                label7.Text = "";
+                label7.Text += "$ ";
+                label7.Text += precioLbl.ToString("N2");
+                btnDeleteSales.Enabled = false;
+                dataGridCarritoSales.ClearSelection();
                 return;
             }
-            else if (eliminarCant >= cantInt)
+            else
             {
                 MessageBox.Show("Cantidad Actualizada", "Entendido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 proc.EliminarCantidadProductoCarrito(NombreProductoEliminar, cantInt);
                 dataGridCarritoSales.DataSource = proc.ListarCarrito();
+
+                int auxInt = Int32.Parse(txtQuantityDeleteSales.Text);
+                float cantidadEliminar = (float)auxInt;
+                float restar;
+                float.TryParse(PrecioAEliminar, out restar);
+                precioLbl = (restar * cantidadEliminar);
+                precioLblAux = precioLblAux - precioLbl;
+                precioLbl = precioLblAux;
+
+                label7.Text = "";
+                label7.Text += "$ ";
+                label7.Text += precioLbl.ToString("N2");
             }
-                
+            btnDeleteSales.Enabled = false;
+            dataGridCarritoSales.ClearSelection();
         }
 
         private void txtNumberSales_KeyPress(object sender, KeyPressEventArgs e)
@@ -322,12 +352,10 @@ namespace Punto_de_Venta
                     Int32.TryParse(aLllevar, out cantCarritoEliminar);
                     
                     NombreProductoEliminar = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
-                    
-                    float.TryParse(Precio, out PrecioInicial);
-                    precioLbl = PrecioInicial * catnAllevarFinal;
-                    precioLblAux =+ precioLbl;
-                    precioLbl = precioLblAux;
+                    PrecioAEliminar = dataGridCarritoSales.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
 
+                    float.TryParse(Precio, out PrecioInicial);
+                    btnDeleteSales.Enabled = true;
                     //instancia.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
                     //NombreProducto = instancia.NombreProd;
                     //instancia.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
