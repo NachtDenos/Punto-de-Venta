@@ -234,10 +234,7 @@ create table VentaDetalle
   Primary key(idVentaDetalle),
   Constraint FK_noDeVenta
   Foreign key (noDeVenta)
-  references MetodPago(idPago),
-  Constraint FK_noDeDepa
-  Foreign key (DepartamentoId)
-  references Departamento(idDepa),
+  references Recibo(noVenta),
   Constraint FK_noProd
   Foreign key (CodProducto)
   references Producto(idProduct)
@@ -275,41 +272,17 @@ CREATE TABLE NotaCred
 (
    noCredit INT IDENTITY (10000, 1) NOT NULL,
    total INT NOT NULL,
-   numeroRecibo INT NOT NULL,
+   numeroRecibo INT NOT NULL, 
    fechaNota DATE NOT NULL,
    claveAdminNota INT NOT NULL,
-   codigoProNota INT NOT NULL,
    CONSTRAINT PK_noCredit
    PRIMARY KEY (noCredit),
    CONSTRAINT FK_claveAdminNota
    FOREIGN KEY (claveAdminNota)
    REFERENCES Administrador (idAdmin),
-   CONSTRAINT FK_codigoProNota
-   FOREIGN KEY (codigoProNota)
-   REFERENCES Producto (idProduct)
-);
-go
-IF OBJECT_ID('ProductNota') IS NOT NULL
-BEGIN
-   DROP TABLE ProductNota;
-END
-go
-CREATE TABLE ProductNota
-(
-   idNotaP INT IDENTITY (0, 1) NOT NULL,
-   idNoCredit INT NOT NULL,
-   proRegresa VARCHAR (30) NOT NULL,
-   cantidadNota INT NOT NULL,
-   subtotalNota INT NOT NULL,
-   CONSTRAINT PK_idNotaP
-   PRIMARY KEY (idNotaP),
-   CONSTRAINT FK_idNoCredit
-   FOREIGN KEY (idNoCredit)
-   REFERENCES NotaCred (noCredit),
-   CONSTRAINT CK_cantidadNota
-   CHECK (0 <= cantidadNota),
-   CONSTRAINT CK_subtotalNota
-   CHECK (0 <= subtotalNota)
+   CONSTRAINT FK_idVenta
+   FOREIGN KEY (numeroRecibo)
+   REFERENCES Recibo (noVenta)
 );
 go
 IF OBJECT_ID('Departamento') IS NOT NULL
@@ -336,7 +309,15 @@ ALTER TABLE Producto
   ADD CONSTRAINT FK_claveDepa
   FOREIGN KEY (claveDepa)
   REFERENCES Departamento (idDepa);
-  go
+go
+
+ALTER TABLE VentaDetalle
+  ADD CONSTRAINT FK_noDeDepa
+  FOREIGN KEY (DepartamentoId)
+  REFERENCES Departamento(idDepa);
+
+go
+
 IF OBJECT_ID('MetodPago') IS NOT NULL
 BEGIN
    DROP TABLE MetodPago;
@@ -413,9 +394,7 @@ Create TABLE Caje_Pro
    --CONSTRAINT CK_activoCP
    --CHECK (activoCP = 'Activo' OR activoCP = 'Inactivo')
 );
-go
-alter table Caje_Pro
-  drop column activoCP 
+go 
 
 ALTER TABLE Recibo
   ADD CONSTRAINT FK_claveCajePro
@@ -444,8 +423,6 @@ CREATE TABLE ticket
    REFERENCES MetodPago (idPago)
 );
 go
-alter table ticket
- drop column Total
 
 IF OBJECT_ID('devolucion') IS NOT NULL
 BEGIN
@@ -457,7 +434,9 @@ CREATE TABLE devolucion
    idDev INT IDENTITY (0, 1) NOT NULL,
    noCredDev INT NOT NULL,
    codigoProDev INT NOT NULL,
-   fechaDev DATE NOT NULL,
+   devCant INT NOT NULL,
+   subtotalDev money NOT NULL,
+   motivo varchar(300) NOT NULL,
    CONSTRAINT PK_idDev
    PRIMARY KEY (idDev),
    CONSTRAINT FK_noCredDev
