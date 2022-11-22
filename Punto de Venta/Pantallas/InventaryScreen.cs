@@ -117,5 +117,11 @@ namespace Punto_de_Venta
                 dataGridInventary.DataSource = proc.filtroMerma(0);
             }
         }
+
+        private void InventaryScreen_Load(object sender, EventArgs e)
+        {
+            dataGridInventary.Columns["Costo"].DefaultCellStyle.Format = "C2";
+            dataGridInventary.Columns["Precio Unitario"].DefaultCellStyle.Format = "C2";
+        }
     }
 }
