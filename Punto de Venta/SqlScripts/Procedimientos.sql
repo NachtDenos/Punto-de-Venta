@@ -557,7 +557,15 @@ SUM(CantidadAllevar*PrecioUnitario) as Total
 from VentaTemporal
 
 Create proc GenerarVenta
-()
+(@Total decimal(10,2),
+@NombreProd varchar(30),
+@DepartamentoNom varchar(30),
+@DepartamentoId int,
+@ProdId int,
+@DescuentoId int,
+@Fecha date,
+@Subtotal decimal(10,2)
+)
 as
 Begin
 

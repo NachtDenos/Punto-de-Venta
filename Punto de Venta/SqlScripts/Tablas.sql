@@ -415,7 +415,7 @@ Create TABLE Caje_Pro
 );
 go
 alter table Caje_Pro
-  drop column activoCP 
+  drop column existenciaCP 
 
 ALTER TABLE Recibo
   ADD CONSTRAINT FK_claveCajePro
