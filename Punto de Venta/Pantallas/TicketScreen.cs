@@ -28,35 +28,74 @@ namespace Punto_de_Venta
             doc.Open();
 
             //Definir la fuente
-            iTextSharp.text.Font standarFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+            iTextSharp.text.Font standarFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+            iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+            iTextSharp.text.Font fuente2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 15, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
             //Encabezado
-            doc.Add(new Paragraph("Hola soy un Ticket"));
+            doc.Add(new Paragraph("AXXA", fuente) {Alignment = Element.ALIGN_CENTER});
+            doc.Add(new Paragraph("PRODUCTOS DE CONTROL AXXA, S.L", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("Calle Janos. SantaClara", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("China, Nuevo León", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("67190", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("axxa@gmail.com", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("812 - 879 - 9540", standarFont) { Alignment = Element.ALIGN_CENTER });
             doc.Add(Chunk.NEWLINE);
-
+            doc.Add(new Paragraph("No. TICKET:", standarFont) { Alignment = Element.ALIGN_CENTER });
+            //AQUI PONER EL NUMERO DE TICKET
+            doc.Add(new Paragraph("Fecha: ", standarFont) { Alignment = Element.ALIGN_CENTER });
+            //AQUI PONER LA FECHA
+            doc.Add(Chunk.NEWLINE);
             //Encabezado de columnas
-            PdfPTable tblEjemplo = new PdfPTable(3);
+            PdfPTable tblEjemplo = new PdfPTable(5);
             tblEjemplo.WidthPercentage = 100;
 
-            PdfPCell clNombre = new PdfPCell(new Phrase("Producto", standarFont));
+            PdfPCell clNombre = new PdfPCell(new Phrase("Producto", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
             clNombre.BorderWidth = 0;
             clNombre.BorderWidthBottom = 0.75f;
 
-            PdfPCell clDesc = new PdfPCell(new Phrase("Descripcion", standarFont));
+            PdfPCell clCant = new PdfPCell(new Phrase("Cantidad", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCant.BorderWidth = 0;
+            clCant.BorderWidthBottom = 0.75f;
+
+            PdfPCell clPrecio = new PdfPCell(new Phrase("Precio U.", standarFont)) {HorizontalAlignment = Element.ALIGN_CENTER };
+            clPrecio.BorderWidth = 0;
+            clPrecio.BorderWidthBottom = 0.75f;
+
+            PdfPCell clDesc = new PdfPCell(new Phrase("Descuento", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
             clDesc.BorderWidth = 0;
             clDesc.BorderWidthBottom = 0.75f;
 
-            PdfPCell clSubtotal = new PdfPCell(new Phrase("Subtotal", standarFont));
+            PdfPCell clSubtotal = new PdfPCell(new Phrase("Subtotal", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
             clSubtotal.BorderWidth = 0;
             clSubtotal.BorderWidthBottom = 0.75f;
 
             tblEjemplo.AddCell(clNombre);
+            tblEjemplo.AddCell(clCant);
+            tblEjemplo.AddCell(clPrecio);
             tblEjemplo.AddCell(clDesc);
             tblEjemplo.AddCell(clSubtotal);
 
             //AQUI HACER UN CICLO PARA AGREGAR LOS PRODUCTOS
-
             doc.Add(tblEjemplo);
+
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+            string totalS = "1000.00";
+            doc.Add(new Paragraph("Total: " totalS, standarFont) { Alignment = Element.ALIGN_CENTER });
+            //AQUI PONER EL TOTAL O ALADO
+            doc.Add(new Paragraph("<<FORMAS DE PAGO>>", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("Tarjeta Credito:", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("Tarjeta Debito:", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("Efectivo:", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("Cheque:", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("Vales:", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("Otro:", standarFont) { Alignment = Element.ALIGN_CENTER });
+
+            doc.Add(new Paragraph("Caja:", standarFont) { Alignment = Element.ALIGN_CENTER });
+
+            doc.Add(new Paragraph("GRACIAS POR TU COMPRA", standarFont) { Alignment = Element.ALIGN_CENTER });
+
             doc.Close();
             pw.Close();
 
