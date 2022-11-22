@@ -449,9 +449,11 @@ create proc SeleccionarProductoInsertarProducto
 @CantidadAllevar int)
 as
 Begin
-insert into VentaTemporal(CodigoProducto,NombreProducto, PrecioUnitario, ExistenciaProducto, FechaVenta, Caja, CantidadAllevar)
-Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario [Precio], Producto.existencia [Existencia], @Fecha, @Caja, @CantidadAllevar, idDescuento from Producto where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd
-left join 
+insert into VentaTemporal(CodigoProducto,NombreProducto, PrecioUnitario, ExistenciaProducto, FechaVenta, Caja, CantidadAllevar, idDescuento)
+Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario [Precio], Producto.existencia [Existencia], @Fecha, @Caja, @CantidadAllevar, B.idDesc from Producto left join Descuento B
+on B.idDesc = Producto.idDesc
+where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd;
+
 --Update VentaTemporal set Caja = @Caja, FechaVenta = @Fecha where VentaTemporal.CodigoProducto = @CodigoProd
 end;
 
@@ -465,7 +467,9 @@ create proc InsertarCarrito
 as
 Begin
 Select idVentaTemp [Id], CodigoProducto [Codigo],  NombreProducto [Producto],  CantidadAllevar [A llevar], 
-PrecioUnitario [Precio], ExistenciaProducto [Stock] from VentaTemporal
+PrecioUnitario [Precio], ExistenciaProducto [Stock], d.cantidad [Porcentaje Descuento] from VentaTemporal
+left join Descuento D
+on D.idDesc = VentaTemporal.idDescuentos
 end;
 
 -----Filtros de Empleados, Productos y Departamentos
@@ -539,8 +543,18 @@ end;
 
 create procedure InsertarParaPagar
 as
-Begin
-select from
-
+Begin  
+select VentaTemporal.idVentaTemp [Id], VentaTemporal.NombreProducto [Producto], 
+VentaTemporal.PrecioUnitario [Precio], VentaTemporal.CantidadAllevar [A llevar], D.cantidad [Descuento], subTotal [Subtotal] from VentaTemporal
+left join Descuento D
+on D.idDesc = VentaTemporal.idDescuento
 end;
---EliminarProductoCarrito 'Control Remoto'
+
+select*from VentaTemporal
+--total
+select 
+SUM(CantidadAllevar*PrecioUnitario) as Total
+from VentaTemporal
+
+
+

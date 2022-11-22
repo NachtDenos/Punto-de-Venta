@@ -12,6 +12,7 @@ namespace Punto_de_Venta
 {
     public partial class WaytoPayScreen : Form
     {
+        Procedures proc = new Procedures();
         public WaytoPayScreen()
         {
             InitializeComponent();
@@ -118,5 +119,25 @@ namespace Punto_de_Venta
                 txtOtherPay.Enabled = false;
         }
         #endregion MetodosDePago
+
+        private void WaytoPayScreen_Load(object sender, EventArgs e)
+        {
+            dataGridWayToPay.DataSource = proc.ListarCarritoCompraPagar();
+            if (dataGridWayToPay.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
+                {
+                    float subtotal;
+                    string precioUni;
+                    float precioU;
+                    int CANTLLEVAR;
+                      precioUni = fila.Cells["Precio"].Value.ToString();
+                      CANTLLEVAR = (int)fila.Cells["A llevar"].Value;
+                      float.TryParse(precioUni, out precioU);
+                      subtotal = precioU * CANTLLEVAR;
+                    fila.Cells["Subtotal"].Value = subtotal;
+                }
+            }     
+        }
     }
 }

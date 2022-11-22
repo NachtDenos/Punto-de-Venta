@@ -475,7 +475,8 @@ create table VentaTemporal
   FechaVenta date null,
   Caja int null,
   CantidadAllevar int not null,
-  idDescuento int null
+  idDescuento int null,
+  subTotal money null,
   Constraint FK_IdDescProdTemp
   Foreign key (idDescuento)
   References Descuento(idDesc)
