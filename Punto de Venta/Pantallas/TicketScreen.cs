@@ -30,7 +30,6 @@ namespace Punto_de_Venta
             //Definir la fuente
             iTextSharp.text.Font standarFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-            iTextSharp.text.Font fuente2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 15, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
             //Encabezado
             doc.Add(new Paragraph("AXXA", fuente) {Alignment = Element.ALIGN_CENTER});
@@ -80,20 +79,86 @@ namespace Punto_de_Venta
             doc.Add(tblEjemplo);
 
             doc.Add(Chunk.NEWLINE);
+
+            PdfPTable tblTotal = new PdfPTable(2);
+            tblTotal.WidthPercentage = 100;
+
+            PdfPCell clTotal = new PdfPCell(new Phrase("Total:", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clTotal.BorderWidth = 0;
+            clTotal.BorderWidthBottom = 0;
+            string totalInt = "0.0";
+            PdfPCell clTotalCant = new PdfPCell(new Phrase(totalInt, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clTotalCant.BorderWidth = 0;
+            clTotalCant.BorderWidthBottom = 0;
+
+            tblTotal.AddCell(clTotal);
+            tblTotal.AddCell(clTotalCant);
+
+            doc.Add(tblTotal);
+
             doc.Add(Chunk.NEWLINE);
-            string totalS = "1000.00";
-            doc.Add(new Paragraph("Total: " totalS, standarFont) { Alignment = Element.ALIGN_CENTER });
-            //AQUI PONER EL TOTAL O ALADO
-            doc.Add(new Paragraph("<<FORMAS DE PAGO>>", standarFont) { Alignment = Element.ALIGN_CENTER });
-            doc.Add(new Paragraph("Tarjeta Credito:", standarFont) { Alignment = Element.ALIGN_CENTER });
-            doc.Add(new Paragraph("Tarjeta Debito:", standarFont) { Alignment = Element.ALIGN_CENTER });
-            doc.Add(new Paragraph("Efectivo:", standarFont) { Alignment = Element.ALIGN_CENTER });
-            doc.Add(new Paragraph("Cheque:", standarFont) { Alignment = Element.ALIGN_CENTER });
-            doc.Add(new Paragraph("Vales:", standarFont) { Alignment = Element.ALIGN_CENTER });
-            doc.Add(new Paragraph("Otro:", standarFont) { Alignment = Element.ALIGN_CENTER });
 
+            PdfPTable tblMetodoPago = new PdfPTable(2);
+            tblMetodoPago.WidthPercentage = 100;
+
+            PdfPCell clNombreMP = new PdfPCell(new Phrase("FORMAS DE PAGO", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            clNombreMP.BorderWidthBottom = 0;
+
+            PdfPCell clCantMP = new PdfPCell(new Phrase("Cantidad Pagada", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            clCantMP.BorderWidthBottom = 0;
+
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+            string cantiPagada = "0.0";
+            clNombreMP = new PdfPCell(new Phrase("Tarjeta de Credito", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            clCantMP = new PdfPCell(new Phrase(cantiPagada, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+
+            clNombreMP = new PdfPCell(new Phrase("Tarjeta Debito", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            clCantMP = new PdfPCell(new Phrase(cantiPagada, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+
+            clNombreMP = new PdfPCell(new Phrase("Efectivo", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            clCantMP = new PdfPCell(new Phrase(cantiPagada, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+
+            clNombreMP = new PdfPCell(new Phrase("Cheque", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            clCantMP = new PdfPCell(new Phrase(cantiPagada, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+
+            clNombreMP = new PdfPCell(new Phrase("Vales", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            clCantMP = new PdfPCell(new Phrase(cantiPagada, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+
+            clNombreMP = new PdfPCell(new Phrase("Otro", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            clCantMP = new PdfPCell(new Phrase(cantiPagada, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+
+            doc.Add(tblMetodoPago);
+            doc.Add(Chunk.NEWLINE);
             doc.Add(new Paragraph("Caja:", standarFont) { Alignment = Element.ALIGN_CENTER });
-
+            //Agregar aqui abajo la caja
+            doc.Add(Chunk.NEWLINE);
             doc.Add(new Paragraph("GRACIAS POR TU COMPRA", standarFont) { Alignment = Element.ALIGN_CENTER });
 
             doc.Close();
