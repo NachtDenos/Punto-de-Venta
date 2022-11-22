@@ -18,3 +18,21 @@ values ('Mililitro')
 go
 Insert into uniMedidaPro(unidadMedida)
 values ('Pieza')
+go
+Insert into MetodPago(tipoMetod)
+values ('Tarjeta Credito')
+go
+Insert into MetodPago(tipoMetod)
+values ('Tarjeta Debito')
+go
+Insert into MetodPago(tipoMetod)
+values ('Efectivo')
+go
+Insert into MetodPago(tipoMetod)
+values ('Cheque')
+go
+Insert into MetodPago(tipoMetod)
+values ('Vales')
+go
+Insert into MetodPago(tipoMetod)
+values ('Otro')
