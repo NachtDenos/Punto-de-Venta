@@ -47,6 +47,10 @@ namespace Punto_de_Venta
             this.rbCheckPay = new System.Windows.Forms.CheckBox();
             this.rbOtherPay = new System.Windows.Forms.CheckBox();
             this.rbVouchersPay = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.totalblwaytopay = new System.Windows.Forms.Label();
+            this.finalPaylbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridWayToPay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +83,7 @@ namespace Punto_de_Venta
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(295, 505);
+            this.label3.Location = new System.Drawing.Point(295, 596);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(218, 30);
@@ -88,7 +92,7 @@ namespace Punto_de_Venta
             // 
             // txtCashPay
             // 
-            this.txtCashPay.Location = new System.Drawing.Point(369, 583);
+            this.txtCashPay.Location = new System.Drawing.Point(369, 674);
             this.txtCashPay.Margin = new System.Windows.Forms.Padding(4);
             this.txtCashPay.Multiline = true;
             this.txtCashPay.Name = "txtCashPay";
@@ -98,7 +102,7 @@ namespace Punto_de_Venta
             // 
             // txtDebitCardPay
             // 
-            this.txtDebitCardPay.Location = new System.Drawing.Point(212, 646);
+            this.txtDebitCardPay.Location = new System.Drawing.Point(212, 737);
             this.txtDebitCardPay.Margin = new System.Windows.Forms.Padding(4);
             this.txtDebitCardPay.Multiline = true;
             this.txtDebitCardPay.Name = "txtDebitCardPay";
@@ -108,7 +112,7 @@ namespace Punto_de_Venta
             // 
             // txtCreditCardPay
             // 
-            this.txtCreditCardPay.Location = new System.Drawing.Point(212, 583);
+            this.txtCreditCardPay.Location = new System.Drawing.Point(212, 674);
             this.txtCreditCardPay.Margin = new System.Windows.Forms.Padding(4);
             this.txtCreditCardPay.Multiline = true;
             this.txtCreditCardPay.Name = "txtCreditCardPay";
@@ -118,7 +122,7 @@ namespace Punto_de_Venta
             // 
             // txtCheckPay
             // 
-            this.txtCheckPay.Location = new System.Drawing.Point(369, 646);
+            this.txtCheckPay.Location = new System.Drawing.Point(369, 737);
             this.txtCheckPay.Margin = new System.Windows.Forms.Padding(4);
             this.txtCheckPay.Multiline = true;
             this.txtCheckPay.Name = "txtCheckPay";
@@ -128,7 +132,7 @@ namespace Punto_de_Venta
             // 
             // txtVoucherPay
             // 
-            this.txtVoucherPay.Location = new System.Drawing.Point(516, 583);
+            this.txtVoucherPay.Location = new System.Drawing.Point(516, 674);
             this.txtVoucherPay.Margin = new System.Windows.Forms.Padding(4);
             this.txtVoucherPay.Multiline = true;
             this.txtVoucherPay.Name = "txtVoucherPay";
@@ -138,7 +142,7 @@ namespace Punto_de_Venta
             // 
             // txtOtherPay
             // 
-            this.txtOtherPay.Location = new System.Drawing.Point(516, 646);
+            this.txtOtherPay.Location = new System.Drawing.Point(516, 737);
             this.txtOtherPay.Margin = new System.Windows.Forms.Padding(4);
             this.txtOtherPay.Multiline = true;
             this.txtOtherPay.Name = "txtOtherPay";
@@ -152,7 +156,7 @@ namespace Punto_de_Venta
             this.btnPayPay.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPayPay.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPayPay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPayPay.Location = new System.Drawing.Point(659, 665);
+            this.btnPayPay.Location = new System.Drawing.Point(659, 756);
             this.btnPayPay.Margin = new System.Windows.Forms.Padding(4);
             this.btnPayPay.Name = "btnPayPay";
             this.btnPayPay.Size = new System.Drawing.Size(119, 42);
@@ -175,7 +179,7 @@ namespace Punto_de_Venta
             // rbCreditCardPay
             // 
             this.rbCreditCardPay.AutoSize = true;
-            this.rbCreditCardPay.Location = new System.Drawing.Point(208, 555);
+            this.rbCreditCardPay.Location = new System.Drawing.Point(208, 646);
             this.rbCreditCardPay.Margin = new System.Windows.Forms.Padding(4);
             this.rbCreditCardPay.Name = "rbCreditCardPay";
             this.rbCreditCardPay.Size = new System.Drawing.Size(144, 21);
@@ -187,7 +191,7 @@ namespace Punto_de_Venta
             // rbDebitCardPay
             // 
             this.rbDebitCardPay.AutoSize = true;
-            this.rbDebitCardPay.Location = new System.Drawing.Point(208, 619);
+            this.rbDebitCardPay.Location = new System.Drawing.Point(208, 710);
             this.rbDebitCardPay.Margin = new System.Windows.Forms.Padding(4);
             this.rbDebitCardPay.Name = "rbDebitCardPay";
             this.rbDebitCardPay.Size = new System.Drawing.Size(140, 21);
@@ -199,7 +203,7 @@ namespace Punto_de_Venta
             // rbCashPay
             // 
             this.rbCashPay.AutoSize = true;
-            this.rbCashPay.Location = new System.Drawing.Point(372, 555);
+            this.rbCashPay.Location = new System.Drawing.Point(372, 646);
             this.rbCashPay.Margin = new System.Windows.Forms.Padding(4);
             this.rbCashPay.Name = "rbCashPay";
             this.rbCashPay.Size = new System.Drawing.Size(80, 21);
@@ -211,7 +215,7 @@ namespace Punto_de_Venta
             // rbCheckPay
             // 
             this.rbCheckPay.AutoSize = true;
-            this.rbCheckPay.Location = new System.Drawing.Point(369, 618);
+            this.rbCheckPay.Location = new System.Drawing.Point(369, 709);
             this.rbCheckPay.Margin = new System.Windows.Forms.Padding(4);
             this.rbCheckPay.Name = "rbCheckPay";
             this.rbCheckPay.Size = new System.Drawing.Size(79, 21);
@@ -223,7 +227,7 @@ namespace Punto_de_Venta
             // rbOtherPay
             // 
             this.rbOtherPay.AutoSize = true;
-            this.rbOtherPay.Location = new System.Drawing.Point(516, 619);
+            this.rbOtherPay.Location = new System.Drawing.Point(516, 710);
             this.rbOtherPay.Margin = new System.Windows.Forms.Padding(4);
             this.rbOtherPay.Name = "rbOtherPay";
             this.rbOtherPay.Size = new System.Drawing.Size(58, 21);
@@ -235,7 +239,7 @@ namespace Punto_de_Venta
             // rbVouchersPay
             // 
             this.rbVouchersPay.AutoSize = true;
-            this.rbVouchersPay.Location = new System.Drawing.Point(516, 555);
+            this.rbVouchersPay.Location = new System.Drawing.Point(516, 646);
             this.rbVouchersPay.Margin = new System.Windows.Forms.Padding(4);
             this.rbVouchersPay.Name = "rbVouchersPay";
             this.rbVouchersPay.Size = new System.Drawing.Size(65, 21);
@@ -244,12 +248,56 @@ namespace Punto_de_Venta
             this.rbVouchersPay.UseVisualStyleBackColor = true;
             this.rbVouchersPay.Click += new System.EventHandler(this.rbVouchersPay_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.label4.Location = new System.Drawing.Point(468, 533);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(132, 30);
+            this.label4.TabIndex = 50;
+            this.label4.Text = "Total Final";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.label5.Location = new System.Drawing.Point(104, 533);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 30);
+            this.label5.TabIndex = 51;
+            this.label5.Text = "Total";
+            // 
+            // totalblwaytopay
+            // 
+            this.totalblwaytopay.AutoSize = true;
+            this.totalblwaytopay.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.totalblwaytopay.Location = new System.Drawing.Point(180, 533);
+            this.totalblwaytopay.Name = "totalblwaytopay";
+            this.totalblwaytopay.Size = new System.Drawing.Size(72, 30);
+            this.totalblwaytopay.TabIndex = 52;
+            this.totalblwaytopay.Text = "$0.00";
+            // 
+            // finalPaylbl
+            // 
+            this.finalPaylbl.AutoSize = true;
+            this.finalPaylbl.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.finalPaylbl.Location = new System.Drawing.Point(606, 533);
+            this.finalPaylbl.Name = "finalPaylbl";
+            this.finalPaylbl.Size = new System.Drawing.Size(72, 30);
+            this.finalPaylbl.TabIndex = 53;
+            this.finalPaylbl.Text = "$0.00";
+            // 
             // WaytoPayScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
-            this.ClientSize = new System.Drawing.Size(793, 721);
+            this.ClientSize = new System.Drawing.Size(793, 801);
+            this.Controls.Add(this.finalPaylbl);
+            this.Controls.Add(this.totalblwaytopay);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.rbVouchersPay);
             this.Controls.Add(this.rbOtherPay);
             this.Controls.Add(this.rbCheckPay);
@@ -301,5 +349,9 @@ namespace Punto_de_Venta
         private System.Windows.Forms.CheckBox rbCheckPay;
         private System.Windows.Forms.CheckBox rbOtherPay;
         private System.Windows.Forms.CheckBox rbVouchersPay;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label totalblwaytopay;
+        private System.Windows.Forms.Label finalPaylbl;
     }
 }
