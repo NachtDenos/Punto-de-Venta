@@ -556,5 +556,10 @@ select
 SUM(CantidadAllevar*PrecioUnitario) as Total
 from VentaTemporal
 
+Create proc GenerarVenta
+()
+as
+Begin
 
+end;
 

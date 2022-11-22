@@ -13,6 +13,8 @@ namespace Punto_de_Venta
     public partial class WaytoPayScreen : Form
     {
         Procedures proc = new Procedures();
+        float total;
+        float totalaux;
         //public WaytoPayScreen()
         //{
         //    InitializeComponent();
@@ -149,6 +151,8 @@ namespace Punto_de_Venta
                 foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
                 {
                     fila.Cells["Precio"].Value.ToString();
+                  
+                    string totalstring;
                     float subtotal;
                     string precioUni;
                     float precioU;
@@ -176,7 +180,12 @@ namespace Punto_de_Venta
                         subtotal = precioU * CANTLLEVAR;
                         fila.Cells["Subtotal"].Value = subtotal;
                     }
+                    total = subtotal;
+                    totalaux = total + totalaux;
+                    total = totalaux;
+                    
                 }
+                finalPaylbl.Text = total.ToString("N2");
                 //dataGridWayToPay.Rows.Insert(0,"TOTALLLL");
             }     
         }
