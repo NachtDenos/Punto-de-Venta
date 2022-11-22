@@ -64,7 +64,18 @@ namespace Punto_de_Venta
 
         private void btnPaySales_Click(object sender, EventArgs e)
         {
-            WaytoPayScreen TheOtherForm = new WaytoPayScreen();
+            if (precioLbl.ToString() == "$00.00")
+            {
+                MessageBox.Show("NO HA COMPRADO NADA");
+                return;
+            }
+
+            if (dataGridCarritoSales.Rows.Count == 0)
+            {
+                MessageBox.Show("NO HA COMPRADO NADA", "error");
+                return;
+            }
+            WaytoPayScreen TheOtherForm = new WaytoPayScreen(precioLbl.ToString(), label7.Text.ToString());
             TheOtherForm.ShowDialog();
         }
 
@@ -334,23 +345,22 @@ namespace Punto_de_Venta
         {
             dataGridCarritoSales.AllowUserToOrderColumns = false;
 
-            if (dataGridCarritoSales.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                try
-                {
+            try{
+                if (dataGridCarritoSales.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                 {
                     dataGridCarritoSales.CurrentRow.Selected = true;
                     txtQuantitySales.Enabled = false;
                     txtQuantityDeleteSales.Enabled = true;
                     string aLllevar;
-                   
+
                     //dataGridProductSales.CurrentRow.Selected = true;
                     //btnAddSales.Enabled = true;
                     //txtQuantitySales.Enabled = true;
                     //VentasTemp instancia = new VentasTemp();
                     aLllevar = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
-                   
+
                     Int32.TryParse(aLllevar, out cantCarritoEliminar);
-                    
+
                     NombreProductoEliminar = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
                     PrecioAEliminar = dataGridCarritoSales.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
 
@@ -362,12 +372,13 @@ namespace Punto_de_Venta
                     //int codigo;
                     //Int32.TryParse(instancia.CodProducto, out codigo);
                     //CodProd = codigo;
+                 }
                 }
                 catch (Exception ArgumentOutOfRangeException)
                 {
 
                 }
-            }
+            
         }
 
         private void dataGridCarritoSales_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

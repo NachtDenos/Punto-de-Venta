@@ -265,6 +265,19 @@ namespace Punto_de_Venta
             return grid;
         }
 
+        public DataTable ListarCarritoCompraPagar()
+        {
+            DataTable grid = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "InsertarParaPagar";
+            comando.CommandType = CommandType.StoredProcedure;
+            leerFilas = comando.ExecuteReader();
+            grid.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return grid;
+        }
+
         public bool ActualizarDepartamentos(string Nombre, string Devolucion, int idDepa)
         { 
             ConexionSqlServer conn = new ConexionSqlServer();

@@ -207,16 +207,16 @@ CREATE TABLE Recibo
    total INT NOT NULL,
    claveCajePro INT NOT NULL,
    MontoPago Money null,
-   IDmetodoPago int not null,
    CONSTRAINT PK_noVenta
    PRIMARY KEY (noVenta),
    CONSTRAINT CK_total
    CHECK (0 <= total)
 );
+
 go
-IF OBJECT_ID('Venta') IS NOT NULL
+IF OBJECT_ID('VentaDetalle') IS NOT NULL
 BEGIN
-   DROP TABLE Venta;
+   DROP TABLE VentaDetalle;
 END
 go
 create table VentaDetalle
@@ -234,8 +234,13 @@ create table VentaDetalle
   Primary key(idVentaDetalle),
   Constraint FK_noDeVenta
   Foreign key (noDeVenta)
-  references MetodPago(idPago)
-
+  references MetodPago(idPago),
+  Constraint FK_noDeDepa
+  Foreign key (DepartamentoId)
+  references Departamento(idDepa),
+  Constraint FK_noProd
+  Foreign key (CodProducto)
+  references Producto(idProduct)
 );
 
 
@@ -393,7 +398,6 @@ Create TABLE Caje_Pro
    claveCajeroCP INT NOT NULL,
    codigoProCP INT NOT NULL,
    noCajaCP INT NOT NULL,
-   activoCP varchar(40),
    existenciaCP INT NOT NULL, 
    CONSTRAINT PK_idCajePro
    PRIMARY KEY (idCajePro),
@@ -406,10 +410,13 @@ Create TABLE Caje_Pro
    CONSTRAINT FK_noCajaCP
    FOREIGN KEY (noCajaCP)
    REFERENCES Caja (idCaja),
-   CONSTRAINT CK_activoCP
-   CHECK (activoCP = 'Activo' OR activoCP = 'Inactivo')
+   --CONSTRAINT CK_activoCP
+   --CHECK (activoCP = 'Activo' OR activoCP = 'Inactivo')
 );
 go
+alter table Caje_Pro
+  drop column activoCP 
+
 ALTER TABLE Recibo
   ADD CONSTRAINT FK_claveCajePro
   FOREIGN KEY (claveCajePro)
@@ -420,14 +427,13 @@ BEGIN
    DROP TABLE ticket;
 END
 go
+
 CREATE TABLE ticket
 (
    idTicket INT IDENTITY (10000, 1) NOT NULL,
    noVentaTic INT NOT NULL,
    clavePagoTic INT NOT NULL,
-   fechaTic DATE NOT NULL,
    montoPago money not null,
-   Total money not null,
    CONSTRAINT PK_idTicket
    PRIMARY KEY (idTicket),
    CONSTRAINT FK_noVentaTic
@@ -438,6 +444,9 @@ CREATE TABLE ticket
    REFERENCES MetodPago (idPago)
 );
 go
+alter table ticket
+ drop column Total
+
 IF OBJECT_ID('devolucion') IS NOT NULL
 BEGIN
    DROP TABLE devolucion;
@@ -475,7 +484,8 @@ create table VentaTemporal
   FechaVenta date null,
   Caja int null,
   CantidadAllevar int not null,
-  idDescuento int null
+  idDescuento int null,
+  subTotal money null,
   Constraint FK_IdDescProdTemp
   Foreign key (idDescuento)
   References Descuento(idDesc)

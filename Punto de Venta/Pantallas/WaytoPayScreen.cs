@@ -12,13 +12,35 @@ namespace Punto_de_Venta
 {
     public partial class WaytoPayScreen : Form
     {
-        public WaytoPayScreen()
+        Procedures proc = new Procedures();
+        float total;
+        float totalaux;
+        //public WaytoPayScreen()
+        //{
+        //    InitializeComponent();
+        //    txtCreditCardPay.Enabled = false;
+        //    txtCashPay.Enabled = false;
+        //    txtVoucherPay.Enabled = false;
+        //    txtDebitCardPay.Enabled = false;
+        //    txtCheckPay.Enabled = false;
+        //    txtOtherPay.Enabled = false;
+        //    //dataGridWayToPay.Rows[0].Cells[0].Value = "B312";
+        //    //dataGridWayToPay.Rows[0].Cells[1].Value = "Jamón";
+        //    //dataGridWayToPay.Rows[0].Cells[2].Value = "30.00";
+        //    //dataGridWayToPay.Rows[0].Cells[3].Value = "2";
+        //    //dataGridWayToPay.Rows[0].Cells[4].Value = "0.00";
+        //    //dataGridWayToPay.Rows[0].Cells[5].Value = "60.00";
+
+        //}
+        public WaytoPayScreen(string Total, string lblPapito)
         {
             InitializeComponent();
             txtCreditCardPay.Enabled = false;
             txtCashPay.Enabled = false;
             txtVoucherPay.Enabled = false;
             txtDebitCardPay.Enabled = false;
+            
+            totalblwaytopay.Text = lblPapito;
             txtCheckPay.Enabled = false;
             txtOtherPay.Enabled = false;
             //dataGridWayToPay.Rows[0].Cells[0].Value = "B312";
@@ -27,11 +49,11 @@ namespace Punto_de_Venta
             //dataGridWayToPay.Rows[0].Cells[3].Value = "2";
             //dataGridWayToPay.Rows[0].Cells[4].Value = "0.00";
             //dataGridWayToPay.Rows[0].Cells[5].Value = "60.00";
-            
-        }
 
+        }
         private void btnPayPay_Click(object sender, EventArgs e)
         {
+
             this.Close();
             ticketScreen TheOtherForm = new ticketScreen();
             TheOtherForm.ShowDialog();   
@@ -118,5 +140,56 @@ namespace Punto_de_Venta
                 txtOtherPay.Enabled = false;
         }
         #endregion MetodosDePago
+
+        private void WaytoPayScreen_Load(object sender, EventArgs e)
+        {
+            dataGridWayToPay.DataSource = proc.ListarCarritoCompraPagar();
+            dataGridWayToPay.Columns["Precio"].DefaultCellStyle.Format = "C2";
+            dataGridWayToPay.Columns["Subtotal"].DefaultCellStyle.Format = "C2";
+            if (dataGridWayToPay.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
+                {
+                    fila.Cells["Precio"].Value.ToString();
+                  
+                    string totalstring;
+                    float subtotal;
+                    string precioUni;
+                    float precioU;
+                    int CANTLLEVAR;
+                    string descuento;
+                    float desc;
+                      precioUni = fila.Cells["Precio"].Value.ToString();
+                      CANTLLEVAR = (int)fila.Cells["A llevar"].Value;
+                      
+                    if (fila.Cells["Descuento"].Value.ToString() == string.Empty)
+                    {
+                        fila.Cells["Descuento"].Value = "0";
+                        float.TryParse(precioUni, out precioU);
+                        subtotal = precioU * CANTLLEVAR;
+                        fila.Cells["Subtotal"].Value = subtotal;
+                    }
+                    else
+                    {
+                        
+                        descuento = fila.Cells["Descuento"].Value.ToString();
+                        float.TryParse(descuento, out desc);
+                        desc = desc / 100.00f;
+                        float.TryParse(precioUni, out precioU);
+                        precioU = precioU * desc;
+                        subtotal = precioU * CANTLLEVAR;
+                        fila.Cells["Subtotal"].Value = subtotal;
+                    }
+                    total = subtotal;
+                    totalaux = total + totalaux;
+                    total = totalaux;
+                    
+                }
+                finalPaylbl.Text = total.ToString("N2");
+                //dataGridWayToPay.Rows.Insert(0,"TOTALLLL");
+            }     
+        }
+
+
     }
 }
