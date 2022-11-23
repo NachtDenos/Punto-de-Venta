@@ -5,8 +5,6 @@ IF OBJECT_ID('ProyectoMAD') IS NOT NULL
 BEGIN
    DROP DATABASE ProyectoMAD;
 END
-
---ctrl r para bajar la ventana de mensajes
 use ProyectoMAD
 go
 IF OBJECT_ID('Usuario') IS NOT NULL
@@ -30,19 +28,6 @@ CREATE TABLE Usuario
 );
 
 
---select  A.idAdmin , B.idUser, B.nombreU, B.claveUsuario, B.contraU, B.tipoU  from Usuario B
---join Administrador A
---on a.idUserA = b.idUser
---where B.tipoU = '1'
-
---select * from Usuario
-
---insert into Administrador(idUserA)
---values ('1');
-
---SELECT * FROM Departamento
-
-
 IF OBJECT_ID('Administrador') IS NOT NULL
 BEGIN
    DROP TABLE Administrador;
@@ -54,14 +39,11 @@ CREATE TABLE Administrador
    idAdmin INT IDENTITY (1, 1) NOT NULL,
    idUserA  INT not NULL,
    CONSTRAINT PK_admin
-   PRIMARY KEY (idAdmin), --I mean esta esta bien pero las otras jsjsj
+   PRIMARY KEY (idAdmin), 
    CONSTRAINT FK_idUser
-   FOREIGN KEY (idUserA) --Ver que pedo con estas id, si no podemos dejarla solo sin FK aislada de los demas
+   FOREIGN KEY (idUserA) 
    REFERENCES Usuario (idUser)
 );
-
---on A.idAdmin = B.idUser parte del query de arriba
---insert into Administrador(idUserA) values ('1');
 
 IF OBJECT_ID('Cajero') IS NOT NULL
 BEGIN
@@ -157,25 +139,9 @@ ALTER TABLE Producto
   ADD CONSTRAINT FK_idMedida
   FOREIGN KEY (uniMedida)
   REFERENCES uniMedidaPro (idMedida);
-  go
 
 go
 
-IF OBJECT_ID('gestioProd') IS NOT NULL
-BEGIN
-   DROP TABLE gestioProd;
-END
-go
-CREATE TABLE gestioProd
-(
-   idGest INT IDENTITY (0, 1) NOT NULL,
-   fechaCambio DATE,
-   usuarioCambio VARCHAR (30),
-   CONSTRAINT PK_idGest
-   PRIMARY KEY (idGest)
-);
-
-  go
 IF OBJECT_ID('Caja') IS NOT NULL
 BEGIN
    DROP TABLE Caja;
@@ -240,28 +206,6 @@ create table VentaDetalle
   references Producto(idProduct)
 );
 
-
---CREATE TABLE Venta
---(
---   idVenta INT IDENTITY (0, 1) NOT NULL,
---   noVentaVen INT NOT NULL,
---   claveVentaPro INT NOT NULL, 
---   precioProd INT NOT NULL,
---   descProdut INT NOT NULL,
---   cantidadVen INT NOT NULL,
---   subtotal INT NOT NULL,
---   CONSTRAINT PK_idVenta
---   PRIMARY KEY (idVenta),
---   CONSTRAINT FK_noVentaPro
---   FOREIGN KEY (claveVentaPro)
---   REFERENCES Recibo (noVenta),
---   CONSTRAINT CK_precioProd
---   CHECK (0 <= precioProd),
---   CONSTRAINT CK_descProduct
---   CHECK (0 <= descProdut),
---   CONSTRAINT CK_cantVend
---   CHECK (0 <= cantidadVen)
---);
 go
 IF OBJECT_ID('NotaCred') IS NOT NULL
 BEGIN
@@ -298,10 +242,6 @@ CREATE TABLE Departamento
    claveAdminDepa INT NULL,
    CONSTRAINT PK_idDepa
    PRIMARY KEY (idDepa),
-   --CONSTRAINT FK_claveAdminDepa
-   --FOREIGN KEY (claveAdminDepa)
-   --REFERENCES Administrador (idAdmin),
-   --CONSTRAINT CK_devoluDepa
    CHECK ('No' = devoluDepa OR 'Si' = devoluDepa)
 );
 go
@@ -469,5 +409,3 @@ create table VentaTemporal
   Foreign key (idDescuento)
   References Descuento(idDesc)
 );
-
---drop table VentaTemporal
