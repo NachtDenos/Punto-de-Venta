@@ -236,6 +236,7 @@ namespace Punto_de_Venta
         {
             try
             {
+                
                 dataGridProduct.AllowUserToOrderColumns = false;
                 if (dataGridProduct.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
@@ -316,6 +317,8 @@ namespace Punto_de_Venta
             ListarDepartamentos();
             ListarUnidadesMedida();
             dataGridProduct.DataSource = instancia.ListarProductos();
+            dataGridProduct.Columns["Costo"].DefaultCellStyle.Format = "C2";
+            dataGridProduct.Columns["Precio Unitario"].DefaultCellStyle.Format = "C2";
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)

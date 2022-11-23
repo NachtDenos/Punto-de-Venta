@@ -469,7 +469,7 @@ Begin
 Select idVentaTemp [Id], CodigoProducto [Codigo],  NombreProducto [Producto],  CantidadAllevar [A llevar], 
 PrecioUnitario [Precio], ExistenciaProducto [Stock], d.cantidad [Porcentaje Descuento] from VentaTemporal
 left join Descuento D
-on D.idDesc = VentaTemporal.idDescuentos
+on D.idDesc = VentaTemporal.idDescuento
 end;
 
 -----Filtros de Empleados, Productos y Departamentos

@@ -201,6 +201,7 @@ namespace Punto_de_Venta
             this.Controls.Add(this.label1);
             this.Name = "InventaryScreen";
             this.Text = "Inventario";
+            this.Load += new System.EventHandler(this.InventaryScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInventary)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

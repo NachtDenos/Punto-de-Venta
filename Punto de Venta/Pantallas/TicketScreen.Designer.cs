@@ -48,6 +48,7 @@ namespace Punto_de_Venta
             this.btnPrintTicket.TabIndex = 43;
             this.btnPrintTicket.Text = "Imprimir";
             this.btnPrintTicket.UseVisualStyleBackColor = false;
+            this.btnPrintTicket.Click += new System.EventHandler(this.btnPrintTicket_Click);
             // 
             // label1
             // 

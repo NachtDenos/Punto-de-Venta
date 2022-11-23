@@ -119,3 +119,6 @@ C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\obj\De
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.DiscountsScreen.resources
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.CreditNoteScreen.resources
 C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\Debug\Punto_de_Venta.ticketScreen.resources
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\itextsharp.dll
+C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\itextsharp.xml
