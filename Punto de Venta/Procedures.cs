@@ -1264,5 +1264,34 @@ namespace Punto_de_Venta
             return true;
         }
 
+
+        public int obtenerIdVenta()
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "obtenerIdVenta"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                int idVentaActual = 0;
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    idVentaActual = reader.GetInt32(0);
+                }
+                conexion.CerrarConexion();
+                return idVentaActual;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return 0;
+            }
+
+        }
+
     }
 }

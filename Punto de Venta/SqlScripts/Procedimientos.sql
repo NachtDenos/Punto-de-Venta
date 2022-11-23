@@ -737,3 +737,11 @@ as
 Begin
 delete VentaTemporal
 end;
+
+create procedure obtenerIdVenta
+as
+Begin
+declare @buscaID int = 0;
+set @buscaID = IDENT_CURRENT('Recibo')
+select noVenta from Recibo where noVenta = @buscaID
+end;
