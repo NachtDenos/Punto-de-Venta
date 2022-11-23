@@ -58,6 +58,7 @@ namespace Punto_de_Venta
             this.btnPrintCredit.TabIndex = 46;
             this.btnPrintCredit.Text = "Imprimir";
             this.btnPrintCredit.UseVisualStyleBackColor = false;
+            this.btnPrintCredit.Click += new System.EventHandler(this.btnPrintCredit_Click);
             // 
             // pbNote
             // 
