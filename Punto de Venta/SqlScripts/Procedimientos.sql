@@ -557,51 +557,122 @@ SUM(CantidadAllevar*PrecioUnitario) as Total
 from VentaTemporal
 
 create proc GenerarVenta
-(@Total decimal(10,2),
-@NombreProd varchar(30),
-@Fecha date,
-@Subtotal decimal(10,2),
-@MontoPago decimal(10,2),
-@MontoTotal decimal(10,2),
-@MetodPago int,
+(@idProducto int,
 @CajeroId int,
 @NumCaja int,
-@NombreCajero varchar(30),
-@UnidadesVendidas int,
+@Fecha date,
+@MontoPago decimal(10,2),
+@Total decimal(10,2),
+@NombreProducto varchar(30),
+@NombreCajero varchar(30)
+)
+as
+Begin
+   declare @CajeroId2 int = 0
+   declare @CajeroId3 int = 0;
+   set @idProducto = (Select Producto.idProduct from Producto where nombrePro = @NombreProducto) 
+   set @CajeroId = (Select Usuario.idUser from Usuario where nombreU = @NombreCajero)
+   
+   insert into Caje_Pro(claveCajeroCP,codigoProCP, noCajaCP)
+    values(@CajeroId, @idProducto, @NumCaja)
+
+   set @CajeroId3 = SCOPE_IDENTITY();
+
+   insert into Recibo(fechaVenta, MontoPago, claveCajePro, total)
+   values (@Fecha, @MontoPago, @CajeroId3, @Total)
+--   set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
+End;
+
+GenerarVenta 1, 1, 1, '2022-10-17', 1215.05, 1215.05, 'Television', 'Kevin'
+
+create proc GenerarVentaDetalle
+(@idVentaHeader int,
+@nombreProducto varchar(30),
+@UnidaesVendidas int,
+@Subtotal decimal(10,2),
 @PrecioUnitario decimal(10,2),
 @Utilidad decimal(10,2)
 )
 as
+BEGIN
+declare @IdDepartamento int = 0;
+declare @DescuentoId int = 0;
+declare @CodigoProd int = 0;
+set @IdDepartamento = (Select Producto.claveDepa from Producto where nombrePro = @nombreProducto)
+set @DescuentoId = (Select Producto.idDesc from Producto where nombrePro = @nombreProducto)
+set @CodigoProd = (Select Producto.idProduct from Producto where nombrePro = @nombreProducto)
+set @idVentaHeader = IDENT_CURRENT('Recibo')
+insert into VentaDetalle(noDeVenta,CodProducto, DepartamentoId,UnidadesVendidas, Subtotal,DescuentoId, PrecioUnitario, Utilidad)
+values (@idVentaHeader,  @CodigoProd, @IdDepartamento, @UnidaesVendidas, @Subtotal, @DescuentoId, @PrecioUnitario, @Utilidad)
+
+END;
+GenerarVentaDetalle 0, 'Television', 220, 2020.20, 3232.10, 3232.50
+
+create proc GenerarTicket
+(@IdVentaHeader int,
+@MontoPagado decimal(10,2),
+@ClavePago int)
+as
 Begin
-   declare @idVenta int = 0;
-   declare @idDepartamento int= 0;
-   declare @idProducto int= 0;
-   declare @DescuentoId int= 0;
-   declare @CajeroId2 int = 0
-   declare @CajeroId3 int = 0;
-   select @idProducto = Producto.idProduct from Producto where nombrePro = @NombreProd 
-   set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
-   set @CajeroId2 = @CajeroId;
-   insert into Caje_Pro(noCajaCP, claveCajeroCP, codigoProCP)
-   values (@NumCaja, @CajeroId2, @idProducto)
-    set @CajeroId3 = SCOPE_IDENTITY();
-   insert into Recibo(fechaVenta, MontoPago, claveCajePro, total)
-   values (@Fecha, @MontoPago, @CajeroId3, @MontoTotal)
-   
-   set @idVenta = SCOPE_IDENTITY();
-   set @DescuentoId = (select Producto.idDesc from Producto where nombrePro = @NombreProd)
-   select @idDepartamento = Producto.claveDepa from Producto where nombrePro = @NombreProd 
-   
-   insert into VentaDetalle(noDeVenta,CodProducto, DepartamentoId,UnidadesVendidas, Subtotal,DescuentoId, PrecioUnitario,
-   Utilidad)
-   values(@idVenta, @idProducto, @idDepartamento, @UnidadesVendidas, @Subtotal, @DescuentoId,@PrecioUnitario, @Utilidad)
+set @IdVentaHeader = IDENT_CURRENT('Recibo')
+insert into ticket(noVentaTic, clavePagoTic, montoPago)
+values(@IdVentaHeader, @ClavePago, @MontoPagado)
+end
 
-   insert into ticket(noVentaTic, clavePagoTic, montoPago)
-   values(@idVenta, @MetodPago, @MontoPago)
+GenerarTicket 0, 250.05, 2
+--
+select * from Caje_Pro
+select * from Recibo
+select * from VentaDetalle
+select * from ticket
+--drop proc GenerarVenta
+--(@Total decimal(10,2),
+--@NombreProd varchar(30),
+--@Fecha date,
+--@Subtotal decimal(10,2),
+--@MontoPago decimal(10,2),
+--@MontoTotal decimal(10,2),
+--@MetodPago int,
+--@CajeroId int,
+--@NumCaja int,
+--@NombreCajero varchar(30),
+--@UnidadesVendidas int,
+--@PrecioUnitario decimal(10,2),
+--@Utilidad decimal(10,2)
+--)
+--as
+--Begin
+--   declare @idVenta int = 0;
+--   declare @idDepartamento int= 0;
+--   declare @idProducto int= 0;
+--   declare @DescuentoId int= 0;
+--   declare @CajeroId2 int = 0
+--   declare @CajeroId3 int = 0;
+--   select @idProducto = Producto.idProduct from Producto where nombrePro = @NombreProd 
+--   set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
+--   set @CajeroId2 = @CajeroId;
+
+--   insert into Caje_Pro(noCajaCP, claveCajeroCP, codigoProCP)
+--   values (@NumCaja, @CajeroId2, @idProducto)
+--    set @CajeroId3 = SCOPE_IDENTITY();
+
+--   insert into Recibo(fechaVenta, MontoPago, claveCajePro, total)
+--   values (@Fecha, @MontoPago, @CajeroId3, @MontoTotal)
+   
+--   set @idVenta = SCOPE_IDENTITY();
+--   set @DescuentoId = (select Producto.idDesc from Producto where nombrePro = @NombreProd)
+--   select @idDepartamento = Producto.claveDepa from Producto where nombrePro = @NombreProd 
+   
+--   insert into VentaDetalle(noDeVenta,CodProducto, DepartamentoId,UnidadesVendidas, Subtotal,DescuentoId, PrecioUnitario,
+--   Utilidad)
+--   values(@idVenta, @idProducto, @idDepartamento, @UnidadesVendidas, @Subtotal, @DescuentoId,@PrecioUnitario, @Utilidad)
+
+--   insert into ticket(noVentaTic, clavePagoTic, montoPago)
+--   values(@idVenta, @MetodPago, @MontoPago)
 
    
 
-end;
+--end;
 delete VentaTemporal
 --delete Caje_Pro
 --delete Recibo
