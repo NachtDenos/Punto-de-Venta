@@ -470,7 +470,7 @@ namespace Punto_de_Venta
             for (int i = 0; i < CantidadMetodosActivos; i++)
             {
                 proc.GenerarTicketDB(0, monto1, 0);
-                proc.GenerarTicketDB(0, monto2, 1);
+                //proc.GenerarTicketDB(0, monto2, 1);
             }
             this.Close();
             ticketScreen TheOtherForm = new ticketScreen();
