@@ -439,8 +439,7 @@ namespace Punto_de_Venta
                 //proc.GenerarTicketDB(0, monto2, 1);
             }
             this.Close();
-            ticketScreen TheOtherForm = new ticketScreen();
-            TheOtherForm.ShowDialog();
+            
         }
 
         #endregion FuncionesForms

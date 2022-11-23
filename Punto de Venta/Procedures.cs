@@ -1243,6 +1243,26 @@ namespace Punto_de_Venta
             return tabla;
         }
 
+        public bool limpiarVentaTemporal()
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("vaciarVentaTemporal", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
+        }
 
     }
 }

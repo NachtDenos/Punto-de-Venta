@@ -17,6 +17,7 @@ namespace Punto_de_Venta.Pantallas
     {
         VentasTemp instancia = new VentasTemp();
         int idCajeroAux;
+        Procedures proc = new Procedures();
         //DE SUGERENCIA, EL CLIENTE SI PAGA CON MAS DINERO DE LO NORMAL, SE LE DEBE REGRESAR CAMBIO EN EL CASO DE QUE ESTE APLIUE
         //UTILIDAD: Costo - Precio Unitario
         //Producto-----> codigo y su descripcion
@@ -58,12 +59,14 @@ namespace Punto_de_Venta.Pantallas
 
         private void button8_Click(object sender, EventArgs e)
         {
+            var limpia = proc.limpiarVentaTemporal();
             this.Close();
         }
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
             openChildForm(new SalesScreen(labelDate.Text, labelIdCashRegister.Text, labelNamePerson.Text, idCajeroAux));
+            var limpia = proc.limpiarVentaTemporal();
             //Mandar aqui este pedo
         }
 

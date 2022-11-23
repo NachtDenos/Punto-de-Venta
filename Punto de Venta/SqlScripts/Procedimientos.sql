@@ -584,7 +584,7 @@ Begin
    set @CajeroId3 = SCOPE_IDENTITY();
 
    insert into Recibo(fechaVenta, MontoPago, claveCajePro, total)
-   values (@Fecha, @MontoPago, @CajeroId, @Total)
+   values (@Fecha, @MontoPago, @CajeroId3, @Total)
 --   set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
 End;
 
@@ -624,14 +624,6 @@ set @IdVentaHeader = IDENT_CURRENT('Recibo')
 insert into ticket(noVentaTic, clavePagoTic, montoPago)
 values(@IdVentaHeader, @ClavePago, @MontoPagado)
 end;
-
-GenerarTicket 0, 250.05, 2
---
-select * from Caje_Pro
-select * from Recibo
-select * from VentaDetalle
-select * from ticket
-delete VentaTemporal
 
 --drop proc GenerarVenta
 --(@Total decimal(10,2),
@@ -681,7 +673,6 @@ delete VentaTemporal
    
 
 --end;
-delete VentaTemporal
 
 --delete Caje_Pro
 --delete Recibo
@@ -741,5 +732,8 @@ from vwEmpleados
 where  @filtroI = [Clave de Usuario]
 end;
 
-
-drop proc obteneridCajeroCobra
+create procedure vaciarVentaTemporal
+as
+Begin
+delete VentaTemporal
+end;
