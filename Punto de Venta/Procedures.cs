@@ -1095,42 +1095,76 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool RealizarVentas(float total, string nombreProd, DateTime fecha,
-            float subtotal, float montoPago, float MontoTotal, int metodoPago, int CajeroId,
-            int numCaja, string NombreCajero, int unidadesVendidas, float PrecioUnitario,
-            float Utilidad)
+        public bool GenerarVenta(int idProducto, DateTime fecha1, int NumCaja, float MontoPago, float Total,
+            string NombreProd, string NombreCajero, int CajeroId)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
-            SqlConnection conected = new SqlConnection();
+            SqlConnection conectado = new SqlConnection();
             try
             {
-                conected = conn.AbrirConexion();
-                SqlCommand cmd = new SqlCommand("GenerarVenta", conected);
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("GenerarVenta", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Total", total);
-                cmd.Parameters.AddWithValue("@NombreProd", nombreProd);
-                cmd.Parameters.AddWithValue("@Fecha", fecha);
-                cmd.Parameters.AddWithValue("@Subtotal", subtotal);
-                cmd.Parameters.AddWithValue("@MontoPago", montoPago);
-                cmd.Parameters.AddWithValue("@MetodPago", metodoPago);
-                cmd.Parameters.AddWithValue("@MontoTotal", MontoTotal);
+                cmd.Parameters.AddWithValue("@idProducto", idProducto);
                 cmd.Parameters.AddWithValue("@CajeroId", CajeroId);
-                cmd.Parameters.AddWithValue("@NumCaja", numCaja);
+                cmd.Parameters.AddWithValue("@NumCaja", NumCaja);
+                cmd.Parameters.AddWithValue("@Fecha", fecha1);
+                cmd.Parameters.AddWithValue("@MontoPago", MontoPago);
+                cmd.Parameters.AddWithValue("@Total", Total);
+                cmd.Parameters.AddWithValue("@NombreProducto", NombreProd);
                 cmd.Parameters.AddWithValue("@NombreCajero", NombreCajero);
-                cmd.Parameters.AddWithValue("@UnidadesVendidas", unidadesVendidas);
-                cmd.Parameters.AddWithValue("@PrecioUnitario", PrecioUnitario);
-                cmd.Parameters.AddWithValue("@Utilidad", Utilidad);
+
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
                 conn.CerrarConexion();
             }
-            catch (Exception Barabas)
+            catch (Exception error)
             {
-                MessageBox.Show("Excepcion de base de datos" + Barabas.ToString());
+
+                MessageBox.Show(error.ToString());
                 return false;
             }
             return true;
         }
+
+
+        //public bool RealizarVentas(float total, string nombreProd, DateTime fecha,
+        //    float subtotal, float montoPago, float MontoTotal, int metodoPago, int CajeroId,
+        //    int numCaja, string NombreCajero, int unidadesVendidas, float PrecioUnitario,
+        //    float Utilidad)
+        //{
+        //    ConexionSqlServer conn = new ConexionSqlServer();
+        //    SqlConnection conected = new SqlConnection();
+        //    try
+        //    {
+        //        conected = conn.AbrirConexion();
+        //        SqlCommand cmd = new SqlCommand("GenerarVenta", conected);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.Parameters.AddWithValue("@Total", total);
+        //        cmd.Parameters.AddWithValue("@NombreProd", nombreProd);
+        //        cmd.Parameters.AddWithValue("@Fecha", fecha);
+        //        cmd.Parameters.AddWithValue("@Subtotal", subtotal);
+        //        cmd.Parameters.AddWithValue("@MontoPago", montoPago);
+        //        cmd.Parameters.AddWithValue("@MetodPago", metodoPago);
+        //        cmd.Parameters.AddWithValue("@MontoTotal", MontoTotal);
+        //        cmd.Parameters.AddWithValue("@CajeroId", CajeroId);
+        //        cmd.Parameters.AddWithValue("@NumCaja", numCaja);
+        //        cmd.Parameters.AddWithValue("@NombreCajero", NombreCajero);
+        //        cmd.Parameters.AddWithValue("@UnidadesVendidas", unidadesVendidas);
+        //        cmd.Parameters.AddWithValue("@PrecioUnitario", PrecioUnitario);
+        //        cmd.Parameters.AddWithValue("@Utilidad", Utilidad);
+        //        cmd.ExecuteNonQuery();
+        //        cmd.Parameters.Clear();
+        //        conn.CerrarConexion();
+        //    }
+        //    catch (Exception Barabas)
+        //    {
+        //        MessageBox.Show("Excepcion de base de datos" + Barabas.ToString());
+        //        return false;
+        //    }
+        //    return true;
+        //}
 
     }
 }

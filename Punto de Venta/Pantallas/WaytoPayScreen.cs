@@ -369,6 +369,22 @@ namespace Punto_de_Venta
             {
 
             }
+            fechaa = DateTime.Parse(Fecha);
+            string NombreProd;
+            string Cajero = "Kevin";
+            string CajaNumeroGenVenta;
+            int CajaNumeroGenVentaid;
+            CajaNumeroGenVenta = FreakingCash;
+            Int32.TryParse(CajaNumeroGenVenta,out  CajaNumeroGenVentaid);
+            float Total;
+            float.TryParse(totalblwaytopay.Text, out Total)
+            proc.GenerarVenta(0, fechaa, CajaNumeroGenVentaid, 102.0f, Total, NombreProd, );
+
+            foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
+            {
+                NombreProd = fila.Cells["Producto"].Value.ToString();
+            }
+            
             foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
             {
                 string CajeroNombre;
@@ -377,7 +393,7 @@ namespace Punto_de_Venta
                 string Subtotal;
                 string UnidadesLlevar;
                 string PrecioU;
-                fechaa = DateTime.Parse(Fecha);
+
 
                 NombreProducto = fila.Cells["Producto"].Value.ToString();
                 Subtotal = fila.Cells["Subtotal"].Value.ToString();
@@ -401,8 +417,9 @@ namespace Punto_de_Venta
 
                 int UnidadesVendidas; Int32.TryParse(UnidadesLlevar, out UnidadesVendidas);
 
-                proc.RealizarVentas(total, NombreProducto, fechaa, subFlot, montodePago
-                    , MontoFinal, metPago, 0, NumCaja, Persona, UnidadesVendidas, PrecioUni, 105.5f);
+                
+                //proc.RealizarVentas(total, NombreProducto, fechaa, subFlot, montodePago
+                //    , MontoFinal, metPago, 0, NumCaja, Persona, UnidadesVendidas, PrecioUni, 105.5f);
             }
             this.Close();
             ticketScreen TheOtherForm = new ticketScreen();
