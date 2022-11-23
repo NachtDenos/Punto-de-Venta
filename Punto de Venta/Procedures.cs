@@ -1160,8 +1160,8 @@ namespace Punto_de_Venta
             return true;
         }
 
-
-        public bool GenerarTicketDB()
+        //aylin esta bien pendeja
+        public bool GenerarTicketDB(int )
         {
             ConexionSqlServer conn = new ConexionSqlServer();
             SqlConnection conectado = new SqlConnection();
