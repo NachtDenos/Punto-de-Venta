@@ -319,7 +319,6 @@ Create TABLE Caje_Pro
    claveCajeroCP INT NOT NULL,
    codigoProCP INT NOT NULL,
    noCajaCP INT NOT NULL,
-   existenciaCP INT NOT NULL, 
    CONSTRAINT PK_idCajePro
    PRIMARY KEY (idCajePro),
    CONSTRAINT FK_claveCajeroCP
@@ -335,6 +334,8 @@ Create TABLE Caje_Pro
    --CHECK (activoCP = 'Activo' OR activoCP = 'Inactivo')
 );
 go 
+--alter table Caje_Pro
+-- drop column existenciaCP
 
 ALTER TABLE Recibo
   ADD CONSTRAINT FK_claveCajePro

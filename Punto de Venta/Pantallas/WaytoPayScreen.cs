@@ -13,7 +13,10 @@ namespace Punto_de_Venta
     public partial class WaytoPayScreen : Form
     {
         Procedures proc = new Procedures();
+        string numeroCaja;
         bool bandera;
+        float montodePago;
+        int metPago;
         float total;
         float totalaux;
         bool Credito = false;
@@ -28,6 +31,9 @@ namespace Punto_de_Venta
         string val;
         bool otro = false;
         string otr;
+        string Fecha;
+        string FreakingCash;
+        DateTime fechaa;
         //public WaytoPayScreen()
         //{
         //    InitializeComponent();
@@ -45,7 +51,7 @@ namespace Punto_de_Venta
         //    //dataGridWayToPay.Rows[0].Cells[5].Value = "60.00";
 
         //}
-        public WaytoPayScreen(string Total, string lblPapito)
+        public WaytoPayScreen(string Total, string lblPapito, string fecha, string NumCaja)
         {
             InitializeComponent();
             txtCreditCardPay.Enabled = false;
@@ -56,6 +62,8 @@ namespace Punto_de_Venta
             totalblwaytopay.Text = lblPapito;
             txtCheckPay.Enabled = false;
             txtOtherPay.Enabled = false;
+            Fecha = fecha;
+            FreakingCash = NumCaja;
             //dataGridWayToPay.Rows[0].Cells[0].Value = "B312";
             //dataGridWayToPay.Rows[0].Cells[1].Value = "Jamón";
             //dataGridWayToPay.Rows[0].Cells[2].Value = "30.00";
@@ -273,7 +281,9 @@ namespace Punto_de_Venta
                 if (num - total == 0)
                 {
                     MessageBox.Show("Correcto procede a pagar");
+                    montodePago = num;
                 }
+                metPago = 1;
             }
             else if (Credito == true)
             {
@@ -358,6 +368,41 @@ namespace Punto_de_Venta
             else if (otro == true && Credito == true && Vales == true && Cheques == true)
             {
 
+            }
+            foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
+            {
+                string CajeroNombre;
+                int CajerId = 0;
+                string NombreProducto;
+                string Subtotal;
+                string UnidadesLlevar;
+                string PrecioU;
+                fechaa = DateTime.Parse(Fecha);
+
+                NombreProducto = fila.Cells["Producto"].Value.ToString();
+                Subtotal = fila.Cells["Subtotal"].Value.ToString();
+                UnidadesLlevar = fila.Cells["A llevar"].Value.ToString();
+                PrecioU = fila.Cells["Precio"].Value.ToString();
+
+                float subFlot;
+                float.TryParse(Subtotal, out subFlot);
+                int MontoFinal;
+                string MontoF = finalPaylbl.Text;
+                Int32.TryParse(MontoF, out MontoFinal);
+
+                int NumCaja;
+                string CAJANUM;
+                CAJANUM = FreakingCash;
+                Int32.TryParse(CAJANUM, out NumCaja);
+                string Persona = "Kevin";
+
+                int PrecioUni;
+                Int32.TryParse(PrecioU,out PrecioUni);
+
+                int UnidadesVendidas; Int32.TryParse(UnidadesLlevar, out UnidadesVendidas);
+
+                proc.RealizarVentas(total, NombreProducto, fechaa, subFlot, montodePago
+                    , MontoFinal, metPago, 0, NumCaja, Persona, UnidadesVendidas, PrecioUni, 105.5f);
             }
             this.Close();
             ticketScreen TheOtherForm = new ticketScreen();

@@ -25,7 +25,7 @@ namespace Punto_de_Venta
         string PrecioNUEVO;
         string PrecioAEliminar;
         float PrecioInicial;
-        
+        string laCaja;
         int CantAmultiplicar;
         float precioLbl = 0.0f;
         float precioLblAux = 0.0f;
@@ -52,6 +52,8 @@ namespace Punto_de_Venta
             btnDeleteSales.Enabled = false;
             string prueba = txt;
             string prueba2 = caja;
+
+            laCaja = prueba2;
             fecha = prueba;
             Int32.TryParse(prueba2, out Caja);
         }
@@ -75,7 +77,7 @@ namespace Punto_de_Venta
                 MessageBox.Show("NO HA COMPRADO NADA", "error");
                 return;
             }
-            WaytoPayScreen TheOtherForm = new WaytoPayScreen(precioLbl.ToString(), label7.Text.ToString());
+            WaytoPayScreen TheOtherForm = new WaytoPayScreen(precioLbl.ToString(), label7.Text.ToString(), fecha, laCaja);
             TheOtherForm.ShowDialog();
         }
 

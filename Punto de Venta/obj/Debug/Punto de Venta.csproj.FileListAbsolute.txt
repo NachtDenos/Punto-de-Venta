@@ -122,3 +122,6 @@ C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\obj\D
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\itextsharp.dll
 C:\Users\PC\OneDrive\Documentos\Tareas\AAVD\Punto de Venta\Punto de Venta\bin\Debug\itextsharp.xml
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\itextsharp.dll
+C:\Users\isaac\Desktop\Punto de Venta Github\Punto-de-Venta\Punto de Venta\bin\Debug\itextsharp.xml

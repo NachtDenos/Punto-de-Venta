@@ -556,7 +556,7 @@ select
 SUM(CantidadAllevar*PrecioUnitario) as Total
 from VentaTemporal
 
-Create proc GenerarVenta
+create proc GenerarVenta
 (@Total decimal(10,2),
 @NombreProd varchar(30),
 @Fecha date,
@@ -577,13 +577,16 @@ Begin
    declare @idDepartamento int= 0;
    declare @idProducto int= 0;
    declare @DescuentoId int= 0;
+   declare @CajeroId2 int = 0
+   declare @CajeroId3 int = 0;
    select @idProducto = Producto.idProduct from Producto where nombrePro = @NombreProd 
    set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
+   set @CajeroId2 = @CajeroId;
    insert into Caje_Pro(noCajaCP, claveCajeroCP, codigoProCP)
-   values (@NumCaja, @CajeroId, @idProducto)
-
+   values (@NumCaja, @CajeroId2, @idProducto)
+    set @CajeroId3 = SCOPE_IDENTITY();
    insert into Recibo(fechaVenta, MontoPago, claveCajePro, total)
-   values (@Fecha, @MontoPago, @CajeroId, @MontoTotal)
+   values (@Fecha, @MontoPago, @CajeroId3, @MontoTotal)
    
    set @idVenta = SCOPE_IDENTITY();
    set @DescuentoId = (select Producto.idDesc from Producto where nombrePro = @NombreProd)
@@ -599,12 +602,14 @@ Begin
    
 
 end;
-delete Caje_Pro
-delete Recibo
-delete VentaDetalle
+delete VentaTemporal
+--delete Caje_Pro
+--delete Recibo
+--delete VentaDetalle
 select * from Caje_Pro
 select * from Recibo
 select * from ventaDetalle
+SELECT* FROM ticket
 GenerarVenta '1000.50', 'Control', '2022-10-12', '1200.92', '1201.00','1201.00', 0,0,1,'Kevin',102, 105.5, 150.5
 --idVentaDetalle int not null,
 --  noDeVenta int not null,
