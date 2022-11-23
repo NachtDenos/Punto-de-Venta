@@ -630,6 +630,7 @@ select * from Recibo
 select * from VentaDetalle
 select * from ticket
 delete VentaTemporal
+
 --drop proc GenerarVenta
 --(@Total decimal(10,2),
 --@NombreProd varchar(30),
@@ -679,6 +680,7 @@ delete VentaTemporal
 
 --end;
 delete VentaTemporal
+
 --delete Caje_Pro
 --delete Recibo
 --delete VentaDetalle

@@ -134,7 +134,7 @@ namespace Punto_de_Venta
             //o hacmeos un variable global o arreglamos la clase
             
 
-            //AHI VENGO DOLRODE NUEZ
+            
             if (dataGridCarritoSales.Rows.Count > 0)
             {
                 foreach (DataGridViewRow fila in dataGridCarritoSales.Rows)
@@ -213,7 +213,7 @@ namespace Punto_de_Venta
                     
                 }
                 else
-                    MessageBox.Show("Puñetas");
+                    MessageBox.Show("ERROR");
 
                 txtQuantitySales.Text = "";
             }

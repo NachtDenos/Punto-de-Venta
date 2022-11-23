@@ -33,6 +33,11 @@ namespace Punto_de_Venta
         string otr;
         string Fecha;
         string FreakingCash;
+        int CantidadMetodosActivos;
+        float monto1;
+        float monto2;
+        int MetodoPago1de2;
+        int MetodoPago2de2;
         DateTime fechaa;
         //public WaytoPayScreen()
         //{
@@ -284,6 +289,7 @@ namespace Punto_de_Venta
                     montodePago = num;
                 }
                 metPago = 1;
+                CantidadMetodosActivos = 1;
             }
             else if (Credito == true)
             {
@@ -339,7 +345,17 @@ namespace Punto_de_Venta
             }
             else if(Debito == true && Credito == true)
             {
-
+                Deb = txtDebitCardPay.Text;
+                Cred = txtCreditCardPay.Text;
+                float num;
+                float num2;
+                float.TryParse(Deb, out num);
+                float.TryParse(Cred, out num2);
+                monto1 = num;
+                monto2 = num;
+                MetodoPago1de2 = 0;
+                MetodoPago2de2 = 1;  
+                CantidadMetodosActivos = 2;
             }
             else if (Efectivo == true && Credito == true)
             {
@@ -450,6 +466,11 @@ namespace Punto_de_Venta
                 
                 //proc.RealizarVentas(total, NombreProducto, fechaa, subFlot, montodePago
                 //    , MontoFinal, metPago, 0, NumCaja, Persona, UnidadesVendidas, PrecioUni, 105.5f);
+            }
+            for (int i = 0; i < CantidadMetodosActivos; i++)
+            {
+                proc.GenerarTicketDB(0, monto1, 0);
+                proc.GenerarTicketDB(0, monto2, 1);
             }
             this.Close();
             ticketScreen TheOtherForm = new ticketScreen();

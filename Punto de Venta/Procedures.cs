@@ -1160,8 +1160,8 @@ namespace Punto_de_Venta
             return true;
         }
 
-        //aylin esta bien pendeja
-        public bool GenerarTicketDB(int )
+       
+        public bool GenerarTicketDB(int ventaId, float MontoPagado, int CLAVEdEPAGO)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
             SqlConnection conectado = new SqlConnection();
@@ -1169,15 +1169,13 @@ namespace Punto_de_Venta
             {
                 conectado = conn.AbrirConexion();
 
-                SqlCommand cmd = new SqlCommand("GenerarVentaDetalle", conectado);
+                SqlCommand cmd = new SqlCommand("GenerarTicket", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@idVentaHeader", idVentaHeader);
-                cmd.Parameters.AddWithValue("@nombreProducto", NombreProducto);
-                cmd.Parameters.AddWithValue("@UnidaesVendidas", UnidadesVendidas);
-                cmd.Parameters.AddWithValue("@Subtotal", subtotal);
-                cmd.Parameters.AddWithValue("@PrecioUnitario", PrecioU);
-                cmd.Parameters.AddWithValue("@Utilidad", Utilidad);
+                cmd.Parameters.AddWithValue("@IdVentaHeader", ventaId);
+                cmd.Parameters.AddWithValue("@MontoPagado", MontoPagado);
+                cmd.Parameters.AddWithValue("@ClavePago", CLAVEdEPAGO);
+          
 
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
