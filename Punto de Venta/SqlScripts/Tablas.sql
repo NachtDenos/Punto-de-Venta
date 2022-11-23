@@ -398,7 +398,6 @@ Create TABLE Caje_Pro
    claveCajeroCP INT NOT NULL,
    codigoProCP INT NOT NULL,
    noCajaCP INT NOT NULL,
-   existenciaCP INT NOT NULL, 
    CONSTRAINT PK_idCajePro
    PRIMARY KEY (idCajePro),
    CONSTRAINT FK_claveCajeroCP
@@ -436,9 +435,11 @@ CREATE TABLE ticket
    montoPago money not null,
    CONSTRAINT PK_idTicket
    PRIMARY KEY (idTicket),
+
    CONSTRAINT FK_noVentaTic
    FOREIGN KEY (noVentaTic)
    REFERENCES Recibo (noVenta),
+
    CONSTRAINT FK_clavePagoTic
    FOREIGN KEY (clavePagoTic)
    REFERENCES MetodPago (idPago)

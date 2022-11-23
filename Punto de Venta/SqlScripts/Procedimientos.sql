@@ -581,6 +581,7 @@ Begin
    set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
    insert into Caje_Pro(noCajaCP, claveCajeroCP, codigoProCP)
    values (@NumCaja, @CajeroId, @idProducto)
+
    insert into Recibo(fechaVenta, MontoPago, claveCajePro, total)
    values (@Fecha, @MontoPago, @CajeroId, @MontoTotal)
    
@@ -598,8 +599,13 @@ Begin
    
 
 end;
-
-GenerarVenta '1000.50', 'Control', '2022-10-12', '1200.92', '1201.00'
+delete Caje_Pro
+delete Recibo
+delete VentaDetalle
+select * from Caje_Pro
+select * from Recibo
+select * from ventaDetalle
+GenerarVenta '1000.50', 'Control', '2022-10-12', '1200.92', '1201.00','1201.00', 0,0,1,'Kevin',102, 105.5, 150.5
 --idVentaDetalle int not null,
 --  noDeVenta int not null,
 --  CodProducto int not null,
