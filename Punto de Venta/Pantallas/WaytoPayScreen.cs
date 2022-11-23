@@ -18,6 +18,8 @@ namespace Punto_de_Venta
         float montodePago;
         int metPago;
         float total;
+        string nombreCajero;
+        int idCajero;
         float totalaux;
         bool Credito = false;
         string Cred;
@@ -36,6 +38,7 @@ namespace Punto_de_Venta
         int CantidadMetodosActivos;
         float monto1;
         float monto2;
+        float pasarTotal;
         int MetodoPago1de2;
         int MetodoPago2de2;
         DateTime fechaa;
@@ -56,7 +59,7 @@ namespace Punto_de_Venta
         //    //dataGridWayToPay.Rows[0].Cells[5].Value = "60.00";
 
         //}
-        public WaytoPayScreen(string Total, string lblPapito, string fecha, string NumCaja)
+        public WaytoPayScreen(string Total, string lblPapito, string fecha, string NumCaja, string cajeroNombre, int idCajeroActual)
         {
             InitializeComponent();
             txtCreditCardPay.Enabled = false;
@@ -69,6 +72,8 @@ namespace Punto_de_Venta
             txtOtherPay.Enabled = false;
             Fecha = fecha;
             FreakingCash = NumCaja;
+            nombreCajero = cajeroNombre;
+            idCajero = idCajeroActual;
             //dataGridWayToPay.Rows[0].Cells[0].Value = "B312";
             //dataGridWayToPay.Rows[0].Cells[1].Value = "Jamón";
             //dataGridWayToPay.Rows[0].Cells[2].Value = "30.00";
@@ -171,7 +176,10 @@ namespace Punto_de_Venta
                 Credito = true;
             }
             else if (txtCreditCardPay.Enabled == true)
+            {
                 txtCreditCardPay.Enabled = false;
+                txtCreditCardPay.Text = "";
+            }
         }
         private void rbCashPay_Click(object sender, EventArgs e)
         {
@@ -181,7 +189,10 @@ namespace Punto_de_Venta
                 Efectivo = true;
             }
             else if (txtCashPay.Enabled == true)
+            {
                 txtCashPay.Enabled = false;
+                txtCashPay.Text = "";
+            }
         }
         private void rbVouchersPay_Click(object sender, EventArgs e)
         {
@@ -191,7 +202,10 @@ namespace Punto_de_Venta
                 Vales = true;
             }
             else if (txtVoucherPay.Enabled == true)
+            {
                 txtVoucherPay.Enabled = false;
+                txtVoucherPay.Text = "";
+            }
         }
         private void rbDebitCardPay_Click(object sender, EventArgs e)
         {
@@ -201,7 +215,10 @@ namespace Punto_de_Venta
                 Debito = true;
             }
             else if (txtDebitCardPay.Enabled == true)
+            {
                 txtDebitCardPay.Enabled = false;
+                txtDebitCardPay.Text = "";
+            }
         }
         private void rbCheckPay_Click(object sender, EventArgs e)
         {
@@ -211,7 +228,10 @@ namespace Punto_de_Venta
                 Cheques = true;
             }
             else if (txtCheckPay.Enabled == true)
+            {
                 txtCheckPay.Enabled = false;
+                txtCheckPay.Text = "";
+            }
         }
         private void rbOtherPay_Click(object sender, EventArgs e)
         {
@@ -221,7 +241,10 @@ namespace Punto_de_Venta
                 otro = true;
             }
             else if (txtOtherPay.Enabled == true)
+            {
                 txtOtherPay.Enabled = false;
+                txtOtherPay.Text = "";
+            }
         }
         #endregion MetodosDePago
 
@@ -273,129 +296,46 @@ namespace Punto_de_Venta
                 finalPaylbl.Text = "$ ";
                 finalPaylbl.Text += total.ToString("N2");
                 //dataGridWayToPay.Rows.Insert(0,"TOTALLLL");
-            }     
+            }
+            pasarTotal = total;
         }
 
         private void btnPayPay_Click(object sender, EventArgs e)
         {
-            if (Debito == true)
-            {
-                float num;
-                Deb = txtDebitCardPay.Text;
-                float.TryParse(Deb, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                    montodePago = num;
-                }
-                metPago = 1;
-                CantidadMetodosActivos = 1;
-            }
-            else if (Credito == true)
-            {
-                Cred = txtCreditCardPay.Text;
-                float num;
-                float.TryParse(Cred, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                }
-            }
-            else if(Efectivo == true)
-            {
-                Efec = txtCashPay.Text;
-                float num;
-                float.TryParse(Efec, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                }
-            }
-            else if (Cheques == true)
-            {
-                Cheq = txtCheckPay.Text;
-               
-                float num;
-                float.TryParse(Cheq, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                }
-            }
-            else if (Vales == true)
-            {
-                val = txtVoucherPay.Text;
 
-                float num;
-                float.TryParse(val, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                }
-            }
-            else if (otro == true)
-            {
-                otr = txtOtherPay.Text;
-                float num;
-                float.TryParse(otr, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                }
-            }
-            else if(Debito == true && Credito == true)
-            {
-                Deb = txtDebitCardPay.Text;
-                Cred = txtCreditCardPay.Text;
-                float num;
-                float num2;
-                float.TryParse(Deb, out num);
-                float.TryParse(Cred, out num2);
-                monto1 = num;
-                monto2 = num;
-                MetodoPago1de2 = 0;
-                MetodoPago2de2 = 1;  
-                CantidadMetodosActivos = 2;
-            }
-            else if (Efectivo == true && Credito == true)
-            {
+            string debitoS = txtDebitCardPay.Text;
+            float debitoFl;
+            float.TryParse(debitoS, out debitoFl);
+            string creditoS = txtCreditCardPay.Text;
+            float creditoFl;
+            float.TryParse(creditoS, out creditoFl);
+            string efectivoS = txtCashPay.Text;
+            float efectivoFl;
+            float.TryParse(efectivoS, out efectivoFl);
+            string chequeS = txtCheckPay.Text;
+            float chequeFl;
+            float.TryParse(chequeS, out chequeFl);
+            string valesS = txtVoucherPay.Text;
+            float valeFl;
+            float.TryParse(valesS, out valeFl);
+            string otroS = txtOtherPay.Text;
+            float otroFl;
+            float.TryParse(otroS, out otroFl);
 
-            }
-            else if (Vales == true && Cheques == true)
+            float montoPagado = debitoFl + creditoFl + efectivoFl + chequeFl + valeFl + otroFl;
+            if(montoPagado < pasarTotal)
             {
-
+                MessageBox.Show("La cantidad no es la correcta a pagar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else if (otro == true && Efectivo == true)
-            {
 
-            }
-            else if (otro == true && Efectivo == true && Debito == true && Credito && true && Vales == true && Cheques == true)
-            {
-
-            }
-            else if (otro == true &&  Debito == true && Credito && true && Vales == true && Cheques == true)
-            {
-
-            }
-            else if (otro == true && Credito == true && Vales == true && Cheques == true)
-            {
-
-            }
-            else if (otro == true && Credito == true && Vales == true && Cheques == true)
-            {
-
-            }
             fechaa = DateTime.Parse(Fecha);
             string NombreProd;
-            string Cajero = "Kevin";
             string CajaNumeroGenVenta;
             int CajaNumeroGenVentaid;
             CajaNumeroGenVenta = FreakingCash;
             Int32.TryParse(CajaNumeroGenVenta,out  CajaNumeroGenVentaid);
-            float Total;
-            float.TryParse(totalblwaytopay.Text, out Total);
-            //ahi vengo voy  A CENAR Y VERQUE PEDO CON COMO HACERLE, PQ SIENTO QUE LO OCUPAMOS Y NO
-             proc.GenerarVenta(fechaa, CajaNumeroGenVentaid, 102.0f, Total, Cajero, 0);
+             proc.GenerarVenta(fechaa, CajaNumeroGenVentaid, montoPagado, pasarTotal, nombreCajero, idCajero);
             foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
             {
                 string CajeroNombre;
@@ -423,7 +363,6 @@ namespace Punto_de_Venta
                 string CAJANUM;
                 CAJANUM = FreakingCash;
                 Int32.TryParse(CAJANUM, out NumCaja);
-                string Persona = "Kevin";
                 float PrecioUniDis;
                 float Costo;
                 string costoStingDtg;
@@ -467,6 +406,33 @@ namespace Punto_de_Venta
                 //proc.RealizarVentas(total, NombreProducto, fechaa, subFlot, montodePago
                 //    , MontoFinal, metPago, 0, NumCaja, Persona, UnidadesVendidas, PrecioUni, 105.5f);
             }
+
+
+            if (Debito == true)
+            {
+                proc.GenerarTicketDB(0, debitoFl, 1);
+            }
+            if (Credito == true)
+            {
+                proc.GenerarTicketDB(0, creditoFl, 0);
+            }
+            if (Efectivo == true)
+            {
+                proc.GenerarTicketDB(0, efectivoFl, 2);
+            }
+            if (Cheques == true)
+            {
+                proc.GenerarTicketDB(0, chequeFl, 3);
+            }
+            if (Vales == true)
+            {
+                proc.GenerarTicketDB(0, valeFl, 4);
+            }
+            if (otro == true)
+            {
+                proc.GenerarTicketDB(0, otroFl, 5);
+            }
+
             for (int i = 0; i < CantidadMetodosActivos; i++)
             {
                 proc.GenerarTicketDB(0, monto1, 0);

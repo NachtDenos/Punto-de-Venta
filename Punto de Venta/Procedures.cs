@@ -1227,5 +1227,22 @@ namespace Punto_de_Venta
         //    return true;
         //}
 
+        public DataTable obtenerCajeroCobra(int claveUser)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "obtenerCajeroCobra"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filtroI", claveUser);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+
     }
 }

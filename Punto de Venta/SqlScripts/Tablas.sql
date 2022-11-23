@@ -410,3 +410,4 @@ create table VentaTemporal
   Foreign key (idDescuento)
   References Descuento(idDesc)
 );
+drop table VentaTemporal

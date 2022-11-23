@@ -15,6 +15,8 @@ namespace Punto_de_Venta
         Procedures proc = new Procedures();
         int CodProd;
         string fecha;
+        string nombreCajeroAux;
+        int cajeroIdAux;
         string NombreProducto;
         string NombreProductoEliminar;
         int Caja;
@@ -43,7 +45,7 @@ namespace Punto_de_Venta
             //dataGridCarritoSales.Rows[0].Cells[1].Value = "Salmón";
         }
 
-        public SalesScreen(string txt, string caja)
+        public SalesScreen(string txt, string caja, string nombreCajeroActual, int idCajeroActual)
         {
             InitializeComponent();
             dataGridProductSales.DataSource = proc.productoSales();
@@ -55,6 +57,8 @@ namespace Punto_de_Venta
 
             laCaja = prueba2;
             fecha = prueba;
+            nombreCajeroAux = nombreCajeroActual;
+            cajeroIdAux = idCajeroActual;
             Int32.TryParse(prueba2, out Caja);
         }
 
@@ -77,7 +81,7 @@ namespace Punto_de_Venta
                 MessageBox.Show("NO HA COMPRADO NADA", "error");
                 return;
             }
-            WaytoPayScreen TheOtherForm = new WaytoPayScreen(precioLbl.ToString(), label7.Text.ToString(), fecha, laCaja);
+            WaytoPayScreen TheOtherForm = new WaytoPayScreen(precioLbl.ToString(), label7.Text.ToString(), fecha, laCaja, nombreCajeroAux, cajeroIdAux);
             TheOtherForm.ShowDialog();
         }
 

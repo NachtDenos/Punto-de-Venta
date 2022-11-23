@@ -15,11 +15,22 @@ namespace Punto_de_Venta.Pantallas
         int ComboBoxIndex;
         bool IsSelected;
         public string prueba;
+        int claveUserAux;
         public CashRegisterToUseWND()
         {
             InitializeComponent();
             ListarCajasCombo();
             RegisterToUseCB.Text = "Seleccionar";
+        }
+
+        public CashRegisterToUseWND(int claveUser)
+        {
+            InitializeComponent();
+            ListarCajasCombo();
+            RegisterToUseCB.Text = "Seleccionar";
+            claveUserAux = claveUser;
+            ponerNombreCajero(claveUser);
+            ponerIdCajeroActual(claveUser);
         }
 
         private void CloseRegisterToUserWnd_Click(object sender, EventArgs e)
@@ -46,7 +57,9 @@ namespace Punto_de_Venta.Pantallas
             {
                 string prueba = dtpCajaCobro.Text;
                 string cajaString = RegisterToUseCB.Text;
-                Pantallas.CashierMainScreen cashierMainScreen = new Pantallas.CashierMainScreen(prueba, cajaString);
+                string nameCajero = cbNombreCajero.Text;
+                int idCajeroActual = Int32.Parse(cbIdCajero.Text);
+                Pantallas.CashierMainScreen cashierMainScreen = new Pantallas.CashierMainScreen(prueba, cajaString, claveUserAux, nameCajero, idCajeroActual);
                 this.Hide();
                 cashierMainScreen.ShowDialog();
                 this.Show();
@@ -59,6 +72,22 @@ namespace Punto_de_Venta.Pantallas
             RegisterToUseCB.DataSource = usuarioObj.ListarCajaCombo();
             RegisterToUseCB.DisplayMember = "Numero de Caja"; //Nombre
             RegisterToUseCB.ValueMember = "Numero de Caja";//Valor real de l combox
+        }
+
+        private void ponerNombreCajero(int claveUserActual)
+        {
+            Procedures usuarioObj = new Procedures();
+            cbNombreCajero.DataSource = usuarioObj.obtenerCajeroCobra(claveUserActual);
+            cbNombreCajero.DisplayMember = "Nombre"; //Nombre
+            cbNombreCajero.ValueMember = "idEmpleado";
+        }
+
+        private void ponerIdCajeroActual(int claveUserActual)
+        {
+            Procedures usuarioObj = new Procedures();
+            cbIdCajero.DataSource = usuarioObj.obtenerCajeroCobra(claveUserActual);
+            cbIdCajero.DisplayMember = "idEmpleado";
+            cbIdCajero.ValueMember = "idEmpleado";
         }
 
     }

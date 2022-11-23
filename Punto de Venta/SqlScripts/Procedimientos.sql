@@ -587,7 +587,9 @@ Begin
    values (@Fecha, @MontoPago, @CajeroId, @Total)
 --   set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
 End;
-delete VentaTemporal
+
+drop proc GenerarVenta
+GenerarVenta 1, 1, '2022-10-12', '1201.00', '1201.00', 'Edson'
 
 create proc GenerarVentaDetalle
 (@idVentaHeader int,
@@ -688,7 +690,10 @@ select * from Caje_Pro
 select * from Recibo
 select * from ventaDetalle
 SELECT* FROM ticket
-GenerarVenta '1000.50', 'Control', '2022-10-12', '1200.92', '1201.00','1201.00', 0,0,1,'Kevin',102, 105.5, 150.5
+
+select * from Cajero
+select * from Departamento
+select * from Producto
 --idVentaDetalle int not null,
 --  noDeVenta int not null,
 --  CodProducto int not null,
@@ -717,3 +722,24 @@ GenerarVenta '1000.50', 'Control', '2022-10-12', '1200.92', '1201.00','1201.00',
   -- total INT NOT NULL,
   -- claveCajePro INT NOT NULL,
   -- MontoPago Money null,
+
+create procedure obtenerCajeroCobra
+(@filtroI int)
+as
+Begin
+select [Nombre], IdEmpleado
+from vwEmpleados
+where  @filtroI = [Clave de Usuario]
+end;
+
+create procedure obteneridCajeroCobra
+(@filtroI int)
+as
+Begin
+select IdEmpleado
+from vwEmpleados
+where  @filtroI = [Clave de Usuario]
+end;
+
+
+drop proc obteneridCajeroCobra
