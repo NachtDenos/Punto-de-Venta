@@ -559,15 +559,72 @@ from VentaTemporal
 Create proc GenerarVenta
 (@Total decimal(10,2),
 @NombreProd varchar(30),
-@DepartamentoNom varchar(30),
-@DepartamentoId int,
-@ProdId int,
-@DescuentoId int,
 @Fecha date,
-@Subtotal decimal(10,2)
+@Subtotal decimal(10,2),
+@MontoPago decimal(10,2),
+@MontoTotal decimal(10,2),
+@MetodPago int,
+@CajeroId int,
+@NumCaja int,
+@NombreCajero varchar(30),
+@UnidadesVendidas int,
+@PrecioUnitario decimal(10,2),
+@Utilidad decimal(10,2)
 )
 as
 Begin
+   declare @idVenta int = 0;
+   declare @idDepartamento int= 0;
+   declare @idProducto int= 0;
+   declare @DescuentoId int= 0;
+   select @idProducto = Producto.idProduct from Producto where nombrePro = @NombreProd 
+   set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
+   insert into Caje_Pro(noCajaCP, claveCajeroCP, codigoProCP)
+   values (@NumCaja, @CajeroId, @idProducto)
+   insert into Recibo(fechaVenta, MontoPago, claveCajePro, total)
+   values (@Fecha, @MontoPago, @CajeroId, @MontoTotal)
+   
+   set @idVenta = SCOPE_IDENTITY();
+   set @DescuentoId = (select Producto.idDesc from Producto where nombrePro = @NombreProd)
+   select @idDepartamento = Producto.claveDepa from Producto where nombrePro = @NombreProd 
+   
+   insert into VentaDetalle(noDeVenta,CodProducto, DepartamentoId,UnidadesVendidas, Subtotal,DescuentoId, PrecioUnitario,
+   Utilidad)
+   values(@idVenta, @idProducto, @idDepartamento, @UnidadesVendidas, @Subtotal, @DescuentoId,@PrecioUnitario, @Utilidad)
+
+   insert into ticket(noVentaTic, clavePagoTic, montoPago)
+   values(@idVenta, @MetodPago, @MontoPago)
+
+   
 
 end;
 
+GenerarVenta '1000.50', 'Control', '2022-10-12', '1200.92', '1201.00'
+--idVentaDetalle int not null,
+--  noDeVenta int not null,
+--  CodProducto int not null,
+--  DepartamentoId int not null,
+--  UnidadesVendidas int not null,
+--  Subtotal money not null,
+--  DescuentoId int null,
+--  PrecioUnitario money not null,
+--  Utilidad money not null, 
+--  Constraint Pk_VentaDetail
+--  Primary key(idVentaDetalle),
+--  Constraint FK_noDeVenta
+--  Foreign key (noDeVenta)
+--  references MetodPago(idPago),
+--  Constraint FK_noDeDepa
+--  Foreign key (DepartamentoId)
+--  references Departamento(idDepa),
+--  Constraint FK_noProd
+--  Foreign key (CodProducto)
+--  references Producto(idProduct)
+
+
+
+  --noVenta INT IDENTITY (10000, 1) NOT NULL,
+  -- fechaVenta DATE NOT NULL,
+  -- total INT NOT NULL,
+  -- claveCajePro INT NOT NULL,
+  -- MontoPago Money null,

@@ -444,8 +444,8 @@ CREATE TABLE ticket
    REFERENCES MetodPago (idPago)
 );
 go
-alter table ticket
- drop column Total
+--alter table ticket
+-- drop column Total
 
 IF OBJECT_ID('devolucion') IS NOT NULL
 BEGIN
