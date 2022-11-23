@@ -377,14 +377,9 @@ namespace Punto_de_Venta
             CajaNumeroGenVenta = FreakingCash;
             Int32.TryParse(CajaNumeroGenVenta,out  CajaNumeroGenVentaid);
             float Total;
-            float.TryParse(totalblwaytopay.Text, out Total)
-            proc.GenerarVenta(0, fechaa, CajaNumeroGenVentaid, 102.0f, Total, NombreProd, );
-
-            foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
-            {
-                NombreProd = fila.Cells["Producto"].Value.ToString();
-            }
-            
+            float.TryParse(totalblwaytopay.Text, out Total);
+            //ahi vengo voy  A CENAR Y VERQUE PEDO CON COMO HACERLE, PQ SIENTO QUE LO OCUPAMOS Y NO
+             proc.GenerarVenta(fechaa, CajaNumeroGenVentaid, 102.0f, Total, Cajero, 0);
             foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
             {
                 string CajeroNombre;
@@ -393,6 +388,8 @@ namespace Punto_de_Venta
                 string Subtotal;
                 string UnidadesLlevar;
                 string PrecioU;
+                string Discount;
+                float disNum;
 
 
                 NombreProducto = fila.Cells["Producto"].Value.ToString();
@@ -411,12 +408,45 @@ namespace Punto_de_Venta
                 CAJANUM = FreakingCash;
                 Int32.TryParse(CAJANUM, out NumCaja);
                 string Persona = "Kevin";
-
-                int PrecioUni;
-                Int32.TryParse(PrecioU,out PrecioUni);
-
+                float PrecioUniDis;
+                float Costo;
+                string costoStingDtg;
+                costoStingDtg = fila.Cells["Costo"].Value.ToString();
+                float PrecioUni;
+                
+                //float.TryParse(PrecioU,out PrecioUni);
+                float Utilidad;
+                float UtilidadAux;
+                float PrecioUniAux;
                 int UnidadesVendidas; Int32.TryParse(UnidadesLlevar, out UnidadesVendidas);
+                if (fila.Cells["Descuento"].Value.ToString() == "0")
+                {
+                    fila.Cells["Descuento"].Value = "0";
+                    float.TryParse(PrecioU, out PrecioUni);
+                    subFlot = PrecioUni * UnidadesVendidas;
+                    float.TryParse(costoStingDtg,out Costo);
+                    UtilidadAux = PrecioUni - Costo;
+                    Utilidad = UtilidadAux;
+                    //fila.Cells["Subtotal"].Value = subtotal;
+                }
+                else
+                {
 
+                    Discount = fila.Cells["Descuento"].Value.ToString();
+                    float.TryParse(Discount, out disNum);
+                    disNum = disNum / 100.00f;
+                    float.TryParse(PrecioU, out PrecioUni);
+                    float.TryParse(PrecioU, out PrecioUniAux);
+                    float.TryParse(costoStingDtg, out Costo);
+                    
+                    PrecioUniDis = PrecioUni * disNum;
+                    PrecioUni = PrecioUniAux;
+                    subFlot = PrecioUni * UnidadesVendidas;
+                    UtilidadAux = PrecioUni - Costo - PrecioUniDis;
+                    Utilidad = UtilidadAux;
+                   // fila.Cells["Subtotal"].Value = subtotal;
+                }
+                proc.GenerarVentaDetalle(0,NombreProducto,UnidadesVendidas, subFlot, PrecioUni, Utilidad);
                 
                 //proc.RealizarVentas(total, NombreProducto, fechaa, subFlot, montodePago
                 //    , MontoFinal, metPago, 0, NumCaja, Persona, UnidadesVendidas, PrecioUni, 105.5f);

@@ -317,16 +317,16 @@ Create TABLE Caje_Pro
 (
    idCajePro INT IDENTITY (0, 1) NOT NULL,
    claveCajeroCP INT NOT NULL,
-   codigoProCP INT NOT NULL,
+   --codigoProCP INT NOT NULL,
    noCajaCP INT NOT NULL,
    CONSTRAINT PK_idCajePro
    PRIMARY KEY (idCajePro),
    CONSTRAINT FK_claveCajeroCP
    FOREIGN KEY (claveCajeroCP)
    REFERENCES Cajero (idCajero),
-   CONSTRAINT FK_codigoProCP
-   FOREIGN KEY (codigoProCP)
-   REFERENCES Producto (idProduct),
+   --CONSTRAINT FK_codigoProCP
+   --FOREIGN KEY (codigoProCP)
+   --REFERENCES Producto (idProduct),
    CONSTRAINT FK_noCajaCP
    FOREIGN KEY (noCajaCP)
    REFERENCES Caja (idCaja),
@@ -337,10 +337,10 @@ go
 --alter table Caje_Pro
 -- drop column existenciaCP
 
-ALTER TABLE Recibo
-  ADD CONSTRAINT FK_claveCajePro
-  FOREIGN KEY (claveCajePro)
-  REFERENCES Caje_Pro (idCajePro);
+--ALTER TABLE Recibo
+--  ADD CONSTRAINT FK_claveCajePro
+--  FOREIGN KEY (claveCajePro)
+--  REFERENCES Caje_Pro (idCajePro);
 go
 IF OBJECT_ID('ticket') IS NOT NULL
 BEGIN

@@ -1,4 +1,4 @@
-go
+
 create proc SelectUsuarios
 (
 @ClaveU varchar(50),
@@ -417,6 +417,12 @@ Begin
 select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary where [Activo] = 'Activo'
 end;
 
+--create proc BorrarCarrito
+--as
+--Begin
+--delete VentaTemporal
+--end
+
 create proc filtroConsultaRapida
 (@filID int, @filName varchar(200))
 as
@@ -537,7 +543,7 @@ create procedure EliminarProductoCarrito
 @Cant int)
 as
 begin
-Update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cant whrere NombreProducto = @NombreProd
+Update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cant where NombreProducto = @NombreProd
 delete VentaTemporal where VentaTemporal.CantidadAllevar = 0 and NombreProducto = @NombreProd 
 end;
 
@@ -545,9 +551,11 @@ create procedure InsertarParaPagar
 as
 Begin  
 select VentaTemporal.idVentaTemp [Id], VentaTemporal.NombreProducto [Producto], 
-VentaTemporal.PrecioUnitario [Precio], VentaTemporal.CantidadAllevar [A llevar], D.cantidad [Descuento], subTotal [Subtotal] from VentaTemporal
+VentaTemporal.PrecioUnitario [Precio], VentaTemporal.CantidadAllevar [A llevar], D.cantidad [Descuento], subTotal [Subtotal], P.Costo [Costo] from VentaTemporal
 left join Descuento D
 on D.idDesc = VentaTemporal.idDescuento
+join Producto P
+on P.idProduct = VentaTemporal.CodigoProducto
 end;
 
 select*from VentaTemporal
@@ -557,33 +565,29 @@ SUM(CantidadAllevar*PrecioUnitario) as Total
 from VentaTemporal
 
 create proc GenerarVenta
-(@idProducto int,
-@CajeroId int,
+(@CajeroId int,
 @NumCaja int,
 @Fecha date,
 @MontoPago decimal(10,2),
 @Total decimal(10,2),
-@NombreProducto varchar(30),
 @NombreCajero varchar(30)
 )
 as
 Begin
    declare @CajeroId2 int = 0
    declare @CajeroId3 int = 0;
-   set @idProducto = (Select Producto.idProduct from Producto where nombrePro = @NombreProducto) 
-   set @CajeroId = (Select Usuario.idUser from Usuario where nombreU = @NombreCajero)
+      set @CajeroId = (Select Usuario.idUser from Usuario where nombreU = @NombreCajero)
    
-   insert into Caje_Pro(claveCajeroCP,codigoProCP, noCajaCP)
-    values(@CajeroId, @idProducto, @NumCaja)
+   insert into Caje_Pro(claveCajeroCP, noCajaCP)
+    values(@CajeroId, @NumCaja)
 
    set @CajeroId3 = SCOPE_IDENTITY();
 
    insert into Recibo(fechaVenta, MontoPago, claveCajePro, total)
-   values (@Fecha, @MontoPago, @CajeroId3, @Total)
+   values (@Fecha, @MontoPago, @CajeroId, @Total)
 --   set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
 End;
-
-GenerarVenta 1, 1, 1, '2022-10-17', 1215.05, 1215.05, 'Television', 'Kevin'
+delete VentaTemporal
 
 create proc GenerarVentaDetalle
 (@idVentaHeader int,
@@ -617,7 +621,7 @@ Begin
 set @IdVentaHeader = IDENT_CURRENT('Recibo')
 insert into ticket(noVentaTic, clavePagoTic, montoPago)
 values(@IdVentaHeader, @ClavePago, @MontoPagado)
-end
+end;
 
 GenerarTicket 0, 250.05, 2
 --
@@ -625,6 +629,7 @@ select * from Caje_Pro
 select * from Recibo
 select * from VentaDetalle
 select * from ticket
+delete VentaTemporal
 --drop proc GenerarVenta
 --(@Total decimal(10,2),
 --@NombreProd varchar(30),

@@ -1095,8 +1095,8 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool GenerarVenta(int idProducto, DateTime fecha1, int NumCaja, float MontoPago, float Total,
-            string NombreProd, string NombreCajero, int CajeroId)
+        public bool GenerarVenta(DateTime fecha1, int NumCaja, float MontoPago, float Total,
+            string NombreCajero, int CajeroId)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
             SqlConnection conectado = new SqlConnection();
@@ -1106,13 +1106,13 @@ namespace Punto_de_Venta
 
                 SqlCommand cmd = new SqlCommand("GenerarVenta", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idProducto", idProducto);
+                
                 cmd.Parameters.AddWithValue("@CajeroId", CajeroId);
                 cmd.Parameters.AddWithValue("@NumCaja", NumCaja);
                 cmd.Parameters.AddWithValue("@Fecha", fecha1);
                 cmd.Parameters.AddWithValue("@MontoPago", MontoPago);
                 cmd.Parameters.AddWithValue("@Total", Total);
-                cmd.Parameters.AddWithValue("@NombreProducto", NombreProd);
+                
                 cmd.Parameters.AddWithValue("@NombreCajero", NombreCajero);
 
                 cmd.ExecuteNonQuery();
@@ -1128,6 +1128,69 @@ namespace Punto_de_Venta
             return true;
         }
 
+        public bool GenerarVentaDetalle(int idVentaHeader, string NombreProducto, int UnidadesVendidas,
+            float subtotal, float PrecioU, float Utilidad)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("GenerarVentaDetalle", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@idVentaHeader", idVentaHeader);
+                cmd.Parameters.AddWithValue("@nombreProducto", NombreProducto);
+                cmd.Parameters.AddWithValue("@UnidaesVendidas", UnidadesVendidas);
+                cmd.Parameters.AddWithValue("@Subtotal", subtotal);
+                cmd.Parameters.AddWithValue("@PrecioUnitario", PrecioU);
+                cmd.Parameters.AddWithValue("@Utilidad", Utilidad);
+
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+        }
+
+
+        public bool GenerarTicketDB()
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("GenerarVentaDetalle", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@idVentaHeader", idVentaHeader);
+                cmd.Parameters.AddWithValue("@nombreProducto", NombreProducto);
+                cmd.Parameters.AddWithValue("@UnidaesVendidas", UnidadesVendidas);
+                cmd.Parameters.AddWithValue("@Subtotal", subtotal);
+                cmd.Parameters.AddWithValue("@PrecioUnitario", PrecioU);
+                cmd.Parameters.AddWithValue("@Utilidad", Utilidad);
+
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+        }
 
         //public bool RealizarVentas(float total, string nombreProd, DateTime fecha,
         //    float subtotal, float montoPago, float MontoTotal, int metodoPago, int CajeroId,
