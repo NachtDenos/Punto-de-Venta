@@ -472,6 +472,7 @@ namespace Punto_de_Venta
                 proc.GenerarTicketDB(0, monto1, 0);
                 proc.GenerarTicketDB(0, monto2, 1);
             }
+            proc.EliminarCarrito();
             this.Close();
             ticketScreen TheOtherForm = new ticketScreen();
             TheOtherForm.ShowDialog();

@@ -417,11 +417,11 @@ Begin
 select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary where [Activo] = 'Activo'
 end;
 
---create proc BorrarCarrito
---as
---Begin
---delete VentaTemporal
---end
+create proc BorrarCarrito
+as
+Begin
+delete VentaTemporal
+end
 
 create proc filtroConsultaRapida
 (@filID int, @filName varchar(200))

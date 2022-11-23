@@ -1190,6 +1190,31 @@ namespace Punto_de_Venta
             return true;
         }
 
+        public bool EliminarCarrito()
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("BorrarCarrito", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+        }
+
         //public bool RealizarVentas(float total, string nombreProd, DateTime fecha,
         //    float subtotal, float montoPago, float MontoTotal, int metodoPago, int CajeroId,
         //    int numCaja, string NombreCajero, int unidadesVendidas, float PrecioUnitario,
