@@ -717,3 +717,34 @@ GenerarVenta '1000.50', 'Control', '2022-10-12', '1200.92', '1201.00','1201.00',
   -- total INT NOT NULL,
   -- claveCajePro INT NOT NULL,
   -- MontoPago Money null,
+
+
+  create proc GenerarNotaCredito
+  (@numeroRecibo int,
+  @total decimal(10,2),
+  @fechaNota date,
+  @claveAdmin int)
+  as
+  BEGIN
+  set @claveAdmin = IDENT_CURRENT('Administrador') --Obtener el id del ultimo administrador creado
+  insert into NotaCred(numeroRecibo, fechaNota, claveAdminNota, total)
+  values(@numeroRecibo, @fechaNota, @claveAdmin, @total)
+  END;
+  --agregar columa a venta temporal y venta donde salgo el ptuo total, eso o checar pq no se inserta bien el total
+
+  GenerarNotaCredito 10016, 100.00, '2022-01-12', 0
+
+  create proc GenerarDevolucion
+  (@noCredDev int,
+  @CodigoProd int,
+  @devCant int,--QUE PUSTAS ES DEV CANT
+  @SubTotal decimal(10,2),
+  @motivo varchar(300)
+  ) 
+  as
+  Begin
+  set @noCredDev = IDENT_CURRENT('NotaCred')
+  insert into devolucion()
+  values
+  end;
+  select * from NotaCred

@@ -50,6 +50,8 @@ namespace Punto_de_Venta
             this.prodReturn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantiReturn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subReturn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtReturnReason = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn2)).BeginInit();
             this.SuspendLayout();
@@ -58,9 +60,10 @@ namespace Punto_de_Venta
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(317, 25);
+            this.label2.Location = new System.Drawing.Point(423, 31);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(265, 44);
+            this.label2.Size = new System.Drawing.Size(332, 56);
             this.label2.TabIndex = 4;
             this.label2.Text = "Devoluciones";
             // 
@@ -75,28 +78,33 @@ namespace Punto_de_Venta
             this.prodReturn,
             this.quantiReturn,
             this.subReturn});
-            this.dataGridReturn1.Location = new System.Drawing.Point(224, 107);
+            this.dataGridReturn1.Location = new System.Drawing.Point(299, 132);
+            this.dataGridReturn1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridReturn1.Name = "dataGridReturn1";
             this.dataGridReturn1.ReadOnly = true;
-            this.dataGridReturn1.Size = new System.Drawing.Size(264, 445);
+            this.dataGridReturn1.RowHeadersWidth = 51;
+            this.dataGridReturn1.Size = new System.Drawing.Size(352, 548);
             this.dataGridReturn1.TabIndex = 5;
             this.dataGridReturn1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridReturn1_CellClick);
             // 
             // prodReturn
             // 
             this.prodReturn.HeaderText = "Producto";
+            this.prodReturn.MinimumWidth = 6;
             this.prodReturn.Name = "prodReturn";
             this.prodReturn.ReadOnly = true;
             // 
             // quantiReturn
             // 
             this.quantiReturn.HeaderText = "Cantidad";
+            this.quantiReturn.MinimumWidth = 6;
             this.quantiReturn.Name = "quantiReturn";
             this.quantiReturn.ReadOnly = true;
             // 
             // subReturn
             // 
             this.subReturn.HeaderText = "Subtotal";
+            this.subReturn.MinimumWidth = 6;
             this.subReturn.Name = "subReturn";
             this.subReturn.ReadOnly = true;
             // 
@@ -104,9 +112,10 @@ namespace Punto_de_Venta
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 253);
+            this.label1.Location = new System.Drawing.Point(16, 311);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 22);
+            this.label1.Size = new System.Drawing.Size(225, 30);
             this.label1.TabIndex = 29;
             this.label1.Text = "Producto Dañado";
             // 
@@ -114,9 +123,10 @@ namespace Punto_de_Venta
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 332);
+            this.label3.Location = new System.Drawing.Point(16, 409);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(206, 22);
+            this.label3.Size = new System.Drawing.Size(263, 30);
             this.label3.TabIndex = 30;
             this.label3.Text = "Cantidad a devolver";
             // 
@@ -124,9 +134,10 @@ namespace Punto_de_Venta
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(321, 82);
+            this.label4.Location = new System.Drawing.Point(428, 101);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 22);
+            this.label4.Size = new System.Drawing.Size(82, 30);
             this.label4.TabIndex = 32;
             this.label4.Text = "Ticket";
             // 
@@ -134,9 +145,10 @@ namespace Punto_de_Venta
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(567, 82);
+            this.label5.Location = new System.Drawing.Point(756, 101);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 22);
+            this.label5.Size = new System.Drawing.Size(152, 30);
             this.label5.TabIndex = 33;
             this.label5.Text = "Devolución";
             // 
@@ -144,27 +156,30 @@ namespace Punto_de_Venta
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 125);
+            this.label6.Location = new System.Drawing.Point(16, 154);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(170, 22);
+            this.label6.Size = new System.Drawing.Size(224, 30);
             this.label6.TabIndex = 34;
             this.label6.Text = "Número de Ticket";
             // 
             // txtIdReturn
             // 
-            this.txtIdReturn.Location = new System.Drawing.Point(16, 160);
+            this.txtIdReturn.Location = new System.Drawing.Point(21, 197);
+            this.txtIdReturn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIdReturn.Multiline = true;
             this.txtIdReturn.Name = "txtIdReturn";
-            this.txtIdReturn.Size = new System.Drawing.Size(166, 22);
+            this.txtIdReturn.Size = new System.Drawing.Size(220, 26);
             this.txtIdReturn.TabIndex = 35;
             this.txtIdReturn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdReturn_KeyPress);
             // 
             // rbYesReturn
             // 
             this.rbYesReturn.AutoSize = true;
-            this.rbYesReturn.Location = new System.Drawing.Point(57, 295);
+            this.rbYesReturn.Location = new System.Drawing.Point(76, 363);
+            this.rbYesReturn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbYesReturn.Name = "rbYesReturn";
-            this.rbYesReturn.Size = new System.Drawing.Size(34, 17);
+            this.rbYesReturn.Size = new System.Drawing.Size(41, 21);
             this.rbYesReturn.TabIndex = 36;
             this.rbYesReturn.TabStop = true;
             this.rbYesReturn.Text = "Si";
@@ -174,9 +189,10 @@ namespace Punto_de_Venta
             // rbNoReturn
             // 
             this.rbNoReturn.AutoSize = true;
-            this.rbNoReturn.Location = new System.Drawing.Point(109, 295);
+            this.rbNoReturn.Location = new System.Drawing.Point(145, 363);
+            this.rbNoReturn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbNoReturn.Name = "rbNoReturn";
-            this.rbNoReturn.Size = new System.Drawing.Size(39, 17);
+            this.rbNoReturn.Size = new System.Drawing.Size(47, 21);
             this.rbNoReturn.TabIndex = 37;
             this.rbNoReturn.TabStop = true;
             this.rbNoReturn.Text = "No";
@@ -185,10 +201,11 @@ namespace Punto_de_Venta
             // 
             // txtQuantityReturn
             // 
-            this.txtQuantityReturn.Location = new System.Drawing.Point(16, 370);
+            this.txtQuantityReturn.Location = new System.Drawing.Point(21, 455);
+            this.txtQuantityReturn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtQuantityReturn.Multiline = true;
             this.txtQuantityReturn.Name = "txtQuantityReturn";
-            this.txtQuantityReturn.Size = new System.Drawing.Size(166, 22);
+            this.txtQuantityReturn.Size = new System.Drawing.Size(220, 26);
             this.txtQuantityReturn.TabIndex = 38;
             this.txtQuantityReturn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantityReturn_KeyPress);
             // 
@@ -198,9 +215,10 @@ namespace Punto_de_Venta
             this.btnAddReturn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddReturn.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddReturn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddReturn.Location = new System.Drawing.Point(16, 569);
+            this.btnAddReturn.Location = new System.Drawing.Point(21, 700);
+            this.btnAddReturn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddReturn.Name = "btnAddReturn";
-            this.btnAddReturn.Size = new System.Drawing.Size(123, 50);
+            this.btnAddReturn.Size = new System.Drawing.Size(164, 62);
             this.btnAddReturn.TabIndex = 51;
             this.btnAddReturn.Text = "Devolver";
             this.btnAddReturn.UseVisualStyleBackColor = false;
@@ -212,9 +230,10 @@ namespace Punto_de_Venta
             this.btnOkReturn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOkReturn.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOkReturn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnOkReturn.Location = new System.Drawing.Point(793, 569);
+            this.btnOkReturn.Location = new System.Drawing.Point(1057, 700);
+            this.btnOkReturn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOkReturn.Name = "btnOkReturn";
-            this.btnOkReturn.Size = new System.Drawing.Size(129, 50);
+            this.btnOkReturn.Size = new System.Drawing.Size(172, 62);
             this.btnOkReturn.TabIndex = 52;
             this.btnOkReturn.Text = "Confirmar";
             this.btnOkReturn.UseVisualStyleBackColor = false;
@@ -226,9 +245,10 @@ namespace Punto_de_Venta
             this.btnDeleteReturn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteReturn.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteReturn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteReturn.Location = new System.Drawing.Point(562, 569);
+            this.btnDeleteReturn.Location = new System.Drawing.Point(749, 700);
+            this.btnDeleteReturn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDeleteReturn.Name = "btnDeleteReturn";
-            this.btnDeleteReturn.Size = new System.Drawing.Size(129, 50);
+            this.btnDeleteReturn.Size = new System.Drawing.Size(172, 62);
             this.btnDeleteReturn.TabIndex = 53;
             this.btnDeleteReturn.Text = "Cancelar Producto";
             this.btnDeleteReturn.UseVisualStyleBackColor = false;
@@ -244,37 +264,65 @@ namespace Punto_de_Venta
             this.prodReturn2,
             this.quantiReturn2,
             this.subReturn2});
-            this.dataGridReturn2.Location = new System.Drawing.Point(494, 107);
+            this.dataGridReturn2.Location = new System.Drawing.Point(659, 132);
+            this.dataGridReturn2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridReturn2.Name = "dataGridReturn2";
             this.dataGridReturn2.ReadOnly = true;
-            this.dataGridReturn2.Size = new System.Drawing.Size(264, 445);
+            this.dataGridReturn2.RowHeadersWidth = 51;
+            this.dataGridReturn2.Size = new System.Drawing.Size(352, 548);
             this.dataGridReturn2.TabIndex = 31;
             this.dataGridReturn2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridReturn2_CellClick);
             // 
             // prodReturn2
             // 
             this.prodReturn2.HeaderText = "Producto";
+            this.prodReturn2.MinimumWidth = 6;
             this.prodReturn2.Name = "prodReturn2";
             this.prodReturn2.ReadOnly = true;
             // 
             // quantiReturn2
             // 
             this.quantiReturn2.HeaderText = "Cantidad";
+            this.quantiReturn2.MinimumWidth = 6;
             this.quantiReturn2.Name = "quantiReturn2";
             this.quantiReturn2.ReadOnly = true;
             // 
             // subReturn2
             // 
             this.subReturn2.HeaderText = "Subtotal";
+            this.subReturn2.MinimumWidth = 6;
             this.subReturn2.Name = "subReturn2";
             this.subReturn2.ReadOnly = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(20, 496);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(97, 30);
+            this.label7.TabIndex = 54;
+            this.label7.Text = "Motivo";
+            // 
+            // txtReturnReason
+            // 
+            this.txtReturnReason.Location = new System.Drawing.Point(21, 541);
+            this.txtReturnReason.Margin = new System.Windows.Forms.Padding(4);
+            this.txtReturnReason.Multiline = true;
+            this.txtReturnReason.Name = "txtReturnReason";
+            this.txtReturnReason.Size = new System.Drawing.Size(220, 26);
+            this.txtReturnReason.TabIndex = 55;
+            this.txtReturnReason.Text = "Ponga el motivo";
+            // 
             // ReturnScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
-            this.ClientSize = new System.Drawing.Size(934, 631);
+            this.ClientSize = new System.Drawing.Size(1245, 777);
+            this.Controls.Add(this.txtReturnReason);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnDeleteReturn);
             this.Controls.Add(this.btnOkReturn);
             this.Controls.Add(this.btnAddReturn);
@@ -290,6 +338,7 @@ namespace Punto_de_Venta
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridReturn1);
             this.Controls.Add(this.label2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ReturnScreen";
             this.Text = "ReturnScreen";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn1)).EndInit();
@@ -322,5 +371,7 @@ namespace Punto_de_Venta
         private System.Windows.Forms.DataGridViewTextBoxColumn prodReturn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantiReturn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn subReturn2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtReturnReason;
     }
 }
