@@ -215,7 +215,7 @@ go
 CREATE TABLE NotaCred
 (
    noCredit INT IDENTITY (10000, 1) NOT NULL,
-   total INT NOT NULL,
+   total decimal(10,2) NOT NULL,
    numeroRecibo INT NOT NULL, 
    fechaNota DATE NOT NULL,
    claveAdminNota INT NOT NULL,
@@ -228,6 +228,7 @@ CREATE TABLE NotaCred
    FOREIGN KEY (numeroRecibo)
    REFERENCES Recibo (noVenta)
 );
+
 go
 IF OBJECT_ID('Departamento') IS NOT NULL
 BEGIN

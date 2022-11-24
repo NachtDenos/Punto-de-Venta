@@ -745,3 +745,44 @@ declare @buscaID int = 0;
 set @buscaID = IDENT_CURRENT('Recibo')
 select noVenta from Recibo where noVenta = @buscaID
 end;
+
+create proc GenerarNotaCred
+(@NumeroRecibo int,
+@Total decimal(10,2),
+@FechaNota date
+)
+as
+Begin
+DECLARE @IdAdmin int = 0;
+set @IdAdmin = IDENT_CURRENT('Administrador')
+insert into NotaCred(numeroRecibo, fechaNota, claveAdminNota, total)
+values(@NumeroRecibo, @FechaNota, @IdAdmin, @Total)
+end;
+GenerarNotaCred 10016, 1020.50, '2022-11-23'
+
+create proc GeneraDevolucion
+(@CodigoProd int,
+@CantDevuelta int,
+@SubtotalDevoulucion decimal(10,2),
+@Motivo varchar(300)
+)
+as
+Begin
+declare @idNotaCred int = 0;
+set @idNotaCred = IDENT_CURRENT('NotaCred')
+insert into devolucion(noCredDev, codigoProDev, devCant, subtotalDev, motivo)
+values(@idNotaCred, @CodigoProd, @CantDevuelta, @SubtotalDevoulucion, @Motivo)
+end;
+GeneraDevolucion 1, 2, 611.50, 'EL PINCHE CONTROL ESTABA MIADO, LE FALTABAN 2 PUTOS BOTONES, TENIA CABLES PEGADOS A UN PUTO EXPLOSIVO C4 Y NO ABRE NETFLIX'	
+
+select* from Recibo
+select * from VentaDetalle
+select* from NotaCred
+SELECT * FROM devolucion
+
+select Niggaa.fechaNota [Fecha], Niggaa.numeroRecibo [Recibo],
+Niggaa.total [Total], Neganigga.codigoProDev [Codigo Producto],
+Neganigga.motivo [Motivo], Neganigga.devCant [Cantidad Devuelta],
+Neganigga.subtotalDev [Subtotal Devolucion] from NotaCred Niggaa
+join devolucion Neganigga
+on Neganigga.noCredDev = Niggaa.noCredit
