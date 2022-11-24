@@ -673,14 +673,6 @@ end;
 --delete Caje_Pro
 --delete Recibo
 --delete VentaDetalle
-select * from Caje_Pro
-select * from Recibo
-select * from ventaDetalle
-SELECT* FROM ticket
-
-select * from Cajero
-select * from Departamento
-select * from Producto
 --idVentaDetalle int not null,
 --  noDeVenta int not null,
 --  CodProducto int not null,
@@ -736,7 +728,18 @@ select [Num], [Fecha], [Codigo], [Producto], [Subtotal],
 [Se llevo]from vwTicketsPorNum where @filtroNum = [Num]
 end;
 
-
+create procedure obtenerNota
+(@filtroNum int)
+as
+Begin
+select NC.noCredit [ID], NC.fechaNota [Fecha], NC.numeroRecibo [Ticket], D.devCant[Cantidad], D.subtotalDev[Subtotal], P.nombrePro [Producto]
+ from NotaCred NC 
+join devolucion D
+on D.noCredDev = NC.noCredit
+join Producto P
+on P.idProduct = D.codigoProDev
+where @filtroNum = NC.noCredit
+end;
 
 create procedure vaciarVentaTemporal
 as
@@ -790,8 +793,6 @@ as
 Begin
 update Producto set existencia = existencia + @cant where idProduct = @CodProducto
 end;
-
-drop proc ActualizarProdDevolucionMerma
 
 create proc ActualizarProdDevolucionMerma
 (@cant int,

@@ -21,4 +21,6 @@ select @Id = idProduct from Producto
 update Producto set merma = merma + @Merma, existencia = existencia + @Cant where idProduct = @Id
 end;
 
+drop trigger tr_Actualizarcant
+
 go

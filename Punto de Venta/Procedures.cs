@@ -957,6 +957,27 @@ namespace Punto_de_Venta
 
         }
 
+        public DataTable ObtenerNota(int NumTicket)
+        {
+
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "obtenerNota"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filtroNum", NumTicket);
+
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+
+
+        }
+
+
         public DataTable TablaDevTemporal()
         {
 

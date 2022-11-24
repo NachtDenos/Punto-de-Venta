@@ -430,8 +430,8 @@ create table DevolucionTemporal
   Motivo varchar(300) null,
   merma int null
 );
-
 drop table DevolucionTemporal
+
 --noCredDev INT NOT NULL,
 --   codigoProDev INT NOT NULL,
 --   devCant INT NOT NULL,
@@ -442,3 +442,6 @@ drop table DevolucionTemporal
 --   numeroRecibo INT NOT NULL, 
 --   fechaNota DATE NOT NULL,
 --   claveAdminNota INT NOT NULL,
+
+
+select * from devolucion

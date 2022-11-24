@@ -81,6 +81,13 @@ namespace Punto_de_Venta
                     proc.ActualizarProdMerma(Seregreso, CodProducto);
                 }
 
+                if (MessageBox.Show("¿Quiere imprimir la nota de credito?", "Nota De Credito", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    imprimirNotaCredito();
+                }
+
+                MessageBox.Show("Devolucion realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             
             //CreditNoteScreen TheOtherForm = new CreditNoteScreen();
@@ -257,7 +264,7 @@ namespace Punto_de_Venta
 
         private void imprimirNotaCredito()
         {
-            FileStream fs = new FileStream(@"Prueba2.pdf", FileMode.Create);
+            FileStream fs = new FileStream(@"NotaDeCredito.pdf", FileMode.Create);
             Document doc = new Document(PageSize.LETTER, 5, 5, 7, 7);
             PdfWriter pw = PdfWriter.GetInstance(doc, fs);
             doc.Open();
@@ -306,6 +313,8 @@ namespace Punto_de_Venta
             tblEjemplo.AddCell(clCant);
             tblEjemplo.AddCell(clSubtotal);
 
+            float totalFloat = 0.0f;
+            float totalFloatAux = 0.0f;
             //AQUI HACER UN CICLO PARA AGREGAR LOS PRODUCTOS
             foreach (DataGridViewRow fila in dataGridReturn2.Rows)
             {
@@ -315,7 +324,10 @@ namespace Punto_de_Venta
 
                 NombreProducto = fila.Cells["Producto"].Value.ToString();
                 Subtotal = fila.Cells["Subtotal"].Value.ToString();
-                UnidadesLlevar = fila.Cells["A llevar"].Value.ToString();
+                UnidadesLlevar = fila.Cells["Devuelve"].Value.ToString();
+
+                totalFloat = float.Parse(Subtotal);
+                totalFloatAux = totalFloat + totalFloatAux;
 
                 clNombre = new PdfPCell(new Phrase(NombreProducto, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
                 clNombre.BorderWidth = 0;
@@ -339,12 +351,11 @@ namespace Punto_de_Venta
 
             PdfPTable tblTotal = new PdfPTable(2);
             tblTotal.WidthPercentage = 100;
-
+            string totalStr = totalFloatAux.ToString();
             PdfPCell clTotal = new PdfPCell(new Phrase("Total:", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
             clTotal.BorderWidth = 0;
             clTotal.BorderWidthBottom = 0;
-            string totalInt = "0.0";
-            PdfPCell clTotalCant = new PdfPCell(new Phrase(totalInt, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            PdfPCell clTotalCant = new PdfPCell(new Phrase(totalStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
             clTotalCant.BorderWidth = 0;
             clTotalCant.BorderWidthBottom = 0;
 
