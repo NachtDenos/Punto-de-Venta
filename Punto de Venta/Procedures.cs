@@ -1207,15 +1207,43 @@ namespace Punto_de_Venta
 
         }
         //FALTA IMPLEMENTAR
-        public bool EliminarProductoDevolucion(string NombreCod, int CantidadEliminar)
+        public bool EliminarProductoDevolucion(int codProd, int CantidadEliminar)
         {
             try
             {
                 comando.Connection = conexion.AbrirConexion();
                 comando.CommandText = "EliminarProductoDevolucion"; //Para el procedure
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@NombreProd", NombreCod);
-                comando.Parameters.AddWithValue("@Cantidad", CantidadEliminar);
+                comando.Parameters.AddWithValue("@Codigo", codProd);
+                comando.Parameters.AddWithValue("@Cant", CantidadEliminar);
+
+
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+
+        }
+
+        public bool RestarStockVenta(string name, int CantidadEliminar)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "RestarStockVenta"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@cant", CantidadEliminar);
+                comando.Parameters.AddWithValue("@NombreProd", name);
 
 
 

@@ -21,6 +21,7 @@ namespace Punto_de_Venta
         string ticketNota;
         float CostProducto;
         int CodProducto;
+        int Aeliminar;
         int Seregreso;
         DateTime laFecha;
         string motivo;
@@ -147,7 +148,13 @@ namespace Punto_de_Venta
                 dataGridReturn2.AllowUserToOrderColumns = false;
                 if (dataGridReturn2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
-                   
+                    string cod;
+                    string regresa;
+                    regresa = dataGridReturn2.CurrentRow.Cells["Devuelve"].Value.ToString();
+                    cod = dataGridReturn2.CurrentRow.Cells["Codigo"].Value.ToString();
+                    Int32.TryParse(cod, out CodProducto);
+                    Int32.TryParse(regresa, out Aeliminar);
+                    btnDeleteReturn.Enabled = true;
                 }
             }
             catch (Exception ArgumentOutOfRangeException)
@@ -254,6 +261,21 @@ namespace Punto_de_Venta
         {
             boton2 = true;
             boton1 = false;
+        }
+
+        private void btnDeleteReturn_Click(object sender, EventArgs e)
+        {
+            string elimina;
+            elimina = txtCantidadBorrar.Text;
+            int elim;
+            Int32.TryParse(elimina, out elim);
+            proc.EliminarProductoDevolucion(CodProducto, elim);
+            dataGridReturn2.DataSource = proc.TablaDevTemporal();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void imprimirNotaCredito()

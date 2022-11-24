@@ -548,12 +548,12 @@ delete VentaTemporal where VentaTemporal.CantidadAllevar = 0 and NombreProducto 
 end;
 
 create procedure EliminarProductoDevolucion
-(@NombreProd varchar(30),
+(@Codigo varchar(30),
 @Cant int)
 as
 begin
-Update DevolucionTemporal set cantDevuelta = cantDevuelta - @Cant where NombreProd = @NombreProd
-delete DevolucionTemporal where cantDevuelta = 0 and NombreProd = @NombreProd 
+Update DevolucionTemporal set cantDevuelta = cantDevuelta - @Cant where CodProd = @Codigo
+delete DevolucionTemporal where cantDevuelta = 0 and CodProd = @Codigo 
 end;
 
 
@@ -568,11 +568,6 @@ join Producto P
 on P.idProduct = VentaTemporal.CodigoProducto
 end;
 
-select*from VentaTemporal
---total
-select 
-SUM(CantidadAllevar*PrecioUnitario) as Total
-from VentaTemporal
 
 create proc GenerarVenta
 (@CajeroId int,
@@ -621,7 +616,7 @@ insert into VentaDetalle(noDeVenta,CodProducto, DepartamentoId,UnidadesVendidas,
 values (@idVentaHeader,  @CodigoProd, @IdDepartamento, @UnidaesVendidas, @Subtotal, @DescuentoId, @PrecioUnitario, @Venta, @Utilidad)
 
 END;
-GenerarVentaDetalle 0, 'Television', 220, 2020.20, 3232.10, 3232.50
+
 
 create proc GenerarTicket
 (@IdVentaHeader int,
@@ -698,7 +693,6 @@ set @IdAdmin = IDENT_CURRENT('Administrador')
 insert into NotaCred(numeroRecibo, fechaNota, claveAdminNota, total)
 values(@NumeroRecibo, @FechaNota, @IdAdmin, @Total)
 end;
---GenerarNotaCred 10016, 1020.50, '2022-11-23'
 
 create proc GeneraDevolucion
 (@CodigoProd int,
@@ -733,10 +727,17 @@ update Producto set merma = 0 where idProduct = @CodProducto
 update Producto set merma = merma + @cant where idProduct = @CodProducto
 end;
 
+create proc RestarStockVenta
+(@cant int,
+@NombreProd varchar(50))
+as
+Begin
+update Producto set existencia = existencia - @cant where nombrePro= @NombreProd
+end;
 
 select * from VentaDetalle
 select* from NotaCred
-SELECT * FROM devolucion
+SELECT * FROM DevolucionTemporal
 
 create proc TablaDevolucionTemp
 as
