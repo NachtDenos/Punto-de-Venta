@@ -1129,7 +1129,7 @@ namespace Punto_de_Venta
         }
 
         public bool GenerarVentaDetalle(int idVentaHeader, string NombreProducto, int UnidadesVendidas,
-            float subtotal, float PrecioU, float Utilidad)
+            float subtotal, float PrecioU, float totalVenta, float Utilidad)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
             SqlConnection conectado = new SqlConnection();
@@ -1145,6 +1145,7 @@ namespace Punto_de_Venta
                 cmd.Parameters.AddWithValue("@UnidaesVendidas", UnidadesVendidas);
                 cmd.Parameters.AddWithValue("@Subtotal", subtotal);
                 cmd.Parameters.AddWithValue("@PrecioUnitario", PrecioU);
+                cmd.Parameters.AddWithValue("@Venta", totalVenta);
                 cmd.Parameters.AddWithValue("@Utilidad", Utilidad);
 
                 cmd.ExecuteNonQuery();

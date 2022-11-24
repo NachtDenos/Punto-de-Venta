@@ -597,6 +597,7 @@ create proc GenerarVentaDetalle
 @UnidaesVendidas int,
 @Subtotal decimal(10,2),
 @PrecioUnitario decimal(10,2),
+@Venta decimal(10,2),
 @Utilidad decimal(10,2)
 )
 as
@@ -608,8 +609,8 @@ set @IdDepartamento = (Select Producto.claveDepa from Producto where nombrePro =
 set @DescuentoId = (Select Producto.idDesc from Producto where nombrePro = @nombreProducto)
 set @CodigoProd = (Select Producto.idProduct from Producto where nombrePro = @nombreProducto)
 set @idVentaHeader = IDENT_CURRENT('Recibo')
-insert into VentaDetalle(noDeVenta,CodProducto, DepartamentoId,UnidadesVendidas, Subtotal,DescuentoId, PrecioUnitario, Utilidad)
-values (@idVentaHeader,  @CodigoProd, @IdDepartamento, @UnidaesVendidas, @Subtotal, @DescuentoId, @PrecioUnitario, @Utilidad)
+insert into VentaDetalle(noDeVenta,CodProducto, DepartamentoId,UnidadesVendidas, Subtotal,DescuentoId, PrecioUnitario, totalVenta, Utilidad)
+values (@idVentaHeader,  @CodigoProd, @IdDepartamento, @UnidaesVendidas, @Subtotal, @DescuentoId, @PrecioUnitario, @Venta, @Utilidad)
 
 END;
 GenerarVentaDetalle 0, 'Television', 220, 2020.20, 3232.10, 3232.50
