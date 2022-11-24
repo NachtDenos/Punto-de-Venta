@@ -937,6 +937,36 @@ namespace Punto_de_Venta
 
         }
 
+        public DataTable ListarTickets(int NumTicket)
+        {
+            try
+            {
+                ataTable tabla = new DataTable();
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "filtroSelectProduct"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@filID", "");
+                comando.Parameters.AddWithValue("@filName", nombre);
+                leerFilas = comando.ExecuteReader();
+                tabla.Load(leerFilas);
+                leerFilas.Close();
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return tabla;
+
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                
+            }
+           
+
+        }
+
         public bool EliminarProductoCarrito(string NombreCod, int Cant)
         {
             try

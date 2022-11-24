@@ -732,6 +732,12 @@ from vwEmpleados
 where  @filtroI = [Clave de Usuario]
 end;
 
+create procedure obtenerTicket
+(@filtroNum int)
+as
+Begin
+select from vwTicketsPorNum
+
 create procedure vaciarVentaTemporal
 as
 Begin
