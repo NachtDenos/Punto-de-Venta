@@ -115,7 +115,8 @@ CREATE TABLE Producto
     FOREIGN KEY (claveAdmin)
     REFERENCES Administrador (idAdmin)
 )
-
+alter table Producto
+  --merma default 0 dios plan polan
 
 go
 
