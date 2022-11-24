@@ -77,6 +77,6 @@ on P.idProduct = Vd.CodProducto
 
 select * from Recibo
 select * from Cajero
-
+select * from Producto
 select * from NotaCred
 drop view vwCajero

@@ -82,7 +82,8 @@ namespace Punto_de_Venta
                 }
 
             }
-            
+            proc.limpiarGridDevolucion();
+            dataGridReturn2.DataSource = proc.TablaDevTemporal();
             //CreditNoteScreen TheOtherForm = new CreditNoteScreen();
             //TheOtherForm.ShowDialog();
         }
