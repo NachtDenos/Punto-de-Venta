@@ -47,8 +47,6 @@ on VD.DescuentoId = DS.idDesc
 join Caje_Pro CP
 on Recibo.claveCajePro = CP.idCajePro
 
-go
-
 create view vwCajero
 as
 Select Recibo.fechaVenta [Fecha de Venta], U.nombreU [Cajero], DP.nombreDep [Departamento],
@@ -62,7 +60,6 @@ on CP.idCajePro = Recibo.claveCajePro
 join Usuario U
 on CP.claveCajeroCP = U.idUser
 
-go
 
 
 create view vwTicketsPorNum
@@ -75,3 +72,11 @@ join Departamento depa
 on vd.DepartamentoId = depa.idDepa
 join Producto P
 on P.idProduct = Vd.CodProducto
+
+
+
+select * from Recibo
+select * from Cajero
+select * from Producto
+select * from NotaCred
+drop view vwCajero

@@ -47,6 +47,8 @@ namespace Punto_de_Venta
             this.label7 = new System.Windows.Forms.Label();
             this.txtReturnReason = new System.Windows.Forms.TextBox();
             this.filterBtnticket = new System.Windows.Forms.Button();
+            this.txtCantidadBorrar = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn2)).BeginInit();
             this.SuspendLayout();
@@ -221,6 +223,7 @@ namespace Punto_de_Venta
             this.btnDeleteReturn.TabIndex = 53;
             this.btnDeleteReturn.Text = "Cancelar Producto";
             this.btnDeleteReturn.UseVisualStyleBackColor = false;
+            this.btnDeleteReturn.Click += new System.EventHandler(this.btnDeleteReturn_Click);
             // 
             // dataGridReturn2
             // 
@@ -273,12 +276,35 @@ namespace Punto_de_Venta
             this.filterBtnticket.UseVisualStyleBackColor = false;
             this.filterBtnticket.Click += new System.EventHandler(this.filterBtnticket_Click);
             // 
+            // txtCantidadBorrar
+            // 
+            this.txtCantidadBorrar.Location = new System.Drawing.Point(1019, 496);
+            this.txtCantidadBorrar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCantidadBorrar.Multiline = true;
+            this.txtCantidadBorrar.Name = "txtCantidadBorrar";
+            this.txtCantidadBorrar.Size = new System.Drawing.Size(220, 26);
+            this.txtCantidadBorrar.TabIndex = 57;
+            this.txtCantidadBorrar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(1014, 455);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(252, 30);
+            this.label8.TabIndex = 58;
+            this.label8.Text = "Cantidad a eliminar";
+            // 
             // ReturnScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
-            this.ClientSize = new System.Drawing.Size(1245, 777);
+            this.ClientSize = new System.Drawing.Size(1267, 777);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtCantidadBorrar);
             this.Controls.Add(this.filterBtnticket);
             this.Controls.Add(this.txtReturnReason);
             this.Controls.Add(this.label7);
@@ -328,5 +354,7 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtReturnReason;
         private System.Windows.Forms.Button filterBtnticket;
+        private System.Windows.Forms.TextBox txtCantidadBorrar;
+        private System.Windows.Forms.Label label8;
     }
 }

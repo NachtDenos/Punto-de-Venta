@@ -96,10 +96,10 @@ CREATE TABLE Producto
 	ptReorden INT NOT NULL,
 	claveGest INT NOT NULL, 
 	activo varchar(30),
-	merma INT,
+	merma INT default 0,
 	Costo decimal(10,2) not null,
 	PrecioUnitario decimal(10,2) not null,
-	uniVendida INT,
+	uniVendida INT default 0,
 	claveAdmin INT NOT NULL, 
 	claveDepa INT NOT NULL,
 	--claveDesc INT NOT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE Producto
     FOREIGN KEY (claveAdmin)
     REFERENCES Administrador (idAdmin)
 )
-alter table Producto
+
   --merma default 0 dios plan polan
 
 go

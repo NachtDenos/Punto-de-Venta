@@ -345,13 +345,15 @@ namespace Punto_de_Venta
                 string CajeroNombre;
                 int CajerId = 0;
                 string NombreProducto;
+                string Codigito;
                 string Subtotal;
                 string UnidadesLlevar;
                 string PrecioU;
                 string Discount;
                 float disNum;
-
+                int CodFinal;
                 NombreProducto = fila.Cells["Producto"].Value.ToString();
+               // Codigito = fila.Cells["Codigo"].Value.ToString();
                 Subtotal = fila.Cells["Subtotal"].Value.ToString();
                 UnidadesLlevar = fila.Cells["A llevar"].Value.ToString();
                 PrecioU = fila.Cells["Precio"].Value.ToString();
@@ -371,6 +373,7 @@ namespace Punto_de_Venta
                 string costoStingDtg;
                 costoStingDtg = fila.Cells["Costo"].Value.ToString();
                 float PrecioUni;
+                //Int32.TryParse(Codigito, out CodFinal);
                 
                 //float.TryParse(PrecioU,out PrecioUni);
                 float Utilidad;
@@ -407,7 +410,7 @@ namespace Punto_de_Venta
                    // fila.Cells["Subtotal"].Value = subtotal;
                 }
                 proc.GenerarVentaDetalle(0,NombreProducto,UnidadesVendidas, subFlot, PrecioUni , totalVenta, Utilidad * UnidadesVendidas);
-                
+                proc.RestarStockVenta(NombreProducto, UnidadesVendidas);
                 //proc.RealizarVentas(total, NombreProducto, fechaa, subFlot, montodePago
                 //    , MontoFinal, metPago, 0, NumCaja, Persona, UnidadesVendidas, PrecioUni, 105.5f);
             }

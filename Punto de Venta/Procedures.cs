@@ -1227,6 +1227,62 @@ namespace Punto_de_Venta
             return true;
 
         }
+        //FALTA IMPLEMENTAR
+        public bool EliminarProductoDevolucion(int codProd, int CantidadEliminar)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "EliminarProductoDevolucion"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@Codigo", codProd);
+                comando.Parameters.AddWithValue("@Cant", CantidadEliminar);
+
+
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+
+        }
+
+        public bool RestarStockVenta(string name, int CantidadEliminar)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "RestarStockVenta"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@cant", CantidadEliminar);
+                comando.Parameters.AddWithValue("@NombreProd", name);
+
+
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+
+        }
 
 
         public DataTable filtroScreenDepa(string filtro)
@@ -1464,6 +1520,26 @@ namespace Punto_de_Venta
             return true;
         }
 
+        public bool limpiarGridDevolucion()
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("BorrarGridDevolucion", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
+        }
 
         public int obtenerIdVenta()
         {
