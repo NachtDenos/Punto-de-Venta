@@ -45,6 +45,7 @@ namespace Punto_de_Venta
             {
                 dataGridSalesReport.DataSource = proc.listarRVenta();
             }
+            calculoParaVenta();
         }
 
         private void txtVentaCajaReport_TextChanged(object sender, EventArgs e)
@@ -57,6 +58,7 @@ namespace Punto_de_Venta
             {
                 dataGridSalesReport.DataSource = proc.listarRVenta();
             }
+            calculoParaVenta();
         }
 
         private void txtVentaCajaReport_KeyPress(object sender, KeyPressEventArgs e)
@@ -67,6 +69,7 @@ namespace Punto_de_Venta
                 e.Handled = true;
                 return;
             }
+            calculoParaVenta();
         }
 
         private void SalesReportScreen_Load(object sender, EventArgs e)
@@ -75,6 +78,21 @@ namespace Punto_de_Venta
             dataGridSalesReport.Columns["Subtotal"].DefaultCellStyle.Format = "C2";
             dataGridSalesReport.Columns["Venta"].DefaultCellStyle.Format = "C2";
             dataGridSalesReport.Columns["Utilidad"].DefaultCellStyle.Format = "C2";
+        }
+
+        private void calculoParaVenta()
+        {
+            float Subtotal = 0.0f;
+            float subtotalAux = 0.0f;
+            string SubtotalStr;
+            foreach (DataGridViewRow fila in dataGridSalesReport.Rows)
+            {
+                SubtotalStr = fila.Cells["Subtotal"].Value.ToString();
+                Subtotal = float.Parse(SubtotalStr);
+                subtotalAux = Subtotal + subtotalAux;
+            }
+
+            float prueba = subtotalAux;
         }
     }
 }
