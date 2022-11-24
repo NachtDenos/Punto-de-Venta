@@ -977,7 +977,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool InsertarDevTemporalMerma(int codProd, int NumRecibo, DateTime fecha, int cantDevuelta, float subTotal, int merma)
+        public bool InsertarDevTemporalMerma(int codProd, int NumRecibo, DateTime fecha, int cantDevuelta, float subTotal, int merma, string NombreProd)
         {
             try
             {
@@ -990,6 +990,7 @@ namespace Punto_de_Venta
                 comando.Parameters.AddWithValue("@cantDevuelta", cantDevuelta);
                 comando.Parameters.AddWithValue("@subtotal", subTotal);
                 comando.Parameters.AddWithValue("@Merma", merma);
+                comando.Parameters.AddWithValue("@NombreProd", NombreProd);
 
 
 
@@ -1009,7 +1010,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool InsertarDevTemporalSinMerma(int codProd, int NumRecibo, DateTime fecha, int cantDevuelta, float subTotal)
+        public bool InsertarDevTemporalSinMerma(int codProd, int NumRecibo, DateTime fecha, int cantDevuelta, float subTotal, string NombreProd)
         {
             try
             {
@@ -1021,6 +1022,7 @@ namespace Punto_de_Venta
                 comando.Parameters.AddWithValue("@Fecha", fecha);
                 comando.Parameters.AddWithValue("@cantDevuelta", cantDevuelta);
                 comando.Parameters.AddWithValue("@subtotal", subTotal);
+                comando.Parameters.AddWithValue("@NombreProd", NombreProd);
                 
                 comando.ExecuteNonQuery();
                 comando.Parameters.Clear();
@@ -1096,7 +1098,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool GenerarDevolucion(int CodProd, int CantDev, float subTotal, string motivo)
+        public bool GenerarDevolucion(int CodProd, int CantDev, float subTotal, string motivo, string NombreProd)
         {
             try
             {
@@ -1107,6 +1109,7 @@ namespace Punto_de_Venta
                 comando.Parameters.AddWithValue("@CantDevuelta", CantDev);
                 comando.Parameters.AddWithValue("@SubtotalDevoulucion", subTotal);
                 comando.Parameters.AddWithValue("@Motivo", motivo);
+                comando.Parameters.AddWithValue("@NombreProd", NombreProd);
 
                 comando.ExecuteNonQuery();
                 comando.Parameters.Clear();
@@ -1204,31 +1207,6 @@ namespace Punto_de_Venta
 
         }
 
-
-        //public bool AgregarCarrito(int codigo, string NombreProd, int Caja, DateTime Fecha)
-        //{
-        //    try
-        //    {
-        //        comando.Connection = conexion.AbrirConexion();
-        //        comando.CommandText = "SeleccionarProductoInsertarProducto"; //Para el procedure
-        //        comando.CommandType = CommandType.StoredProcedure;
-        //        comando.Parameters.AddWithValue("@CodigoProd", codigo);
-        //        comando.Parameters.AddWithValue("@NombreProd", NombreProd);
-        //        comando.Parameters.AddWithValue("@Caja", Caja);
-        //        comando.Parameters.AddWithValue("@Fecha", Fecha);
-
-        //        comando.ExecuteNonQuery();
-        //        comando.Parameters.Clear();
-        //        conexion.CerrarConexion();
-        //    }
-        //    catch (Exception error)
-        //    {
-
-        //        MessageBox.Show(error.ToString());
-        //        return false;
-        //    }
-
-        //}
 
         public DataTable filtroScreenDepa(string filtro)
         {
@@ -1427,42 +1405,6 @@ namespace Punto_de_Venta
             return true;
         }
 
-        //public bool RealizarVentas(float total, string nombreProd, DateTime fecha,
-        //    float subtotal, float montoPago, float MontoTotal, int metodoPago, int CajeroId,
-        //    int numCaja, string NombreCajero, int unidadesVendidas, float PrecioUnitario,
-        //    float Utilidad)
-        //{
-        //    ConexionSqlServer conn = new ConexionSqlServer();
-        //    SqlConnection conected = new SqlConnection();
-        //    try
-        //    {
-        //        conected = conn.AbrirConexion();
-        //        SqlCommand cmd = new SqlCommand("GenerarVenta", conected);
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.Parameters.AddWithValue("@Total", total);
-        //        cmd.Parameters.AddWithValue("@NombreProd", nombreProd);
-        //        cmd.Parameters.AddWithValue("@Fecha", fecha);
-        //        cmd.Parameters.AddWithValue("@Subtotal", subtotal);
-        //        cmd.Parameters.AddWithValue("@MontoPago", montoPago);
-        //        cmd.Parameters.AddWithValue("@MetodPago", metodoPago);
-        //        cmd.Parameters.AddWithValue("@MontoTotal", MontoTotal);
-        //        cmd.Parameters.AddWithValue("@CajeroId", CajeroId);
-        //        cmd.Parameters.AddWithValue("@NumCaja", numCaja);
-        //        cmd.Parameters.AddWithValue("@NombreCajero", NombreCajero);
-        //        cmd.Parameters.AddWithValue("@UnidadesVendidas", unidadesVendidas);
-        //        cmd.Parameters.AddWithValue("@PrecioUnitario", PrecioUnitario);
-        //        cmd.Parameters.AddWithValue("@Utilidad", Utilidad);
-        //        cmd.ExecuteNonQuery();
-        //        cmd.Parameters.Clear();
-        //        conn.CerrarConexion();
-        //    }
-        //    catch (Exception Barabas)
-        //    {
-        //        MessageBox.Show("Excepcion de base de datos" + Barabas.ToString());
-        //        return false;
-        //    }
-        //    return true;
-        //}
 
         public DataTable obtenerCajeroCobra(int claveUser)
         {

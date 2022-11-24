@@ -389,6 +389,9 @@ CREATE TABLE devolucion
    FOREIGN KEY (codigoProDev)
    REFERENCES Producto (idProduct)
 );
+ALTER TABLE devolucion
+  Add NombreProd varchar(50) null
+
 
 ALTER TABLE Producto
   ADD CONSTRAINT FK_idDesc 
@@ -419,6 +422,7 @@ create table DevolucionTemporal
   idDevTemp int identity (0,1) not null,
   numeroRecibo int not null,
   Fecha date not null,
+  NombreProd varchar(50) null,
   CodProd int not null,
   NombreProd varchar(50) not null,
   cantDevuelta int not null,
