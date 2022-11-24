@@ -13,6 +13,7 @@ namespace Punto_de_Venta
     public partial class ReturnScreen : Form
     {
         bool boton1 = false, boton2 = false;
+        Procedures proc = new Procedures();
         public ReturnScreen()
         {
             InitializeComponent();
@@ -102,7 +103,17 @@ namespace Punto_de_Venta
 
         private void btnAddReturn_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void filterBtnticket_Click(object sender, EventArgs e)
+        {
+            string numTicket;
+            int ticket;
+            numTicket = txtIdReturn.Text;
+            Int32.TryParse(numTicket, out ticket);
+            var Tilin2LaSecuela = proc.ObtenerTicket(ticket);
+            dataGridReturn1.DataSource = proc.ObtenerTicket(ticket);
         }
 
         private void rbNoReturn_Click(object sender, EventArgs e)

@@ -59,11 +59,14 @@ on C.idCajero = U.idUser
 create view vwTicketsPorNum
 as
 Select Recibo.noVenta [Num],Recibo.fechaVenta [Fecha], Recibo.MontoPago [Monto Pago], Recibo.total [Total], Vd.CodProducto[Codigo], Vd.PrecioUnitario [Precio Unitario],
-Vd.Subtotal [Subtotal], Vd.UnidadesVendidas [Se llevo], depa.nombreDep [Departamento], vd.Utilidad [Utilidad] from Recibo
+Vd.Subtotal [Subtotal], Vd.UnidadesVendidas [Se llevo], depa.nombreDep [Departamento], vd.Utilidad [Utilidad], P.nombrePro [Producto] from Recibo
 JOIN VentaDetalle Vd
 on Recibo.noVenta = vd.noDeVenta
 join Departamento depa
 on vd.DepartamentoId = depa.idDepa
+join Producto P
+on P.idProduct = Vd.CodProducto
+
 
 
 select * from Usuario

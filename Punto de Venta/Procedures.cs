@@ -937,16 +937,15 @@ namespace Punto_de_Venta
 
         }
 
-        public DataTable ListarTickets(int NumTicket)
+        public DataTable ObtenerTicket(int NumTicket)
         {
-            try
-            {
-                ataTable tabla = new DataTable();
+           
+                DataTable tabla = new DataTable();
                 comando.Connection = conexion.AbrirConexion();
-                comando.CommandText = "filtroSelectProduct"; //Para el procedure
+                comando.CommandText = "obtenerTicket"; //Para el procedure
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@filID", "");
-                comando.Parameters.AddWithValue("@filName", nombre);
+                comando.Parameters.AddWithValue("@filtroNum", NumTicket);
+                
                 leerFilas = comando.ExecuteReader();
                 tabla.Load(leerFilas);
                 leerFilas.Close();
@@ -954,15 +953,6 @@ namespace Punto_de_Venta
                 comando.Parameters.Clear();
                 conexion.CerrarConexion();
                 return tabla;
-
-
-            }
-            catch (Exception error)
-            {
-
-                MessageBox.Show(error.ToString());
-                
-            }
            
 
         }
@@ -992,6 +982,63 @@ namespace Punto_de_Venta
                 return false;
             }
             return true;
+
+        }
+
+        public bool GenerarNotaCredito(int NumRecibo, float Total, DateTime fechita)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "GenerarNotaCred"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@NumeroRecibo", NumRecibo);
+                comando.Parameters.AddWithValue("@Total", Total);
+                comando.Parameters.AddWithValue("@FechaNota", fechita);
+
+
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+           
+
+        }
+
+        public bool GenerarDevolucion(int CodProd, int CantDev, float subTotal, string motivo)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "GeneraDevolucion"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@CodigoProd", CodProd);
+                comando.Parameters.AddWithValue("@CantDevuelta", CantDev);
+                comando.Parameters.AddWithValue("@SubtotalDevoulucion", subTotal);
+                comando.Parameters.AddWithValue("@Motivo", motivo);
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            
 
         }
 

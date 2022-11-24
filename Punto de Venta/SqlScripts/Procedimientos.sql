@@ -737,7 +737,11 @@ create procedure obtenerTicket
 (@filtroNum int)
 as
 Begin
-select from vwTicketsPorNum
+select [Num], [Fecha], [Producto], [Subtotal],
+[Se llevo]from vwTicketsPorNum where @filtroNum = [Num]
+end;
+
+
 
 create procedure vaciarVentaTemporal
 as
@@ -765,7 +769,7 @@ set @IdAdmin = IDENT_CURRENT('Administrador')
 insert into NotaCred(numeroRecibo, fechaNota, claveAdminNota, total)
 values(@NumeroRecibo, @FechaNota, @IdAdmin, @Total)
 end;
-GenerarNotaCred 10016, 1020.50, '2022-11-23'
+--GenerarNotaCred 10016, 1020.50, '2022-11-23'
 
 create proc GeneraDevolucion
 (@CodigoProd int,
@@ -780,7 +784,7 @@ set @idNotaCred = IDENT_CURRENT('NotaCred')
 insert into devolucion(noCredDev, codigoProDev, devCant, subtotalDev, motivo)
 values(@idNotaCred, @CodigoProd, @CantDevuelta, @SubtotalDevoulucion, @Motivo)
 end;
-GeneraDevolucion 1, 2, 611.50, 'EL PINCHE CONTROL ESTABA MIADO, LE FALTABAN 2 PUTOS BOTONES, TENIA CABLES PEGADOS A UN PUTO EXPLOSIVO C4 Y NO ABRE NETFLIX'	
+--GeneraDevolucion 1, 2, 611.50, 'EL PINCHE CONTROL ESTABA MIADO, LE FALTABAN 2 PUTOS BOTONES, TENIA CABLES PEGADOS A UN PUTO EXPLOSIVO C4 Y NO ABRE NETFLIX'	
 
 select* from Recibo
 select * from VentaDetalle
