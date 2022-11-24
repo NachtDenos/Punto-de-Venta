@@ -71,8 +71,8 @@ namespace Punto_de_Venta
                         var result = controles.Login(UserNameSQLSideTextBox.Text, PassawordUSRsql.Text, Tipo);
                         if (result == true)
                         {
-
-                            Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND();
+                            int claveUserI = Int32.Parse(UserNameSQLSideTextBox.Text);
+                            Pantallas.CashRegisterToUseWND theRegisterToUse = new Pantallas.CashRegisterToUseWND(claveUserI);
                             this.Hide();
                             theRegisterToUse.ShowDialog();
                             this.Show();

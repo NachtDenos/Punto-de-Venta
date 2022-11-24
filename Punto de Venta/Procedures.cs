@@ -1252,5 +1252,71 @@ namespace Punto_de_Venta
         //    return true;
         //}
 
+        public DataTable obtenerCajeroCobra(int claveUser)
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "obtenerCajeroCobra"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@filtroI", claveUser);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public bool limpiarVentaTemporal()
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("vaciarVentaTemporal", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
+        }
+
+
+        public int obtenerIdVenta()
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "obtenerIdVenta"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                int idVentaActual = 0;
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    idVentaActual = reader.GetInt32(0);
+                }
+                conexion.CerrarConexion();
+                return idVentaActual;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return 0;
+            }
+
+        }
+
     }
 }

@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+
 
 namespace Punto_de_Venta
 {
@@ -18,6 +22,8 @@ namespace Punto_de_Venta
         float montodePago;
         int metPago;
         float total;
+        string nombreCajero;
+        int idCajero;
         float totalaux;
         bool Credito = false;
         string Cred;
@@ -36,6 +42,7 @@ namespace Punto_de_Venta
         int CantidadMetodosActivos;
         float monto1;
         float monto2;
+        float pasarTotal;
         int MetodoPago1de2;
         int MetodoPago2de2;
         DateTime fechaa;
@@ -56,7 +63,7 @@ namespace Punto_de_Venta
         //    //dataGridWayToPay.Rows[0].Cells[5].Value = "60.00";
 
         //}
-        public WaytoPayScreen(string Total, string lblPapito, string fecha, string NumCaja)
+        public WaytoPayScreen(string Total, string lblPapito, string fecha, string NumCaja, string cajeroNombre, int idCajeroActual)
         {
             InitializeComponent();
             txtCreditCardPay.Enabled = false;
@@ -69,6 +76,8 @@ namespace Punto_de_Venta
             txtOtherPay.Enabled = false;
             Fecha = fecha;
             FreakingCash = NumCaja;
+            nombreCajero = cajeroNombre;
+            idCajero = idCajeroActual;
             //dataGridWayToPay.Rows[0].Cells[0].Value = "B312";
             //dataGridWayToPay.Rows[0].Cells[1].Value = "Jamón";
             //dataGridWayToPay.Rows[0].Cells[2].Value = "30.00";
@@ -171,7 +180,10 @@ namespace Punto_de_Venta
                 Credito = true;
             }
             else if (txtCreditCardPay.Enabled == true)
+            {
                 txtCreditCardPay.Enabled = false;
+                txtCreditCardPay.Text = "";
+            }
         }
         private void rbCashPay_Click(object sender, EventArgs e)
         {
@@ -181,7 +193,10 @@ namespace Punto_de_Venta
                 Efectivo = true;
             }
             else if (txtCashPay.Enabled == true)
+            {
                 txtCashPay.Enabled = false;
+                txtCashPay.Text = "";
+            }
         }
         private void rbVouchersPay_Click(object sender, EventArgs e)
         {
@@ -191,7 +206,10 @@ namespace Punto_de_Venta
                 Vales = true;
             }
             else if (txtVoucherPay.Enabled == true)
+            {
                 txtVoucherPay.Enabled = false;
+                txtVoucherPay.Text = "";
+            }
         }
         private void rbDebitCardPay_Click(object sender, EventArgs e)
         {
@@ -201,7 +219,10 @@ namespace Punto_de_Venta
                 Debito = true;
             }
             else if (txtDebitCardPay.Enabled == true)
+            {
                 txtDebitCardPay.Enabled = false;
+                txtDebitCardPay.Text = "";
+            }
         }
         private void rbCheckPay_Click(object sender, EventArgs e)
         {
@@ -211,7 +232,10 @@ namespace Punto_de_Venta
                 Cheques = true;
             }
             else if (txtCheckPay.Enabled == true)
+            {
                 txtCheckPay.Enabled = false;
+                txtCheckPay.Text = "";
+            }
         }
         private void rbOtherPay_Click(object sender, EventArgs e)
         {
@@ -221,7 +245,10 @@ namespace Punto_de_Venta
                 otro = true;
             }
             else if (txtOtherPay.Enabled == true)
+            {
                 txtOtherPay.Enabled = false;
+                txtOtherPay.Text = "";
+            }
         }
         #endregion MetodosDePago
 
@@ -273,129 +300,46 @@ namespace Punto_de_Venta
                 finalPaylbl.Text = "$ ";
                 finalPaylbl.Text += total.ToString("N2");
                 //dataGridWayToPay.Rows.Insert(0,"TOTALLLL");
-            }     
+            }
+            pasarTotal = total;
         }
 
         private void btnPayPay_Click(object sender, EventArgs e)
         {
-            if (Debito == true)
-            {
-                float num;
-                Deb = txtDebitCardPay.Text;
-                float.TryParse(Deb, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                    montodePago = num;
-                }
-                metPago = 1;
-                CantidadMetodosActivos = 1;
-            }
-            else if (Credito == true)
-            {
-                Cred = txtCreditCardPay.Text;
-                float num;
-                float.TryParse(Cred, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                }
-            }
-            else if(Efectivo == true)
-            {
-                Efec = txtCashPay.Text;
-                float num;
-                float.TryParse(Efec, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                }
-            }
-            else if (Cheques == true)
-            {
-                Cheq = txtCheckPay.Text;
-               
-                float num;
-                float.TryParse(Cheq, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                }
-            }
-            else if (Vales == true)
-            {
-                val = txtVoucherPay.Text;
 
-                float num;
-                float.TryParse(val, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                }
-            }
-            else if (otro == true)
-            {
-                otr = txtOtherPay.Text;
-                float num;
-                float.TryParse(otr, out num);
-                if (num - total == 0)
-                {
-                    MessageBox.Show("Correcto procede a pagar");
-                }
-            }
-            else if(Debito == true && Credito == true)
-            {
-                Deb = txtDebitCardPay.Text;
-                Cred = txtCreditCardPay.Text;
-                float num;
-                float num2;
-                float.TryParse(Deb, out num);
-                float.TryParse(Cred, out num2);
-                monto1 = num;
-                monto2 = num;
-                MetodoPago1de2 = 0;
-                MetodoPago2de2 = 1;  
-                CantidadMetodosActivos = 2;
-            }
-            else if (Efectivo == true && Credito == true)
-            {
+            string debitoS = txtDebitCardPay.Text;
+            float debitoFl;
+            float.TryParse(debitoS, out debitoFl);
+            string creditoS = txtCreditCardPay.Text;
+            float creditoFl;
+            float.TryParse(creditoS, out creditoFl);
+            string efectivoS = txtCashPay.Text;
+            float efectivoFl;
+            float.TryParse(efectivoS, out efectivoFl);
+            string chequeS = txtCheckPay.Text;
+            float chequeFl;
+            float.TryParse(chequeS, out chequeFl);
+            string valesS = txtVoucherPay.Text;
+            float valeFl;
+            float.TryParse(valesS, out valeFl);
+            string otroS = txtOtherPay.Text;
+            float otroFl;
+            float.TryParse(otroS, out otroFl);
 
-            }
-            else if (Vales == true && Cheques == true)
+            float montoPagado = debitoFl + creditoFl + efectivoFl + chequeFl + valeFl + otroFl;
+            if(montoPagado < pasarTotal)
             {
-
+                MessageBox.Show("La cantidad no es la correcta a pagar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else if (otro == true && Efectivo == true)
-            {
 
-            }
-            else if (otro == true && Efectivo == true && Debito == true && Credito && true && Vales == true && Cheques == true)
-            {
-
-            }
-            else if (otro == true &&  Debito == true && Credito && true && Vales == true && Cheques == true)
-            {
-
-            }
-            else if (otro == true && Credito == true && Vales == true && Cheques == true)
-            {
-
-            }
-            else if (otro == true && Credito == true && Vales == true && Cheques == true)
-            {
-
-            }
             fechaa = DateTime.Parse(Fecha);
             string NombreProd;
-            string Cajero = "Kevin";
             string CajaNumeroGenVenta;
             int CajaNumeroGenVentaid;
             CajaNumeroGenVenta = FreakingCash;
             Int32.TryParse(CajaNumeroGenVenta,out  CajaNumeroGenVentaid);
-            float Total;
-            float.TryParse(totalblwaytopay.Text, out Total);
-            //ahi vengo voy  A CENAR Y VERQUE PEDO CON COMO HACERLE, PQ SIENTO QUE LO OCUPAMOS Y NO
-             proc.GenerarVenta(fechaa, CajaNumeroGenVentaid, 102.0f, Total, Cajero, 0);
+             proc.GenerarVenta(fechaa, CajaNumeroGenVentaid, montoPagado, pasarTotal, nombreCajero, idCajero);
             foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
             {
                 string CajeroNombre;
@@ -406,7 +350,6 @@ namespace Punto_de_Venta
                 string PrecioU;
                 string Discount;
                 float disNum;
-
 
                 NombreProducto = fila.Cells["Producto"].Value.ToString();
                 Subtotal = fila.Cells["Subtotal"].Value.ToString();
@@ -423,7 +366,6 @@ namespace Punto_de_Venta
                 string CAJANUM;
                 CAJANUM = FreakingCash;
                 Int32.TryParse(CAJANUM, out NumCaja);
-                string Persona = "Kevin";
                 float PrecioUniDis;
                 float Costo;
                 string costoStingDtg;
@@ -467,17 +409,243 @@ namespace Punto_de_Venta
                 //proc.RealizarVentas(total, NombreProducto, fechaa, subFlot, montodePago
                 //    , MontoFinal, metPago, 0, NumCaja, Persona, UnidadesVendidas, PrecioUni, 105.5f);
             }
+
+
+            if (Debito == true)
+            {
+                proc.GenerarTicketDB(0, debitoFl, 1);
+            }
+            if (Credito == true)
+            {
+                proc.GenerarTicketDB(0, creditoFl, 0);
+            }
+            if (Efectivo == true)
+            {
+                proc.GenerarTicketDB(0, efectivoFl, 2);
+            }
+            if (Cheques == true)
+            {
+                proc.GenerarTicketDB(0, chequeFl, 3);
+            }
+            if (Vales == true)
+            {
+                proc.GenerarTicketDB(0, valeFl, 4);
+            }
+            if (otro == true)
+            {
+                proc.GenerarTicketDB(0, otroFl, 5);
+            }
+
             for (int i = 0; i < CantidadMetodosActivos; i++)
             {
                 proc.GenerarTicketDB(0, monto1, 0);
-                proc.GenerarTicketDB(0, monto2, 1);
+                //proc.GenerarTicketDB(0, monto2, 1);
             }
-            proc.EliminarCarrito();
-            this.Close();
-            ticketScreen TheOtherForm = new ticketScreen();
-            TheOtherForm.ShowDialog();
-        }
 
+            if (MessageBox.Show("¿Quiere imprimir el ticket de compra?", "Ticket", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                imrprimirTicket(debitoFl, creditoFl, efectivoFl, chequeFl, valeFl, otroFl);
+            }
+
+            MessageBox.Show("Compra realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            this.Close();
+            
+        }
         #endregion FuncionesForms
+
+        public void imrprimirTicket(float debitoFl, float creditoFl, float efectivoFl, float chequeFl, float valeFl, float otroFl)
+        {
+            var idTicketActual = proc.obtenerIdVenta();
+            string idTickerStr = idTicketActual.ToString();
+            string nameTicket = "Ticket " + idTickerStr + ".pdf";
+            FileStream fs = new FileStream(@nameTicket, FileMode.Create);
+            Document doc = new Document(PageSize.LETTER, 5, 5, 7, 7);
+            PdfWriter pw = PdfWriter.GetInstance(doc, fs);
+            doc.Open();
+            //Definir la fuente
+            iTextSharp.text.Font standarFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+            iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+            iTextSharp.text.Font fuente2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 15, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+            //Encabezado
+            doc.Add(new Paragraph("AXXA", fuente) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("Ticket", fuente2) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("PRODUCTOS DE CONTROL AXXA, S.L", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("Calle Janos. SantaClara", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("China, Nuevo León", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("67190", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("axxa@gmail.com", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("812 - 879 - 9540", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Paragraph("No. TICKET:", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph(idTickerStr, standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph("Fecha: ", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph(Fecha, standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(Chunk.NEWLINE);
+            //Encabezado de columnas
+            PdfPTable tblEjemplo = new PdfPTable(5);
+            tblEjemplo.WidthPercentage = 100;
+
+            PdfPCell clNombre = new PdfPCell(new Phrase("Producto", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombre.BorderWidth = 0;
+            clNombre.BorderWidthBottom = 0.75f;
+
+            PdfPCell clCant = new PdfPCell(new Phrase("Cantidad", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCant.BorderWidth = 0;
+            clCant.BorderWidthBottom = 0.75f;
+
+            PdfPCell clPrecio = new PdfPCell(new Phrase("Precio U.", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clPrecio.BorderWidth = 0;
+            clPrecio.BorderWidthBottom = 0.75f;
+
+            PdfPCell clDesc = new PdfPCell(new Phrase("Descuento", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clDesc.BorderWidth = 0;
+            clDesc.BorderWidthBottom = 0.75f;
+
+            PdfPCell clSubtotal = new PdfPCell(new Phrase("Subtotal", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clSubtotal.BorderWidth = 0;
+            clSubtotal.BorderWidthBottom = 0.75f;
+
+            tblEjemplo.AddCell(clNombre);
+            tblEjemplo.AddCell(clCant);
+            tblEjemplo.AddCell(clPrecio);
+            tblEjemplo.AddCell(clDesc);
+            tblEjemplo.AddCell(clSubtotal);
+
+            //AQUI HACER UN CICLO PARA AGREGAR LOS PRODUCTOS
+            foreach (DataGridViewRow fila in dataGridWayToPay.Rows)
+            {
+                string NombreProducto;
+                string Subtotal;
+                string UnidadesLlevar;
+                string PrecioU;
+                string Discount;
+
+                NombreProducto = fila.Cells["Producto"].Value.ToString();
+                Subtotal = fila.Cells["Subtotal"].Value.ToString();
+                UnidadesLlevar = fila.Cells["A llevar"].Value.ToString();
+                PrecioU = fila.Cells["Precio"].Value.ToString();
+                Discount = fila.Cells["Descuento"].Value.ToString();
+
+                clNombre = new PdfPCell(new Phrase(NombreProducto, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+                clNombre.BorderWidth = 0;
+
+                clCant = new PdfPCell(new Phrase(UnidadesLlevar, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+                clCant.BorderWidth = 0;
+
+                clPrecio = new PdfPCell(new Phrase(PrecioU, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+                clPrecio.BorderWidth = 0;
+
+                clDesc = new PdfPCell(new Phrase(Discount, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+                clDesc.BorderWidth = 0;
+
+                clSubtotal = new PdfPCell(new Phrase(Subtotal, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+                clSubtotal.BorderWidth = 0;
+
+                tblEjemplo.AddCell(clNombre);
+                tblEjemplo.AddCell(clCant);
+                tblEjemplo.AddCell(clPrecio);
+                tblEjemplo.AddCell(clDesc);
+                tblEjemplo.AddCell(clSubtotal);
+            }
+
+            doc.Add(tblEjemplo);
+
+            doc.Add(Chunk.NEWLINE);
+
+            PdfPTable tblTotal = new PdfPTable(2);
+            tblTotal.WidthPercentage = 100;
+
+            PdfPCell clTotal = new PdfPCell(new Phrase("Total:", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clTotal.BorderWidth = 0;
+            clTotal.BorderWidthBottom = 0;
+            string totalString = pasarTotal.ToString();
+            PdfPCell clTotalCant = new PdfPCell(new Phrase(totalString, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clTotalCant.BorderWidth = 0;
+            clTotalCant.BorderWidthBottom = 0;
+
+            tblTotal.AddCell(clTotal);
+            tblTotal.AddCell(clTotalCant);
+
+            doc.Add(tblTotal);
+
+            doc.Add(Chunk.NEWLINE);
+
+            PdfPTable tblMetodoPago = new PdfPTable(2);
+            tblMetodoPago.WidthPercentage = 100;
+
+            PdfPCell clNombreMP = new PdfPCell(new Phrase("FORMAS DE PAGO", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            clNombreMP.BorderWidthBottom = 0;
+
+            PdfPCell clCantMP = new PdfPCell(new Phrase("Cantidad Pagada", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            clCantMP.BorderWidthBottom = 0;
+
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+            string cantiPagada = "0.0";
+            clNombreMP = new PdfPCell(new Phrase("Tarjeta de Credito", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            string creditoStr = creditoFl.ToString();
+            clCantMP = new PdfPCell(new Phrase(creditoStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+            
+            clNombreMP = new PdfPCell(new Phrase("Tarjeta Debito", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            string debitoStr = debitoFl.ToString();
+            clCantMP = new PdfPCell(new Phrase(debitoStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+
+            clNombreMP = new PdfPCell(new Phrase("Efectivo", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            string efectivoStr = efectivoFl.ToString();
+            clCantMP = new PdfPCell(new Phrase(efectivoStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+            
+            clNombreMP = new PdfPCell(new Phrase("Cheque", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            string chequeStr = chequeFl.ToString();
+            clCantMP = new PdfPCell(new Phrase(chequeStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+
+            clNombreMP = new PdfPCell(new Phrase("Vales", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            string valeStr = valeFl.ToString();
+            clCantMP = new PdfPCell(new Phrase(valeStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+
+            clNombreMP = new PdfPCell(new Phrase("Otro", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clNombreMP.BorderWidth = 0;
+            string otroStr = otroFl.ToString();
+            clCantMP = new PdfPCell(new Phrase(otroStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            clCantMP.BorderWidth = 0;
+            tblMetodoPago.AddCell(clNombreMP);
+            tblMetodoPago.AddCell(clCantMP);
+
+            doc.Add(tblMetodoPago);
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Paragraph("Caja:", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph(FreakingCash, standarFont) { Alignment = Element.ALIGN_CENTER });
+
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Paragraph("GRACIAS POR TU COMPRA", standarFont) { Alignment = Element.ALIGN_CENTER });
+
+            doc.Close();
+            pw.Close();
+
+            MessageBox.Show("Se imprimio el Ticket", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

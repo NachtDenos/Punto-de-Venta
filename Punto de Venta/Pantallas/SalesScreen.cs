@@ -15,6 +15,8 @@ namespace Punto_de_Venta
         Procedures proc = new Procedures();
         int CodProd;
         string fecha;
+        string nombreCajeroAux;
+        int cajeroIdAux;
         string NombreProducto;
         string NombreProductoEliminar;
         int Caja;
@@ -43,18 +45,21 @@ namespace Punto_de_Venta
             //dataGridCarritoSales.Rows[0].Cells[1].Value = "Salmón";
         }
 
-        public SalesScreen(string txt, string caja)
+        public SalesScreen(string txt, string caja, string nombreCajeroActual, int idCajeroActual)
         {
             InitializeComponent();
             dataGridProductSales.DataSource = proc.productoSales();
             btnAddSales.Enabled = false;
             txtQuantitySales.Enabled = false;
             btnDeleteSales.Enabled = false;
+            txtQuantityDeleteSales.Enabled = false;
             string prueba = txt;
             string prueba2 = caja;
 
             laCaja = prueba2;
             fecha = prueba;
+            nombreCajeroAux = nombreCajeroActual;
+            cajeroIdAux = idCajeroActual;
             Int32.TryParse(prueba2, out Caja);
         }
 
@@ -68,17 +73,27 @@ namespace Punto_de_Venta
         {
             if (precioLbl.ToString() == "$00.00")
             {
-                MessageBox.Show("NO HA COMPRADO NADA");
+                
+                MessageBox.Show("No ha agregado nada al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (dataGridCarritoSales.Rows.Count == 0)
             {
-                MessageBox.Show("NO HA COMPRADO NADA", "error");
+                
+                MessageBox.Show("No ha agregado nada al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            WaytoPayScreen TheOtherForm = new WaytoPayScreen(precioLbl.ToString(), label7.Text.ToString(), fecha, laCaja);
+            WaytoPayScreen TheOtherForm = new WaytoPayScreen(precioLbl.ToString(), label7.Text.ToString(), fecha, laCaja, nombreCajeroAux, cajeroIdAux);
             TheOtherForm.ShowDialog();
+
+            var limpia = proc.limpiarVentaTemporal();
+            dataGridCarritoSales.DataSource = proc.ListarCarrito();
+            precioLbl = 0.0f;
+            precioLblAux = 0.0f;
+            label7.Text = "";
+            label7.Text += "$ ";
+            label7.Text += precioLbl.ToString("N2");
         }
 
         private void txtQuantitySales_KeyPress(object sender, KeyPressEventArgs e)
@@ -141,7 +156,6 @@ namespace Punto_de_Venta
                 {
                     if (NombreProducto == fila.Cells["Producto"].Value.ToString())
                     {
-                        MessageBox.Show("Error este producto ya existe");
                         PrecioNUEVO = fila.Cells["Precio"].Value.ToString();
                         itExists = true;
                         break;
@@ -175,12 +189,10 @@ namespace Punto_de_Venta
             //}
             if (itExists == true)
             {
-                MessageBox.Show("Este producto ya esta en el carrito", "Actualizando");
-                 var actual = proc.ActualizarCarrito(NombreProducto, catnAllevarFinal);
+                MessageBox.Show("Este producto ya esta en el carrito", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var actual = proc.ActualizarCarrito(NombreProducto, catnAllevarFinal);
                 if (actual)
                 {
-                    
-                    MessageBox.Show("Actualizacion exitosa", "Actualizado");
                     dataGridCarritoSales.DataSource = proc.ListarCarrito();
 
                     int auxInt = Int32.Parse(txtQuantitySales.Text);
@@ -202,7 +214,6 @@ namespace Punto_de_Venta
                     var InsertData = proc.AgregarCarrito(CodProd, NombreProducto, Caja, unaFecha, catnAllevarFinal);
                 if (InsertData)
                 {
-                    MessageBox.Show("Exito");
                     dataGridCarritoSales.DataSource = proc.ListarCarrito();
                     label7.Text = "";
                     label7.Text += "$ ";
@@ -213,7 +224,7 @@ namespace Punto_de_Venta
                     
                 }
                 else
-                    MessageBox.Show("ERROR");
+                    MessageBox.Show("Ocurrio un error al momento de agregar al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 txtQuantitySales.Text = "";
             }
@@ -258,6 +269,8 @@ namespace Punto_de_Venta
                 label7.Text += "$ ";
                 label7.Text += precioLbl.ToString("N2");
                 btnDeleteSales.Enabled = false;
+                txtQuantityDeleteSales.Enabled = false;
+                txtQuantityDeleteSales.Text = "";
                 dataGridCarritoSales.ClearSelection();
                 return;
             }
@@ -280,6 +293,8 @@ namespace Punto_de_Venta
                 label7.Text += precioLbl.ToString("N2");
             }
             btnDeleteSales.Enabled = false;
+            txtQuantityDeleteSales.Enabled = false;
+            txtQuantityDeleteSales.Text = "";
             dataGridCarritoSales.ClearSelection();
         }
 
@@ -368,13 +383,14 @@ namespace Punto_de_Venta
 
                     float.TryParse(Precio, out PrecioInicial);
                     btnDeleteSales.Enabled = true;
+                    txtQuantityDeleteSales.Enabled = true;
                     //instancia.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
                     //NombreProducto = instancia.NombreProd;
                     //instancia.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                     //int codigo;
                     //Int32.TryParse(instancia.CodProducto, out codigo);
                     //CodProd = codigo;
-                 }
+                }
                 }
                 catch (Exception ArgumentOutOfRangeException)
                 {

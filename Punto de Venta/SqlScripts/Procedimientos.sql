@@ -417,11 +417,11 @@ Begin
 select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary where [Activo] = 'Activo'
 end;
 
-create proc BorrarCarrito
-as
-Begin
-delete VentaTemporal
-end
+--create proc BorrarCarrito
+--as
+--Begin
+--delete VentaTemporal
+--end
 
 create proc filtroConsultaRapida
 (@filID int, @filName varchar(200))
@@ -584,10 +584,12 @@ Begin
    set @CajeroId3 = SCOPE_IDENTITY();
 
    insert into Recibo(fechaVenta, MontoPago, claveCajePro, total)
-   values (@Fecha, @MontoPago, @CajeroId, @Total)
+   values (@Fecha, @MontoPago, @CajeroId3, @Total)
 --   set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
 End;
-delete VentaTemporal
+
+drop proc GenerarVenta
+GenerarVenta 1, 1, '2022-10-12', '1201.00', '1201.00', 'Edson'
 
 create proc GenerarVentaDetalle
 (@idVentaHeader int,
@@ -622,14 +624,6 @@ set @IdVentaHeader = IDENT_CURRENT('Recibo')
 insert into ticket(noVentaTic, clavePagoTic, montoPago)
 values(@IdVentaHeader, @ClavePago, @MontoPagado)
 end;
-
-GenerarTicket 0, 250.05, 2
---
-select * from Caje_Pro
-select * from Recibo
-select * from VentaDetalle
-select * from ticket
-delete VentaTemporal
 
 --drop proc GenerarVenta
 --(@Total decimal(10,2),
@@ -679,7 +673,6 @@ delete VentaTemporal
    
 
 --end;
-delete VentaTemporal
 
 --delete Caje_Pro
 --delete Recibo
@@ -688,7 +681,10 @@ select * from Caje_Pro
 select * from Recibo
 select * from ventaDetalle
 SELECT* FROM ticket
-GenerarVenta '1000.50', 'Control', '2022-10-12', '1200.92', '1201.00','1201.00', 0,0,1,'Kevin',102, 105.5, 150.5
+
+select * from Cajero
+select * from Departamento
+select * from Producto
 --idVentaDetalle int not null,
 --  noDeVenta int not null,
 --  CodProducto int not null,
@@ -718,33 +714,34 @@ GenerarVenta '1000.50', 'Control', '2022-10-12', '1200.92', '1201.00','1201.00',
   -- claveCajePro INT NOT NULL,
   -- MontoPago Money null,
 
+create procedure obtenerCajeroCobra
+(@filtroI int)
+as
+Begin
+select [Nombre], IdEmpleado
+from vwEmpleados
+where  @filtroI = [Clave de Usuario]
+end;
 
-  create proc GenerarNotaCredito
-  (@numeroRecibo int,
-  @total decimal(10,2),
-  @fechaNota date,
-  @claveAdmin int)
-  as
-  BEGIN
-  set @claveAdmin = IDENT_CURRENT('Administrador') --Obtener el id del ultimo administrador creado
-  insert into NotaCred(numeroRecibo, fechaNota, claveAdminNota, total)
-  values(@numeroRecibo, @fechaNota, @claveAdmin, @total)
-  END;
-  --agregar columa a venta temporal y venta donde salgo el ptuo total, eso o checar pq no se inserta bien el total
+create procedure obteneridCajeroCobra
+(@filtroI int)
+as
+Begin
+select IdEmpleado
+from vwEmpleados
+where  @filtroI = [Clave de Usuario]
+end;
 
-  GenerarNotaCredito 10016, 100.00, '2022-01-12', 0
+create procedure vaciarVentaTemporal
+as
+Begin
+delete VentaTemporal
+end;
 
-  create proc GenerarDevolucion
-  (@noCredDev int,
-  @CodigoProd int,
-  @devCant int,--QUE PUSTAS ES DEV CANT
-  @SubTotal decimal(10,2),
-  @motivo varchar(300)
-  ) 
-  as
-  Begin
-  set @noCredDev = IDENT_CURRENT('NotaCred')
-  insert into devolucion()
-  values
-  end;
-  select * from NotaCred
+create procedure obtenerIdVenta
+as
+Begin
+declare @buscaID int = 0;
+set @buscaID = IDENT_CURRENT('Recibo')
+select noVenta from Recibo where noVenta = @buscaID
+end;

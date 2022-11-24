@@ -16,6 +16,8 @@ namespace Punto_de_Venta.Pantallas
     public partial class CashierMainScreen : Form 
     {
         VentasTemp instancia = new VentasTemp();
+        int idCajeroAux;
+        Procedures proc = new Procedures();
         //DE SUGERENCIA, EL CLIENTE SI PAGA CON MAS DINERO DE LO NORMAL, SE LE DEBE REGRESAR CAMBIO EN EL CASO DE QUE ESTE APLIUE
         //UTILIDAD: Costo - Precio Unitario
         //Producto-----> codigo y su descripcion
@@ -24,12 +26,14 @@ namespace Punto_de_Venta.Pantallas
         {
             InitializeComponent();
         }
-        public CashierMainScreen(string text, string caja)
+        public CashierMainScreen(string text, string caja, int claveUserActual, string nombreCajero, int idCajeroActual)
         {
             InitializeComponent();
             labelDate.Text = text;
             labelIdCashRegister.Text = caja;
+            labelNamePerson.Text = nombreCajero;
             int cajita;
+            idCajeroAux = idCajeroActual;
             Int32.TryParse(caja, out cajita);
             instancia.Caja = cajita;
             DateTime Fecha = DateTime.Parse(labelDate.Text);
@@ -55,12 +59,14 @@ namespace Punto_de_Venta.Pantallas
 
         private void button8_Click(object sender, EventArgs e)
         {
+            var limpia = proc.limpiarVentaTemporal();
             this.Close();
         }
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
-            openChildForm(new SalesScreen(labelDate.Text, labelIdCashRegister.Text));
+            openChildForm(new SalesScreen(labelDate.Text, labelIdCashRegister.Text, labelNamePerson.Text, idCajeroAux));
+            var limpia = proc.limpiarVentaTemporal();
             //Mandar aqui este pedo
         }
 

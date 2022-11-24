@@ -30,3 +30,35 @@ SELECT Descuento.idDesc [Id Descuento], descFecha.fechaIni [Inicia], descFecha.f
 	on descFecha.idFechaDesc = Descuento.idDesc
 	join Producto P
 	on Descuento.idDesc = P.idDesc
+
+go
+--ARREGLAR VENTA Y UTILIDAD
+create view vwVenta
+as
+Select Recibo.fechaVenta [Fecha de Venta], DP.nombreDep [Departamento], VD.CodProducto [Codigo del Articulo], VD.PrecioUnitario [Precio Unitario],
+VD.UnidadesVendidas [Unidades Vendidas], VD.Subtotal [Subtotal], DS.cantidad [Descuento],
+Recibo.total [Venta], VD.Utilidad [Utilidad] from Recibo
+join VentaDetalle VD
+on Recibo.noVenta = VD.noDeVenta
+join Departamento DP
+on VD.DepartamentoId = DP.idDepa
+left join Descuento DS
+on VD.DescuentoId = DS.idDesc
+
+
+create view vwCajero
+as
+Select Recibo.fechaVenta [Fecha de Venta], U.nombreU [Nombre del Cajero] from Recibo
+join Caje_Pro CP
+on Recibo.claveCajePro = CP.idCajePro
+join Cajero C
+on CP.idCajePro = C.idCajero
+right join Usuario U
+on C.idCajero = U.idUser
+
+
+select * from Usuario
+select * from Cajero
+
+
+drop view vwCajero
