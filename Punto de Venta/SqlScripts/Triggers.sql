@@ -1,3 +1,4 @@
+use ProyectoMAD
 CREATE TRIGGER tr_bajaDescuentoPro ON Descuento
 INSTEAD OF DELETE
 AS
@@ -21,4 +22,3 @@ go
 --update Producto set merma = merma + @Merma, existencia = existencia + @Cant where idProduct = @Id
 --end;
 
-go

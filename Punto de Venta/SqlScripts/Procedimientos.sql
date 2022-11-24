@@ -1,4 +1,4 @@
-
+use ProyectoMAD
 create proc SelectUsuarios
 (
 @ClaveU varchar(50),
@@ -10,14 +10,14 @@ begin
 select Usuario.idUser as NumeroIdentificacion, Usuario.nombreU [Nombre], Usuario.contraU [Contraseña], Usuario.tipoU, claveUsuario [Clave de Usuario] from Usuario
 where claveUsuario = @ClaveU and contraU = @Contraseña and tipoU = @TipoU
 end;
-go
---drop proc SelectUsuarios
 
+go
 
 IF OBJECT_ID('SelectUsuarios') IS NOT NULL
 BEGIN
    DROP PROC SelectUsuarios;
 END
+
 go
 
 Create procedure ObtenerAdministradores --Obtiene las credenciales del Administrador
@@ -33,10 +33,9 @@ join Administrador A
 on a.idUserA = b.idUser
 where A.idUserA = B.idUser and b.claveUsuario = @ClaveU and b.contraU = @Contra and b.tipoU = @TipoU
 end;
-go
 
 go
---drop proc sp_InsertarEmpleado
+
 create procedure sp_InsertarEmpleado
 (
 @Nombre varchar(30),
@@ -59,7 +58,9 @@ values(@ClaveUsuario, @Contraseña, @Nombre, @ApellidoP, @ApellidoM, '0')
 insert into Cajero(fechaNaci, fechaIngr, numeroNomi, email, CURP, claveAdmin)
 values(@FechaNac, @FechaIngreso, @NumeroNomina, @Email, @CURP, 1)
 end;
+
 go
+
 Create proc ListarEmpleados
 as
 Begin
@@ -69,7 +70,9 @@ C.fechaNaci [Fecha Nacimiento] from Cajero C
 join Usuario U
 ON C.idCajero = U.idUser
 end;
+
 go
+
 create proc ActualizarEmpleados
 (
 @Id int,
@@ -91,7 +94,9 @@ where idUser = @Id
 update Cajero set CURP = @Curp, fechaNaci = @FechaNac, fechaIngr = @FechaIng, email = @Correo, numeroNomi = @Nomina
 where idCajero = @Id
 end;
+
 go
+
 create proc BorrarEmpleados
 (
 @id int
@@ -101,13 +106,9 @@ Begin
 delete Cajero where idCajero = @id
 delete Usuario where idUser = @id
 end;
-go
---insert into Departamento(idDepa, nombreDep, devoluDepa, claveAdminDepa)
---values ('1', 'Electronica', 'No', '1')
-select * from Departamento
 
---CUANDO A UN INSERT INMEDIATAMENTE LE METO UN SELECT ESTA MADRE SE INSERTA EN ESA TABLA
 go
+
 create proc InsertarDepartamentos
 (
 @NombreDepa varchar(50),
@@ -123,6 +124,7 @@ values(@IdDepa, @NombreDepa, @Devolucion, @IdAdmin)
 end;
 
 go
+
 create proc ActualizarDepartamentos
 (
 @Nombre varchar(30),
@@ -136,6 +138,7 @@ where idDepa = @IdDepa
 end;
 
 go
+
 create proc BorrarDepartamentos
 (@IdCaja int
 )
@@ -143,10 +146,9 @@ as
 Begin
 delete Departamento where idDepa = @IdCaja;
 end;
+
 go
 
----Crear un view, o una proc
-go
 create proc LeerDepartamentos
 as
 Begin
@@ -154,17 +156,7 @@ select Departamento.idDepa [Id Departamento], Departamento.nombreDep [Departamen
 from Departamento
 end;
 
--- exec InsertarDepartamentos 'Electronica Monterrey', '4', 'Si'
-/*
-select * from Departamento
-idDepa INT NOT NULL,
-   nombreDep VARCHAR (30) NOT NULL,
-   devoluDepa BIT DEFAULT (1),
-   claveAdminDepa INT NOT NULL,
-*/
-
-
------------------CAJAS EN DESARROLLO--------------
+go
 
 create proc CrearCajas
 (@Id int,
@@ -176,6 +168,8 @@ Insert into Caja(idCaja, disponi, claveAdminCa)
 values(@Id, @Disponibilidad, 1) 
 end;
 
+go
+
 Create proc EditarCajas
 (
 @Id int, @Disponibilidad varchar(20)
@@ -185,19 +179,25 @@ Begin
 update Caja set disponi = @Disponibilidad where idCaja = @Id
 end;
 
+go
+
 create proc bajaCajas
 (@idC int)
 as
 Begin
 delete Caja where idCaja = @idC
 end;
+
 go
+
 create proc ListarCaja
 as
 Begin
 select idCaja[Numero de Caja], disponi[Disponibilidad] from Caja
 end;
+
 go
+
 create proc ListarCajaCombo
 as
 Begin
@@ -224,11 +224,13 @@ ON E.idMedida = A.uniMedida
 end;
 
 go
+
 create proc ListarDepartamentos
 as
 Begin
 SELECT Departamento.idDepa, Departamento.nombreDep from Departamento
 end;
+
 go
 
 create proc ListarUnidadesMedida
@@ -259,8 +261,8 @@ insert into Producto(idProduct, nombrePro,descripcion,uniMedida, fechaAlta,exist
 ptReorden, activo,Costo,PrecioUnitario,claveAdmin,claveDepa, claveGest)
 values(@CodigoProducto, @NombreProducto, @Descripcion, @UniMedida, @fechaAlta, @existencia,
 @ptReorden, @activo, @Costo, @PrecioUnitario,1, @ClaveDepartamento, 1)
-
 End;
+
 go
 
 create proc ActualizarProductos
@@ -283,7 +285,9 @@ update Producto set nombrePro = @NombreProducto, descripcion = @Descripcion, uni
 FechaCambio = @FechaCambio, existencia = @existencia, ptReorden = @ptReorden, activo = @Activo, Costo = @costo, PrecioUnitario =  @PrecioUnitario, claveDepa = @ClaveDeparmento
 where idProduct = @IdP
 end;
+
 go
+
 create proc BajaProductos
 (@CodigProduc int)
 as
@@ -291,16 +295,7 @@ Begin
 update Producto set activo = 'Inactivo' where Producto.idProduct = @CodigProduc
 end;
 
---Este es el select para departamentos y productos, probar hacerlo stored procedure
---select A.idProduct [Id], A.nombrePro [Nombre del Producto], A.descripcion [Descripcion], A.claveDepa [Id Departamento], A.existencia [Stock], A.uniVendida [Unidades Vendidas], B.nombreDep [Departamento]
---from Producto A
---join Departamento B
---on A.claveDepa = B.idDepa
---where A.claveDepa = B.idDepa
---smn est select jala pra eso, solo hazlo procedure y que reciba el id que buscamos y con eso buscamos el producto y su depa
 go
-
-
 
 create proc RealizarDescuento
 (@Porcentaje int,
@@ -319,7 +314,6 @@ select @iDdis= SCOPE_IDENTITY(); --Nesecario ponerlo aqui para que aqui reciba l
 insert into Descuento(cantidad, claveFechaD)
 values (@Porcentaje, @iDdis)
 update Producto set idDesc = @iDdis where Producto.idProduct = @ClaveProd
-
 end;
 
 go
@@ -332,8 +326,8 @@ Begin
 update Descuento set cantidad = @porcentaje where idDesc = @idDesc
 update descFecha set fechaIni = @Fecha1, fechaFin = @Fecha2 where @idDesc = idFechaDesc
 end;
-go
 
+go
 
 create proc ListarDescuentosFecha
 as
@@ -355,23 +349,26 @@ as
 Begin
 delete Descuento where idDesc = @idDes
 end;
+
 go
+
 create proc listarProdDescCB
 as
 Begin
 select [Codigo], [Nombre Producto] from vwInventary where [id Descuento] is null
 end;
-go
---drop proc listarProdDescCB
 
 go
+
 create proc ListarInventario
 as
 Begin
 select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
        [Cantidades Vendidas], [Merma] from vwInventary where [Activo] = 'Activo'
 end;
+
 go
+
 create procedure filtro_existenciaI
 (@filtroI int)
 as
@@ -380,6 +377,8 @@ select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio U
        [Cantidades Vendidas], [Merma] from vwInventary
 where [stock] like @filtroI 
 end;
+
+go
 
 create procedure filtro_DepartamentoI
 (@filtroI varchar (200))
@@ -390,6 +389,8 @@ select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio U
 where [Departamento] like @filtroI + '%'
 end;
 
+go
+
 create procedure filtro_agotadoI
 (@filtroI int)
 as
@@ -398,6 +399,8 @@ select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio U
        [Cantidades Vendidas], [Merma] from vwInventary
 where [stock] = @filtroI or (1 = @filtroI and [stock] > 0)
 end;
+
+go
 
 create procedure filtro_mermaI
 (@filtroI int)
@@ -408,8 +411,7 @@ select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio U
 where (0 = @filtroI and [Merma] is null) or (1 = @filtroI and [Merma] > 0)
 end;
 
-
---PROCEDURES PARA VER EN LAS VENTAS
+go
 
 create proc ConsultaRapida
 as
@@ -417,11 +419,7 @@ Begin
 select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary where [Activo] = 'Activo'
 end;
 
---create proc BorrarCarrito
---as
---Begin
---delete VentaTemporal
---end
+go
 
 create proc filtroConsultaRapida
 (@filID int, @filName varchar(200))
@@ -431,11 +429,15 @@ select [Codigo], [Nombre Producto], [Precio Unitario], [Stock] from vwInventary
 where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%') and [Activo] = 'Activo'
 end;
 
+go
+
 create proc productosVenta
 as
 Begin
 select [Codigo], [Nombre Producto] from vwInventary where [Activo] = 'Activo'
 end;
+
+go
 
 create proc filtroSelectProduct
 (@filID int, @filName varchar(200))
@@ -445,7 +447,7 @@ select [Codigo], [Nombre Producto] from vwInventary
 where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [Codigo] and @filName like [Nombre Producto] + '%') and [Activo] = 'Activo'
 end;
 
---EN EL CASE DEL DATAGRID TENER UN STRING QUE SE ENCARGUE DE OBTENER EL NOMBRE DEL PRODUCTO ACTUAL SELECCIONADO Y CON ESO HACEERLE INSERT
+go
 
 create proc SeleccionarProductoInsertarProducto
 (@CodigoProd int,
@@ -459,16 +461,10 @@ insert into VentaTemporal(CodigoProducto,NombreProducto, PrecioUnitario, Existen
 Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario [Precio], Producto.existencia [Existencia], @Fecha, @Caja, @CantidadAllevar, B.idDesc from Producto left join Descuento B
 on B.idDesc = Producto.idDesc
 where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd;
-
---Update VentaTemporal set Caja = @Caja, FechaVenta = @Fecha where VentaTemporal.CodigoProducto = @CodigoProd
 end;
 
 go
 
---SeleccionarProductoInsertarProducto 2,'Helado Oreo', 1, '2022-11-17', 10
---select * FROM VentaTemporal
---delete VentaTemporal
-go
 create proc InsertarCarrito
 as
 Begin
@@ -478,7 +474,7 @@ left join Descuento D
 on D.idDesc = VentaTemporal.idDescuento
 end;
 
------Filtros de Empleados, Productos y Departamentos
+go
 
 create procedure filtro_DepartamentoScreen
 (@filtroI varchar(200))
@@ -515,7 +511,6 @@ end;
 
 go
 
-
 create procedure ActualizarCantidad
 (@NombreProd varchar(30),
 @Cantidad int)
@@ -523,11 +518,9 @@ as
 Begin
 update VentaTemporal set CantidadAllevar = CantidadAllevar+ @Cantidad where NombreProducto = @NombreProd
 end;
---ActualizarCantidad 'Helado Oreo', 10
---select * from VentaTemporal
---delete VentaTemporal 
---EliminarCantidad 'Control Remoto', 111
+
 go
+
 create procedure EliminarCantidad 
 (@NombreProd varchar(30),
 @Cantidad int)
@@ -547,6 +540,8 @@ Update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cant where NombreP
 delete VentaTemporal where VentaTemporal.CantidadAllevar = 0 and NombreProducto = @NombreProd 
 end;
 
+go
+
 create procedure EliminarProductoDevolucion
 (@Codigo varchar(30),
 @Cant int)
@@ -556,6 +551,7 @@ Update DevolucionTemporal set cantDevuelta = cantDevuelta - @Cant where CodProd 
 delete DevolucionTemporal where cantDevuelta = 0 and CodProd = @Codigo 
 end;
 
+go
 
 create procedure InsertarParaPagar
 as
@@ -568,6 +564,7 @@ join Producto P
 on P.idProduct = VentaTemporal.CodigoProducto
 end;
 
+go
 
 create proc GenerarVenta
 (@CajeroId int,
@@ -593,6 +590,7 @@ Begin
 --   set @CajeroId = (Select Usuario.idUser from Usuario where Usuario.nombreU = @NombreCajero)
 End;
 
+go
 
 create proc GenerarVentaDetalle
 (@idVentaHeader int,
@@ -614,9 +612,9 @@ set @CodigoProd = (Select Producto.idProduct from Producto where nombrePro = @no
 set @idVentaHeader = IDENT_CURRENT('Recibo')
 insert into VentaDetalle(noDeVenta,CodProducto, DepartamentoId,UnidadesVendidas, Subtotal,DescuentoId, PrecioUnitario, totalVenta, Utilidad)
 values (@idVentaHeader,  @CodigoProd, @IdDepartamento, @UnidaesVendidas, @Subtotal, @DescuentoId, @PrecioUnitario, @Venta, @Utilidad)
-
 END;
 
+go
 
 create proc GenerarTicket
 (@IdVentaHeader int,
@@ -629,15 +627,7 @@ insert into ticket(noVentaTic, clavePagoTic, montoPago)
 values(@IdVentaHeader, @ClavePago, @MontoPagado)
 end;
 
-select * from Caje_Pro
-select * from Recibo
-select * from ventaDetalle
-SELECT* FROM ticket
-
-select * from Cajero
-select * from Departamento
-select * from Producto
-
+go
 
 create procedure obtenerCajeroCobra
 (@filtroI int)
@@ -648,6 +638,8 @@ from vwEmpleados
 where  @filtroI = [Clave de Usuario]
 end;
 
+go
+
 create procedure obteneridCajeroCobra
 (@filtroI int)
 as
@@ -657,6 +649,8 @@ from vwEmpleados
 where  @filtroI = [Clave de Usuario]
 end;
 
+go
+
 create procedure obtenerTicket
 (@filtroNum int)
 as
@@ -665,13 +659,15 @@ select [Num], [Fecha], [Codigo], [Producto], [Subtotal],
 [Se llevo]from vwTicketsPorNum where @filtroNum = [Num]
 end;
 
-
+go
 
 create procedure vaciarVentaTemporal
 as
 Begin
 delete VentaTemporal
 end;
+
+go
 
 create procedure obtenerIdVenta
 as
@@ -680,6 +676,8 @@ declare @buscaID int = 0;
 set @buscaID = IDENT_CURRENT('Recibo')
 select noVenta from Recibo where noVenta = @buscaID
 end;
+
+go
 
 create proc GenerarNotaCred
 (@NumeroRecibo int,
@@ -693,6 +691,8 @@ set @IdAdmin = IDENT_CURRENT('Administrador')
 insert into NotaCred(numeroRecibo, fechaNota, claveAdminNota, total)
 values(@NumeroRecibo, @FechaNota, @IdAdmin, @Total)
 end;
+
+go
 
 create proc GeneraDevolucion
 (@CodigoProd int,
@@ -708,7 +708,8 @@ set @idNotaCred = IDENT_CURRENT('NotaCred')
 insert into devolucion(noCredDev, codigoProDev, devCant, subtotalDev, motivo, NombreProd)
 values(@idNotaCred, @CodigoProd, @CantDevuelta, @SubtotalDevoulucion, @Motivo, @NombreProd)
 end;
---GeneraDevolucion 1, 2, 611.50, 'EL PINCHE CONTROL ESTABA MIADO, LE FALTABAN 2 PUTOS BOTONES, TENIA CABLES PEGADOS A UN PUTO EXPLOSIVO C4 Y NO ABRE NETFLIX'	
+
+go
 
 create proc ActualizarProdDevolucionSinMerma
 (@cant int,
@@ -717,6 +718,8 @@ as
 Begin
 update Producto set existencia = existencia + @cant where idProduct = @CodProducto
 end;
+
+go
 
 create proc ActualizarProdDevolucionMerma
 (@cant int,
@@ -727,6 +730,8 @@ update Producto set merma = 0 where idProduct = @CodProducto
 update Producto set merma = merma + @cant where idProduct = @CodProducto
 end;
 
+go
+
 create proc RestarStockVenta
 (@cant int,
 @NombreProd varchar(50))
@@ -735,9 +740,7 @@ Begin
 update Producto set existencia = existencia - @cant where nombrePro= @NombreProd
 end;
 
-select * from VentaDetalle
-select* from NotaCred
-SELECT * FROM DevolucionTemporal
+go
 
 create proc TablaDevolucionTemp
 as
@@ -745,6 +748,8 @@ Begin
 select idDevTemp[ID], numeroRecibo [Recibo], Fecha [Fecha],
 CodProd [Codigo], NombreProd [Producto], cantDevuelta [Devuelve], subTotalDevuelto [Subtotal], merma [Merma] from DevolucionTemporal
 end;
+
+go
 
 create proc InsertarDevTemporalMerma
 (@CodigoProd int,
@@ -761,6 +766,8 @@ Insert into DevolucionTemporal(numeroRecibo, Fecha, CodProd,
 values(@NumRecibo, @Fecha,@CodigoProd, @cantDevuelta, @subtotal, @Merma, @NombreProd)
 end;
 
+go
+
 create proc InsertarDevTemporalSinMerma
 (@CodigoProd int,
 @NumRecibo int,
@@ -775,19 +782,15 @@ Insert into DevolucionTemporal(numeroRecibo, Fecha, CodProd,
 values(@NumRecibo, @Fecha,@CodigoProd, @cantDevuelta, @subtotal, @NombreProd)
 end;
 
+go
+
 create proc BorrarGridDevolucion
 as
 BEGIN
 delete DevolucionTemporal
 END;
 
-
-select Niggaa.fechaNota [Fecha], Niggaa.numeroRecibo [Recibo],
-Niggaa.total [Total], Neganigga.codigoProDev [Codigo Producto],
-Neganigga.motivo [Motivo], Neganigga.devCant [Cantidad Devuelta],
-Neganigga.subtotalDev [Subtotal Devolucion] from NotaCred Niggaa
-join devolucion Neganigga
-on Neganigga.noCredDev = Niggaa.noCredit
+go
 
 create procedure reporteVentas
 as
@@ -797,12 +800,16 @@ select [Fecha de Venta], [Departamento], [Codigo del Articulo], [Precio Unitario
 [Venta], [Utilidad] from vwVenta
 end;
 
+go
+
 create procedure reporteCajero
 as
 Begin
 Select [Fecha de Venta], [Cajero], [Departamento],
 [Unidades Vendidas], [Suma Venta], [Utilidad] from vwCajero
 end;
+
+go
 
 create procedure reporteCajeroFechas
 (@fecha1 date, @fecha2 date)
@@ -813,6 +820,8 @@ Select [Fecha de Venta], [Cajero], [Departamento],
 where @fecha1 <= [Fecha de Venta] and [Fecha de Venta] <= @fecha2
 end;
 
+go
+
 create procedure reporteCajeroDepa
 (@Depa varchar(100))
 as
@@ -822,6 +831,8 @@ Select [Fecha de Venta], [Cajero], [Departamento],
 where @Depa = [Departamento]
 end;
 
+go
+
 create procedure reporteCajeroCajeroFiltro
 (@Cajero varchar(100))
 as
@@ -830,6 +841,8 @@ Select [Fecha de Venta], [Cajero], [Departamento],
 [Unidades Vendidas], [Suma Venta], [Utilidad] from vwCajero 
 where @Cajero = [Cajero]
 end;
+
+go
 
 create procedure reporteVentaFechas
 (@fecha1 date, @fecha2 date)
@@ -841,6 +854,8 @@ select [Fecha de Venta], [Departamento], [Codigo del Articulo], [Precio Unitario
 where @fecha1 <= [Fecha de Venta] and [Fecha de Venta] <= @fecha2
 end;
 
+go
+
 create procedure reporteVentaDepa
 (@Depa varchar(100))
 as
@@ -850,6 +865,8 @@ select [Fecha de Venta], [Departamento], [Codigo del Articulo], [Precio Unitario
 [Venta], [Utilidad] from vwVenta
 where @Depa = [Departamento]
 end;
+
+go
 
 create procedure reporteVentaCajaFiltro
 (@Caja varchar(100))

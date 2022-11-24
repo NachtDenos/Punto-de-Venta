@@ -1,3 +1,4 @@
+use ProyectoMAD
 Insert into Usuario(nombreU,apellidoPU,apellidoMU,claveUsuario,contraU,tipoU)
 values ('Isaac','Espinoza','Morales','Wonder','123456',1)
 go
