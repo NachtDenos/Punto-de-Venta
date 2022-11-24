@@ -420,6 +420,7 @@ create table DevolucionTemporal
   numeroRecibo int not null,
   Fecha date not null,
   CodProd int not null,
+  NombreProd varchar(50) not null,
   cantDevuelta int not null,
   subTotalDevuelto decimal(10,2) not null,
   Motivo varchar(300) null,
