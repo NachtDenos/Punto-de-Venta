@@ -737,7 +737,7 @@ create procedure obtenerTicket
 (@filtroNum int)
 as
 Begin
-select [Num], [Fecha], [Producto], [Subtotal],
+select [Num], [Fecha], [Codigo], [Producto], [Subtotal],
 [Se llevo]from vwTicketsPorNum where @filtroNum = [Num]
 end;
 
@@ -786,10 +786,61 @@ values(@idNotaCred, @CodigoProd, @CantDevuelta, @SubtotalDevoulucion, @Motivo)
 end;
 --GeneraDevolucion 1, 2, 611.50, 'EL PINCHE CONTROL ESTABA MIADO, LE FALTABAN 2 PUTOS BOTONES, TENIA CABLES PEGADOS A UN PUTO EXPLOSIVO C4 Y NO ABRE NETFLIX'	
 
-select* from Recibo
+create proc ActualizarProdDevolucionSinMerma
+(@cant int,
+ @CodProducto int)
+as
+Begin
+update Producto set existencia = existencia + @cant where idProduct = @CodProducto
+end;
+
+create proc ActualizarProdDevolucionMerma
+(@cant int,
+ @CodProducto int)
+as
+Begin
+update Producto set merma = 0 where idProduct = @CodProducto
+update Producto set merma = merma + @cant where idProduct = @CodProducto
+end;
+
+
 select * from VentaDetalle
 select* from NotaCred
 SELECT * FROM devolucion
+
+create proc TablaDevolucionTemp
+as
+Begin
+select idDevTemp[ID], numeroRecibo [Recibo], Fecha [Fecha],
+CodProd [Codigo], cantDevuelta [Devuelve], subTotalDevuelto [Subtotal], merma [Merma] from DevolucionTemporal
+end;
+
+create proc InsertarDevTemporalMerma
+(@CodigoProd int,
+@NumRecibo int,
+@Fecha date,
+@cantDevuelta int,
+@subtotal decimal(10,2),
+@Merma int)
+as
+Begin
+Insert into DevolucionTemporal(numeroRecibo, Fecha, CodProd,
+ cantDevuelta, subTotalDevuelto, merma)
+values(@NumRecibo, @Fecha,@CodigoProd, @cantDevuelta, @subtotal, @Merma)
+end;
+
+create proc InsertarDevTemporalSinMerma
+(@CodigoProd int,
+@NumRecibo int,
+@Fecha date,
+@cantDevuelta int,
+@subtotal decimal(10,2))
+as
+Begin
+Insert into DevolucionTemporal(numeroRecibo, Fecha, CodProd,
+ cantDevuelta, subTotalDevuelto)
+values(@NumRecibo, @Fecha,@CodigoProd, @cantDevuelta, @subtotal)
+end;
 
 select Niggaa.fechaNota [Fecha], Niggaa.numeroRecibo [Recibo],
 Niggaa.total [Total], Neganigga.codigoProDev [Codigo Producto],

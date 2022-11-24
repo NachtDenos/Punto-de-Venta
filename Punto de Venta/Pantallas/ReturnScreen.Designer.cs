@@ -300,6 +300,7 @@ namespace Punto_de_Venta
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ReturnScreen";
             this.Text = "ReturnScreen";
+            this.Load += new System.EventHandler(this.ReturnScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn2)).EndInit();
             this.ResumeLayout(false);

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Punto_de_Venta
 {
@@ -14,6 +15,13 @@ namespace Punto_de_Venta
     {
         bool boton1 = false, boton2 = false;
         Procedures proc = new Procedures();
+        int ticket;
+        float CostProducto;
+        int CodProducto;
+        int Seregreso;
+        DateTime laFecha;
+        string motivo;
+        int mermacion;
         public ReturnScreen()
         {
             InitializeComponent();
@@ -29,8 +37,48 @@ namespace Punto_de_Venta
 
         private void btnOkReturn_Click(object sender, EventArgs e)
         {
-            CreditNoteScreen TheOtherForm = new CreditNoteScreen();
-            TheOtherForm.ShowDialog();
+            proc.GenerarNotaCredito(ticket, CostProducto, laFecha);
+            foreach (DataGridViewRow fila in dataGridReturn2.Rows)
+            {
+
+                string CajeroNombre;
+                int CajerId = 0;
+                string NumRecibo;
+                string codigo;
+                string Regresa;
+                string PrecioU;
+                string subTotal;
+                string Merma;
+                float disNum;
+
+                NumRecibo = fila.Cells["Recibo"].Value.ToString();
+                codigo = fila.Cells["Codigo"].Value.ToString();
+                Regresa = fila.Cells["Devuelve"].Value.ToString();
+                subTotal = fila.Cells["Subtotal"].Value.ToString();
+                Merma = fila.Cells["Merma"].Value.ToString();
+
+                Int32.TryParse(NumRecibo, out ticket);
+                Int32.TryParse(codigo, out CodProducto);
+                Int32.TryParse(Regresa, out Seregreso);
+                float.TryParse(subTotal, out CostProducto);
+                Int32.TryParse(Merma, out mermacion);
+                if (fila.Cells["Merma"].Value.ToString() == string.Empty)
+                {
+                    fila.Cells["Merma"].Value = "0";
+                    proc.GenerarDevolucion(CodProducto, Seregreso, CostProducto, motivo);
+                    proc.ActualizarProdSinMerma(Seregreso, CodProducto);
+                    //fila.Cells["Subtotal"].Value = subtotal;
+                }
+                else
+                {
+                    proc.GenerarDevolucion(CodProducto, Seregreso, CostProducto, motivo);
+                    proc.ActualizarProdMerma(Seregreso, CodProducto);
+                }
+
+            }
+            
+            //CreditNoteScreen TheOtherForm = new CreditNoteScreen();
+            //TheOtherForm.ShowDialog();
         }
 
         private void txtIdReturn_KeyPress(object sender, KeyPressEventArgs e)
@@ -62,6 +110,19 @@ namespace Punto_de_Venta
                 if (dataGridReturn1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
                     dataGridReturn1.CurrentRow.Selected = true;
+                    string Subtotal;
+                    string cod;
+                    int codigo;
+                    float subTotala;
+                   
+                    btnDeleteReturn.Enabled = true;
+                    Subtotal = dataGridReturn1.CurrentRow.Cells["Subtotal"].Value.ToString();
+                    cod = dataGridReturn1.CurrentRow.Cells["Codigo"].Value.ToString();
+
+                    Int32.TryParse(cod, out codigo);
+                    float.TryParse(Subtotal, out subTotala);
+                    CodProducto = codigo;
+                    CostProducto = subTotala;
                     buttonEnableEdit(e);
                 }
             }
@@ -78,8 +139,7 @@ namespace Punto_de_Venta
                 dataGridReturn2.AllowUserToOrderColumns = false;
                 if (dataGridReturn2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
-                    dataGridReturn2.CurrentRow.Selected = true;
-                    btnDeleteReturn.Enabled = true;
+                   
                 }
             }
             catch (Exception ArgumentOutOfRangeException)
@@ -99,26 +159,93 @@ namespace Punto_de_Venta
         private void rbYesReturn_Click(object sender, EventArgs e)
         {
             boton1 = true;
+            boton2 = false;
         }
 
         private void btnAddReturn_Click(object sender, EventArgs e)
         {
+            string fecha;
+            string devuelve;
             
+            motivo = txtReturnReason.Text;
+            fecha = DateTime.UtcNow.ToShortDateString();
+            devuelve = txtQuantityReturn.Text;
+            int dev;
+            Int32.TryParse(devuelve, out dev);
+            DateTime Fecha;
+            DateTime.TryParse(fecha, out Fecha);
+            laFecha = Fecha;
+            if (boton1 == true)
+            {
+                var Tilin2LaSecuelta = proc.InsertarDevTemporalMerma(CodProducto, ticket, Fecha, dev, CostProducto, dev);
+                if (Tilin2LaSecuelta)
+                {
+                    dataGridReturn2.DataSource = proc.TablaDevTemporal();
+                }
+                // dataGridReturn2.Columns["Nombre"].ValueType.ToString() = NombreProducto;
+                //proc.GenerarNotaCredito(ticket, CostProducto, Fecha);
+                //proc.GenerarDevolucion(CodProducto, dev, CostProducto, motivo);
+            }
+            else if (boton2 == true)
+            {
+                var Tilin2LaSecuelta2 = proc.InsertarDevTemporalSinMerma(CodProducto, ticket, Fecha, dev, CostProducto);
+                if (Tilin2LaSecuelta2)
+                {
+                    dataGridReturn2.DataSource = proc.TablaDevTemporal();
+                    if (dataGridReturn2.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow fila in dataGridReturn2.Rows)
+                        {
+                            if (fila.Cells["Merma"].Value.ToString() == string.Empty)
+                            {
+                                fila.Cells["Merma"].Value = "0";
+
+                            }
+                        }
+                    }
+                }
+                //var Tilin2LaSecuelta = proc.InsertarDevTemporalMerma();
+                //foreach (DataGridViewRow FILA in dataGridReturn1.Rows)
+                //{
+                //    string recibo;
+                //    float subtotal;
+                //    string subtotaltxt;
+                //    DateTime Fechesota;
+                //    string precioUni;
+                //    float precioU;
+                //    int CANTLLEVAR;
+                //    string descuento;
+                //    float desc;
+                //    precioUni = FILA.Cells["Recibo"].Value.ToString();
+                //    CANTLLEVAR = (int)FILA.Cells["Fecha"].Value;
+                //    subtotaltxt = FILA.Cells["Subtotal"].Value.ToString();
+                //}
+                //proc.GenerarNotaCredito(ticket, CostProducto, Fecha);
+                //proc.GenerarDevolucion(CodProducto, dev, CostProducto, motivo);
+                //proc.ActualizarProdSinMerma(dev, CodProducto);
+            }
         }
 
         private void filterBtnticket_Click(object sender, EventArgs e)
         {
             string numTicket;
-            int ticket;
+            
             numTicket = txtIdReturn.Text;
             Int32.TryParse(numTicket, out ticket);
             var Tilin2LaSecuela = proc.ObtenerTicket(ticket);
             dataGridReturn1.DataSource = proc.ObtenerTicket(ticket);
+            btnAddReturn.Enabled = true;
+        }
+
+        private void ReturnScreen_Load(object sender, EventArgs e)
+        {
+            dataGridReturn2.DataSource = proc.TablaDevTemporal();
         }
 
         private void rbNoReturn_Click(object sender, EventArgs e)
         {
             boton2 = true;
+            boton1 = false;
         }
     }
 }
