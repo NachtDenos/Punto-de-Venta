@@ -40,6 +40,10 @@ namespace Punto_de_Venta
             this.txtCasherReport = new System.Windows.Forms.TextBox();
             this.txtDepaCasherReport = new System.Windows.Forms.TextBox();
             this.btnFiltroFechaCajeros = new System.Windows.Forms.Button();
+            this.lblUtilidadCajero = new System.Windows.Forms.Label();
+            this.lblVentaCajero = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSellerReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,7 +101,7 @@ namespace Punto_de_Venta
             this.dataGridSellerReport.Location = new System.Drawing.Point(147, 233);
             this.dataGridSellerReport.Name = "dataGridSellerReport";
             this.dataGridSellerReport.ReadOnly = true;
-            this.dataGridSellerReport.Size = new System.Drawing.Size(640, 362);
+            this.dataGridSellerReport.Size = new System.Drawing.Size(640, 319);
             this.dataGridSellerReport.TabIndex = 97;
             // 
             // label2
@@ -150,12 +154,56 @@ namespace Punto_de_Venta
             this.btnFiltroFechaCajeros.UseVisualStyleBackColor = false;
             this.btnFiltroFechaCajeros.Click += new System.EventHandler(this.btnFiltroFechaCajeros_Click);
             // 
+            // lblUtilidadCajero
+            // 
+            this.lblUtilidadCajero.AutoSize = true;
+            this.lblUtilidadCajero.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUtilidadCajero.Location = new System.Drawing.Point(493, 588);
+            this.lblUtilidadCajero.Name = "lblUtilidadCajero";
+            this.lblUtilidadCajero.Size = new System.Drawing.Size(75, 22);
+            this.lblUtilidadCajero.TabIndex = 118;
+            this.lblUtilidadCajero.Text = "$ 00.00";
+            // 
+            // lblVentaCajero
+            // 
+            this.lblVentaCajero.AutoSize = true;
+            this.lblVentaCajero.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVentaCajero.Location = new System.Drawing.Point(320, 588);
+            this.lblVentaCajero.Name = "lblVentaCajero";
+            this.lblVentaCajero.Size = new System.Drawing.Size(75, 22);
+            this.lblVentaCajero.TabIndex = 117;
+            this.lblVentaCajero.Text = "$ 00.00";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(493, 555);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 22);
+            this.label7.TabIndex = 116;
+            this.label7.Text = "Utilidad:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(320, 555);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 22);
+            this.label6.TabIndex = 115;
+            this.label6.Text = "Venta:";
+            // 
             // SellerReportScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.lblUtilidadCajero);
+            this.Controls.Add(this.lblVentaCajero);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnFiltroFechaCajeros);
             this.Controls.Add(this.txtDepaCasherReport);
             this.Controls.Add(this.txtCasherReport);
@@ -189,5 +237,9 @@ namespace Punto_de_Venta
         private System.Windows.Forms.TextBox txtCasherReport;
         private System.Windows.Forms.TextBox txtDepaCasherReport;
         private System.Windows.Forms.Button btnFiltroFechaCajeros;
+        private System.Windows.Forms.Label lblUtilidadCajero;
+        private System.Windows.Forms.Label lblVentaCajero;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }

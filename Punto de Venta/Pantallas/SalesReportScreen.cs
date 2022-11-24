@@ -17,6 +17,7 @@ namespace Punto_de_Venta
         {
             InitializeComponent();
             dataGridSalesReport.DataSource = proc.listarRVenta();
+            calculoParaVenta();
             //dataGridSalesReport.Rows[0].Cells[0].Value = "09/09/2022";
             //dataGridSalesReport.Rows[0].Cells[1].Value = "Mariscos";
             //dataGridSalesReport.Rows[0].Cells[2].Value = "B412";
@@ -85,14 +86,40 @@ namespace Punto_de_Venta
             float Subtotal = 0.0f;
             float subtotalAux = 0.0f;
             string SubtotalStr;
+
+            float Venta = 0.0f;
+            float ventaAux = 0.0f;
+            string ventaStr;
+
+            float Utilidad = 0.0f;
+            float utilidadAux = 0.0f;
+            string utilidadStr;
             foreach (DataGridViewRow fila in dataGridSalesReport.Rows)
             {
                 SubtotalStr = fila.Cells["Subtotal"].Value.ToString();
                 Subtotal = float.Parse(SubtotalStr);
                 subtotalAux = Subtotal + subtotalAux;
-            }
 
-            float prueba = subtotalAux;
+                ventaStr = fila.Cells["Venta"].Value.ToString();
+                Venta = float.Parse(ventaStr);
+                ventaAux = Venta + ventaAux;
+
+                utilidadStr = fila.Cells["Utilidad"].Value.ToString();
+                Utilidad = float.Parse(utilidadStr);
+                utilidadAux = Utilidad + utilidadAux;
+            }
+            lblSubtotalVenta.Text = "";
+            lblSubtotalVenta.Text += "$ ";
+            lblSubtotalVenta.Text += subtotalAux.ToString("N2");
+
+            lblUtilidadVenta.Text = "";
+            lblUtilidadVenta.Text += "$ ";
+            lblUtilidadVenta.Text += utilidadAux.ToString("N2");
+
+            lblVentaVenta.Text = "";
+            lblVentaVenta.Text += "$ ";
+            lblVentaVenta.Text += ventaAux.ToString("N2");
+
         }
     }
 }

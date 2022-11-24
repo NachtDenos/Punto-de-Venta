@@ -40,6 +40,12 @@ namespace Punto_de_Venta
             this.txtVentaCajaReport = new System.Windows.Forms.TextBox();
             this.txtVentaDepaReport = new System.Windows.Forms.TextBox();
             this.btnFiltroFechaVentas = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblSubtotalVenta = new System.Windows.Forms.Label();
+            this.lblVentaVenta = new System.Windows.Forms.Label();
+            this.lblUtilidadVenta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSalesReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,12 +156,78 @@ namespace Punto_de_Venta
             this.btnFiltroFechaVentas.UseVisualStyleBackColor = false;
             this.btnFiltroFechaVentas.Click += new System.EventHandler(this.btnFiltroFechaVentas_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(223, 547);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 22);
+            this.label5.TabIndex = 109;
+            this.label5.Text = "Subtotal:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(413, 547);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 22);
+            this.label6.TabIndex = 110;
+            this.label6.Text = "Venta:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(586, 547);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 22);
+            this.label7.TabIndex = 111;
+            this.label7.Text = "Utilidad:";
+            // 
+            // lblSubtotalVenta
+            // 
+            this.lblSubtotalVenta.AutoSize = true;
+            this.lblSubtotalVenta.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtotalVenta.Location = new System.Drawing.Point(223, 580);
+            this.lblSubtotalVenta.Name = "lblSubtotalVenta";
+            this.lblSubtotalVenta.Size = new System.Drawing.Size(75, 22);
+            this.lblSubtotalVenta.TabIndex = 112;
+            this.lblSubtotalVenta.Text = "$ 00.00";
+            // 
+            // lblVentaVenta
+            // 
+            this.lblVentaVenta.AutoSize = true;
+            this.lblVentaVenta.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVentaVenta.Location = new System.Drawing.Point(413, 580);
+            this.lblVentaVenta.Name = "lblVentaVenta";
+            this.lblVentaVenta.Size = new System.Drawing.Size(75, 22);
+            this.lblVentaVenta.TabIndex = 113;
+            this.lblVentaVenta.Text = "$ 00.00";
+            // 
+            // lblUtilidadVenta
+            // 
+            this.lblUtilidadVenta.AutoSize = true;
+            this.lblUtilidadVenta.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUtilidadVenta.Location = new System.Drawing.Point(586, 580);
+            this.lblUtilidadVenta.Name = "lblUtilidadVenta";
+            this.lblUtilidadVenta.Size = new System.Drawing.Size(75, 22);
+            this.lblUtilidadVenta.TabIndex = 114;
+            this.lblUtilidadVenta.Text = "$ 00.00";
+            // 
             // SalesReportScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.lblUtilidadVenta);
+            this.Controls.Add(this.lblVentaVenta);
+            this.Controls.Add(this.lblSubtotalVenta);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnFiltroFechaVentas);
             this.Controls.Add(this.txtVentaDepaReport);
             this.Controls.Add(this.txtVentaCajaReport);
@@ -188,5 +260,11 @@ namespace Punto_de_Venta
         private System.Windows.Forms.TextBox txtVentaCajaReport;
         private System.Windows.Forms.TextBox txtVentaDepaReport;
         private System.Windows.Forms.Button btnFiltroFechaVentas;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblSubtotalVenta;
+        private System.Windows.Forms.Label lblVentaVenta;
+        private System.Windows.Forms.Label lblUtilidadVenta;
     }
 }
