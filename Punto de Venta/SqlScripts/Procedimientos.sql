@@ -775,14 +775,15 @@ create proc GeneraDevolucion
 (@CodigoProd int,
 @CantDevuelta int,
 @SubtotalDevoulucion decimal(10,2),
-@Motivo varchar(300)
+@Motivo varchar(300),
+@NombreProd varchar(50)
 )
 as
 Begin
 declare @idNotaCred int = 0;
 set @idNotaCred = IDENT_CURRENT('NotaCred')
-insert into devolucion(noCredDev, codigoProDev, devCant, subtotalDev, motivo)
-values(@idNotaCred, @CodigoProd, @CantDevuelta, @SubtotalDevoulucion, @Motivo)
+insert into devolucion(noCredDev, codigoProDev, devCant, subtotalDev, motivo, NombreProd)
+values(@idNotaCred, @CodigoProd, @CantDevuelta, @SubtotalDevoulucion, @Motivo, @NombreProd)
 end;
 --GeneraDevolucion 1, 2, 611.50, 'EL PINCHE CONTROL ESTABA MIADO, LE FALTABAN 2 PUTOS BOTONES, TENIA CABLES PEGADOS A UN PUTO EXPLOSIVO C4 Y NO ABRE NETFLIX'	
 
@@ -812,35 +813,44 @@ create proc TablaDevolucionTemp
 as
 Begin
 select idDevTemp[ID], numeroRecibo [Recibo], Fecha [Fecha],
-CodProd [Codigo], cantDevuelta [Devuelve], subTotalDevuelto [Subtotal], merma [Merma] from DevolucionTemporal
+CodProd [Codigo], NombreProd [Producto], cantDevuelta [Devuelve], subTotalDevuelto [Subtotal], merma [Merma] from DevolucionTemporal
 end;
 
 create proc InsertarDevTemporalMerma
 (@CodigoProd int,
 @NumRecibo int,
 @Fecha date,
+@NombreProd varchar(50),
 @cantDevuelta int,
 @subtotal decimal(10,2),
 @Merma int)
 as
 Begin
 Insert into DevolucionTemporal(numeroRecibo, Fecha, CodProd,
- cantDevuelta, subTotalDevuelto, merma)
-values(@NumRecibo, @Fecha,@CodigoProd, @cantDevuelta, @subtotal, @Merma)
+ cantDevuelta, subTotalDevuelto, merma, NombreProd)
+values(@NumRecibo, @Fecha,@CodigoProd, @cantDevuelta, @subtotal, @Merma, @NombreProd)
 end;
 
 create proc InsertarDevTemporalSinMerma
 (@CodigoProd int,
 @NumRecibo int,
 @Fecha date,
+@NombreProd varchar(50),
 @cantDevuelta int,
 @subtotal decimal(10,2))
 as
 Begin
 Insert into DevolucionTemporal(numeroRecibo, Fecha, CodProd,
- cantDevuelta, subTotalDevuelto)
-values(@NumRecibo, @Fecha,@CodigoProd, @cantDevuelta, @subtotal)
+ cantDevuelta, subTotalDevuelto, NombreProd)
+values(@NumRecibo, @Fecha,@CodigoProd, @cantDevuelta, @subtotal, @NombreProd)
 end;
+
+create proc BorrarGridDevolucion
+as
+BEGIN
+delete DevolucionTemporal
+END;
+
 
 select Niggaa.fechaNota [Fecha], Niggaa.numeroRecibo [Recibo],
 Niggaa.total [Total], Neganigga.codigoProDev [Codigo Producto],

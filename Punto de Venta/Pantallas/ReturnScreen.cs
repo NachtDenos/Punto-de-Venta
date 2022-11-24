@@ -21,6 +21,7 @@ namespace Punto_de_Venta
         int Seregreso;
         DateTime laFecha;
         string motivo;
+        string NombreProduc;
         int mermacion;
         public ReturnScreen()
         {
@@ -50,7 +51,8 @@ namespace Punto_de_Venta
                 string subTotal;
                 string Merma;
                 float disNum;
-
+                string NombreProduc;
+                NombreProduc = fila.Cells["Producto"].Value.ToString();
                 NumRecibo = fila.Cells["Recibo"].Value.ToString();
                 codigo = fila.Cells["Codigo"].Value.ToString();
                 Regresa = fila.Cells["Devuelve"].Value.ToString();
@@ -65,13 +67,13 @@ namespace Punto_de_Venta
                 if (fila.Cells["Merma"].Value.ToString() == string.Empty)
                 {
                     fila.Cells["Merma"].Value = "0";
-                    proc.GenerarDevolucion(CodProducto, Seregreso, CostProducto, motivo);
+                    proc.GenerarDevolucion(CodProducto, Seregreso, CostProducto, motivo, NombreProduc);
                     proc.ActualizarProdSinMerma(Seregreso, CodProducto);
                     //fila.Cells["Subtotal"].Value = subtotal;
                 }
                 else
                 {
-                    proc.GenerarDevolucion(CodProducto, Seregreso, CostProducto, motivo);
+                    proc.GenerarDevolucion(CodProducto, Seregreso, CostProducto, motivo, NombreProduc);
                     proc.ActualizarProdMerma(Seregreso, CodProducto);
                 }
 
@@ -116,6 +118,7 @@ namespace Punto_de_Venta
                     float subTotala;
                    
                     btnDeleteReturn.Enabled = true;
+                    NombreProduc = dataGridReturn1.CurrentRow.Cells["Producto"].Value.ToString();
                     Subtotal = dataGridReturn1.CurrentRow.Cells["Subtotal"].Value.ToString();
                     cod = dataGridReturn1.CurrentRow.Cells["Codigo"].Value.ToString();
 
@@ -177,7 +180,7 @@ namespace Punto_de_Venta
             laFecha = Fecha;
             if (boton1 == true)
             {
-                var Tilin2LaSecuelta = proc.InsertarDevTemporalMerma(CodProducto, ticket, Fecha, dev, CostProducto, dev);
+                var Tilin2LaSecuelta = proc.InsertarDevTemporalMerma(CodProducto, ticket, Fecha, dev, CostProducto, dev, NombreProduc);
                 if (Tilin2LaSecuelta)
                 {
                     dataGridReturn2.DataSource = proc.TablaDevTemporal();
@@ -188,7 +191,7 @@ namespace Punto_de_Venta
             }
             else if (boton2 == true)
             {
-                var Tilin2LaSecuelta2 = proc.InsertarDevTemporalSinMerma(CodProducto, ticket, Fecha, dev, CostProducto);
+                var Tilin2LaSecuelta2 = proc.InsertarDevTemporalSinMerma(CodProducto, ticket, Fecha, dev, CostProducto, NombreProduc);
                 if (Tilin2LaSecuelta2)
                 {
                     dataGridReturn2.DataSource = proc.TablaDevTemporal();
