@@ -957,6 +957,88 @@ namespace Punto_de_Venta
 
         }
 
+        public DataTable TablaDevTemporal()
+        {
+
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "TablaDevolucionTemp"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+                
+
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+
+
+        }
+
+        public bool InsertarDevTemporalMerma(int codProd, int NumRecibo, DateTime fecha, int cantDevuelta, float subTotal, int merma)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "InsertarDevTemporalMerma"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@CodigoProd", codProd);
+                comando.Parameters.AddWithValue("@NumRecibo", NumRecibo);
+                comando.Parameters.AddWithValue("@Fecha", fecha);
+                comando.Parameters.AddWithValue("@cantDevuelta", cantDevuelta);
+                comando.Parameters.AddWithValue("@subtotal", subTotal);
+                comando.Parameters.AddWithValue("@Merma", merma);
+
+
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+
+        }
+
+        public bool InsertarDevTemporalSinMerma(int codProd, int NumRecibo, DateTime fecha, int cantDevuelta, float subTotal)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "InsertarDevTemporalSinMerma"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@CodigoProd", codProd);
+                comando.Parameters.AddWithValue("@NumRecibo", NumRecibo);
+                comando.Parameters.AddWithValue("@Fecha", fecha);
+                comando.Parameters.AddWithValue("@cantDevuelta", cantDevuelta);
+                comando.Parameters.AddWithValue("@subtotal", subTotal);
+                
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+
+        }
+
+
         public bool EliminarProductoCarrito(string NombreCod, int Cant)
         {
             try
@@ -1042,7 +1124,59 @@ namespace Punto_de_Venta
 
         }
 
-        public bool EliminarCantidadProductoCarrito(string NombreCod, int CantidadEliminar)
+        public bool ActualizarProdSinMerma(int cant, int codProduc)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "ActualizarProdDevolucionSinMerma"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@cant", cant);
+                comando.Parameters.AddWithValue("@CodProducto", codProduc);
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+
+
+        }
+
+        public bool ActualizarProdMerma(int cant, int codProduc)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "ActualizarProdDevolucionMerma"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@cant", cant);
+                comando.Parameters.AddWithValue("@CodProducto", codProduc);
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+        }
+
+
+
+            public bool EliminarCantidadProductoCarrito(string NombreCod, int CantidadEliminar)
         {
             try
             {
