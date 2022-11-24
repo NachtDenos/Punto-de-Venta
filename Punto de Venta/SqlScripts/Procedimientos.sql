@@ -558,11 +558,6 @@ join Producto P
 on P.idProduct = VentaTemporal.CodigoProducto
 end;
 
-select*from VentaTemporal
---total
-select 
-SUM(CantidadAllevar*PrecioUnitario) as Total
-from VentaTemporal
 
 create proc GenerarVenta
 (@CajeroId int,
@@ -769,6 +764,8 @@ set @IdAdmin = IDENT_CURRENT('Administrador')
 insert into NotaCred(numeroRecibo, fechaNota, claveAdminNota, total)
 values(@NumeroRecibo, @FechaNota, @IdAdmin, @Total)
 end;
+
+drop proc GenerarNotaCred
 --GenerarNotaCred 10016, 1020.50, '2022-11-23'
 
 create proc GeneraDevolucion
@@ -785,7 +782,6 @@ set @idNotaCred = IDENT_CURRENT('NotaCred')
 insert into devolucion(noCredDev, codigoProDev, devCant, subtotalDev, motivo, NombreProd)
 values(@idNotaCred, @CodigoProd, @CantDevuelta, @SubtotalDevoulucion, @Motivo, @NombreProd)
 end;
---GeneraDevolucion 1, 2, 611.50, 'EL PINCHE CONTROL ESTABA MIADO, LE FALTABAN 2 PUTOS BOTONES, TENIA CABLES PEGADOS A UN PUTO EXPLOSIVO C4 Y NO ABRE NETFLIX'	
 
 create proc ActualizarProdDevolucionSinMerma
 (@cant int,
@@ -795,6 +791,8 @@ Begin
 update Producto set existencia = existencia + @cant where idProduct = @CodProducto
 end;
 
+drop proc ActualizarProdDevolucionMerma
+
 create proc ActualizarProdDevolucionMerma
 (@cant int,
  @CodProducto int)
@@ -803,11 +801,6 @@ Begin
 update Producto set merma = 0 where idProduct = @CodProducto
 update Producto set merma = merma + @cant where idProduct = @CodProducto
 end;
-
-
-select * from VentaDetalle
-select* from NotaCred
-SELECT * FROM devolucion
 
 create proc TablaDevolucionTemp
 as
@@ -850,14 +843,6 @@ as
 BEGIN
 delete DevolucionTemporal
 END;
-
-
-select Niggaa.fechaNota [Fecha], Niggaa.numeroRecibo [Recibo],
-Niggaa.total [Total], Neganigga.codigoProDev [Codigo Producto],
-Neganigga.motivo [Motivo], Neganigga.devCant [Cantidad Devuelta],
-Neganigga.subtotalDev [Subtotal Devolucion] from NotaCred Niggaa
-join devolucion Neganigga
-on Neganigga.noCredDev = Niggaa.noCredit
 
 create procedure reporteVentas
 as

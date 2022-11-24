@@ -10,7 +10,7 @@ end;
 
 go
 
-drop trigger tr_Actualizarcant on devolucion
+create trigger tr_Actualizarcant on devolucion
 instead of insert
 as
 Begin

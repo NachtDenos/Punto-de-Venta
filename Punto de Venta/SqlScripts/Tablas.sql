@@ -415,7 +415,7 @@ create table VentaTemporal
   Foreign key (idDescuento)
   References Descuento(idDesc)
 );
-
+go
 
 create table DevolucionTemporal
 (
@@ -424,14 +424,13 @@ create table DevolucionTemporal
   Fecha date not null,
   NombreProd varchar(50) null,
   CodProd int not null,
-  NombreProd varchar(50) not null,
   cantDevuelta int not null,
   subTotalDevuelto decimal(10,2) not null,
   Motivo varchar(300) null,
   merma int null
 );
 
-delete DevolucionTemporal
+drop table DevolucionTemporal
 --noCredDev INT NOT NULL,
 --   codigoProDev INT NOT NULL,
 --   devCant INT NOT NULL,
