@@ -37,24 +37,30 @@ create view vwVenta
 as
 Select Recibo.fechaVenta [Fecha de Venta], DP.nombreDep [Departamento], VD.CodProducto [Codigo del Articulo], VD.PrecioUnitario [Precio Unitario],
 VD.UnidadesVendidas [Unidades Vendidas], VD.Subtotal [Subtotal], DS.cantidad [Descuento],
-Recibo.total [Venta], VD.Utilidad [Utilidad] from Recibo
+VD.totalVenta [Venta], VD.Utilidad [Utilidad], CP.noCajaCP [Caja] from Recibo
 join VentaDetalle VD
 on Recibo.noVenta = VD.noDeVenta
 join Departamento DP
 on VD.DepartamentoId = DP.idDepa
 left join Descuento DS
 on VD.DescuentoId = DS.idDesc
-
+join Caje_Pro CP
+on Recibo.claveCajePro = CP.idCajePro
 
 create view vwCajero
 as
-Select Recibo.fechaVenta [Fecha de Venta], U.nombreU [Nombre del Cajero] from Recibo
+Select Recibo.fechaVenta [Fecha de Venta], U.nombreU [Cajero], DP.nombreDep [Departamento],
+VD.UnidadesVendidas [Unidades Vendidas], VD.Subtotal [Suma Venta], VD.Utilidad [Utilidad] from Recibo
+join VentaDetalle VD
+on Recibo.noVenta = VD.noDeVenta
+join Departamento DP
+on VD.DepartamentoId = DP.idDepa
 join Caje_Pro CP
-on Recibo.claveCajePro = CP.idCajePro
-join Cajero C
-on CP.idCajePro = C.idCajero
-right join Usuario U
-on C.idCajero = U.idUser
+on CP.idCajePro = Recibo.claveCajePro
+join Usuario U
+on CP.claveCajeroCP = U.idUser
+
+
 
 create view vwTicketsPorNum
 as

@@ -32,22 +32,14 @@ namespace Punto_de_Venta
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridSalesReport = new System.Windows.Forms.DataGridView();
-            this.fcV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UniV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sub = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ven = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Uti = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbSalesReportCaja = new System.Windows.Forms.ComboBox();
-            this.cbSalesReportDepart = new System.Windows.Forms.ComboBox();
             this.dtpSalesReport1 = new System.Windows.Forms.DateTimePicker();
             this.dtpSalesReport2 = new System.Windows.Forms.DateTimePicker();
+            this.txtVentaCajaReport = new System.Windows.Forms.TextBox();
+            this.txtVentaDepaReport = new System.Windows.Forms.TextBox();
+            this.btnFiltroFechaVentas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSalesReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +47,7 @@ namespace Punto_de_Venta
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(90, 138);
+            this.label3.Location = new System.Drawing.Point(118, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 22);
             this.label3.TabIndex = 88;
@@ -77,75 +69,11 @@ namespace Punto_de_Venta
             this.dataGridSalesReport.AllowUserToDeleteRows = false;
             this.dataGridSalesReport.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridSalesReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridSalesReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.fcV,
-            this.Dep,
-            this.Cod,
-            this.Precio,
-            this.UniV,
-            this.Sub,
-            this.Desc,
-            this.Ven,
-            this.Uti});
             this.dataGridSalesReport.Location = new System.Drawing.Point(94, 228);
             this.dataGridSalesReport.Name = "dataGridSalesReport";
             this.dataGridSalesReport.ReadOnly = true;
-            this.dataGridSalesReport.Size = new System.Drawing.Size(758, 362);
+            this.dataGridSalesReport.Size = new System.Drawing.Size(758, 316);
             this.dataGridSalesReport.TabIndex = 85;
-            // 
-            // fcV
-            // 
-            this.fcV.HeaderText = "Fecha de Venta";
-            this.fcV.Name = "fcV";
-            this.fcV.ReadOnly = true;
-            // 
-            // Dep
-            // 
-            this.Dep.HeaderText = "Departamento";
-            this.Dep.Name = "Dep";
-            this.Dep.ReadOnly = true;
-            // 
-            // Cod
-            // 
-            this.Cod.HeaderText = "Código de artículo";
-            this.Cod.Name = "Cod";
-            this.Cod.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio Unitario";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            // 
-            // UniV
-            // 
-            this.UniV.HeaderText = "Unidades Vendidas";
-            this.UniV.Name = "UniV";
-            this.UniV.ReadOnly = true;
-            // 
-            // Sub
-            // 
-            this.Sub.HeaderText = "Subtotal";
-            this.Sub.Name = "Sub";
-            this.Sub.ReadOnly = true;
-            // 
-            // Desc
-            // 
-            this.Desc.HeaderText = "Descuento";
-            this.Desc.Name = "Desc";
-            this.Desc.ReadOnly = true;
-            // 
-            // Ven
-            // 
-            this.Ven.HeaderText = "Venta";
-            this.Ven.Name = "Ven";
-            this.Ven.ReadOnly = true;
-            // 
-            // Uti
-            // 
-            this.Uti.HeaderText = "Utilidad";
-            this.Uti.Name = "Uti";
-            this.Uti.ReadOnly = true;
             // 
             // label2
             // 
@@ -161,7 +89,7 @@ namespace Punto_de_Venta
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(664, 138);
+            this.label1.Location = new System.Drawing.Point(662, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 22);
             this.label1.TabIndex = 82;
@@ -171,55 +99,56 @@ namespace Punto_de_Venta
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(364, 138);
+            this.label4.Location = new System.Drawing.Point(349, 123);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(148, 22);
             this.label4.TabIndex = 90;
             this.label4.Text = "Departamento";
             // 
-            // cbSalesReportCaja
-            // 
-            this.cbSalesReportCaja.FormattingEnabled = true;
-            this.cbSalesReportCaja.Items.AddRange(new object[] {
-            "Caja 1",
-            "Caja 2",
-            "Caja 3",
-            "Caja 4",
-            "Todas las cajas"});
-            this.cbSalesReportCaja.Location = new System.Drawing.Point(94, 172);
-            this.cbSalesReportCaja.Name = "cbSalesReportCaja";
-            this.cbSalesReportCaja.Size = new System.Drawing.Size(141, 21);
-            this.cbSalesReportCaja.TabIndex = 91;
-            this.cbSalesReportCaja.Text = "Seleccionar";
-            // 
-            // cbSalesReportDepart
-            // 
-            this.cbSalesReportDepart.FormattingEnabled = true;
-            this.cbSalesReportDepart.Items.AddRange(new object[] {
-            "Frutería",
-            "Carnes",
-            "Lacteos",
-            "Bebidas",
-            "Todos los departamentos"});
-            this.cbSalesReportDepart.Location = new System.Drawing.Point(368, 172);
-            this.cbSalesReportDepart.Name = "cbSalesReportDepart";
-            this.cbSalesReportDepart.Size = new System.Drawing.Size(141, 21);
-            this.cbSalesReportDepart.TabIndex = 92;
-            this.cbSalesReportDepart.Text = "Seleccionar";
-            // 
             // dtpSalesReport1
             // 
-            this.dtpSalesReport1.Location = new System.Drawing.Point(624, 173);
+            this.dtpSalesReport1.Location = new System.Drawing.Point(622, 158);
             this.dtpSalesReport1.Name = "dtpSalesReport1";
             this.dtpSalesReport1.Size = new System.Drawing.Size(110, 20);
             this.dtpSalesReport1.TabIndex = 93;
             // 
             // dtpSalesReport2
             // 
-            this.dtpSalesReport2.Location = new System.Drawing.Point(785, 173);
+            this.dtpSalesReport2.Location = new System.Drawing.Point(783, 158);
             this.dtpSalesReport2.Name = "dtpSalesReport2";
             this.dtpSalesReport2.Size = new System.Drawing.Size(110, 20);
             this.dtpSalesReport2.TabIndex = 94;
+            // 
+            // txtVentaCajaReport
+            // 
+            this.txtVentaCajaReport.Location = new System.Drawing.Point(94, 161);
+            this.txtVentaCajaReport.Name = "txtVentaCajaReport";
+            this.txtVentaCajaReport.Size = new System.Drawing.Size(123, 20);
+            this.txtVentaCajaReport.TabIndex = 106;
+            this.txtVentaCajaReport.TextChanged += new System.EventHandler(this.txtVentaCajaReport_TextChanged);
+            this.txtVentaCajaReport.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVentaCajaReport_KeyPress);
+            // 
+            // txtVentaDepaReport
+            // 
+            this.txtVentaDepaReport.Location = new System.Drawing.Point(353, 161);
+            this.txtVentaDepaReport.Name = "txtVentaDepaReport";
+            this.txtVentaDepaReport.Size = new System.Drawing.Size(134, 20);
+            this.txtVentaDepaReport.TabIndex = 107;
+            this.txtVentaDepaReport.TextChanged += new System.EventHandler(this.txtVentaDepaReport_TextChanged);
+            // 
+            // btnFiltroFechaVentas
+            // 
+            this.btnFiltroFechaVentas.BackColor = System.Drawing.Color.Navy;
+            this.btnFiltroFechaVentas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFiltroFechaVentas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltroFechaVentas.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFiltroFechaVentas.Location = new System.Drawing.Point(716, 184);
+            this.btnFiltroFechaVentas.Name = "btnFiltroFechaVentas";
+            this.btnFiltroFechaVentas.Size = new System.Drawing.Size(81, 28);
+            this.btnFiltroFechaVentas.TabIndex = 108;
+            this.btnFiltroFechaVentas.Text = "Filtrar";
+            this.btnFiltroFechaVentas.UseVisualStyleBackColor = false;
+            this.btnFiltroFechaVentas.Click += new System.EventHandler(this.btnFiltroFechaVentas_Click);
             // 
             // SalesReportScreen
             // 
@@ -227,10 +156,11 @@ namespace Punto_de_Venta
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.btnFiltroFechaVentas);
+            this.Controls.Add(this.txtVentaDepaReport);
+            this.Controls.Add(this.txtVentaCajaReport);
             this.Controls.Add(this.dtpSalesReport2);
             this.Controls.Add(this.dtpSalesReport1);
-            this.Controls.Add(this.cbSalesReportDepart);
-            this.Controls.Add(this.cbSalesReportCaja);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label12);
@@ -239,6 +169,7 @@ namespace Punto_de_Venta
             this.Controls.Add(this.label1);
             this.Name = "SalesReportScreen";
             this.Text = "Reporte de Ventas";
+            this.Load += new System.EventHandler(this.SalesReportScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSalesReport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -252,18 +183,10 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbSalesReportCaja;
-        private System.Windows.Forms.ComboBox cbSalesReportDepart;
         private System.Windows.Forms.DateTimePicker dtpSalesReport1;
         private System.Windows.Forms.DateTimePicker dtpSalesReport2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fcV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dep;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UniV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sub;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Desc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ven;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Uti;
+        private System.Windows.Forms.TextBox txtVentaCajaReport;
+        private System.Windows.Forms.TextBox txtVentaDepaReport;
+        private System.Windows.Forms.Button btnFiltroFechaVentas;
     }
 }

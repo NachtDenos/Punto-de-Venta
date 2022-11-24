@@ -797,3 +797,75 @@ Neganigga.motivo [Motivo], Neganigga.devCant [Cantidad Devuelta],
 Neganigga.subtotalDev [Subtotal Devolucion] from NotaCred Niggaa
 join devolucion Neganigga
 on Neganigga.noCredDev = Niggaa.noCredit
+
+create procedure reporteVentas
+as
+Begin
+select [Fecha de Venta], [Departamento], [Codigo del Articulo], [Precio Unitario],
+[Unidades Vendidas], [Subtotal], [Descuento],
+[Venta], [Utilidad] from vwVenta
+end;
+
+create procedure reporteCajero
+as
+Begin
+Select [Fecha de Venta], [Cajero], [Departamento],
+[Unidades Vendidas], [Suma Venta], [Utilidad] from vwCajero
+end;
+
+create procedure reporteCajeroFechas
+(@fecha1 date, @fecha2 date)
+as
+Begin
+Select [Fecha de Venta], [Cajero], [Departamento],
+[Unidades Vendidas], [Suma Venta], [Utilidad] from vwCajero 
+where @fecha1 <= [Fecha de Venta] and [Fecha de Venta] <= @fecha2
+end;
+
+create procedure reporteCajeroDepa
+(@Depa varchar(100))
+as
+Begin
+Select [Fecha de Venta], [Cajero], [Departamento],
+[Unidades Vendidas], [Suma Venta], [Utilidad] from vwCajero 
+where @Depa = [Departamento]
+end;
+
+create procedure reporteCajeroCajeroFiltro
+(@Cajero varchar(100))
+as
+Begin
+Select [Fecha de Venta], [Cajero], [Departamento],
+[Unidades Vendidas], [Suma Venta], [Utilidad] from vwCajero 
+where @Cajero = [Cajero]
+end;
+
+create procedure reporteVentaFechas
+(@fecha1 date, @fecha2 date)
+as
+Begin
+select [Fecha de Venta], [Departamento], [Codigo del Articulo], [Precio Unitario],
+[Unidades Vendidas], [Subtotal], [Descuento],
+[Venta], [Utilidad] from vwVenta
+where @fecha1 <= [Fecha de Venta] and [Fecha de Venta] <= @fecha2
+end;
+
+create procedure reporteVentaDepa
+(@Depa varchar(100))
+as
+Begin
+select [Fecha de Venta], [Departamento], [Codigo del Articulo], [Precio Unitario],
+[Unidades Vendidas], [Subtotal], [Descuento],
+[Venta], [Utilidad] from vwVenta
+where @Depa = [Departamento]
+end;
+
+create procedure reporteVentaCajaFiltro
+(@Caja varchar(100))
+as
+Begin
+select [Fecha de Venta], [Departamento], [Codigo del Articulo], [Precio Unitario],
+[Unidades Vendidas], [Subtotal], [Descuento],
+[Venta], [Utilidad] from vwVenta
+where @Caja = [Caja]
+end;
