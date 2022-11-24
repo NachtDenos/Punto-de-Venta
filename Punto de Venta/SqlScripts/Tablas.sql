@@ -170,7 +170,7 @@ CREATE TABLE Recibo
 (
    noVenta INT IDENTITY (10000, 1) NOT NULL,
    fechaVenta DATE NOT NULL,
-   total INT NOT NULL,
+   total Money NOT NULL,
    claveCajePro INT NOT NULL,
    MontoPago Money null,
    CONSTRAINT PK_noVenta
@@ -196,6 +196,7 @@ create table VentaDetalle
   DescuentoId int null,
   PrecioUnitario money not null,
   Utilidad money not null, 
+  totalVenta money not null,
   Constraint Pk_VentaDetail
   Primary key(idVentaDetalle),
   Constraint FK_noDeVenta

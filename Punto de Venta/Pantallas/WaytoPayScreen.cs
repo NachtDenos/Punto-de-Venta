@@ -361,7 +361,7 @@ namespace Punto_de_Venta
                 int MontoFinal;
                 string MontoF = finalPaylbl.Text;
                 Int32.TryParse(MontoF, out MontoFinal);
-
+                float totalVenta;
                 int NumCaja;
                 string CAJANUM;
                 CAJANUM = FreakingCash;
@@ -385,6 +385,7 @@ namespace Punto_de_Venta
                     float.TryParse(costoStingDtg,out Costo);
                     UtilidadAux = PrecioUni - Costo;
                     Utilidad = UtilidadAux;
+                    totalVenta = subFlot;
                     //fila.Cells["Subtotal"].Value = subtotal;
                 }
                 else
@@ -402,9 +403,10 @@ namespace Punto_de_Venta
                     subFlot = PrecioUni * UnidadesVendidas;
                     UtilidadAux = PrecioUni - Costo - PrecioUniDis;
                     Utilidad = UtilidadAux;
+                    totalVenta = subFlot - PrecioUniDis;
                    // fila.Cells["Subtotal"].Value = subtotal;
                 }
-                proc.GenerarVentaDetalle(0,NombreProducto,UnidadesVendidas, subFlot, PrecioUni, Utilidad);
+                proc.GenerarVentaDetalle(0,NombreProducto,UnidadesVendidas, subFlot, PrecioUni , totalVenta, Utilidad * UnidadesVendidas);
                 
                 //proc.RealizarVentas(total, NombreProducto, fechaa, subFlot, montodePago
                 //    , MontoFinal, metPago, 0, NumCaja, Persona, UnidadesVendidas, PrecioUni, 105.5f);
