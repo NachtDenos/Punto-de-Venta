@@ -159,7 +159,7 @@ namespace Punto_de_Venta
             }
             catch (Exception ye)
             {
-                MessageBox.Show(ye.ToString());
+                MessageBox.Show("No puede haber claves repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -185,7 +185,7 @@ namespace Punto_de_Venta
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.ToString());
+                MessageBox.Show("No puede haber claves repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -299,7 +299,7 @@ namespace Punto_de_Venta
             catch (Exception error)
             {
 
-                MessageBox.Show(error.ToString());
+                MessageBox.Show("No puede haber claves repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -360,7 +360,7 @@ namespace Punto_de_Venta
             catch (Exception error)
             {
 
-                MessageBox.Show(error.ToString());
+                MessageBox.Show("No puede haber claves repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -396,7 +396,7 @@ namespace Punto_de_Venta
             catch (Exception err)
             {
                 //MessageBox.Show("El ID del producto no se puede repetir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // <-- Usar una vez acabado todo
-                MessageBox.Show(err.ToString());
+                MessageBox.Show("No puede haber claves repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -590,7 +590,7 @@ namespace Punto_de_Venta
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.ToString());
+                MessageBox.Show("No puede haber cajas repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -615,8 +615,7 @@ namespace Punto_de_Venta
             }
             catch (Exception e)
             {
-                MessageBox.Show("Excepcion de base de datos");
-                MessageBox.Show(e.ToString());
+                MessageBox.Show("No puede haber claves repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -640,7 +639,7 @@ namespace Punto_de_Venta
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.ToString());
+                MessageBox.Show("No puede haber cajas repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -726,7 +725,7 @@ namespace Punto_de_Venta
             }
             catch (Exception Barabas)
             {
-                MessageBox.Show("Excepcion de base de datos" + Barabas.ToString());
+                MessageBox.Show("No puede haber claves repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -994,7 +993,7 @@ namespace Punto_de_Venta
             comando.Parameters.Clear();
             conexion.CerrarConexion();
             return tabla;
-
+            
 
         }
 
@@ -1284,6 +1283,34 @@ namespace Punto_de_Venta
 
         }
 
+        public bool aumentarCantVendida(string nombre, int suma)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "AumentarCantidadesVendidas"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@NombreProd", nombre);
+                comando.Parameters.AddWithValue("@CantVendida", suma);
+
+
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+
+        }
+
 
         public DataTable filtroScreenDepa(string filtro)
         {
@@ -1483,7 +1510,7 @@ namespace Punto_de_Venta
         }
 
 
-        public DataTable obtenerCajeroCobra(int claveUser)
+        public DataTable obtenerCajeroCobra(string claveUser)
         {
             DataTable tabla = new DataTable();
             comando.Connection = conexion.AbrirConexion();

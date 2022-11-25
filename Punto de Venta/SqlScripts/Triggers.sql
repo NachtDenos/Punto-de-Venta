@@ -1,4 +1,5 @@
 use ProyectoMAD
+go
 CREATE TRIGGER tr_bajaDescuentoPro ON Descuento
 INSTEAD OF DELETE
 AS

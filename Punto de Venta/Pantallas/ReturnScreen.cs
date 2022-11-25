@@ -69,7 +69,7 @@ namespace Punto_de_Venta
                 Int32.TryParse(Regresa, out Seregreso);
                 float.TryParse(subTotal, out CostProducto);
                 Int32.TryParse(Merma, out mermacion);
-                if (fila.Cells["Merma"].Value.ToString() == string.Empty)
+                if (fila.Cells["Merma"].Value.ToString() == "0")
                 {
                     fila.Cells["Merma"].Value = "0";
                     proc.GenerarDevolucion(CodProducto, Seregreso, CostProducto, motivo, NombreProduc);
@@ -81,6 +81,12 @@ namespace Punto_de_Venta
                     proc.GenerarDevolucion(CodProducto, Seregreso, CostProducto, motivo, NombreProduc);
                     proc.ActualizarProdMerma(Seregreso, CodProducto);
                 }
+                //if (fila.Cells["Merma"].Value.ToString() == "0")
+                //{
+                //    fila.Cells["Merma"].Value = "0";
+                //    proc.GenerarDevolucion(CodProducto, Seregreso, CostProducto, motivo, NombreProduc);
+                //    proc.ActualizarProdSinMerma(Seregreso, CodProducto);
+                //}
 
                 if (MessageBox.Show("¿Quiere imprimir la nota de credito?", "Nota De Credito", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -140,6 +146,7 @@ namespace Punto_de_Venta
                     CodProducto = codigo;
                     CostProducto = subTotala;
                     buttonEnableEdit(e);
+                    btnAddReturn.Enabled = true;
                 }
             }
             catch (Exception ArgumentOutOfRangeException)
@@ -188,10 +195,15 @@ namespace Punto_de_Venta
         {
             string fecha;
             string devuelve;
-            
+            btnOkReturn.Enabled = false;
             motivo = txtReturnReason.Text;
             fecha = DateTime.UtcNow.ToShortDateString();
             devuelve = txtQuantityReturn.Text;
+            if (txtQuantityReturn.Text == "" && txtReturnReason.Text == "")
+            {
+                MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             int dev;
             Int32.TryParse(devuelve, out dev);
             DateTime Fecha;
@@ -246,6 +258,9 @@ namespace Punto_de_Venta
                 //proc.GenerarDevolucion(CodProducto, dev, CostProducto, motivo);
                 //proc.ActualizarProdSinMerma(dev, CodProducto);
             }
+            btnOkReturn.Enabled = true;
+            btnAddReturn.Enabled = false;
+            dataGridReturn1.ClearSelection();
         }
 
         private void filterBtnticket_Click(object sender, EventArgs e)
@@ -256,7 +271,6 @@ namespace Punto_de_Venta
             Int32.TryParse(numTicket, out ticket);
             var Tilin2LaSecuela = proc.ObtenerTicket(ticket);
             dataGridReturn1.DataSource = proc.ObtenerTicket(ticket);
-            btnAddReturn.Enabled = true;
         }
 
         private void ReturnScreen_Load(object sender, EventArgs e)

@@ -15,7 +15,7 @@ namespace Punto_de_Venta.Pantallas
         int ComboBoxIndex;
         bool IsSelected;
         public string prueba;
-        int claveUserAux;
+        string claveUserAux;
         public CashRegisterToUseWND()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace Punto_de_Venta.Pantallas
             RegisterToUseCB.Text = "Seleccionar";
         }
 
-        public CashRegisterToUseWND(int claveUser)
+        public CashRegisterToUseWND(string claveUser)
         {
             InitializeComponent();
             ListarCajasCombo();
@@ -74,7 +74,7 @@ namespace Punto_de_Venta.Pantallas
             RegisterToUseCB.ValueMember = "Numero de Caja";//Valor real de l combox
         }
 
-        private void ponerNombreCajero(int claveUserActual)
+        private void ponerNombreCajero(string claveUserActual)
         {
             Procedures usuarioObj = new Procedures();
             cbNombreCajero.DataSource = usuarioObj.obtenerCajeroCobra(claveUserActual);
@@ -82,7 +82,7 @@ namespace Punto_de_Venta.Pantallas
             cbNombreCajero.ValueMember = "idEmpleado";
         }
 
-        private void ponerIdCajeroActual(int claveUserActual)
+        private void ponerIdCajeroActual(string claveUserActual)
         {
             Procedures usuarioObj = new Procedures();
             cbIdCajero.DataSource = usuarioObj.obtenerCajeroCobra(claveUserActual);

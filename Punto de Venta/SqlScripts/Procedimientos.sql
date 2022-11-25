@@ -1,4 +1,5 @@
 use ProyectoMAD
+go
 create proc SelectUsuarios
 (
 @ClaveU varchar(50),
@@ -10,13 +11,11 @@ begin
 select Usuario.idUser as NumeroIdentificacion, Usuario.nombreU [Nombre], Usuario.contraU [Contraseña], Usuario.tipoU, claveUsuario [Clave de Usuario] from Usuario
 where claveUsuario = @ClaveU and contraU = @Contraseña and tipoU = @TipoU
 end;
-
 go
-
-IF OBJECT_ID('SelectUsuarios') IS NOT NULL
-BEGIN
-   DROP PROC SelectUsuarios;
-END
+--IF OBJECT_ID('SelectUsuarios') IS NOT NULL
+--BEGIN
+--   DROP PROC SelectUsuarios;
+--END
 
 go
 
@@ -630,14 +629,24 @@ end;
 go
 
 create procedure obtenerCajeroCobra
+(@filtroI varchar(10))
+as
+Begin
+select [Nombre], IdEmpleado
+from vwEmpleado
+where  @filtroI = [Clave de Usuario]
+end;
+--drop proc obtenerCajeroCobra
+go
+create procedure obtenerCajeroCobra2
 (@filtroI int)
 as
 Begin
 select [Nombre], IdEmpleado
-from vwEmpleados
-where  @filtroI = [Clave de Usuario]
+from vwEmpleados2
+where  [Clave de Usuario] = @filtroI
 end;
-
+drop proc obtenerCajeroCobra
 go
 
 create procedure obteneridCajeroCobra
@@ -726,7 +735,6 @@ create proc ActualizarProdDevolucionMerma
  @CodProducto int)
 as
 Begin
-update Producto set merma = 0 where idProduct = @CodProducto
 update Producto set merma = merma + @cant where idProduct = @CodProducto
 end;
 
@@ -877,3 +885,15 @@ select [Fecha de Venta], [Departamento], [Codigo del Articulo], [Precio Unitario
 [Venta], [Utilidad] from vwVenta
 where @Caja = [Caja]
 end;
+
+go
+
+create procedure AumentarCantidadesVendidas
+(@NombreProd varchar(50),
+@CantVendida int)
+as
+Begin
+update Producto set uniVendida = @CantVendida where nombrePro = @NombreProd
+end;
+
+go

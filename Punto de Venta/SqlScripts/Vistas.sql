@@ -1,4 +1,5 @@
 use ProyectoMAD
+go
 create view vwInventary
 as
 select A.idProduct [Codigo], A.nombrePro [Nombre Producto], A.descripcion [Descripción], A.PrecioUnitario [Precio Unitario], A.Costo [Costo],
@@ -13,8 +14,15 @@ join uniMedidaPro D
 ON D.idMedida = A.uniMedida
 
 go
-
 create view vwEmpleados
+as
+select C.idCajero as IdEmpleado, U.nombreU [Nombre], U.apellidoPU [Apellido Paterno], U.apellidoMU [Apellido Materno],
+U.claveUsuario [Clave de Usuario], U.contraU [Contraseña], C.CURP [CURP], C.email [Correo], C.numeroNomi [Nomina], C.fechaIngr [Fecha de Ingreso],
+C.fechaNaci [Fecha Nacimiento] from Cajero C
+join Usuario U
+ON C.idCajero = U.idUser
+go
+create view vwEmpleados2
 as
 select C.idCajero as IdEmpleado, U.nombreU [Nombre], U.apellidoPU [Apellido Paterno], U.apellidoMU [Apellido Materno],
 U.claveUsuario [Clave de Usuario], U.contraU [Contraseña], C.CURP [CURP], C.email [Correo], C.numeroNomi [Nomina], C.fechaIngr [Fecha de Ingreso],
@@ -75,3 +83,12 @@ join Departamento depa
 on vd.DepartamentoId = depa.idDepa
 join Producto P
 on P.idProduct = Vd.CodProducto
+
+go
+create view vwEmpleado
+as
+select C.idCajero as IdEmpleado, U.nombreU [Nombre], U.apellidoPU [Apellido Paterno], U.apellidoMU [Apellido Materno],
+U.claveUsuario [Clave de Usuario], U.contraU [Contraseña], C.CURP [CURP], C.email [Correo], C.numeroNomi [Nomina], C.fechaIngr [Fecha de Ingreso],
+C.fechaNaci [Fecha Nacimiento] from Cajero C
+join Usuario U
+ON C.idCajero = U.idUser

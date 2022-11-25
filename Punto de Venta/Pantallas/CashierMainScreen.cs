@@ -26,7 +26,7 @@ namespace Punto_de_Venta.Pantallas
         {
             InitializeComponent();
         }
-        public CashierMainScreen(string text, string caja, int claveUserActual, string nombreCajero, int idCajeroActual)
+        public CashierMainScreen(string text, string caja, string claveUserActual, string nombreCajero, int idCajeroActual)
         {
             InitializeComponent();
             labelDate.Text = text;

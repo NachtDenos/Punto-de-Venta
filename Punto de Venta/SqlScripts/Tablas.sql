@@ -27,7 +27,10 @@ CREATE TABLE Usuario
    PRIMARY KEY (idUser)
 );
 
-
+go
+alter table Usuario
+ADD UNIQUE (ClaveUsuario)
+go
 IF OBJECT_ID('Administrador') IS NOT NULL
 BEGIN
    DROP TABLE Administrador;
