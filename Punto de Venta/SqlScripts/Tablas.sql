@@ -12,7 +12,7 @@ BEGIN
    DROP TABLE Usuario;
 END
 
-
+go
 
 CREATE TABLE Usuario 
 (
@@ -323,30 +323,16 @@ Create TABLE Caje_Pro
 (
    idCajePro INT IDENTITY (0, 1) NOT NULL,
    claveCajeroCP INT NOT NULL,
-   --codigoProCP INT NOT NULL,
    noCajaCP INT NOT NULL,
    CONSTRAINT PK_idCajePro
    PRIMARY KEY (idCajePro),
    CONSTRAINT FK_claveCajeroCP
    FOREIGN KEY (claveCajeroCP)
    REFERENCES Cajero (idCajero),
-   --CONSTRAINT FK_codigoProCP
-   --FOREIGN KEY (codigoProCP)
-   --REFERENCES Producto (idProduct),
    CONSTRAINT FK_noCajaCP
    FOREIGN KEY (noCajaCP)
    REFERENCES Caja (idCaja),
-   --CONSTRAINT CK_activoCP
-   --CHECK (activoCP = 'Activo' OR activoCP = 'Inactivo')
 );
-go 
---alter table Caje_Pro
--- drop column existenciaCP
-
---ALTER TABLE Recibo
---  ADD CONSTRAINT FK_claveCajePro
---  FOREIGN KEY (claveCajePro)
---  REFERENCES Caje_Pro (idCajePro);
 go
 IF OBJECT_ID('ticket') IS NOT NULL
 BEGIN
@@ -433,14 +419,3 @@ create table DevolucionTemporal
   Motivo varchar(300) null,
   merma int null
 );
-
---noCredDev INT NOT NULL,
---   codigoProDev INT NOT NULL,
---   devCant INT NOT NULL,
---   subtotalDev money NOT NULL,
---   motivo varchar(300) NOT NULL,
-
---total decimal(10,2) NOT NULL,
---   numeroRecibo INT NOT NULL, 
---   fechaNota DATE NOT NULL,
---   claveAdminNota INT NOT NULL,

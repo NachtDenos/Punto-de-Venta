@@ -358,7 +358,7 @@ select [Codigo], [Nombre Producto] from vwInventary where [id Descuento] is null
 end;
 
 go
-select * from Producto
+
 create proc ListarInventario
 as
 Begin
