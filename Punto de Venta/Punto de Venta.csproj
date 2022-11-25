@@ -371,6 +371,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cotejo.txt" />
+    <Content Include="Notitas.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

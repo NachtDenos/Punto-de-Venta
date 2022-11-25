@@ -880,7 +880,7 @@ namespace Punto_de_Venta
             return true;
         }
         public bool AgregarCarrito(int codigo, string NombreProd, 
-            int Caja, DateTime Fecha, int Cantidad)
+            int Caja, DateTime Fecha, float Cantidad)
         {
             try
             {
@@ -909,7 +909,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool ActualizarCarrito(string NombreCod, int cant)
+        public bool ActualizarCarrito(string NombreCod, float cant)
         {
             try
             {

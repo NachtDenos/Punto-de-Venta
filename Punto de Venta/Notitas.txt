@@ -1,0 +1,4 @@
+﻿checar el group by con reportes,
+validaciones de punto de reorden
+permitir que compre cantidades decimales
+checar rango de fechas devolucion

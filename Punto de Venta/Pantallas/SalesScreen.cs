@@ -15,13 +15,14 @@ namespace Punto_de_Venta
         Procedures proc = new Procedures();
         int CodProd;
         string fecha;
+        bool bandera;
         string nombreCajeroAux;
         int cajeroIdAux;
         string NombreProducto;
         string NombreProductoEliminar;
         int Caja;
         bool itExists;
-        int catnAllevarFinal;
+        float catnAllevarFinal;
         int cantCarritoEliminar;
         string Precio;
         string PrecioNUEVO;
@@ -95,10 +96,11 @@ namespace Punto_de_Venta
             label7.Text += "$ ";
             label7.Text += precioLbl.ToString("N2");
         }
-
+        
         private void txtQuantitySales_KeyPress(object sender, KeyPressEventArgs e)
         {
-            onlyNumbers(sender, e);
+            onePoint(e, txtQuantitySales.Text);
+            //onlyNumbers(sender, e);
         }
 
         public bool onlyNumbers(object sender, KeyPressEventArgs e)
@@ -126,7 +128,7 @@ namespace Punto_de_Venta
                 return;
             }
             string cant = txtQuantitySales.Text;
-            int cantInt = Int32.Parse(cant);
+            float cantInt = float.Parse(cant);
             if (cantInt == 0)
             {
                 MessageBox.Show("No se puede ingresar un valor en cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -141,7 +143,7 @@ namespace Punto_de_Venta
             string numCaja;
             string CantidadAllevarLbl = txtQuantitySales.Text;
            
-            Int32.TryParse(CantidadAllevarLbl, out catnAllevarFinal);
+            float.TryParse(CantidadAllevarLbl, out catnAllevarFinal);
             DateTime unaFecha = DateTime.Parse(fecha);
             numCod = txtNumberSales.Text;
 
@@ -405,12 +407,56 @@ namespace Punto_de_Venta
             aLllevar2 = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
             NombreProducto = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
             Precio = dataGridCarritoSales.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
-            Int32.TryParse(aLllevar2, out catnAllevarFinal);
+            float.TryParse(aLllevar2, out catnAllevarFinal);
             float cantFinalDec = (float)catnAllevarFinal;
            // float.TryParse(catnAllevarFinal, out cantFinalDec);
             float.TryParse(Precio, out PrecioInicial);
             precioLbl = (PrecioInicial * cantFinalDec);
             UltimoPrecio = precioLbl;
+        }
+
+        private void onePoint(KeyPressEventArgs e, String cadena)
+        {
+            int cont = 0;
+            String caracter = "";
+            for (int i = 0; i < cadena.Length; i++)
+            {
+                caracter = cadena.Substring(i, 1);
+                if (caracter == ".")
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                bandera = true;
+                if (e.KeyChar.ToString().Equals(".") && bandera)
+                {
+                    bandera = false;
+                    e.Handled = false;
+                }
+                else if (Char.IsDigit(e.KeyChar))
+                    e.Handled = false;
+                else if (Char.IsControl(e.KeyChar))
+                    e.Handled = false;
+                else
+                    e.Handled = true;
+            }
+            else
+            {
+                bandera = false;
+                e.Handled = true;
+                if (Char.IsDigit(e.KeyChar))
+                    e.Handled = false;
+                else if (Char.IsControl(e.KeyChar))
+                    e.Handled = false;
+                else
+                    e.Handled = true;
+            }
+        }
+            private void txtQuantitySales_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

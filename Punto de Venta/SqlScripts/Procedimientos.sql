@@ -358,12 +358,12 @@ select [Codigo], [Nombre Producto] from vwInventary where [id Descuento] is null
 end;
 
 go
-
+select * from Producto
 create proc ListarInventario
 as
 Begin
 select [Departamento], [Nombre Producto], [Unidad de Medida], [Costo], [Precio Unitario], [Stock],
-       [Cantidades Vendidas], [Merma] from vwInventary where [Activo] = 'Activo'
+       [Cantidades Vendidas], [Merma] from vwInventary where [Activo] = 'Activo' and [Stock] > 0
 end;
 
 go
@@ -433,7 +433,7 @@ go
 create proc productosVenta
 as
 Begin
-select [Codigo], [Nombre Producto] from vwInventary where [Activo] = 'Activo'
+select [Codigo], [Nombre Producto] from vwInventary where [Activo] = 'Activo' and [Stock] > 0 
 end;
 
 go
@@ -453,7 +453,7 @@ create proc SeleccionarProductoInsertarProducto
 @NombreProd varchar(30),
 @Caja int,
 @Fecha date,
-@CantidadAllevar int)
+@CantidadAllevar decimal(10,2))
 as
 Begin
 insert into VentaTemporal(CodigoProducto,NombreProducto, PrecioUnitario, ExistenciaProducto, FechaVenta, Caja, CantidadAllevar, idDescuento)
@@ -461,7 +461,7 @@ Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario 
 on B.idDesc = Producto.idDesc
 where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd;
 end;
-
+DELETE VentaTemporal
 go
 
 create proc InsertarCarrito
@@ -510,9 +510,10 @@ end;
 
 go
 
+
 create procedure ActualizarCantidad
 (@NombreProd varchar(30),
-@Cantidad int)
+@Cantidad decimal(10,2))
 as
 Begin
 update VentaTemporal set CantidadAllevar = CantidadAllevar+ @Cantidad where NombreProducto = @NombreProd
@@ -560,7 +561,7 @@ VentaTemporal.PrecioUnitario [Precio], VentaTemporal.CantidadAllevar [A llevar],
 left join Descuento D
 on D.idDesc = VentaTemporal.idDescuento
 join Producto P
-on P.idProduct = VentaTemporal.CodigoProducto
+on P.idProduct = VentaTemporal.CodigoProducto 
 end;
 
 go
