@@ -461,7 +461,7 @@ Select Producto.idProduct [Codigo], nombrePro [Nombre Producto], PrecioUnitario 
 on B.idDesc = Producto.idDesc
 where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd;
 end;
-DELETE VentaTemporal
+
 go
 
 create proc InsertarCarrito

@@ -37,3 +37,5 @@ values ('Vales')
 go
 Insert into MetodPago(tipoMetod)
 values ('Otro')
+
+

@@ -49,8 +49,8 @@ namespace Punto_de_Venta
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int costoTemp = Int32.Parse(txtCostProduct.Text);
-            int precioTemp = Int32.Parse(txtPriceProduct.Text);
+            float costoTemp = float.Parse(txtCostProduct.Text);
+            float precioTemp = float.Parse(txtPriceProduct.Text);
             if(costoTemp >= precioTemp)
             {
                 MessageBox.Show("El costo no puede ser mayor al precio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -164,8 +164,8 @@ namespace Punto_de_Venta
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int costoTemp = Int32.Parse(txtCostProduct.Text);
-            int precioTemp = Int32.Parse(txtPriceProduct.Text);
+            float costoTemp = float.Parse(txtCostProduct.Text);
+            float precioTemp = float.Parse(txtPriceProduct.Text);
             if (costoTemp >= precioTemp)
             {
                 MessageBox.Show("El costo no puede ser mayor al precio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
