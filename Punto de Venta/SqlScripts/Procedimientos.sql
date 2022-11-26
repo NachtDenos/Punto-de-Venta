@@ -745,7 +745,7 @@ end;
 go
 
 create proc RestarStockVenta
-(@cant int,
+(@cant decimal(10,2),
 @NombreProd varchar(50))
 as
 Begin
@@ -894,7 +894,7 @@ go
 
 create procedure AumentarCantidadesVendidas
 (@NombreProd varchar(50),
-@CantVendida int)
+@CantVendida decimal(10,2))
 as
 Begin
 update Producto set uniVendida = @CantVendida where nombrePro = @NombreProd

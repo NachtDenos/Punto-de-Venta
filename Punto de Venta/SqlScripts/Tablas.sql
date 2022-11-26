@@ -95,7 +95,7 @@ CREATE TABLE Producto
 	descripcion VARCHAR (60) NOT NULL,
 	uniMedida INT NOT NULL,
 	fechaAlta DATE NOT NULL,
-	existencia INT NOT NULL,
+	existencia decimal(10,2) NOT NULL,
 	ptReorden INT NOT NULL,
 	claveGest INT NOT NULL, 
 	activo varchar(30),
@@ -118,9 +118,10 @@ CREATE TABLE Producto
     FOREIGN KEY (claveAdmin)
     REFERENCES Administrador (idAdmin)
 )
-
+--alter table Producto 
+--alter column existencia decimal(10,2)
   --merma default 0 dios plan polan
-
+ 
 go
 
 
