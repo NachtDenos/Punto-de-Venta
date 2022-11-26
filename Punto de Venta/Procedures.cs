@@ -365,7 +365,7 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool InsertarProductos(int CodigoProducto, string Nombre, string Descripcion, int UnidadMedida, DateTime fechaAlta, int existencia, int ptReorden, string activo,
+        public bool InsertarProductos(string Nombre, string Descripcion, int UnidadMedida, DateTime fechaAlta, int existencia, int ptReorden, string activo,
         float costo, float preciounitario,int claveDepartamento)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
@@ -376,7 +376,6 @@ namespace Punto_de_Venta
                 conectado = conn.AbrirConexion();
                 SqlCommand cmd = new SqlCommand("InsertarProductos", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CodigoProducto", CodigoProducto);
                 cmd.Parameters.AddWithValue("@NombreProducto", Nombre);
                 cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
                 cmd.Parameters.AddWithValue("@UniMedida", UnidadMedida);
@@ -395,7 +394,8 @@ namespace Punto_de_Venta
             catch (Exception err)
             {
                 //MessageBox.Show("El ID del producto no se puede repetir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // <-- Usar una vez acabado todo
-                MessageBox.Show("No puede haber claves repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("No puede haber claves repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(err.ToString());
                 return false;
             }
             return true;

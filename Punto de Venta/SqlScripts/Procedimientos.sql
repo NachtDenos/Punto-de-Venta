@@ -255,9 +255,9 @@ create proc InsertarProductos
 as 
 Begin
 insert into Producto(nombrePro,descripcion,uniMedida, fechaAlta,existencia,
-ptReorden, activo,Costo,PrecioUnitario,claveAdmin,claveDepa, claveGest)
+ptReorden, activo,Costo,PrecioUnitario,claveAdmin,claveDepa, claveGest, uniVendida)
 values(@NombreProducto, @Descripcion, @UniMedida, @fechaAlta, @existencia,
-@ptReorden, @activo, @Costo, @PrecioUnitario,1, @ClaveDepartamento, 1)
+@ptReorden, @activo, @Costo, @PrecioUnitario,1, @ClaveDepartamento, 1, 0)
 End;
 
 go

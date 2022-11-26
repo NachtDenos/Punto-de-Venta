@@ -19,6 +19,7 @@ namespace Punto_de_Venta
         bool selection3 = false;
         bool bandera;
         int productSelection;
+        string idProductSelected;
         Procedures proc1 = new Procedures();
         public productsScreen()
         {
@@ -43,7 +44,7 @@ namespace Punto_de_Venta
         //txtActiveProduct
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            if (txtIdProduct.TextLength == 0 || txtNameProduct.TextLength == 0 || txtDesProduct.TextLength == 0 ||
+            if (txtNameProduct.TextLength == 0 || txtDesProduct.TextLength == 0 ||
                 txtCostProduct.TextLength == 0 || txtPriceProduct.TextLength == 0 || txtExistenceProduct.TextLength == 0 || txtReOrdProduct.TextLength == 0)
             {
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -71,10 +72,7 @@ namespace Punto_de_Venta
                     MessageBox.Show("Seleccione si es activo o no", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            //Para solo usar dos decimales en costo
-            string id = txtIdProduct.Text;
-            int CodProducto;
-            Int32.TryParse(id, out CodProducto);          
+            //Para solo usar dos decimales en costo       
             string exiss = txtExistenceProduct.Text;
             int exxistencia;
             Int32.TryParse(exiss, out exxistencia);
@@ -103,7 +101,7 @@ namespace Punto_de_Venta
             int uniMedida = Convert.ToInt32(cbMeasureProduct.SelectedValue);
             DateTime fechaAlta = DateTime.Parse(dtpDateProduct.Text);
             //DateTime fechaCambio = DateTime.Parse(dtpChangeDateProduct.Text);
-            var Variable = proc.InsertarProductos(CodProducto, txtNameProduct.Text, txtDesProduct.Text, uniMedida, fechaAlta, 
+            var Variable = proc.InsertarProductos(txtNameProduct.Text, txtDesProduct.Text, uniMedida, fechaAlta, 
                 exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, ajajaja);
             if (Variable)
             {
@@ -114,11 +112,6 @@ namespace Punto_de_Venta
             else
                 MessageBox.Show("No se realizo la inserccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             dataGridProduct.DataSource = proc.ListarProductos();
-        }
-
-        private void txtIdProduct_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            onlyNumbers(sender, e);
         }
 
         private void txtExistenceProduct_KeyPress(object sender, KeyPressEventArgs e)
@@ -158,7 +151,7 @@ namespace Punto_de_Venta
 
         private void btnEditProduct_Click(object sender, EventArgs e)
         {
-            if (txtIdProduct.TextLength == 0 || txtNameProduct.TextLength == 0 || txtDesProduct.TextLength == 0 ||
+            if (txtNameProduct.TextLength == 0 || txtDesProduct.TextLength == 0 ||
                 txtCostProduct.TextLength == 0 || txtPriceProduct.TextLength == 0 || txtExistenceProduct.TextLength == 0 || txtReOrdProduct.TextLength == 0)
             {
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -199,16 +192,9 @@ namespace Punto_de_Venta
             float precFloat = Convert.ToSingle(precDecimal);
             Procedures proc = new Procedures();
 
-            string id = txtIdProduct.Text;
-            int CodProducto;
-            Int32.TryParse(id, out CodProducto);
             string exiss = txtExistenceProduct.Text;
             int exxistencia;
             Int32.TryParse(exiss, out exxistencia);
-
-            string idProdu = txtIdProduct.Text;
-            int idIntPro;
-            Int32.TryParse(idProdu, out idIntPro);
 
             string ptReOrden = txtReOrdProduct.Text;
             int reOrder;
@@ -216,7 +202,7 @@ namespace Punto_de_Venta
             DateTime fechaCambio = DateTime.Parse(dtpDateProduct.Text);
             int Arsene = Convert.ToInt32(cbDepartamentProduct.SelectedValue);
             int uniMedida = Convert.ToInt32(cbMeasureProduct.SelectedValue);
-            var LaGuerraDeLasGalaxias = proc.ActualizarProductos(idIntPro, txtNameProduct.Text, txtDesProduct.Text, uniMedida, fechaCambio, exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, Arsene); ;
+            var LaGuerraDeLasGalaxias = proc.ActualizarProductos(productSelection, txtNameProduct.Text, txtDesProduct.Text, uniMedida, fechaCambio, exxistencia, reOrder, cbActiveProduct.Text, costFloat, precFloat, Arsene); ;
             if (LaGuerraDeLasGalaxias)
             {
                 MessageBox.Show("Actualizacion de producto exitosa", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -260,7 +246,6 @@ namespace Punto_de_Venta
                     idProductoData = dataGridProduct.CurrentRow.Cells["Codigo"].Value.ToString();
                     Int32.TryParse(idProductoData, out eseId);
                     productSelection = eseId;
-                    txtIdProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                     txtNameProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
                     txtDesProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Descripción"].Value.ToString();
                     txtPriceProduct.Text = dataGridProduct.Rows[e.RowIndex].Cells["Precio Unitario"].Value.ToString();
@@ -276,7 +261,7 @@ namespace Punto_de_Venta
                     dtpDateProduct.Enabled = false;
                     btnEditProduct.Enabled = true;
                     btnDeleteProduct.Enabled = true;
-                    txtIdProduct.Enabled = false;
+                    
                     btnAddProduct.Enabled = false;
                 }
             }
@@ -379,7 +364,6 @@ namespace Punto_de_Venta
         private void limpiarDataGrid()
         {
             dataGridProduct.ClearSelection();
-            txtIdProduct.Enabled = true;
             dtpDateProduct.Enabled = true;
             dtpChangeDateProduct.Enabled = false;
             btnEditProduct.Enabled = false;
@@ -401,7 +385,6 @@ namespace Punto_de_Venta
 
         private void clearTxt()
         {
-            txtIdProduct.Text = "";
             txtNameProduct.Text = "";
             txtDesProduct.Text = "";
             cbDepartamentProduct.Text = "Seleccionar";
