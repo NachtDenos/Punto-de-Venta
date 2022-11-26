@@ -38,8 +38,6 @@ namespace Punto_de_Venta
             this.label2 = new System.Windows.Forms.Label();
             this.txtNameDepartament = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtIdDepartament = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbDevolutionDepartament = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDepartament)).BeginInit();
@@ -71,11 +69,11 @@ namespace Punto_de_Venta
             this.dataGridDepartament.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridDepartament.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridDepartament.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridDepartament.Location = new System.Drawing.Point(26, 245);
+            this.dataGridDepartament.Location = new System.Drawing.Point(26, 175);
             this.dataGridDepartament.Name = "dataGridDepartament";
             this.dataGridDepartament.ReadOnly = true;
             this.dataGridDepartament.RowHeadersWidth = 51;
-            this.dataGridDepartament.Size = new System.Drawing.Size(493, 291);
+            this.dataGridDepartament.Size = new System.Drawing.Size(567, 361);
             this.dataGridDepartament.TabIndex = 77;
             this.dataGridDepartament.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDepartament_CellClick);
             // 
@@ -150,25 +148,6 @@ namespace Punto_de_Venta
             this.label1.TabIndex = 59;
             this.label1.Text = "Nombre";
             // 
-            // txtIdDepartament
-            // 
-            this.txtIdDepartament.Location = new System.Drawing.Point(36, 201);
-            this.txtIdDepartament.Multiline = true;
-            this.txtIdDepartament.Name = "txtIdDepartament";
-            this.txtIdDepartament.Size = new System.Drawing.Size(291, 22);
-            this.txtIdDepartament.TabIndex = 81;
-            this.txtIdDepartament.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdDepartament_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 165);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(241, 22);
-            this.label3.TabIndex = 80;
-            this.label3.Text = "Clave del departamento";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -200,8 +179,6 @@ namespace Punto_de_Venta
             this.ClientSize = new System.Drawing.Size(934, 631);
             this.Controls.Add(this.cbDevolutionDepartament);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtIdDepartament);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFilterDepartament);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.dataGridDepartament);
@@ -230,8 +207,6 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNameDepartament;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtIdDepartament;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbDevolutionDepartament;
     }

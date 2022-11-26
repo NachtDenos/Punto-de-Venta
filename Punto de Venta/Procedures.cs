@@ -165,7 +165,7 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool AltaDepartamentos(string NombreDepartamento, int claveDepartamento, string Devolucion)
+        public bool AltaDepartamentos(string NombreDepartamento,  string Devolucion)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
             SqlConnection conectado = new SqlConnection();
@@ -176,7 +176,6 @@ namespace Punto_de_Venta
                 SqlCommand cmd = new SqlCommand("InsertarDepartamentos", conectado);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@NombreDepa",NombreDepartamento);
-                cmd.Parameters.AddWithValue("@IdDepa", claveDepartamento);
                 cmd.Parameters.AddWithValue("@Devolucion", Devolucion);
                 cmd.Parameters.AddWithValue("@IdAdmin", idAdmin);
                 cmd.ExecuteNonQuery();
@@ -299,7 +298,7 @@ namespace Punto_de_Venta
             catch (Exception error)
             {
 
-                MessageBox.Show("No puede haber claves repetidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(error.ToString());
                 return false;
             }
             return true;

@@ -90,7 +90,7 @@ END
 go
 CREATE TABLE Producto
 (
-    idProduct INT NOT NULL,
+    idProduct INT Identity(100 , 1)  NOT NULL,
 	nombrePro VARCHAR (30) NOT NULL,
 	descripcion VARCHAR (60) NOT NULL,
 	uniMedida INT NOT NULL,
@@ -246,7 +246,7 @@ END
 go
 CREATE TABLE Departamento
 (
-   idDepa INT NOT NULL,
+   idDepa INT Identity(100 , 1)  NOT NULL,
    nombreDep VARCHAR (30) NOT NULL,
    devoluDepa varchar(10) not null,
    claveAdminDepa INT NULL,

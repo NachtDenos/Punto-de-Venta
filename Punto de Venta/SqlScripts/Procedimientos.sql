@@ -111,15 +111,14 @@ go
 create proc InsertarDepartamentos
 (
 @NombreDepa varchar(50),
-@IdDepa int,
 @Devolucion varchar(10),
 @IdAdmin int
 )
 as 
 Begin
 
-insert into Departamento(departamento.idDepa, nombreDep, devoluDepa, claveAdminDepa)
-values(@IdDepa, @NombreDepa, @Devolucion, @IdAdmin)
+insert into Departamento(nombreDep, devoluDepa, claveAdminDepa)
+values(@NombreDepa, @Devolucion, @IdAdmin)
 end;
 
 go
@@ -242,7 +241,6 @@ go
 
 create proc InsertarProductos
 (
-@CodigoProducto int,
 @NombreProducto varchar(30),
 @Descripcion varchar(60),
 @UniMedida int,
@@ -256,9 +254,9 @@ create proc InsertarProductos
 )
 as 
 Begin
-insert into Producto(idProduct, nombrePro,descripcion,uniMedida, fechaAlta,existencia,
+insert into Producto(nombrePro,descripcion,uniMedida, fechaAlta,existencia,
 ptReorden, activo,Costo,PrecioUnitario,claveAdmin,claveDepa, claveGest)
-values(@CodigoProducto, @NombreProducto, @Descripcion, @UniMedida, @fechaAlta, @existencia,
+values(@NombreProducto, @Descripcion, @UniMedida, @fechaAlta, @existencia,
 @ptReorden, @activo, @Costo, @PrecioUnitario,1, @ClaveDepartamento, 1)
 End;
 
@@ -447,7 +445,7 @@ where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [C
 end;
 
 go
-SeleccionarProductoInsertarProducto 1, 'Manzana', 1, '2022-10-12', 0.5
+
 create proc SeleccionarProductoInsertarProducto
 (@CodigoProd int,
 @NombreProd varchar(30),
@@ -464,8 +462,6 @@ end;
 
 go
 
-select * from VentaTemporal
-delete VentaTemporal
 
 create proc InsertarCarrito
 as
@@ -899,8 +895,3 @@ as
 Begin
 update Producto set uniVendida = @CantVendida where nombrePro = @NombreProd
 end;
-
-go
-
-select * from Recibo
-select * from VentaDetalle

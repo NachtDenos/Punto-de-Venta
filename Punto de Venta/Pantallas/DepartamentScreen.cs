@@ -7,6 +7,7 @@ namespace Punto_de_Venta
     {
         bool selectionCombo;
         int indexBox;
+        int idActualInt;
         Procedures proc = new Procedures();
         public departamentScreen()
         {
@@ -20,7 +21,7 @@ namespace Punto_de_Venta
 
         private void btnAddDepartament_Click(object sender, EventArgs e)
         {
-            if (txtNameDepartament.TextLength == 0 || txtIdDepartament.TextLength == 0)
+            if (txtNameDepartament.TextLength == 0)
             {
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -30,15 +31,12 @@ namespace Punto_de_Venta
                 MessageBox.Show("Seleccione un campo de Devolución", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            int id;
-            string idTexto = txtIdDepartament.Text;
-            Int32.TryParse(idTexto, out id);
-           var aja = proc.AltaDepartamentos(txtNameDepartament.Text, id,cbDevolutionDepartament.Text);
+           var aja = proc.AltaDepartamentos(txtNameDepartament.Text,cbDevolutionDepartament.Text);
             if (aja == true)
             {
                 MessageBox.Show("Inserccion Realizada con Exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtFilterDepartament.Text = "";
-                txtIdDepartament.Text = "";
+               
                 txtNameDepartament.Text = "";
                 cbDevolutionDepartament.Text = "Seleccionar";
             }
@@ -55,7 +53,7 @@ namespace Punto_de_Venta
 
         private void btnEditDepartament_Click(object sender, EventArgs e)
         {
-            if (txtNameDepartament.TextLength == 0 || txtIdDepartament.TextLength == 0)
+            if (txtNameDepartament.TextLength == 0)
             {
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -65,16 +63,18 @@ namespace Punto_de_Venta
                 MessageBox.Show("Seleccione un campo de Devolución", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            int id;
-            string idTexto = txtIdDepartament.Text;
-            Int32.TryParse(idTexto, out id);
-            var esoTilin = proc.ActualizarDepartamentos(txtNameDepartament.Text, cbDevolutionDepartament.Text, id);
+            if (cbDevolutionDepartament.Text == "Seleccionar")
+            {
+                MessageBox.Show("Seleccione un campo de Devolución", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var esoTilin = proc.ActualizarDepartamentos(txtNameDepartament.Text, cbDevolutionDepartament.Text, idActualInt);
             if (esoTilin)
             {
                 MessageBox.Show("La actualizacion se realizo con exito", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridDepartament.DataSource = proc.ListarDepartamentos();
                 txtFilterDepartament.Text = "";
-                txtIdDepartament.Text = "";
+               
                 txtNameDepartament.Text = "";
                 cbDevolutionDepartament.Text = "Seleccionar";
             }
@@ -82,7 +82,7 @@ namespace Punto_de_Venta
             {
                 MessageBox.Show("ERROR NO SE ACUTALIZO", "NO ACTUALIZDOE RROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            txtIdDepartament.Enabled = true;
+           
             btnAddDepartament.Enabled = true;
             btnDeleteDepartament.Enabled = false;
             btnEditDepartament.Enabled = false;
@@ -98,9 +98,11 @@ namespace Punto_de_Venta
                 if (dataGridDepartament.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
                     dataGridDepartament.CurrentRow.Selected = true;
-                    txtIdDepartament.Enabled = false;
+                   
                     btnAddDepartament.Enabled = false;
-                    txtIdDepartament.Text = dataGridDepartament.Rows[e.RowIndex].Cells["Id Departamento"].Value.ToString();
+                    
+                    string idActual = dataGridDepartament.Rows[e.RowIndex].Cells["Id Departamento"].Value.ToString();
+                    idActualInt = Int32.Parse(idActual);
                     txtNameDepartament.Text = dataGridDepartament.Rows[e.RowIndex].Cells["Departamento"].Value.ToString();
                     cbDevolutionDepartament.Text = dataGridDepartament.Rows[e.RowIndex].Cells["Acepta devoluciones"].Value.ToString();
                     //string IdEmpleadoyUsuario;
@@ -125,7 +127,7 @@ namespace Punto_de_Venta
                 //else if(dataGridDepartament.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null)
                 ////{
                 ////    dataGridDepartament
-                ////    txtIdDepartament.Enabled = true;
+                
                 //}
             }
             catch (Exception ArgumentOutOfRangeException)
@@ -145,15 +147,6 @@ namespace Punto_de_Venta
             }
         }
 
-        private void txtIdDepartament_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
-            {
-                MessageBox.Show("Solo se aceptan números en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                e.Handled = true;
-                return;
-            }
-        }
 
         private void cbDevolutionDepartament_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -163,21 +156,16 @@ namespace Punto_de_Venta
 
         private void btnDeleteDepartament_Click(object sender, EventArgs e)
         {
-            int id;
-           string perro = txtIdDepartament.Text;
-            Int32.TryParse(perro, out id);
-            var estoTilin2Secuela = proc.BorrarDepartamentos(id);
+            var estoTilin2Secuela = proc.BorrarDepartamentos(idActualInt);
             if (estoTilin2Secuela == true)
             {
                 MessageBox.Show("Baja realizada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridDepartament.DataSource = proc.ListarDepartamentos();
                 txtFilterDepartament.Text = "";
-                txtIdDepartament.Text = "";
                 txtNameDepartament.Text = "";
                 cbDevolutionDepartament.Text = "Seleccionar";
                 
             }
-            txtIdDepartament.Enabled = true;
             btnAddDepartament.Enabled = true;
             btnDeleteDepartament.Enabled = false;
             btnEditDepartament.Enabled = false;
