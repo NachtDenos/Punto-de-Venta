@@ -1089,7 +1089,7 @@ namespace Punto_de_Venta
         }
 
 
-        public bool EliminarProductoCarrito(string NombreCod, int Cant)
+        public bool EliminarProductoCarrito(string NombreCod, float Cant)
         {
             try
             {
@@ -1227,7 +1227,7 @@ namespace Punto_de_Venta
 
 
 
-            public bool EliminarCantidadProductoCarrito(string NombreCod, int CantidadEliminar)
+            public bool EliminarCantidadProductoCarrito(string NombreCod, float CantidadEliminar)
         {
             try
             {
