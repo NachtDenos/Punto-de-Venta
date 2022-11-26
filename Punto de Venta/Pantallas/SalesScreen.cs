@@ -200,7 +200,7 @@ namespace Punto_de_Venta
                 {
                     dataGridCarritoSales.DataSource = proc.ListarCarrito();
 
-                    int auxInt = Int32.Parse(txtQuantitySales.Text);
+                    float auxInt = float.Parse(txtQuantitySales.Text);
                     float cantidadNueva = (float)auxInt;
                     float agregar;
                     float.TryParse(PrecioNUEVO, out agregar);

@@ -12,6 +12,22 @@ end;
 
 go
 
+
+create trigger tr_PuntoReOrden on Recibo
+for insert 
+as
+Begin
+update Producto
+set existencia =
+(CASE
+   When ((existencia < ptReorden)) or ((existencia < 0)) then existencia + 100
+   else (existencia + 100)
+END
+)
+	
+end;
+
+
 --drop trigger tr_Actualizarcant on devolucion
 --instead of insert
 --as

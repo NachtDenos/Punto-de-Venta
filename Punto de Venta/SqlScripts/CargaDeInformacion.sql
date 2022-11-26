@@ -17,6 +17,7 @@ go
 Insert into uniMedidaPro(unidadMedida)
 values ('Mililitro')
 go
+
 Insert into uniMedidaPro(unidadMedida)
 values ('Pieza')
 go
