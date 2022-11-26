@@ -24,7 +24,7 @@ namespace Punto_de_Venta
         bool itExists;
         bool cantidadBien;
         float catnAllevarFinal;
-        int cantCarritoEliminar;
+        float cantCarritoEliminar;
         string Precio;
         string PrecioNUEVO;
         string PrecioAEliminar;
@@ -140,7 +140,7 @@ namespace Punto_de_Venta
 
         private void txtQuantityDeleteSales_KeyPress(object sender, KeyPressEventArgs e)
         {
-            onlyNumbers(sender, e);
+            onePoint(e, txtQuantityDeleteSales.Text);
         }
 
         private void btnAddSales_Click(object sender, EventArgs e)
@@ -244,13 +244,13 @@ namespace Punto_de_Venta
                 return;
             }
             string cant = txtQuantityDeleteSales.Text;
-            int cantInt = Int32.Parse(cant);
+            float cantInt = float.Parse(cant);
             if (cantInt == 0)
             {
                 MessageBox.Show("No se puede ingresar un valor en cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int eliminarCant = cantCarritoEliminar - cantInt;
+            float eliminarCant = cantCarritoEliminar - cantInt;
             if (eliminarCant < 0)
             {
                 MessageBox.Show("La cantidad a eliminar o regresar no coincide", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -262,7 +262,7 @@ namespace Punto_de_Venta
                 MessageBox.Show("Producto Eliminado", "Realizado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dataGridCarritoSales.DataSource = proc.ListarCarrito();
 
-                int auxInt = Int32.Parse(txtQuantityDeleteSales.Text);
+                float auxInt = float.Parse(txtQuantityDeleteSales.Text);
                 float cantidadEliminar = (float)auxInt;
                 float restar;
                 float.TryParse(PrecioAEliminar, out restar);
@@ -381,7 +381,7 @@ namespace Punto_de_Venta
                     //VentasTemp instancia = new VentasTemp();
                     aLllevar = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
 
-                    Int32.TryParse(aLllevar, out cantCarritoEliminar);
+                    float.TryParse(aLllevar, out cantCarritoEliminar);
 
                     NombreProductoEliminar = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
                     PrecioAEliminar = dataGridCarritoSales.Rows[e.RowIndex].Cells["Precio"].Value.ToString();

@@ -204,6 +204,14 @@ end;
 
 go
 
+create proc ListarCajaComboSinFiltro
+as
+Begin
+select idCaja[Numero de Caja] from Caja
+end;
+
+go
+
 create proc ListarProductos
 as
 Begin
@@ -522,7 +530,7 @@ go
 
 create procedure EliminarCantidad 
 (@NombreProd varchar(30),
-@Cantidad int)
+@Cantidad float)
 as
 begin
 update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cantidad where NombreProducto = @NombreProd
@@ -532,7 +540,7 @@ go
 
 create procedure EliminarProductoCarrito 
 (@NombreProd varchar(30),
-@Cant int)
+@Cant float)
 as
 begin
 Update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cant where NombreProducto = @NombreProd
@@ -666,6 +674,18 @@ as
 Begin
 select [Num], [Fecha], [Codigo], [Producto], [Subtotal],
 [Se llevo]from vwTicketsPorNum where @filtroNum = [Num]
+end;
+
+go
+
+create procedure consultaTicketFechaCaja
+(@fCaja int, @fFecha date)
+as
+Begin
+select Recibo.noVenta [Ticket] from Recibo 
+join Caje_Pro CP
+on Recibo.claveCajePro = CP.idCajePro
+where @fCaja = CP.noCajaCP and @fFecha = Recibo.fechaVenta
 end;
 
 go

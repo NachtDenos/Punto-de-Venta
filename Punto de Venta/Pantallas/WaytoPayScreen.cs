@@ -451,11 +451,9 @@ namespace Punto_de_Venta
                 //proc.GenerarTicketDB(0, monto2, 1);
             }
 
-            if (MessageBox.Show("¿Quiere imprimir el ticket de compra?", "Ticket", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                imrprimirTicket(debitoFl, creditoFl, efectivoFl, chequeFl, valeFl, otroFl);
-            }
-
+            
+            imrprimirTicket(debitoFl, creditoFl, efectivoFl, chequeFl, valeFl, otroFl);
+            
             MessageBox.Show("Compra realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Close();
