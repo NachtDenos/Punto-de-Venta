@@ -22,6 +22,7 @@ namespace Punto_de_Venta
         string NombreProductoEliminar;
         int Caja;
         bool itExists;
+        bool cantidadBien;
         float catnAllevarFinal;
         int cantCarritoEliminar;
         string Precio;
@@ -78,13 +79,36 @@ namespace Punto_de_Venta
                 MessageBox.Show("No ha agregado nada al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             if (dataGridCarritoSales.Rows.Count == 0)
             {
                 
                 MessageBox.Show("No ha agregado nada al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            foreach (DataGridViewRow fila in dataGridCarritoSales.Rows)
+            {
+                string cantiStocActualStr = fila.Cells["Stock"].Value.ToString();
+                float cantiStockActual = float.Parse(cantiStocActualStr);
+                string cantiLlevarStr = fila.Cells["A llevar"].Value.ToString();
+                float cantiLlevar = float.Parse(cantiLlevarStr);
+                if (cantiStockActual < cantiLlevar)
+                {
+                    cantidadBien = false;
+                    break;
+                }
+                else
+                {
+                    cantidadBien = true;
+                }
+            }
+
+            if (cantidadBien == false)
+            {
+                MessageBox.Show("No puede comprar mas productos de los que hay en el stock", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             WaytoPayScreen TheOtherForm = new WaytoPayScreen(precioLbl.ToString(), label7.Text.ToString(), fecha, laCaja, nombreCajeroAux, cajeroIdAux);
             TheOtherForm.ShowDialog();
 
