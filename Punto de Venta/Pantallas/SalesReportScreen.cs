@@ -34,6 +34,7 @@ namespace Punto_de_Venta
             DateTime fecha1Str = DateTime.Parse(dtpSalesReport1.Text);
             DateTime fecha2Str = DateTime.Parse(dtpSalesReport2.Text);
             dataGridSalesReport.DataSource = proc.listarVentaFecha(fecha1Str, fecha2Str);
+            calculoParaVenta();
         }
 
         private void txtVentaDepaReport_TextChanged(object sender, EventArgs e)

@@ -42,11 +42,25 @@ SELECT Descuento.idDesc [Id Descuento], descFecha.fechaIni [Inicia], descFecha.f
 
 go
 
+--create view vwVenta
+--as
+--Select Recibo.fechaVenta [Fecha de Venta], DP.nombreDep [Departamento], VD.CodProducto [Codigo del Articulo], VD.PrecioUnitario [Precio Unitario],
+--VD.UnidadesVendidas [Unidades Vendidas], VD.Subtotal [Subtotal], DS.cantidad [Descuento],
+--VD.totalVenta [Venta], VD.Utilidad [Utilidad], CP.noCajaCP [Caja] from Recibo
+--join VentaDetalle VD
+--on Recibo.noVenta = VD.noDeVenta
+--join Departamento DP
+--on VD.DepartamentoId = DP.idDepa
+--left join Descuento DS
+--on VD.DescuentoId = DS.idDesc
+--join Caje_Pro CP
+--on Recibo.claveCajePro = CP.idCajePro
+
 create view vwVenta
 as
 Select Recibo.fechaVenta [Fecha de Venta], DP.nombreDep [Departamento], VD.CodProducto [Codigo del Articulo], VD.PrecioUnitario [Precio Unitario],
-VD.UnidadesVendidas [Unidades Vendidas], VD.Subtotal [Subtotal], DS.cantidad [Descuento],
-VD.totalVenta [Venta], VD.Utilidad [Utilidad], CP.noCajaCP [Caja] from Recibo
+SUM (VD.UnidadesVendidas) [Unidades Vendidas], SUM (VD.Subtotal) [Subtotal], DS.cantidad [Descuento],
+SUM (VD.totalVenta) [Venta], SUM (VD.Utilidad) [Utilidad], CP.noCajaCP [Caja] from Recibo
 join VentaDetalle VD
 on Recibo.noVenta = VD.noDeVenta
 join Departamento DP
@@ -55,13 +69,30 @@ left join Descuento DS
 on VD.DescuentoId = DS.idDesc
 join Caje_Pro CP
 on Recibo.claveCajePro = CP.idCajePro
+group by DP.nombreDep, Recibo.fechaVenta, VD.CodProducto, VD.PrecioUnitario, VD.UnidadesVendidas, VD.Subtotal, DS.cantidad, VD.totalVenta, VD.Utilidad, CP.noCajaCP;
+
+
 
 go
+
+--create view vwCajero
+--as
+--Select Recibo.fechaVenta [Fecha de Venta], U.nombreU [Cajero], DP.nombreDep [Departamento],
+--VD.UnidadesVendidas [Unidades Vendidas], VD.Subtotal [Suma Venta], VD.Utilidad [Utilidad] from Recibo
+--join VentaDetalle VD
+--on Recibo.noVenta = VD.noDeVenta
+--join Departamento DP
+--on VD.DepartamentoId = DP.idDepa
+--join Caje_Pro CP
+--on CP.idCajePro = Recibo.claveCajePro
+--join Usuario U
+--on CP.claveCajeroCP = U.idUser
+
 
 create view vwCajero
 as
 Select Recibo.fechaVenta [Fecha de Venta], U.nombreU [Cajero], DP.nombreDep [Departamento],
-VD.UnidadesVendidas [Unidades Vendidas], VD.Subtotal [Suma Venta], VD.Utilidad [Utilidad] from Recibo
+SUM (VD.UnidadesVendidas) [Unidades Vendidas], SUM (VD.Subtotal) [Suma Venta], SUM (VD.Utilidad) [Utilidad] from Recibo
 join VentaDetalle VD
 on Recibo.noVenta = VD.noDeVenta
 join Departamento DP
@@ -70,6 +101,7 @@ join Caje_Pro CP
 on CP.idCajePro = Recibo.claveCajePro
 join Usuario U
 on CP.claveCajeroCP = U.idUser
+group by Recibo.fechaVenta, U.nombreU, DP.nombreDep, VD.UnidadesVendidas, VD.Subtotal, VD.Utilidad;
 
 go
 
