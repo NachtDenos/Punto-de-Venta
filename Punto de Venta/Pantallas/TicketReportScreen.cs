@@ -30,7 +30,9 @@ namespace Punto_de_Venta
 
         private void btnConsultTicketReport2_Click(object sender, EventArgs e)
         {
-
+            int caja = Int32.Parse(cbTicketReport.Text);
+            DateTime fecha = DateTime.Parse(dtpTicketReport.Text);
+            dataGridConsultaTicket.DataSource = proc.checarTicketFechaCaja(caja, fecha);
         }
 
         private void btnConsultTicketReport1_Click(object sender, EventArgs e)
@@ -55,7 +57,7 @@ namespace Punto_de_Venta
         private void ListarCajasCombo()
         {
             Procedures usuarioObj = new Procedures();
-            cbTicketReport.DataSource = usuarioObj.ListarCajaCombo();
+            cbTicketReport.DataSource = usuarioObj.ListarCajaComboSinFiltro();
             cbTicketReport.DisplayMember = "Numero de Caja"; //Nombre
             cbTicketReport.ValueMember = "Numero de Caja";//Valor real de l combox
         }

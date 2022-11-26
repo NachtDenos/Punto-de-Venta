@@ -683,6 +683,19 @@ namespace Punto_de_Venta
             return tabla;
         }
 
+        public DataTable ListarCajaComboSinFiltro()
+        {
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "ListarCajaComboSinFiltro"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure; //Esto si es que lo hago por medio de transcat-sql
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
         public bool BajaCaja(int numCaja)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
@@ -951,8 +964,24 @@ namespace Punto_de_Venta
                 comando.Parameters.Clear();
                 conexion.CerrarConexion();
                 return tabla;
-           
+        }
 
+        public DataTable checarTicketFechaCaja(int caja, DateTime fecha)
+        {
+
+            DataTable tabla = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "consultaTicketFechaCaja"; //Para el procedure
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@fCaja", caja);
+            comando.Parameters.AddWithValue("@fFecha", fecha);
+            leerFilas = comando.ExecuteReader();
+            tabla.Load(leerFilas);
+            leerFilas.Close();
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
         }
 
         public DataTable ObtenerNota(int NumTicket)

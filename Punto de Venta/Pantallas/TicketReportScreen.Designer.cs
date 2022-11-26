@@ -43,10 +43,11 @@ namespace Punto_de_Venta
             this.txtIdTicketReportNota = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnReprintTicketRecibo = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.cbRecibo = new System.Windows.Forms.CheckBox();
             this.cbNota = new System.Windows.Forms.CheckBox();
+            this.dataGridConsultaTicket = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTicketReport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridConsultaTicket)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -107,7 +108,7 @@ namespace Punto_de_Venta
             // 
             this.dtpTicketReport.Location = new System.Drawing.Point(43, 487);
             this.dtpTicketReport.Name = "dtpTicketReport";
-            this.dtpTicketReport.Size = new System.Drawing.Size(235, 20);
+            this.dtpTicketReport.Size = new System.Drawing.Size(202, 20);
             this.dtpTicketReport.TabIndex = 92;
             this.dtpTicketReport.ValueChanged += new System.EventHandler(this.dtpTicketReport_ValueChanged);
             // 
@@ -116,7 +117,7 @@ namespace Punto_de_Venta
             this.cbTicketReport.FormattingEnabled = true;
             this.cbTicketReport.Location = new System.Drawing.Point(43, 513);
             this.cbTicketReport.Name = "cbTicketReport";
-            this.cbTicketReport.Size = new System.Drawing.Size(235, 21);
+            this.cbTicketReport.Size = new System.Drawing.Size(202, 21);
             this.cbTicketReport.TabIndex = 93;
             this.cbTicketReport.Text = "Seleccionar";
             this.cbTicketReport.SelectedIndexChanged += new System.EventHandler(this.cbTicketReport_SelectedIndexChanged);
@@ -131,7 +132,7 @@ namespace Punto_de_Venta
             this.btnConsultTicketReport2.Name = "btnConsultTicketReport2";
             this.btnConsultTicketReport2.Size = new System.Drawing.Size(139, 51);
             this.btnConsultTicketReport2.TabIndex = 94;
-            this.btnConsultTicketReport2.Text = "Consultar";
+            this.btnConsultTicketReport2.Text = "Filtrar";
             this.btnConsultTicketReport2.UseVisualStyleBackColor = false;
             this.btnConsultTicketReport2.Click += new System.EventHandler(this.btnConsultTicketReport2_Click);
             // 
@@ -208,13 +209,6 @@ namespace Punto_de_Venta
             this.btnReprintTicketRecibo.UseVisualStyleBackColor = false;
             this.btnReprintTicketRecibo.Click += new System.EventHandler(this.btnReprintTicketRecibo_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(43, 434);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(258, 165);
-            this.panel1.TabIndex = 104;
-            // 
             // cbRecibo
             // 
             this.cbRecibo.AutoSize = true;
@@ -237,15 +231,29 @@ namespace Punto_de_Venta
             this.cbNota.UseVisualStyleBackColor = true;
             this.cbNota.Click += new System.EventHandler(this.cbNota_Click);
             // 
+            // dataGridConsultaTicket
+            // 
+            this.dataGridConsultaTicket.AllowUserToAddRows = false;
+            this.dataGridConsultaTicket.AllowUserToDeleteRows = false;
+            this.dataGridConsultaTicket.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridConsultaTicket.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridConsultaTicket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridConsultaTicket.Location = new System.Drawing.Point(275, 453);
+            this.dataGridConsultaTicket.Name = "dataGridConsultaTicket";
+            this.dataGridConsultaTicket.ReadOnly = true;
+            this.dataGridConsultaTicket.RowHeadersWidth = 51;
+            this.dataGridConsultaTicket.Size = new System.Drawing.Size(116, 146);
+            this.dataGridConsultaTicket.TabIndex = 107;
+            // 
             // TicketReportScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(934, 631);
+            this.Controls.Add(this.dataGridConsultaTicket);
             this.Controls.Add(this.cbNota);
             this.Controls.Add(this.cbRecibo);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnReprintTicketRecibo);
             this.Controls.Add(this.btnConsultTicketReportNota);
             this.Controls.Add(this.txtIdTicketReportNota);
@@ -264,6 +272,7 @@ namespace Punto_de_Venta
             this.Text = "Consulta de Recibos";
             this.Load += new System.EventHandler(this.TicketReportScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTicketReport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridConsultaTicket)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,8 +294,8 @@ namespace Punto_de_Venta
         private System.Windows.Forms.TextBox txtIdTicketReportNota;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnReprintTicketRecibo;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox cbRecibo;
         private System.Windows.Forms.CheckBox cbNota;
+        private System.Windows.Forms.DataGridView dataGridConsultaTicket;
     }
 }
