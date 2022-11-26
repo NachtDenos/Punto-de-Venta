@@ -102,7 +102,7 @@ CREATE TABLE Producto
 	merma INT default 0,
 	Costo decimal(10,2) not null,
 	PrecioUnitario decimal(10,2) not null,
-	uniVendida INT default 0,
+	uniVendida decimal(10,2) default null not null,
 	claveAdmin INT NOT NULL, 
 	claveDepa INT NOT NULL,
 	--claveDesc INT NOT NULL,
@@ -119,8 +119,8 @@ CREATE TABLE Producto
     REFERENCES Administrador (idAdmin)
 )
 --alter table Producto 
---alter column existencia decimal(10,2)
-  --merma default 0 dios plan polan
+--alter column uniVendida decimal(10,2) 
+ 
  
 go
 
