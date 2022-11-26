@@ -36,7 +36,7 @@ BEGIN
    DROP TABLE Administrador;
 END
 go
---puto si no te jalaa
+
 CREATE TABLE Administrador
 (
    idAdmin INT IDENTITY (1, 1) NOT NULL,
@@ -195,7 +195,7 @@ create table VentaDetalle
   noDeVenta int not null,
   CodProducto int not null,
   DepartamentoId int not null,
-  UnidadesVendidas int not null,
+  UnidadesVendidas decimal(10,2) not null,
   Subtotal money not null,
   DescuentoId int null,
   PrecioUnitario money not null,
@@ -210,6 +210,9 @@ create table VentaDetalle
   Foreign key (CodProducto)
   references Producto(idProduct)
 );
+
+--alter table VentaDetalle
+-- alter column UnidadesVendidas decimal(10,2)
 
 go
 IF OBJECT_ID('NotaCred') IS NOT NULL
@@ -398,7 +401,7 @@ create table VentaTemporal
   PrecioUnitario money not null,
   FechaVenta date null,
   Caja int null,
-  CantidadAllevar int not null,
+  CantidadAllevar decimal(10,2) not null,
   idDescuento int null,
   subTotal money null,
   Constraint FK_IdDescProdTemp

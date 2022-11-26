@@ -168,27 +168,6 @@ namespace Punto_de_Venta
                 }
             }
 
-            //for (int i = 1; i < dataGridCarritoSales.Rows.Count; i++)
-            //{
-            //    for (int j = 1; j < dataGridProductSales.Columns.Count; j++)
-            //    {
-            //        if (dataGridProductSales.Rows[i].Cells[j].Value.ToString() == NombreProducto)
-            //        {
-            //            MessageBox.Show("Este producto ya esta en el carrito");
-            //            NombreProducto = "";
-            //            itExists = true;
-            //            break;
-                        
-            //        }
-            //    }
-            //}
-            //foreach (DataGridViewRow row in dataGridCarritoSales.Rows)
-            //{   
-            //    if (row.Cells[row])
-            //    {
-
-            //    }
-            //}
             if (itExists == true)
             {
                 MessageBox.Show("Este producto ya esta en el carrito", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);

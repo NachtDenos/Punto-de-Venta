@@ -268,17 +268,20 @@ namespace Punto_de_Venta
                     float subtotal;
                     string precioUni;
                     float precioU;
-                    int CANTLLEVAR;
+                    string CANTLLEVAR;
+                    float cantLlevar;
                     string descuento;
                     float desc;
                       precioUni = fila.Cells["Precio"].Value.ToString();
-                      CANTLLEVAR = (int)fila.Cells["A llevar"].Value;
+                      CANTLLEVAR = fila.Cells["A llevar"].Value.ToString();
+                    float.TryParse(CANTLLEVAR, out cantLlevar);
                       
                     if (fila.Cells["Descuento"].Value.ToString() == string.Empty)
                     {
                         fila.Cells["Descuento"].Value = "0";
                         float.TryParse(precioUni, out precioU);
-                        subtotal = precioU * CANTLLEVAR;
+                        
+                        subtotal = precioU * cantLlevar;
                         fila.Cells["Subtotal"].Value = subtotal;
                     }
                     else
@@ -289,7 +292,7 @@ namespace Punto_de_Venta
                         desc = desc / 100.00f;
                         float.TryParse(precioUni, out precioU);
                         precioU = precioU * desc;
-                        subtotal = precioU * CANTLLEVAR;
+                        subtotal = precioU * cantLlevar;
                         fila.Cells["Subtotal"].Value = subtotal;
                     }
                     total = subtotal;
@@ -379,7 +382,7 @@ namespace Punto_de_Venta
                 float Utilidad;
                 float UtilidadAux;
                 float PrecioUniAux;
-                int UnidadesVendidas; Int32.TryParse(UnidadesLlevar, out UnidadesVendidas);
+                float UnidadesVendidas; float.TryParse(UnidadesLlevar, out UnidadesVendidas);
                 if (fila.Cells["Descuento"].Value.ToString() == "0")
                 {
                     fila.Cells["Descuento"].Value = "0";

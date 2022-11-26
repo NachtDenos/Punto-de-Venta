@@ -1255,7 +1255,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool RestarStockVenta(string name, int CantidadEliminar)
+        public bool RestarStockVenta(string name, float CantidadEliminar)
         {
             try
             {
@@ -1283,7 +1283,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool aumentarCantVendida(string nombre, int suma)
+        public bool aumentarCantVendida(string nombre, float suma)
         {
             try
             {
@@ -1421,7 +1421,7 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool GenerarVentaDetalle(int idVentaHeader, string NombreProducto, int UnidadesVendidas,
+        public bool GenerarVentaDetalle(int idVentaHeader, string NombreProducto, float UnidadesVendidas,
             float subtotal, float PrecioU, float totalVenta, float Utilidad)
         {
             ConexionSqlServer conn = new ConexionSqlServer();

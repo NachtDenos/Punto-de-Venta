@@ -447,7 +447,7 @@ where @filID = [Codigo] or @filName like [Nombre Producto] + '%' or (@filID = [C
 end;
 
 go
-
+SeleccionarProductoInsertarProducto 1, 'Manzana', 1, '2022-10-12', 0.5
 create proc SeleccionarProductoInsertarProducto
 (@CodigoProd int,
 @NombreProd varchar(30),
@@ -463,6 +463,9 @@ where Producto.idProduct = @CodigoProd or Producto.nombrePro = @NombreProd;
 end;
 
 go
+
+select * from VentaTemporal
+delete VentaTemporal
 
 create proc InsertarCarrito
 as
@@ -595,7 +598,7 @@ go
 create proc GenerarVentaDetalle
 (@idVentaHeader int,
 @nombreProducto varchar(30),
-@UnidaesVendidas int,
+@UnidaesVendidas decimal(10,2),
 @Subtotal decimal(10,2),
 @PrecioUnitario decimal(10,2),
 @Venta decimal(10,2),
@@ -898,3 +901,6 @@ update Producto set uniVendida = @CantVendida where nombrePro = @NombreProd
 end;
 
 go
+
+select * from Recibo
+select * from VentaDetalle
