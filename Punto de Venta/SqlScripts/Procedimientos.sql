@@ -530,7 +530,7 @@ go
 
 create procedure EliminarCantidad 
 (@NombreProd varchar(30),
-@Cantidad float)
+@Cantidad decimal(10,2))
 as
 begin
 update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cantidad where NombreProducto = @NombreProd
@@ -540,7 +540,7 @@ go
 
 create procedure EliminarProductoCarrito 
 (@NombreProd varchar(30),
-@Cant float)
+@Cant decimal(10,2))
 as
 begin
 Update VentaTemporal set CantidadAllevar = CantidadAllevar - @Cant where NombreProducto = @NombreProd

@@ -120,17 +120,27 @@ namespace Punto_de_Venta
                 MessageBox.Show("No puede comprar mas productos de los que hay en el stock", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            
             WaytoPayScreen TheOtherForm = new WaytoPayScreen(totalLblFinal.ToString(), label7.Text.ToString(), fecha, laCaja, nombreCajeroAux, cajeroIdAux);
             TheOtherForm.ShowDialog();
 
             var limpia = proc.limpiarVentaTemporal();
-            dataGridCarritoSales.DataSource = proc.ListarCarrito();
-            precioLbl = 0.0f;
-            precioLblAux = 0.0f;
             label7.Text = "";
             label7.Text += "$ ";
-            label7.Text += totalLblFinal.ToString("N2");
+            label7.Text += "00.00";
+            txtQuantityDeleteSales.Text = "";
+            txtQuantitySales.Text = "";
+            txtNumberSales.Text = "";
+            txtNameSales.Text = "";
+            totalLblFinalAux = 0;
+            totalLblFinal = 0;
+            
+            dataGridCarritoSales.DataSource = proc.ListarCarrito();
+            //precioLbl = 0.0f;
+            //precioLblAux = 0.0f;
+            //label7.Text = "";
+            //label7.Text += "$ ";
+            //label7.Text += totalLblFinal.ToString("N2");
         }
         
         private void txtQuantitySales_KeyPress(object sender, KeyPressEventArgs e)
@@ -322,7 +332,7 @@ namespace Punto_de_Venta
                 dataGridCarritoSales.DataSource = proc.ListarCarrito();
 
                 float auxInt = float.Parse(txtQuantityDeleteSales.Text);
-                float cantidadEliminar = (float)auxInt;
+                float cantidadEliminar = (float)auxInt;  //checar el procedure miado 
                 float restar;
                 float.TryParse(PrecioAEliminar, out restar);
                 precioLblAux = (restar * cantidadEliminar);

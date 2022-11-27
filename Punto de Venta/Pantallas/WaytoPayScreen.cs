@@ -268,6 +268,7 @@ namespace Punto_de_Venta
                     float subtotal;
                     string precioUni;
                     float precioU;
+                    float precioUAux;
                     string CANTLLEVAR;
                     float cantLlevar;
                     string descuento;
@@ -278,6 +279,7 @@ namespace Punto_de_Venta
                       
                     if (fila.Cells["Descuento"].Value.ToString() == string.Empty)
                     {
+                        precioU = 0;
                         fila.Cells["Descuento"].Value = "0";
                         float.TryParse(precioUni, out precioU);
                         
@@ -286,14 +288,20 @@ namespace Punto_de_Venta
                     }
                     else
                     {
+                        float.TryParse(precioUni, out precioU);
                         
                         descuento = fila.Cells["Descuento"].Value.ToString();
                         float.TryParse(descuento, out desc);
-                        desc = desc / 100.00f;
-                        float.TryParse(precioUni, out precioU);
-                        precioU = precioU * desc;
+                        float restarAunitario = (precioU * desc) / 100;
+                        precioU = precioU - restarAunitario;
+                        
+                        //desc = desc / 100.00f;
+                        //precioUAux = precioU * desc;
+                        //float restarAunitario = 
+                        //precioU = precioU * desc;
                         subtotal = precioU * cantLlevar;
                         fila.Cells["Subtotal"].Value = subtotal;
+                        precioU = 0;
                     }
                     total = subtotal;
                     totalaux = total + totalaux;

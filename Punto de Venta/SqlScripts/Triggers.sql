@@ -13,6 +13,7 @@ end;
 go
 delete VentaTemporal
 select * from Producto
+select * from VentaTemporal
 create trigger tr_PuntoReOrden on Recibo
 for insert 
 as
