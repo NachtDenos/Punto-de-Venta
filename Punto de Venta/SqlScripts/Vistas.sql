@@ -113,7 +113,9 @@ join Departamento depa
 on vd.DepartamentoId = depa.idDepa
 join Producto P
 on P.idProduct = Vd.CodProducto
-
+join Departamento Dp
+on Dp.idDepa = Vd.DepartamentoId
+where Dp.devoluDepa = 'Si'
 go
 create view vwEmpleado
 as
@@ -122,3 +124,20 @@ U.claveUsuario [Clave de Usuario], U.contraU [Contraseña], C.CURP [CURP], C.emai
 C.fechaNaci [Fecha Nacimiento] from Cajero C
 join Usuario U
 ON C.idCajero = U.idUser
+
+--select * from Recibo
+--select * from VentaDetalle
+--select * from Caje_Pro
+
+
+----Hacerle group by a los productos hechos en el mismo dia
+--select Rb.noVenta [Num],Vd.CodProducto [Codigo], P.nombrePro [Producto],  Dp.nombreDep [Departamento], SUM(vd.UnidadesVendidas) [Se llevo], 
+--vd.totalVenta [Total] from VentaDetalle Vd
+--join Departamento Dp
+--on Dp.idDepa = Vd.DepartamentoId 
+--join Recibo Rb
+--on  rb.noVenta = Vd.noDeVenta
+--join Producto P
+--on P.idProduct =Vd.CodProducto
+--where Dp.devoluDepa = 'Si'
+--group by Rb.noVenta, Vd.CodProducto, p.nombrePro, dP.nombreDep, vd.totalVenta
