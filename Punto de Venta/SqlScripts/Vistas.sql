@@ -69,9 +69,7 @@ left join Descuento DS
 on VD.DescuentoId = DS.idDesc
 join Caje_Pro CP
 on Recibo.claveCajePro = CP.idCajePro
-group by DP.nombreDep, Recibo.fechaVenta, VD.CodProducto, VD.PrecioUnitario, VD.UnidadesVendidas, VD.Subtotal, DS.cantidad, VD.totalVenta, VD.Utilidad, CP.noCajaCP;
-
-
+group by DP.nombreDep, Recibo.fechaVenta, VD.CodProducto, VD.PrecioUnitario,  DS.cantidad,  CP.noCajaCP;
 
 go
 
@@ -101,7 +99,7 @@ join Caje_Pro CP
 on CP.idCajePro = Recibo.claveCajePro
 join Usuario U
 on CP.claveCajeroCP = U.idUser
-group by Recibo.fechaVenta, U.nombreU, DP.nombreDep, VD.UnidadesVendidas, VD.Subtotal, VD.Utilidad;
+group by Recibo.fechaVenta, U.nombreU, DP.nombreDep;
 
 go
 

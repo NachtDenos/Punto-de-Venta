@@ -285,7 +285,7 @@ namespace Punto_de_Venta
                 proc.EliminarCantidadProductoCarrito(NombreProductoEliminar, cantInt);
                 dataGridCarritoSales.DataSource = proc.ListarCarrito();
 
-                int auxInt = Int32.Parse(txtQuantityDeleteSales.Text);
+                float auxInt = float.Parse(txtQuantityDeleteSales.Text);
                 float cantidadEliminar = (float)auxInt;
                 float restar;
                 float.TryParse(PrecioAEliminar, out restar);
