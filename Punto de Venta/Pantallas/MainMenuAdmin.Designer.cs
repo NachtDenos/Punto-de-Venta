@@ -49,8 +49,7 @@ namespace Punto_de_Venta.Pantallas
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewReorder = new System.Windows.Forms.DataGridView();
-            this.productReorder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.existReorder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReorderProd = new System.Windows.Forms.Button();
             this.MainMenuVerti.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelChildForm.SuspendLayout();
@@ -314,6 +313,7 @@ namespace Punto_de_Venta.Pantallas
             // panelChildForm
             // 
             this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
+            this.panelChildForm.Controls.Add(this.btnReorderProd);
             this.panelChildForm.Controls.Add(this.label4);
             this.panelChildForm.Controls.Add(this.dataGridViewReorder);
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -340,9 +340,6 @@ namespace Punto_de_Venta.Pantallas
             this.dataGridViewReorder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewReorder.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewReorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewReorder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productReorder,
-            this.existReorder});
             this.dataGridViewReorder.GridColor = System.Drawing.SystemColors.ButtonShadow;
             this.dataGridViewReorder.Location = new System.Drawing.Point(106, 158);
             this.dataGridViewReorder.Name = "dataGridViewReorder";
@@ -351,17 +348,19 @@ namespace Punto_de_Venta.Pantallas
             this.dataGridViewReorder.Size = new System.Drawing.Size(754, 376);
             this.dataGridViewReorder.TabIndex = 0;
             // 
-            // productReorder
+            // btnReorderProd
             // 
-            this.productReorder.HeaderText = "Producto";
-            this.productReorder.Name = "productReorder";
-            this.productReorder.ReadOnly = true;
-            // 
-            // existReorder
-            // 
-            this.existReorder.HeaderText = "Existencia";
-            this.existReorder.Name = "existReorder";
-            this.existReorder.ReadOnly = true;
+            this.btnReorderProd.BackColor = System.Drawing.Color.Navy;
+            this.btnReorderProd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReorderProd.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReorderProd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnReorderProd.Location = new System.Drawing.Point(402, 569);
+            this.btnReorderProd.Name = "btnReorderProd";
+            this.btnReorderProd.Size = new System.Drawing.Size(127, 43);
+            this.btnReorderProd.TabIndex = 108;
+            this.btnReorderProd.Text = "Reordenar";
+            this.btnReorderProd.UseVisualStyleBackColor = false;
+            this.btnReorderProd.Click += new System.EventHandler(this.btnReorderProd_Click);
             // 
             // MainMenuAdmin
             // 
@@ -406,7 +405,6 @@ namespace Punto_de_Venta.Pantallas
         private System.Windows.Forms.Button buttonInventary;
         private System.Windows.Forms.Button buttonDiscounts;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productReorder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn existReorder;
+        private System.Windows.Forms.Button btnReorderProd;
     }
 }

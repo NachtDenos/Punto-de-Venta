@@ -1416,6 +1416,32 @@ namespace Punto_de_Venta
             return true;
         }
 
+        public bool checarFechasDescuento(int idProd, DateTime fechaAct)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("fechaDescuentoFalse", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idPro", idProd);
+                cmd.Parameters.AddWithValue("@fechaAc", fechaAct);
+
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+        }
+
         public bool GenerarVenta(DateTime fecha1, int NumCaja, float MontoPago, float Total,
             string NombreCajero, int CajeroId)
         {
@@ -1746,6 +1772,40 @@ namespace Punto_de_Venta
             comando.Parameters.Clear();
             conexion.CerrarConexion();
             return tabla;
+        }
+
+        public DataTable listarPuntoReorden()
+        {
+            DataTable grid = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "reportePuntoDeReorden";
+            comando.CommandType = CommandType.StoredProcedure;
+            leerFilas = comando.ExecuteReader();
+            grid.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return grid;
+        }
+
+        public bool reordenarProductos()
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("puntoReordenLlenar", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
         }
 
     }

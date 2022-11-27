@@ -915,3 +915,45 @@ as
 Begin
 update Producto set uniVendida = @CantVendida where nombrePro = @NombreProd
 end;
+
+go
+
+create procedure fechaDescuentoFalse
+(@idPro int, @fechaAc date)
+as
+Begin 
+declare @fecha1 date
+set @fecha1 = (Select DEF.fechaIni from Producto P
+join Descuento D
+on D.idDesc = P.idDesc
+join descFecha DEF
+on D.claveFechaD = DEF.idFechaDesc
+where P.idProduct = @idPro)
+declare @fecha2 date
+set @fecha2 = (Select DEF.fechaFin from Producto P
+join Descuento D
+on D.idDesc = P.idDesc
+join descFecha DEF
+on D.claveFechaD = DEF.idFechaDesc
+where P.idProduct = @idPro)
+Update Producto set idDesc = null where @fechaAc < @fecha1 or @fecha2 < @fechaAc
+end;
+
+go
+
+create procedure puntoReordenLlenar
+as
+Begin
+update Producto
+set existencia = (CASE When ((existencia < ptReorden)) or ((existencia < 0)) then existencia + 100 else (existencia + 100) end)
+end;
+
+go
+
+create procedure reportePuntoDeReorden
+as
+Begin
+select Producto.nombrePro [Producto], Producto.existencia [Existencia], Producto.ptReorden [Punto de Reorden] from Producto
+where Producto.existencia <= Producto.ptReorden
+end;
+
