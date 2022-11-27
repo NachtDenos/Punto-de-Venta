@@ -678,6 +678,18 @@ end;
 
 go
 
+create procedure obtenerNota
+(@filtroNum int)
+as
+Begin
+Select NC.noCredit [ID], DV.NombreProd [Producto], DV.devCant [Cantidad], 
+DV.subtotalDev [Subtotal], NC.fechaNota [Fecha] from NotaCred NC
+join devolucion DV
+on NC.noCredit = DV.noCredDev
+end;
+
+go
+
 create procedure consultaTicketFechaCaja
 (@fCaja int, @fFecha date)
 as

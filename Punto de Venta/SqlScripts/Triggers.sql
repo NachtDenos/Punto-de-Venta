@@ -47,3 +47,9 @@ end;
 --update Producto set merma = merma + @Merma, existencia = existencia + @Cant where idProduct = @Id
 --end;
 
+create trigger tr_activoEnCero on Recibo
+for insert
+as
+Begin
+update Producto set activo = 'Inactivo' where Producto.existencia = 0
+end;
