@@ -941,3 +941,19 @@ end;
 
 go
 
+create procedure puntoReordenLlenar
+as
+Begin
+update Producto
+set existencia = (CASE When ((existencia < ptReorden)) or ((existencia < 0)) then existencia + 100 else (existencia + 100) end)
+end;
+
+go
+
+create procedure reportePuntoDeReorden
+as
+Begin
+select Producto.nombrePro [Producto], Producto.existencia [Existencia], Producto.ptReorden [Punto de Reorden] from Producto
+where Producto.existencia <= Producto.ptReorden
+end;
+

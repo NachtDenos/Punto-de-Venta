@@ -1774,5 +1774,39 @@ namespace Punto_de_Venta
             return tabla;
         }
 
+        public DataTable listarPuntoReorden()
+        {
+            DataTable grid = new DataTable();
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "reportePuntoDeReorden";
+            comando.CommandType = CommandType.StoredProcedure;
+            leerFilas = comando.ExecuteReader();
+            grid.Load(leerFilas);
+            leerFilas.Close();
+            conexion.CerrarConexion();
+            return grid;
+        }
+
+        public bool reordenarProductos()
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+                SqlCommand cmd = new SqlCommand("puntoReordenLlenar", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                return false;
+            }
+            return true;
+        }
+
     }
 }

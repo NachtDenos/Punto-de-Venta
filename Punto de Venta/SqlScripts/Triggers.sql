@@ -11,9 +11,7 @@ update Producto set idDesc = null where @ID = idDesc
 end;
 
 go
-delete VentaTemporal
-select * from Producto
-select * from VentaTemporal
+
 create trigger tr_PuntoReOrden on Recibo
 for insert 
 as
@@ -27,8 +25,9 @@ END
 )
 	
 end;
+
 go
---Jalo una vez ahorita le doy mas pruebas, pero quita el comentario o comenta la linea donde lo aumentamos de manera manual en c#
+
 create trigger tr_AumentarCantVendida on VentaDetalle
 for insert 
 as

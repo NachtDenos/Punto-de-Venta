@@ -12,9 +12,11 @@ namespace Punto_de_Venta.Pantallas
 {
     public partial class MainMenuAdmin : Form
     {
+        Procedures proc = new Procedures();
         public MainMenuAdmin()
         {
             InitializeComponent();
+            dataGridViewReorder.DataSource = proc.listarPuntoReorden();
             //dataGridViewReorder.Rows[0].Cells[0].Value = "Ciel 1L";
             //dataGridViewReorder.Rows[0].Cells[1].Value = "25";
         }
@@ -94,6 +96,16 @@ namespace Punto_de_Venta.Pantallas
         private void buttonSignOff_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnReorderProd_Click(object sender, EventArgs e)
+        {
+            var reorder = proc.reordenarProductos();
+            if (reorder)
+                MessageBox.Show("Productos reordenados", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("No se pudieron reordenar los productos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            dataGridViewReorder.DataSource = proc.listarPuntoReorden();
         }
     }
 }
