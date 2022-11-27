@@ -12,7 +12,7 @@ end;
 
 go
 
-
+--verificar si se peude volver loco, si no todo piola
 create trigger tr_PuntoReOrden on Recibo
 for insert 
 as
@@ -26,8 +26,16 @@ END
 )
 	
 end;
+go
+--Jalo una vez ahorita le doy mas pruebas, pero quita el comentario o comenta la linea donde lo aumentamos de manera manual en c#
+create trigger tr_AumentarCantVendida on VentaDetalle
+for insert 
+as
+Begin
+update Producto set uniVendida = uniVendida + inserted.UnidadesVendidas from inserted join Producto P
+on P.idProduct = inserted.CodProducto
 
-
+end;
 --drop trigger tr_Actualizarcant on devolucion
 --instead of insert
 --as
