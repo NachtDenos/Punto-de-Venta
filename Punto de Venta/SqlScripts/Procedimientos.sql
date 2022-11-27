@@ -439,7 +439,7 @@ go
 create proc productosVenta
 as
 Begin
-select [Codigo], [Nombre Producto], [Stock] from vwInventary where [Activo] = 'Activo' and [Stock] > 0 
+select [Codigo], [Nombre Producto], [Precio Unitario] from vwInventary where [Activo] = 'Activo' and [Stock] > 0 
 end;
 
 go

@@ -34,6 +34,18 @@ namespace Punto_de_Venta
         float precioLbl = 0.0f;
         float precioLblAux = 0.0f;
         float UltimoPrecio;
+
+        string AllevarFinal;
+        
+        float precioTotallbl;
+        string precioUnitGridProduct;
+        float totalLblFinal;
+        float totalLblFinalAux;
+
+        float AllevarflotanteGrid;
+        float allevarCantActualizadaCarrito;
+
+        string precioUnitarioCarrito;
         public SalesScreen()
         {
             InitializeComponent();
@@ -109,7 +121,7 @@ namespace Punto_de_Venta
                 return;
             }
 
-            WaytoPayScreen TheOtherForm = new WaytoPayScreen(precioLbl.ToString(), label7.Text.ToString(), fecha, laCaja, nombreCajeroAux, cajeroIdAux);
+            WaytoPayScreen TheOtherForm = new WaytoPayScreen(totalLblFinal.ToString(), label7.Text.ToString(), fecha, laCaja, nombreCajeroAux, cajeroIdAux);
             TheOtherForm.ShowDialog();
 
             var limpia = proc.limpiarVentaTemporal();
@@ -118,7 +130,7 @@ namespace Punto_de_Venta
             precioLblAux = 0.0f;
             label7.Text = "";
             label7.Text += "$ ";
-            label7.Text += precioLbl.ToString("N2");
+            label7.Text += totalLblFinal.ToString("N2");
         }
         
         private void txtQuantitySales_KeyPress(object sender, KeyPressEventArgs e)
@@ -207,10 +219,21 @@ namespace Punto_de_Venta
                     precioLbl = (agregar * cantidadNueva);
                     precioLblAux = precioLbl + precioLblAux;
                     precioLbl = precioLblAux;
+
+                    string cantLlevar;
+                    float cantallevarenflotante;
+                    cantLlevar = txtQuantitySales.Text;
+                    float.TryParse(cantLlevar, out cantallevarenflotante);
+
+                    float precioParseado;
+                    float.TryParse(precioUnitGridProduct, out precioParseado);
+                    totalLblFinalAux = precioParseado * cantallevarenflotante;
+                    totalLblFinal = totalLblFinalAux + totalLblFinal;
                     label7.Text = "";
                     label7.Text += "$ ";
-                    label7.Text += precioLbl.ToString("N2");
+                    label7.Text += totalLblFinal.ToString("N2");
                     //UltimoPrecio = precioLbl;
+                    txtQuantitySales.Text = "";
                 }
                
             }
@@ -219,13 +242,21 @@ namespace Punto_de_Venta
                     var InsertData = proc.AgregarCarrito(CodProd, NombreProducto, Caja, unaFecha, catnAllevarFinal);
                 if (InsertData)
                 {
+                    string cantLlevar;
+                    float cantallevarenflotante;
+                    cantLlevar = txtQuantitySales.Text;
+                    float.TryParse(cantLlevar, out cantallevarenflotante);
                     dataGridCarritoSales.DataSource = proc.ListarCarrito();
                     label7.Text = "";
                     label7.Text += "$ ";
                     // precioLbl = precioLbl + UltimoPrecio;
+                    float precioParseado;
+                    float.TryParse(precioUnitGridProduct, out precioParseado);
+                    totalLblFinalAux = precioParseado * cantallevarenflotante;
+                    totalLblFinal = totalLblFinalAux + totalLblFinal;
                     precioLblAux = precioLbl + precioLblAux;
                     precioLbl = precioLblAux;
-                    label7.Text += precioLbl.ToString("N2");    /*precioLbl.ToString().;*/
+                    label7.Text += totalLblFinal.ToString("N2");    /*precioLbl.ToString().;*/
                     
                 }
                 else
@@ -263,16 +294,21 @@ namespace Punto_de_Venta
                 dataGridCarritoSales.DataSource = proc.ListarCarrito();
 
                 float auxInt = float.Parse(txtQuantityDeleteSales.Text);
-                float cantidadEliminar = (float)auxInt;
+                precioLbl = 0;
+                //ver si puedo usar el datagrid click para obtener la cant y precio
+                float auxInt2 = float.Parse(txtQuantityDeleteSales.Text);
+                float cantidadEliminar = (float)auxInt2;
                 float restar;
                 float.TryParse(PrecioAEliminar, out restar);
-                precioLbl = (restar * cantidadEliminar);
+                precioLblAux = (restar * cantidadEliminar);
                 precioLblAux = precioLblAux - precioLbl;
                 precioLbl = precioLblAux;
+                totalLblFinal = totalLblFinal - precioLbl;
+                precioLbl = 0;
 
                 label7.Text = "";
                 label7.Text += "$ ";
-                label7.Text += precioLbl.ToString("N2");
+                label7.Text += totalLblFinal.ToString("N2");
                 btnDeleteSales.Enabled = false;
                 txtQuantityDeleteSales.Enabled = false;
                 txtQuantityDeleteSales.Text = "";
@@ -289,13 +325,33 @@ namespace Punto_de_Venta
                 float cantidadEliminar = (float)auxInt;
                 float restar;
                 float.TryParse(PrecioAEliminar, out restar);
-                precioLbl = (restar * cantidadEliminar);
+                precioLblAux = (restar * cantidadEliminar);
                 precioLblAux = precioLblAux - precioLbl;
                 precioLbl = precioLblAux;
+                totalLblFinal = totalLblFinal - precioLbl;
+                precioLbl = 0;
+                //float precioTotalLblAux;
+                //float auxPrecioTotal;
+                //float Allevarflotante;
+                //float laUprecio;
+                //string textTextboxeliminar;
+                //textTextboxeliminar = txtQuantityDeleteSales.Text;
+                //float temp;
+                //float.TryParse(textTextboxeliminar, out temp);
+
+                ////voy por platano
+                //float.TryParse(AllevarFinal, out Allevarflotante);
+                //float.TryParse(precioUnitarioCarrito, out laUprecio);
+                //allevarCantActualizadaCarrito = AllevarflotanteGrid - temp;
+                //precioTotalLblAux = laUprecio * allevarCantActualizadaCarrito;
+                //auxPrecioTotal = precioTotalLblAux + precioTotallbl;
+                //auxPrecioTotal = totalLblFinal - auxPrecioTotal;
+                ////Ocupamos otro aux
+                //totalLblFinal = totalLblFinal - auxPrecioTotal;
 
                 label7.Text = "";
                 label7.Text += "$ ";
-                label7.Text += precioLbl.ToString("N2");
+                label7.Text += totalLblFinal.ToString("N2");
             }
             btnDeleteSales.Enabled = false;
             txtQuantityDeleteSales.Enabled = false;
@@ -328,6 +384,7 @@ namespace Punto_de_Venta
                     instancia.NombreProd = dataGridProductSales.Rows[e.RowIndex].Cells["Nombre Producto"].Value.ToString();
                     NombreProducto = instancia.NombreProd;
                     instancia.CodProducto = dataGridProductSales.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+                    precioUnitGridProduct = dataGridProductSales.Rows[e.RowIndex].Cells["Precio Unitario"].Value.ToString();
                     int codigo;
                     Int32.TryParse(instancia.CodProducto, out codigo);
                     CodProd = codigo;
@@ -380,11 +437,18 @@ namespace Punto_de_Venta
                     //txtQuantitySales.Enabled = true;
                     //VentasTemp instancia = new VentasTemp();
                     aLllevar = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
+                    AllevarFinal = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
+                    string textoenTextBox;
+                    float temp;
+                    float.TryParse(AllevarFinal, out AllevarflotanteGrid);
+
+                   
 
                     float.TryParse(aLllevar, out cantCarritoEliminar);
 
                     NombreProductoEliminar = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
                     PrecioAEliminar = dataGridCarritoSales.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
+                    precioUnitarioCarrito = dataGridCarritoSales.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
 
                     float.TryParse(Precio, out PrecioInicial);
                     btnDeleteSales.Enabled = true;
@@ -404,19 +468,22 @@ namespace Punto_de_Venta
             
         }
 
-        private void dataGridCarritoSales_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            string aLllevar2;
-            aLllevar2 = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
-            NombreProducto = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
-            Precio = dataGridCarritoSales.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
-            float.TryParse(aLllevar2, out catnAllevarFinal);
-            float cantFinalDec = (float)catnAllevarFinal;
-           // float.TryParse(catnAllevarFinal, out cantFinalDec);
-            float.TryParse(Precio, out PrecioInicial);
-            precioLbl = (PrecioInicial * cantFinalDec);
-            UltimoPrecio = precioLbl;
-        }
+        //private void dataGridCarritoSales_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        //{
+        //    string aLllevar2;
+        //    aLllevar2 = dataGridCarritoSales.Rows[e.RowIndex].Cells["A llevar"].Value.ToString();
+        //    NombreProducto = dataGridCarritoSales.Rows[e.RowIndex].Cells["Producto"].Value.ToString();
+        //    Precio = dataGridCarritoSales.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
+        //    float.TryParse(aLllevar2, out catnAllevarFinal);
+        //    float cantFinalDec = (float)catnAllevarFinal;
+        //   // float.TryParse(catnAllevarFinal, out cantFinalDec);
+        //    float.TryParse(Precio, out PrecioInicial);
+        //    precioLbl = (PrecioInicial * cantFinalDec);
+        //    UltimoPrecio = precioLbl;
+        //    aLllevar2 = "";
+        //    NombreProducto = "";
+        //    Precio = "";
+        //}
 
         private void onePoint(KeyPressEventArgs e, String cadena)
         {

@@ -11,8 +11,8 @@ update Producto set idDesc = null where @ID = idDesc
 end;
 
 go
-
---verificar si se peude volver loco, si no todo piola
+delete VentaTemporal
+select * from Producto
 create trigger tr_PuntoReOrden on Recibo
 for insert 
 as
