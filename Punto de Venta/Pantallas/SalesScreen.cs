@@ -267,12 +267,29 @@ namespace Punto_de_Venta
                     precioLblAux = precioLbl + precioLblAux;
                     precioLbl = precioLblAux;
                     label7.Text += totalLblFinal.ToString("N2");    /*precioLbl.ToString().;*/
-                    
+
+                    foreach (DataGridViewRow fila in dataGridCarritoSales.Rows)
+                    {
+                        if (fila.Cells["Porcentaje Descuento"].Value.ToString() == string.Empty)
+                        {
+                            
+                        }
+                        else
+                        {
+                            string codigoStr = fila.Cells["Codigo"].Value.ToString();
+                            int codigoAct = Int32.Parse(codigoStr);
+                            DateTime fechaAct = DateTime.Parse(fecha); 
+                            var fechasValidas = proc.checarFechasDescuento(codigoAct, fechaAct);
+                        }
+                    }
+                    dataGridCarritoSales.DataSource = proc.ListarCarrito();
+
                 }
                 else
                     MessageBox.Show("Ocurrio un error al momento de agregar al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 txtQuantitySales.Text = "";
+                dataGridCarritoSales.DataSource = proc.ListarCarrito();
             }
            
         }

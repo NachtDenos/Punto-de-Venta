@@ -1416,6 +1416,32 @@ namespace Punto_de_Venta
             return true;
         }
 
+        public bool checarFechasDescuento(int idProd, DateTime fechaAct)
+        {
+            ConexionSqlServer conn = new ConexionSqlServer();
+            SqlConnection conectado = new SqlConnection();
+            try
+            {
+                conectado = conn.AbrirConexion();
+
+                SqlCommand cmd = new SqlCommand("fechaDescuentoFalse", conectado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idPro", idProd);
+                cmd.Parameters.AddWithValue("@fechaAc", fechaAct);
+
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.CerrarConexion();
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            return true;
+        }
+
         public bool GenerarVenta(DateTime fecha1, int NumCaja, float MontoPago, float Total,
             string NombreCajero, int CajeroId)
         {

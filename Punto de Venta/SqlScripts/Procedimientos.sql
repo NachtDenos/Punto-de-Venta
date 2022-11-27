@@ -915,3 +915,29 @@ as
 Begin
 update Producto set uniVendida = @CantVendida where nombrePro = @NombreProd
 end;
+
+go
+
+create procedure fechaDescuentoFalse
+(@idPro int, @fechaAc date)
+as
+Begin 
+declare @fecha1 date
+set @fecha1 = (Select DEF.fechaIni from Producto P
+join Descuento D
+on D.idDesc = P.idDesc
+join descFecha DEF
+on D.claveFechaD = DEF.idFechaDesc
+where P.idProduct = @idPro)
+declare @fecha2 date
+set @fecha2 = (Select DEF.fechaFin from Producto P
+join Descuento D
+on D.idDesc = P.idDesc
+join descFecha DEF
+on D.claveFechaD = DEF.idFechaDesc
+where P.idProduct = @idPro)
+Update Producto set idDesc = null where @fechaAc < @fecha1 or @fecha2 < @fechaAc
+end;
+
+go
+
