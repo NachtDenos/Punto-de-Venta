@@ -422,7 +422,7 @@ namespace Punto_de_Venta
                 }
                 proc.GenerarVentaDetalle(0,NombreProducto,UnidadesVendidas, subFlot, PrecioUni , totalVenta, Utilidad * UnidadesVendidas);
                 proc.RestarStockVenta(NombreProducto, UnidadesVendidas);
-                proc.aumentarCantVendida(NombreProducto, UnidadesVendidas);
+               // proc.aumentarCantVendida(NombreProducto, UnidadesVendidas);
                 //proc.RealizarVentas(total, NombreProducto, fechaa, subFlot, montodePago
                 //    , MontoFinal, metPago, 0, NumCaja, Persona, UnidadesVendidas, PrecioUni, 105.5f);
             }
