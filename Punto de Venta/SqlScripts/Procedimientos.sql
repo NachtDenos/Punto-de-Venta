@@ -733,11 +733,12 @@ end;
 go
 
 create procedure obtenerMetodosPagoVenta
-(@idVenta int, @idMetod int)
+(@idVentaNUM int, @idMetod int)
 as
 Begin
-select ticket.montoPago from ticket where @idVenta = ticket.noVentaTic and @idMetod = ticket.clavePagoTic
+select ticket.montoPago from ticket where @idVentaNUM = ticket.noVentaTic and @idMetod = ticket.clavePagoTic
 end;
+
 
 go
 
