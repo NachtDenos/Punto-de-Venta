@@ -23,6 +23,8 @@ namespace Punto_de_Venta
         int CodProducto;
         int Aeliminar;
         int Seregreso;
+        bool Bandera;
+        bool bandera; 
         DateTime laFecha;
         string motivo;
         string NombreProduc;
@@ -120,7 +122,7 @@ namespace Punto_de_Venta
 
         private void txtQuantityReturn_KeyPress(object sender, KeyPressEventArgs e)
         {
-            onlyNumbers(sender, e);
+            onePoint(e, txtCantidadBorrar.Text);
         }
 
         private void dataGridReturn1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -204,8 +206,8 @@ namespace Punto_de_Venta
                 MessageBox.Show("Faltan campos por llenar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int dev;
-            Int32.TryParse(devuelve, out dev);
+            float dev;
+            float.TryParse(devuelve, out dev);
             DateTime Fecha;
             DateTime.TryParse(fecha, out Fecha);
             laFecha = Fecha;
@@ -288,8 +290,8 @@ namespace Punto_de_Venta
         {
             string elimina;
             elimina = txtCantidadBorrar.Text;
-            int elim;
-            Int32.TryParse(elimina, out elim);
+            float elim;
+            float.TryParse(elimina, out elim);
             proc.EliminarProductoDevolucion(CodProducto, elim);
             dataGridReturn2.DataSource = proc.TablaDevTemporal();
         }
@@ -410,5 +412,47 @@ namespace Punto_de_Venta
 
             MessageBox.Show("Se imprimio la Nota de Credito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void onePoint(KeyPressEventArgs e, String cadena)
+        {
+            int cont = 0;
+            String caracter = "";
+            for (int i = 0; i < cadena.Length; i++)
+            {
+                caracter = cadena.Substring(i, 1);
+                if (caracter == ".")
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                bandera = true;
+                if (e.KeyChar.ToString().Equals(".") && bandera)
+                {
+                    bandera = false;
+                    e.Handled = false;
+                }
+                else if (Char.IsDigit(e.KeyChar))
+                    e.Handled = false;
+                else if (Char.IsControl(e.KeyChar))
+                    e.Handled = false;
+                else
+                    e.Handled = true;
+            }
+            else
+            {
+                bandera = false;
+                e.Handled = true;
+                if (Char.IsDigit(e.KeyChar))
+                    e.Handled = false;
+                else if (Char.IsControl(e.KeyChar))
+                    e.Handled = false;
+                else
+                    e.Handled = true;
+            }
+        }
+
+
     }
 }

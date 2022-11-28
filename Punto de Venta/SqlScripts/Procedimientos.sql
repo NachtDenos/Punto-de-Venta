@@ -551,7 +551,7 @@ go
 
 create procedure EliminarProductoDevolucion
 (@Codigo varchar(30),
-@Cant int)
+@Cant decimal(10,2))
 as
 begin
 Update DevolucionTemporal set cantDevuelta = cantDevuelta - @Cant where CodProd = @Codigo
@@ -784,9 +784,9 @@ create proc InsertarDevTemporalMerma
 @NumRecibo int,
 @Fecha date,
 @NombreProd varchar(50),
-@cantDevuelta int,
+@cantDevuelta decimal(10,2),
 @subtotal decimal(10,2),
-@Merma int)
+@Merma decimal(10,2))
 as
 Begin
 Insert into DevolucionTemporal(numeroRecibo, Fecha, CodProd,

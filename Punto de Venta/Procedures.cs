@@ -1025,7 +1025,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool InsertarDevTemporalMerma(int codProd, int NumRecibo, DateTime fecha, int cantDevuelta, float subTotal, int merma, string NombreProd)
+        public bool InsertarDevTemporalMerma(int codProd, int NumRecibo, DateTime fecha, float cantDevuelta, float subTotal, float merma, string NombreProd)
         {
             try
             {
@@ -1058,7 +1058,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool InsertarDevTemporalSinMerma(int codProd, int NumRecibo, DateTime fecha, int cantDevuelta, float subTotal, string NombreProd)
+        public bool InsertarDevTemporalSinMerma(int codProd, int NumRecibo, DateTime fecha, float cantDevuelta, float subTotal, string NombreProd)
         {
             try
             {
@@ -1255,7 +1255,7 @@ namespace Punto_de_Venta
 
         }
         //FALTA IMPLEMENTAR
-        public bool EliminarProductoDevolucion(int codProd, int CantidadEliminar)
+        public bool EliminarProductoDevolucion(int codProd, float CantidadEliminar)
         {
             try
             {

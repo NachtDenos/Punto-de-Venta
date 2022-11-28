@@ -128,7 +128,7 @@ ON C.idCajero = U.idUser
 --select * from Recibo
 --select * from VentaDetalle
 --select * from Caje_Pro
-
+-- min 36 video resumen
 
 ----Hacerle group by a los productos hechos en el mismo dia
 --select Rb.noVenta [Num],Vd.CodProducto [Codigo], P.nombrePro [Producto],  Dp.nombreDep [Departamento], SUM(vd.UnidadesVendidas) [Se llevo], 

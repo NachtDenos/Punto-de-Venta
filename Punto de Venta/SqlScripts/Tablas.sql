@@ -418,8 +418,8 @@ create table DevolucionTemporal
   Fecha date not null,
   NombreProd varchar(50) null,
   CodProd int not null,
-  cantDevuelta int not null,
+  cantDevuelta decimal(10,2) not null,
   subTotalDevuelto decimal(10,2) not null,
   Motivo varchar(300) null,
-  merma int null
+  merma decimal(10,2) null
 );
