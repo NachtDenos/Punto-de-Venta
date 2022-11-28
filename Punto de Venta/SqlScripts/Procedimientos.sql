@@ -684,7 +684,7 @@ create procedure obtenerTicket
 as
 Begin
 select [Num], [Fecha], [Codigo], [Producto], [Subtotal],
-[Se llevo]from vwTicketsPorNum where @filtroNum = [Num]
+[Se llevo], [Precio Unitario], [Descuento] from vwTicketsPorNum where @filtroNum = [Num]
 end;
 
 go
@@ -728,6 +728,15 @@ Begin
 declare @buscaID int = 0;
 set @buscaID = IDENT_CURRENT('Recibo')
 select noVenta from Recibo where noVenta = @buscaID
+end;
+
+go
+
+create procedure obtenerMetodosPagoVenta
+(@idVenta int, @idMetod int)
+as
+Begin
+select ticket.montoPago from ticket where @idVenta = ticket.noVentaTic and @idMetod = ticket.clavePagoTic
 end;
 
 go
@@ -989,9 +998,10 @@ create procedure puntoReordenLlenar
 as
 Begin
 update Producto
-set existencia = (CASE When ((existencia < ptReorden)) or ((existencia < 0)) then existencia + 100 else (existencia + 100) end)
+set existencia = (CASE When ((existencia < ptReorden)) or ((existencia < 0)) then existencia + 100 else (existencia + 100) end) 
+where Producto.existencia <= Producto.ptReorden
 end;
-
+drop proc puntoReordenLlenar
 go
 
 create procedure reportePuntoDeReorden

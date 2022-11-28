@@ -42,20 +42,6 @@ SELECT Descuento.idDesc [Id Descuento], descFecha.fechaIni [Inicia], descFecha.f
 
 go
 
---create view vwVenta
---as
---Select Recibo.fechaVenta [Fecha de Venta], DP.nombreDep [Departamento], VD.CodProducto [Codigo del Articulo], VD.PrecioUnitario [Precio Unitario],
---VD.UnidadesVendidas [Unidades Vendidas], VD.Subtotal [Subtotal], DS.cantidad [Descuento],
---VD.totalVenta [Venta], VD.Utilidad [Utilidad], CP.noCajaCP [Caja] from Recibo
---join VentaDetalle VD
---on Recibo.noVenta = VD.noDeVenta
---join Departamento DP
---on VD.DepartamentoId = DP.idDepa
---left join Descuento DS
---on VD.DescuentoId = DS.idDesc
---join Caje_Pro CP
---on Recibo.claveCajePro = CP.idCajePro
-
 create view vwVenta
 as
 Select Recibo.fechaVenta [Fecha de Venta], DP.nombreDep [Departamento], VD.CodProducto [Codigo del Articulo], VD.PrecioUnitario [Precio Unitario],
@@ -72,19 +58,6 @@ on Recibo.claveCajePro = CP.idCajePro
 group by DP.nombreDep, Recibo.fechaVenta, VD.CodProducto, VD.PrecioUnitario,  DS.cantidad,  CP.noCajaCP;
 
 go
-
---create view vwCajero
---as
---Select Recibo.fechaVenta [Fecha de Venta], U.nombreU [Cajero], DP.nombreDep [Departamento],
---VD.UnidadesVendidas [Unidades Vendidas], VD.Subtotal [Suma Venta], VD.Utilidad [Utilidad] from Recibo
---join VentaDetalle VD
---on Recibo.noVenta = VD.noDeVenta
---join Departamento DP
---on VD.DepartamentoId = DP.idDepa
---join Caje_Pro CP
---on CP.idCajePro = Recibo.claveCajePro
---join Usuario U
---on CP.claveCajeroCP = U.idUser
 
 
 create view vwCajero
@@ -106,7 +79,7 @@ go
 create view vwTicketsPorNum
 as
 Select Recibo.noVenta [Num],Recibo.fechaVenta [Fecha], Recibo.MontoPago [Monto Pago], Recibo.total [Total], Vd.CodProducto [Codigo], Vd.PrecioUnitario [Precio Unitario],
-Vd.Subtotal [Subtotal], Vd.UnidadesVendidas [Se llevo], depa.nombreDep [Departamento], vd.Utilidad [Utilidad], P.nombrePro [Producto] from Recibo
+Vd.Subtotal [Subtotal], Vd.UnidadesVendidas [Se llevo], depa.nombreDep [Departamento], vd.Utilidad [Utilidad], P.nombrePro [Producto], DS.cantidad [Descuento] from Recibo
 JOIN VentaDetalle Vd
 on Recibo.noVenta = vd.noDeVenta
 join Departamento depa
@@ -115,6 +88,8 @@ join Producto P
 on P.idProduct = Vd.CodProducto
 join Departamento Dp
 on Dp.idDepa = Vd.DepartamentoId
+left join Descuento DS
+on DS.idDesc = VD.DescuentoId
 where Dp.devoluDepa = 'Si'
 go
 create view vwEmpleado
@@ -124,20 +99,3 @@ U.claveUsuario [Clave de Usuario], U.contraU [Contraseña], C.CURP [CURP], C.emai
 C.fechaNaci [Fecha Nacimiento] from Cajero C
 join Usuario U
 ON C.idCajero = U.idUser
-
---select * from Recibo
---select * from VentaDetalle
---select * from Caje_Pro
--- min 36 video resumen
-
-----Hacerle group by a los productos hechos en el mismo dia
---select Rb.noVenta [Num],Vd.CodProducto [Codigo], P.nombrePro [Producto],  Dp.nombreDep [Departamento], SUM(vd.UnidadesVendidas) [Se llevo], 
---vd.totalVenta [Total] from VentaDetalle Vd
---join Departamento Dp
---on Dp.idDepa = Vd.DepartamentoId 
---join Recibo Rb
---on  rb.noVenta = Vd.noDeVenta
---join Producto P
---on P.idProduct =Vd.CodProducto
---where Dp.devoluDepa = 'Si'
---group by Rb.noVenta, Vd.CodProducto, p.nombrePro, dP.nombreDep, vd.totalVenta
