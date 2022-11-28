@@ -560,6 +560,17 @@ end;
 
 go
 
+create procedure EliminarProductoDevolucionMerma
+(@Codigo varchar(30),
+@Cant decimal(10,2))
+as
+begin
+Update DevolucionTemporal set merma = merma - @Cant where CodProd = @Codigo
+delete DevolucionTemporal where merma = 0 and cantDevuelta = 0 and CodProd = @Codigo 
+end;
+
+go
+
 create procedure InsertarParaPagar
 as
 Begin  
@@ -814,7 +825,7 @@ create proc InsertarDevTemporalSinMerma
 @NumRecibo int,
 @Fecha date,
 @NombreProd varchar(50),
-@cantDevuelta int,
+@cantDevuelta decimal(10,2),
 @subtotal decimal(10,2))
 as
 Begin
@@ -825,6 +836,26 @@ end;
 
 go
 
+create proc ActualizarDevTemporalSinMerma
+(@CodigoProd int,
+@Cantidad decimal(10,2))
+as
+Begin
+update DevolucionTemporal set cantDevuelta = cantDevuelta + @Cantidad where CodProd = @CodigoProd
+end;
+
+go
+
+create proc ActualizarDevTemporalMerma
+(@CodigoProd int,
+@Cantidad decimal(10,2))
+as
+Begin
+update DevolucionTemporal set cantDevuelta = cantDevuelta + @Cantidad, merma = merma + @Cantidad where CodProd = @CodigoProd
+end;
+
+
+go
 create proc BorrarGridDevolucion
 as
 BEGIN
@@ -969,4 +1000,3 @@ Begin
 select Producto.nombrePro [Producto], Producto.existencia [Existencia], Producto.ptReorden [Punto de Reorden] from Producto
 where Producto.existencia <= Producto.ptReorden
 end;
-

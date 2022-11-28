@@ -1058,6 +1058,57 @@ namespace Punto_de_Venta
 
         }
 
+
+        public bool ActualizarDevolucionTemporalMerma(int codProd, float cantidad)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "ActualizarDevTemporalMerma"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@CodigoProd", codProd);
+                comando.Parameters.AddWithValue("@Cantidad", cantidad);
+                
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+            
+
+        }
+
+        public bool ActualizarDevolucionTemporalSinMerma(int codProd, float cantidad)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "ActualizarDevTemporalSinMerma"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@CodigoProd", codProd);
+                comando.Parameters.AddWithValue("@Cantidad", cantidad);
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+        }
+
         public bool InsertarDevTemporalSinMerma(int codProd, int NumRecibo, DateTime fecha, float cantDevuelta, float subTotal, string NombreProd)
         {
             try
@@ -1279,7 +1330,35 @@ namespace Punto_de_Venta
                 MessageBox.Show(error.ToString());
                 return false;
             }
-            return true;
+           
+
+        }
+
+        public bool EliminarProductoDevolucionMerma(int codProd, float CantidadEliminar)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "EliminarProductoDevolucionMerma"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@Codigo", codProd);
+                comando.Parameters.AddWithValue("@Cant", CantidadEliminar);
+
+
+
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                conexion.CerrarConexion();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                return false;
+            }
+
 
         }
 
