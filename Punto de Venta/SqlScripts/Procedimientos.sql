@@ -818,8 +818,10 @@ go
 create proc TablaDevolucionTemp
 as
 Begin
-select idDevTemp[ID], numeroRecibo [Recibo], Fecha [Fecha],
-CodProd [Codigo], NombreProd [Producto], cantDevuelta [Devuelve], subTotalDevuelto [Subtotal], merma [Merma] from DevolucionTemporal
+select idDevTemp[ID], Dt.numeroRecibo [Recibo], Dt.Fecha [Fecha],
+Dt.CodProd [Codigo], Dt.NombreProd [Producto], Dt.cantDevuelta [Devuelve], P.PrecioUnitario * Dt.cantDevuelta [Subtotal], Dt.merma [Merma] from DevolucionTemporal Dt
+join Producto P
+on P.nombrePro = NombreProd
 end;
 
 go
