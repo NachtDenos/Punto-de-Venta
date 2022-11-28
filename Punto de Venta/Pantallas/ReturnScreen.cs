@@ -399,7 +399,10 @@ namespace Punto_de_Venta
 
         private void imprimirNotaCredito()
         {
-            FileStream fs = new FileStream(@"NotaDeCredito.pdf", FileMode.Create);
+            var idNotaActual = proc.obtenerIdNota();
+            string idNotaStr = idNotaActual.ToString();
+            string nombrePDF = "Nota de Credito " + idNotaStr + ".pdf";
+            FileStream fs = new FileStream(@nombrePDF, FileMode.Create);
             Document doc = new Document(PageSize.LETTER, 5, 5, 7, 7);
             PdfWriter pw = PdfWriter.GetInstance(doc, fs);
             doc.Open();
@@ -420,7 +423,7 @@ namespace Punto_de_Venta
             doc.Add(new Paragraph("812 - 879 - 9540", standarFont) { Alignment = Element.ALIGN_CENTER });
             doc.Add(Chunk.NEWLINE);
             doc.Add(new Paragraph("No. Nota de Credito:", standarFont) { Alignment = Element.ALIGN_CENTER });
-            //AQUI PONER EL NUMERO DE TICKET
+            doc.Add(new Paragraph(idNotaStr, standarFont) { Alignment = Element.ALIGN_CENTER });
             string fechaNota = laFecha.ToString();
             doc.Add(new Paragraph("Fecha: ", standarFont) { Alignment = Element.ALIGN_CENTER });
             doc.Add(new Paragraph(fechaNota, standarFont) { Alignment = Element.ALIGN_CENTER });

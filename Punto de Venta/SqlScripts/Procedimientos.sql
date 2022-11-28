@@ -684,7 +684,7 @@ create procedure obtenerTicket
 as
 Begin
 select [Num], [Fecha], [Codigo], [Producto], [Subtotal],
-[Se llevo], [Precio Unitario], [Descuento] from vwTicketsPorNum where @filtroNum = [Num]
+[Se llevo], [Precio Unitario], [Descuento], [Caja] from vwTicketsPorNum where @filtroNum = [Num]
 end;
 
 go
@@ -732,13 +732,24 @@ end;
 
 go
 
+create procedure obtenerIdNota
+as
+Begin
+declare @buscaID int = 0;
+set @buscaID = IDENT_CURRENT('NotaCred')
+select noCredit from NotaCred where noCredit = @buscaID
+end;
+
+go
+
 create procedure obtenerMetodosPagoVenta
 (@idVentaNUM int, @idMetod int)
 as
 Begin
-select ticket.montoPago from ticket where @idVentaNUM = ticket.noVentaTic and @idMetod = ticket.clavePagoTic
+select ticket.montoPago from ticket where @idVentaNUM = ticket.noVentaTic and @idMetod = ticket.clavePagoTic and ticket.montoPago is not null
 end;
 
+drop proc obtenerMetodosPagoVenta
 
 go
 

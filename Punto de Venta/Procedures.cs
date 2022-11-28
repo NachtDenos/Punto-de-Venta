@@ -1729,18 +1729,16 @@ namespace Punto_de_Venta
 
         }
 
-        public int obtenerMetodPago(int idVenta, int idMetod)
+        public int obtenerIdNota()
         {
             try
             {
                 comando.Connection = conexion.AbrirConexion();
-                comando.CommandText = "obtenerMetodosPagoVenta"; //Para el procedure
+                comando.CommandText = "obtenerIdNota"; //Para el procedure
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@idVentaNUM", idVenta);
-                comando.Parameters.AddWithValue("@idMetod", idMetod);
                 comando.ExecuteNonQuery();
                 comando.Parameters.Clear();
-                var idVentaActual = 0;
+                int idVentaActual = 0;
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
@@ -1754,6 +1752,37 @@ namespace Punto_de_Venta
             {
 
                 MessageBox.Show(error.ToString());
+                return 0;
+            }
+
+        }
+
+        public float obtenerMetodPago(int idVenta, int idMetod)
+        {
+            try
+            {
+                comando.Connection = conexion.AbrirConexion();
+                comando.CommandText = "obtenerMetodosPagoVenta"; //Para el procedure
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@idVentaNUM", idVenta);
+                comando.Parameters.AddWithValue("@idMetod", idMetod);
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                float idVentaActual = 0;
+                SqlDataReader reader2 = comando.ExecuteReader();
+                while (reader2.Read())
+                {
+                    idVentaActual = reader2.GetFloat(0);
+                }
+                conexion.CerrarConexion();
+                return idVentaActual;
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.ToString());
+                conexion.CerrarConexion();
                 return 0;
             }
         }

@@ -262,81 +262,82 @@ namespace Punto_de_Venta
 
             doc.Add(Chunk.NEWLINE);
 
-            PdfPTable tblMetodoPago = new PdfPTable(2);
-            tblMetodoPago.WidthPercentage = 100;
+            //PdfPTable tblMetodoPago = new PdfPTable(2);
+            //tblMetodoPago.WidthPercentage = 100;
 
-            PdfPCell clNombreMP = new PdfPCell(new Phrase("FORMAS DE PAGO", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clNombreMP.BorderWidth = 0;
-            clNombreMP.BorderWidthBottom = 0;
+            //PdfPCell clNombreMP = new PdfPCell(new Phrase("FORMAS DE PAGO", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clNombreMP.BorderWidth = 0;
+            //clNombreMP.BorderWidthBottom = 0;
 
-            PdfPCell clCantMP = new PdfPCell(new Phrase("Cantidad Pagada", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clCantMP.BorderWidth = 0;
-            clCantMP.BorderWidthBottom = 0;
+            //PdfPCell clCantMP = new PdfPCell(new Phrase("Cantidad Pagada", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clCantMP.BorderWidth = 0;
+            //clCantMP.BorderWidthBottom = 0;
 
-            int creditoFl, debitoFl, efectivoFl;
-            int chequeFl, valeFl, otroFl;
+            //float creditoFl, debitoFl, efectivoFl;
+            //float chequeFl, valeFl, otroFl;
 
-            creditoFl = proc.obtenerMetodPago(IDVENTA, 0);
-            debitoFl = proc.obtenerMetodPago(IDVENTA, 1);
-            efectivoFl = proc.obtenerMetodPago(IDVENTA, 2);
-            chequeFl = proc.obtenerMetodPago(IDVENTA, 3);
-            valeFl = proc.obtenerMetodPago(IDVENTA, 4);
-            otroFl = proc.obtenerMetodPago(IDVENTA, 5);
+            //creditoFl = proc.obtenerMetodPago(IDVENTA, 0);
+            //debitoFl = proc.obtenerMetodPago(IDVENTA, 1);
+            //efectivoFl = proc.obtenerMetodPago(IDVENTA, 2);
+            //chequeFl = proc.obtenerMetodPago(IDVENTA, 3);
+            //valeFl = proc.obtenerMetodPago(IDVENTA, 4);
+            //otroFl = proc.obtenerMetodPago(IDVENTA, 5);
 
-            tblMetodoPago.AddCell(clNombreMP);
-            tblMetodoPago.AddCell(clCantMP);
-            clNombreMP = new PdfPCell(new Phrase("Tarjeta de Credito", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clNombreMP.BorderWidth = 0;
-            string creditoStr = creditoFl.ToString();
-            clCantMP = new PdfPCell(new Phrase(creditoStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clCantMP.BorderWidth = 0;
-            tblMetodoPago.AddCell(clNombreMP);
-            tblMetodoPago.AddCell(clCantMP);
+            //tblMetodoPago.AddCell(clNombreMP);
+            //tblMetodoPago.AddCell(clCantMP);
+            //clNombreMP = new PdfPCell(new Phrase("Tarjeta de Credito", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clNombreMP.BorderWidth = 0;
+            //string creditoStr = creditoFl.ToString();
+            //clCantMP = new PdfPCell(new Phrase(creditoStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clCantMP.BorderWidth = 0;
+            //tblMetodoPago.AddCell(clNombreMP);
+            //tblMetodoPago.AddCell(clCantMP);
 
-            clNombreMP = new PdfPCell(new Phrase("Tarjeta Debito", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clNombreMP.BorderWidth = 0;
-            string debitoStr = debitoFl.ToString();
-            clCantMP = new PdfPCell(new Phrase(debitoStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clCantMP.BorderWidth = 0;
-            tblMetodoPago.AddCell(clNombreMP);
-            tblMetodoPago.AddCell(clCantMP);
+            //clNombreMP = new PdfPCell(new Phrase("Tarjeta Debito", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clNombreMP.BorderWidth = 0;
+            //string debitoStr = debitoFl.ToString();
+            //clCantMP = new PdfPCell(new Phrase(debitoStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clCantMP.BorderWidth = 0;
+            //tblMetodoPago.AddCell(clNombreMP);
+            //tblMetodoPago.AddCell(clCantMP);
 
-            clNombreMP = new PdfPCell(new Phrase("Efectivo", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clNombreMP.BorderWidth = 0;
-            string efectivoStr = efectivoFl.ToString();
-            clCantMP = new PdfPCell(new Phrase(efectivoStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clCantMP.BorderWidth = 0;
-            tblMetodoPago.AddCell(clNombreMP);
-            tblMetodoPago.AddCell(clCantMP);
+            //clNombreMP = new PdfPCell(new Phrase("Efectivo", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clNombreMP.BorderWidth = 0;
+            //string efectivoStr = efectivoFl.ToString();
+            //clCantMP = new PdfPCell(new Phrase(efectivoStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clCantMP.BorderWidth = 0;
+            //tblMetodoPago.AddCell(clNombreMP);
+            //tblMetodoPago.AddCell(clCantMP);
 
-            clNombreMP = new PdfPCell(new Phrase("Cheque", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clNombreMP.BorderWidth = 0;
-            string chequeStr = chequeFl.ToString();
-            clCantMP = new PdfPCell(new Phrase(chequeStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clCantMP.BorderWidth = 0;
-            tblMetodoPago.AddCell(clNombreMP);
-            tblMetodoPago.AddCell(clCantMP);
+            //clNombreMP = new PdfPCell(new Phrase("Cheque", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clNombreMP.BorderWidth = 0;
+            //string chequeStr = chequeFl.ToString();
+            //clCantMP = new PdfPCell(new Phrase(chequeStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clCantMP.BorderWidth = 0;
+            //tblMetodoPago.AddCell(clNombreMP);
+            //tblMetodoPago.AddCell(clCantMP);
 
-            clNombreMP = new PdfPCell(new Phrase("Vales", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clNombreMP.BorderWidth = 0;
-            string valeStr = valeFl.ToString();
-            clCantMP = new PdfPCell(new Phrase(valeStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clCantMP.BorderWidth = 0;
-            tblMetodoPago.AddCell(clNombreMP);
-            tblMetodoPago.AddCell(clCantMP);
+            //clNombreMP = new PdfPCell(new Phrase("Vales", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clNombreMP.BorderWidth = 0;
+            //string valeStr = valeFl.ToString();
+            //clCantMP = new PdfPCell(new Phrase(valeStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clCantMP.BorderWidth = 0;
+            //tblMetodoPago.AddCell(clNombreMP);
+            //tblMetodoPago.AddCell(clCantMP);
 
-            clNombreMP = new PdfPCell(new Phrase("Otro", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clNombreMP.BorderWidth = 0;
-            string otroStr = otroFl.ToString();
-            clCantMP = new PdfPCell(new Phrase(otroStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
-            clCantMP.BorderWidth = 0;
-            tblMetodoPago.AddCell(clNombreMP);
-            tblMetodoPago.AddCell(clCantMP);
+            //clNombreMP = new PdfPCell(new Phrase("Otro", standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clNombreMP.BorderWidth = 0;
+            //string otroStr = otroFl.ToString();
+            //clCantMP = new PdfPCell(new Phrase(otroStr, standarFont)) { HorizontalAlignment = Element.ALIGN_CENTER };
+            //clCantMP.BorderWidth = 0;
+            //tblMetodoPago.AddCell(clNombreMP);
+            //tblMetodoPago.AddCell(clCantMP);
 
-            doc.Add(tblMetodoPago);
+            //doc.Add(tblMetodoPago);
             doc.Add(Chunk.NEWLINE);
+            string cajaTicket = dataGridTicketReport.Rows[0].Cells["Caja"].Value.ToString();
             doc.Add(new Paragraph("Caja:", standarFont) { Alignment = Element.ALIGN_CENTER });
-            doc.Add(new Paragraph("1", standarFont) { Alignment = Element.ALIGN_CENTER });
+            doc.Add(new Paragraph(cajaTicket, standarFont) { Alignment = Element.ALIGN_CENTER });
             //CHECAR LO DE LA CAJA
             doc.Add(Chunk.NEWLINE);
             doc.Add(new Paragraph("GRACIAS POR TU COMPRA", standarFont) { Alignment = Element.ALIGN_CENTER });
@@ -356,7 +357,7 @@ namespace Punto_de_Venta
                 return;
             }
             string idNota = dataGridTicketReport.Rows[0].Cells["ID"].Value.ToString();
-            string nombrePDF = "Nota de Credito" + idNota + ".pdf";
+            string nombrePDF = "Nota de CreditoR " + idNota + ".pdf";
             FileStream fs = new FileStream(@nombrePDF, FileMode.Create);
             Document doc = new Document(PageSize.LETTER, 5, 5, 7, 7);
             PdfWriter pw = PdfWriter.GetInstance(doc, fs);

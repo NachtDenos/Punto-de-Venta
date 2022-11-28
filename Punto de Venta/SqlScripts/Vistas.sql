@@ -79,7 +79,7 @@ go
 create view vwTicketsPorNum
 as
 Select Recibo.noVenta [Num],Recibo.fechaVenta [Fecha], Recibo.MontoPago [Monto Pago], Recibo.total [Total], Vd.CodProducto [Codigo], Vd.PrecioUnitario [Precio Unitario],
-Vd.Subtotal [Subtotal], Vd.UnidadesVendidas [Se llevo], depa.nombreDep [Departamento], vd.Utilidad [Utilidad], P.nombrePro [Producto], DS.cantidad [Descuento] from Recibo
+Vd.Subtotal [Subtotal], Vd.UnidadesVendidas [Se llevo], depa.nombreDep [Departamento], vd.Utilidad [Utilidad], P.nombrePro [Producto], DS.cantidad [Descuento], CP.noCajaCP [Caja] from Recibo
 JOIN VentaDetalle Vd
 on Recibo.noVenta = vd.noDeVenta
 join Departamento depa
@@ -90,6 +90,8 @@ join Departamento Dp
 on Dp.idDepa = Vd.DepartamentoId
 left join Descuento DS
 on DS.idDesc = VD.DescuentoId
+join Caje_Pro CP
+on Recibo.claveCajePro = CP.idCajePro
 where Dp.devoluDepa = 'Si'
 go
 create view vwEmpleado
