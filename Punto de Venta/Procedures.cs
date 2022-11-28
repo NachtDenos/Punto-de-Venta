@@ -330,7 +330,7 @@ namespace Punto_de_Venta
         }
 
         public bool ActualizarProductos(int ID, string NombreProd, string descripcion, int uMedida, DateTime fechaCambio,
-            int existencia, int ptReOrden, string Activo, float costo, float precioUnitario, int ClaveDepa)
+            float existencia, int ptReOrden, string Activo, float costo, float precioUnitario, int ClaveDepa)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
             SqlConnection conectado = new SqlConnection();
@@ -365,7 +365,7 @@ namespace Punto_de_Venta
             return true;
         }
 
-        public bool InsertarProductos(string Nombre, string Descripcion, int UnidadMedida, DateTime fechaAlta, int existencia, int ptReorden, string activo,
+        public bool InsertarProductos(string Nombre, string Descripcion, int UnidadMedida, DateTime fechaAlta, float existencia, int ptReorden, string activo,
         float costo, float preciounitario,int claveDepartamento)
         {
             ConexionSqlServer conn = new ConexionSqlServer();
@@ -1197,7 +1197,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool GenerarDevolucion(int CodProd, int CantDev, float subTotal, string motivo, string NombreProd)
+        public bool GenerarDevolucion(int CodProd, float CantDev, float subTotal, string motivo, string NombreProd)
         {
             try
             {
@@ -1226,7 +1226,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool ActualizarProdSinMerma(int cant, int codProduc)
+        public bool ActualizarProdSinMerma(float cant, int codProduc)
         {
             try
             {
@@ -1252,7 +1252,7 @@ namespace Punto_de_Venta
 
         }
 
-        public bool ActualizarProdMerma(int cant, int codProduc)
+        public bool ActualizarProdMerma(float cant, int codProduc)
         {
             try
             {

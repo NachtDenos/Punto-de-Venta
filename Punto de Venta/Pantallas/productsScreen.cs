@@ -74,8 +74,8 @@ namespace Punto_de_Venta
             }
             //Para solo usar dos decimales en costo       
             string exiss = txtExistenceProduct.Text;
-            int exxistencia;
-            Int32.TryParse(exiss, out exxistencia);
+            float exxistencia;
+            float.TryParse(exiss, out exxistencia);
 
             string ptReOrden = txtReOrdProduct.Text;
             int reOrder;
@@ -193,8 +193,8 @@ namespace Punto_de_Venta
             Procedures proc = new Procedures();
 
             string exiss = txtExistenceProduct.Text;
-            int exxistencia;
-            Int32.TryParse(exiss, out exxistencia);
+            float exxistencia;
+            float.TryParse(exiss, out exxistencia);
 
             string ptReOrden = txtReOrdProduct.Text;
             int reOrder;

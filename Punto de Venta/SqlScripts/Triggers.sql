@@ -12,19 +12,19 @@ end;
 
 go
 
-create trigger tr_PuntoReOrden on Recibo
-for insert 
-as
-Begin
-update Producto
-set existencia =
-(CASE
-   When ((existencia < ptReorden)) or ((existencia < 0)) then existencia + 100
-   else (existencia + 100)
-END
-)
+--drop trigger tr_PuntoReOrden on Recibo
+--for insert 
+--as
+--Begin
+--update Producto
+--set existencia =
+--(CASE
+--   When ((existencia < ptReorden)) or ((existencia < 0)) then existencia + 100
+--   else (existencia + 100)
+--END
+--)
 	
-end;
+--end;
 
 go
 
@@ -46,10 +46,11 @@ end;
 --select @Id = idProduct from Producto
 --update Producto set merma = merma + @Merma, existencia = existencia + @Cant where idProduct = @Id
 --end;
+go
 
-create trigger tr_activoEnCero on Recibo
-for insert
-as
-Begin
-update Producto set activo = 'Inactivo' where Producto.existencia = 0
-end;
+--drop trigger tr_activoEnCero on Recibo
+--for insert
+--as
+--Begin
+--update Producto set activo = 'Inactivo' where Producto.existencia = 0
+--end;

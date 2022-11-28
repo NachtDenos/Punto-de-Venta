@@ -22,7 +22,7 @@ namespace Punto_de_Venta
         float CostProducto;
         int CodProducto;
         int Aeliminar;
-        int Seregreso;
+        float Seregreso;
         bool Bandera;
         string cod;
         bool bandera; 
@@ -73,7 +73,7 @@ namespace Punto_de_Venta
 
                 Int32.TryParse(NumRecibo, out ticket);
                 Int32.TryParse(codigo, out CodProducto);
-                Int32.TryParse(Regresa, out Seregreso);
+                float.TryParse(Regresa, out Seregreso);
                 float.TryParse(subTotal, out CostProducto);
                 Int32.TryParse(Merma, out mermacion);
                 if (fila.Cells["Merma"].Value.ToString() == "0")

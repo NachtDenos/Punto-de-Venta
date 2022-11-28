@@ -253,7 +253,7 @@ create proc InsertarProductos
 @Descripcion varchar(60),
 @UniMedida int,
 @fechaAlta date ,
-@existencia int ,
+@existencia decimal(10,2),
 @ptReorden int ,
 @activo varchar(30),
 @Costo decimal(10,2),
@@ -277,7 +277,7 @@ create proc ActualizarProductos
 @Descripcion varchar(60),
 @UnidadMedida int,
 @FechaCambio date,
-@existencia int,
+@existencia decimal(10,2),
 @ptReorden int,
 @Activo varchar(30),
 @costo decimal(10,2),
@@ -765,7 +765,7 @@ end;
 go
 
 create proc ActualizarProdDevolucionSinMerma
-(@cant int,
+(@cant decimal(10,2),
  @CodProducto int)
 as
 Begin
@@ -775,7 +775,7 @@ end;
 go
 
 create proc ActualizarProdDevolucionMerma
-(@cant int,
+(@cant decimal(10,2),
  @CodProducto int)
 as
 Begin
