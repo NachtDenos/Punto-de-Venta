@@ -683,9 +683,10 @@ create procedure obtenerNota
 as
 Begin
 Select NC.noCredit [ID], DV.NombreProd [Producto], DV.devCant [Cantidad], 
-DV.subtotalDev [Subtotal], NC.fechaNota [Fecha] from NotaCred NC
+DV.subtotalDev [Subtotal], NC.fechaNota [Fecha], NC.numeroRecibo [Ticket Asociado] from NotaCred NC 
 join devolucion DV
 on NC.noCredit = DV.noCredDev
+where @filtroNum = NC.noCredit
 end;
 
 go
