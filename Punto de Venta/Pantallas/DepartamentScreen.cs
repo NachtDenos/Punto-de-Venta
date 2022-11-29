@@ -133,7 +133,7 @@ namespace Punto_de_Venta
             catch (Exception ArgumentOutOfRangeException)
             {
 
-                //MessageBox.Show("SELECCIONA UNA PUTA CELDA NO LA PUTA COLUMNA");
+                
             }
         }
 

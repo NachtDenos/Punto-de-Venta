@@ -101,6 +101,11 @@ namespace Punto_de_Venta.Pantallas
 
         private void btnReorderProd_Click(object sender, EventArgs e)
         {
+            if (dataGridViewReorder.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay nada que requiera reordenar", "Ojo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             var reorder = proc.reordenarProductos();
             if (reorder)
                 MessageBox.Show("Productos reordenados", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -22,6 +22,7 @@ namespace Punto_de_Venta
         float CostProducto;
         int CodProducto;
         int Aeliminar;
+        string regresa;
         float Seregreso;
         bool Bandera;
         string cod;
@@ -174,7 +175,7 @@ namespace Punto_de_Venta
                 if (dataGridReturn2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
                     string cod;
-                    string regresa;
+                    
                     regresa = dataGridReturn2.CurrentRow.Cells["Devuelve"].Value.ToString();
                     
                     cod = dataGridReturn2.CurrentRow.Cells["Codigo"].Value.ToString();
@@ -251,7 +252,7 @@ namespace Punto_de_Venta
                     float numFinalComparacionFInalfinal;
                     if (cantDevolver == UnidadesComparacionValid)
                     {
-                        MessageBox.Show("CTM VILLA ERES UN NYE");
+                        MessageBox.Show("Ya la cantidad es igual");
                         return;
                     }
                     float.TryParse(cantDevolver, out num1);
@@ -260,7 +261,7 @@ namespace Punto_de_Venta
                     if (num2 + num1 > numFinalComparacionFInalfinal)
                     {
                         cantQUEQUIERENDEVOLVER = "";
-                        MessageBox.Show("REGRESATE PINCHE ANIMAL ESTUPIDO DIOTA PQ PUTAS QUIERES LLEVARTE MAS DE LO QUE PUEDES PGAR A VERDAD PINCHE ANIMAL INCULTO");
+                        MessageBox.Show("No puede regresar mas");
                         return;
                     }
                 }
@@ -365,13 +366,17 @@ namespace Punto_de_Venta
         private void btnDeleteReturn_Click(object sender, EventArgs e)
         {
             float validacion;
+            float validacionFinal;
             float.TryParse(UnidadesComparacionValid, out validacion);
             string elimina;
             float elim;
             elimina = txtCantidadBorrar.Text;
             float.TryParse(elimina, out elim);
+            string compara;
+            compara = regresa;
+            float.TryParse(compara, out validacionFinal);
             
-            if (elim > validacion)
+            if (elim > validacionFinal)
             {
                 MessageBox.Show("No se puede regresar mas productos de los que se compraron", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

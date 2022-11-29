@@ -347,7 +347,7 @@ namespace Punto_de_Venta
                 MessageBox.Show("Cantidad Actualizada", "Entendido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 proc.EliminarCantidadProductoCarrito(NombreProductoEliminar, cantInt);
                 dataGridCarritoSales.DataSource = proc.ListarCarrito();
-
+                precioLbl = 0;
                 float auxInt = float.Parse(txtQuantityDeleteSales.Text);
                 float cantidadEliminar = (float)auxInt;  //checar el procedure miado 
                 float restar;

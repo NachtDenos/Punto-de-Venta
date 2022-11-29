@@ -51,6 +51,7 @@ namespace Punto_de_Venta
             this.label5 = new System.Windows.Forms.Label();
             this.totalblwaytopay = new System.Windows.Forms.Label();
             this.finalPaylbl = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridWayToPay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -288,12 +289,22 @@ namespace Punto_de_Venta
             this.finalPaylbl.TabIndex = 53;
             this.finalPaylbl.Text = "$0.00";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 17);
+            this.label6.TabIndex = 54;
+            this.label6.Text = "label6";
+            // 
             // WaytoPayScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(793, 801);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.finalPaylbl);
             this.Controls.Add(this.totalblwaytopay);
             this.Controls.Add(this.label5);
@@ -353,5 +364,6 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label totalblwaytopay;
         private System.Windows.Forms.Label finalPaylbl;
+        private System.Windows.Forms.Label label6;
     }
 }

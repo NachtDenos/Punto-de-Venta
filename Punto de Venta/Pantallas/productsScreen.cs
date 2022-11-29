@@ -72,6 +72,21 @@ namespace Punto_de_Venta
                     MessageBox.Show("Seleccione si es activo o no", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if(cbActiveProduct.Text == "Seleccionar")
+            {
+                MessageBox.Show("Seleccione un activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbDepartamentProduct.Text == "Seleccionar")
+            {
+                MessageBox.Show("Seleccione un departamento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbMeasureProduct.Text == "Seleccionar")
+            {
+                MessageBox.Show("Seleccione una unidad de medida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             //Para solo usar dos decimales en costo       
             string exiss = txtExistenceProduct.Text;
             float exxistencia;
@@ -178,6 +193,21 @@ namespace Punto_de_Venta
                     MessageBox.Show("Seleccione una Unidad de Medida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else if (selection3 == false)
                     MessageBox.Show("Seleccione una Unidad de Medida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbActiveProduct.Text == "Seleccionar")
+            {
+                MessageBox.Show("Seleccione un activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbDepartamentProduct.Text == "Seleccionar")
+            {
+                MessageBox.Show("Seleccione un departamento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbMeasureProduct.Text == "Seleccionar")
+            {
+                MessageBox.Show("Seleccione una unidad de medida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             //Para solo usar dos decimales en costo

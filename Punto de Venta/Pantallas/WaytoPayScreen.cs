@@ -45,6 +45,7 @@ namespace Punto_de_Venta
         float pasarTotal;
         int MetodoPago1de2;
         int MetodoPago2de2;
+        float cambioGlobal;
         DateTime fechaa;
         //public WaytoPayScreen()
         //{
@@ -336,14 +337,16 @@ namespace Punto_de_Venta
             string otroS = txtOtherPay.Text;
             float otroFl;
             float.TryParse(otroS, out otroFl);
-
+            float montoPagadoAux;
             float montoPagado = debitoFl + creditoFl + efectivoFl + chequeFl + valeFl + otroFl;
+            montoPagadoAux = montoPagado;
             if(montoPagado < pasarTotal)
             {
                 MessageBox.Show("La cantidad no es la correcta a pagar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            float cambio = montoPagado - pasarTotal;
+            cambioGlobal = cambio;
             fechaa = DateTime.Parse(Fecha);
             string NombreProd;
             string CajaNumeroGenVenta;
@@ -461,7 +464,17 @@ namespace Punto_de_Venta
 
             
             imrprimirTicket(debitoFl, creditoFl, efectivoFl, chequeFl, valeFl, otroFl);
-            
+            if (cambio == 0)
+            {
+                MessageBox.Show("No hay cambio", "Listo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+
+            }
+            else if (cambio > 0)
+            {
+                MessageBox.Show("Su cambio es: " + cambio.ToString(), "Listo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             MessageBox.Show("Compra realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Close();
@@ -653,6 +666,10 @@ namespace Punto_de_Venta
             doc.Add(Chunk.NEWLINE);
             doc.Add(new Paragraph("Caja:", standarFont) { Alignment = Element.ALIGN_CENTER });
             doc.Add(new Paragraph(FreakingCash, standarFont) { Alignment = Element.ALIGN_CENTER });
+
+            doc.Add(new Paragraph("Su cambio:", standarFont) { Alignment = Element.ALIGN_CENTER });
+            string cambioStr = cambioGlobal.ToString();
+            doc.Add(new Paragraph(cambioStr, standarFont) { Alignment = Element.ALIGN_CENTER });
 
             doc.Add(Chunk.NEWLINE);
             doc.Add(new Paragraph("GRACIAS POR TU COMPRA", standarFont) { Alignment = Element.ALIGN_CENTER });
