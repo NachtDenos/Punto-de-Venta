@@ -467,13 +467,13 @@ namespace Punto_de_Venta
             if (cambio == 0)
             {
                 MessageBox.Show("No hay cambio", "Listo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                
 
             }
             else if (cambio > 0)
             {
                 MessageBox.Show("Su cambio es: " + cambio.ToString(), "Listo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                
             }
             MessageBox.Show("Compra realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

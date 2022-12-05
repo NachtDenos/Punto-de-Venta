@@ -23,11 +23,9 @@ end;
 
 go
 
-create trigger tr_activoEnCero on VentaDetalle
+create trigger tr_activoEnCero on ticket
 for insert
 as
 Begin
 update Producto set activo = 'Inactivo' where Producto.existencia = 0.00
 end;
-
-select * from Producto
