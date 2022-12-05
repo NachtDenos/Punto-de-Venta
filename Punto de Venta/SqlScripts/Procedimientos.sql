@@ -1015,7 +1015,7 @@ update Producto
 set existencia = (CASE When ((existencia < ptReorden)) or ((existencia < 0)) then existencia + 100 else (existencia + 100) end) 
 where Producto.existencia <= Producto.ptReorden
 end;
-drop proc puntoReordenLlenar
+
 go
 
 create procedure reportePuntoDeReorden
