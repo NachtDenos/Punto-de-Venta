@@ -421,7 +421,8 @@ namespace Punto_de_Venta
                     UtilidadAux = PrecioUni - Costo - PrecioUniDis;
                     Utilidad = UtilidadAux;
                     totalVenta = subFlot - PrecioUniDis;
-                   // fila.Cells["Subtotal"].Value = subtotal;
+                    
+                   // fila.Cells["Subtotal"].Value = subtotal; 
                 }
                 proc.GenerarVentaDetalle(0,NombreProducto,UnidadesVendidas, subFlot, PrecioUni , totalVenta, Utilidad * UnidadesVendidas);
                 proc.RestarStockVenta(NombreProducto, UnidadesVendidas);
