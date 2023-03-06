@@ -17,6 +17,7 @@ namespace Punto_de_Venta
         public DiscountsScreen()
         {
             InitializeComponent();
+<<<<<<< HEAD
             btnEditDiscounts.Enabled = false;
             DeleteDiscountBtton.Enabled = false;
           
@@ -194,6 +195,12 @@ namespace Punto_de_Venta
             dataGridDiscounts.ClearSelection();
             txtDiscountDiscount.Text = "";
             cbProductDiscount.Text = "Seleccionar";
+=======
+            dataGridDiscounts.Rows[0].Cells[0].Value = "Agua Mineral 100ml";
+            dataGridDiscounts.Rows[0].Cells[1].Value = "10%";
+            dataGridDiscounts.Rows[0].Cells[2].Value = "08/09/2022";
+            dataGridDiscounts.Rows[0].Cells[3].Value = "10/09/2022";
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
         }
     }
 }

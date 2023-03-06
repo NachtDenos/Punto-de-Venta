@@ -55,9 +55,23 @@ namespace Punto_de_Venta
             this.label8 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridProduct = new System.Windows.Forms.DataGridView();
+<<<<<<< HEAD
             this.txtNameProduct = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.cbActiveProduct = new System.Windows.Forms.ComboBox();
+=======
+            this.codProdProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desProdu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UniInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CosInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExisInv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReorProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CambioPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actiPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,8 +143,12 @@ namespace Punto_de_Venta
             // 
             // txtReOrdProduct
             // 
+<<<<<<< HEAD
             this.txtReOrdProduct.Location = new System.Drawing.Point(351, 574);
             this.txtReOrdProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+=======
+            this.txtReOrdProduct.Location = new System.Drawing.Point(261, 459);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.txtReOrdProduct.Multiline = true;
             this.txtReOrdProduct.Name = "txtReOrdProduct";
             this.txtReOrdProduct.Size = new System.Drawing.Size(193, 26);
@@ -139,8 +157,12 @@ namespace Punto_de_Venta
             // 
             // txtPriceProduct
             // 
+<<<<<<< HEAD
             this.txtPriceProduct.Location = new System.Drawing.Point(351, 406);
             this.txtPriceProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+=======
+            this.txtPriceProduct.Location = new System.Drawing.Point(261, 323);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.txtPriceProduct.Multiline = true;
             this.txtPriceProduct.Name = "txtPriceProduct";
             this.txtPriceProduct.Size = new System.Drawing.Size(193, 26);
@@ -149,8 +171,12 @@ namespace Punto_de_Venta
             // 
             // txtCostProduct
             // 
+<<<<<<< HEAD
             this.txtCostProduct.Location = new System.Drawing.Point(351, 353);
             this.txtCostProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+=======
+            this.txtCostProduct.Location = new System.Drawing.Point(261, 280);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.txtCostProduct.Multiline = true;
             this.txtCostProduct.Name = "txtCostProduct";
             this.txtCostProduct.Size = new System.Drawing.Size(193, 26);
@@ -159,8 +185,12 @@ namespace Punto_de_Venta
             // 
             // txtDesProduct
             // 
+<<<<<<< HEAD
             this.txtDesProduct.Location = new System.Drawing.Point(351, 156);
             this.txtDesProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+=======
+            this.txtDesProduct.Location = new System.Drawing.Point(261, 120);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.txtDesProduct.Multiline = true;
             this.txtDesProduct.Name = "txtDesProduct";
             this.txtDesProduct.Size = new System.Drawing.Size(193, 62);
@@ -170,8 +200,12 @@ namespace Punto_de_Venta
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label11.Location = new System.Drawing.Point(199, 516);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label11.Location = new System.Drawing.Point(147, 412);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(131, 30);
             this.label11.TabIndex = 39;
@@ -181,8 +215,12 @@ namespace Punto_de_Venta
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label10.Location = new System.Drawing.Point(144, 406);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label10.Location = new System.Drawing.Point(106, 323);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(184, 30);
             this.label10.TabIndex = 38;
@@ -192,8 +230,12 @@ namespace Punto_de_Venta
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label9.Location = new System.Drawing.Point(144, 460);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label9.Location = new System.Drawing.Point(106, 367);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(180, 30);
             this.label9.TabIndex = 37;
@@ -203,8 +245,12 @@ namespace Punto_de_Venta
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label7.Location = new System.Drawing.Point(92, 574);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label7.Location = new System.Drawing.Point(67, 459);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(228, 30);
             this.label7.TabIndex = 35;
@@ -214,8 +260,12 @@ namespace Punto_de_Venta
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label6.Location = new System.Drawing.Point(245, 353);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label6.Location = new System.Drawing.Point(182, 280);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 30);
             this.label6.TabIndex = 34;
@@ -225,8 +275,12 @@ namespace Punto_de_Venta
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label5.Location = new System.Drawing.Point(87, 297);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label5.Location = new System.Drawing.Point(63, 234);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(238, 30);
             this.label5.TabIndex = 33;
@@ -236,8 +290,12 @@ namespace Punto_de_Venta
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label4.Location = new System.Drawing.Point(132, 242);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label4.Location = new System.Drawing.Point(97, 190);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(189, 30);
             this.label4.TabIndex = 32;
@@ -247,8 +305,12 @@ namespace Punto_de_Venta
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label3.Location = new System.Drawing.Point(175, 156);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label3.Location = new System.Drawing.Point(129, 120);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(155, 30);
             this.label3.TabIndex = 31;
@@ -265,10 +327,34 @@ namespace Punto_de_Venta
             this.label2.TabIndex = 30;
             this.label2.Text = "Productos";
             // 
+<<<<<<< HEAD
             // txtExistenceProduct
             // 
             this.txtExistenceProduct.Location = new System.Drawing.Point(351, 516);
             this.txtExistenceProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+=======
+            // txtIdProduct
+            // 
+            this.txtIdProduct.Location = new System.Drawing.Point(261, 75);
+            this.txtIdProduct.Multiline = true;
+            this.txtIdProduct.Name = "txtIdProduct";
+            this.txtIdProduct.Size = new System.Drawing.Size(146, 22);
+            this.txtIdProduct.TabIndex = 29;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(47, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(198, 22);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Código de Producto";
+            // 
+            // txtExistenceProduct
+            // 
+            this.txtExistenceProduct.Location = new System.Drawing.Point(261, 412);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.txtExistenceProduct.Multiline = true;
             this.txtExistenceProduct.Name = "txtExistenceProduct";
             this.txtExistenceProduct.Size = new System.Drawing.Size(193, 26);
@@ -277,8 +363,12 @@ namespace Punto_de_Venta
             // 
             // dtpDateProduct
             // 
+<<<<<<< HEAD
             this.dtpDateProduct.Location = new System.Drawing.Point(351, 463);
             this.dtpDateProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+=======
+            this.dtpDateProduct.Location = new System.Drawing.Point(261, 369);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.dtpDateProduct.Name = "dtpDateProduct";
             this.dtpDateProduct.Size = new System.Drawing.Size(193, 22);
             this.dtpDateProduct.TabIndex = 56;
@@ -292,8 +382,12 @@ namespace Punto_de_Venta
             "Carnes",
             "Lacteos",
             "Bebidas"});
+<<<<<<< HEAD
             this.cbDepartamentProduct.Location = new System.Drawing.Point(351, 244);
             this.cbDepartamentProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+=======
+            this.cbDepartamentProduct.Location = new System.Drawing.Point(261, 191);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.cbDepartamentProduct.Name = "cbDepartamentProduct";
             this.cbDepartamentProduct.Size = new System.Drawing.Size(193, 24);
             this.cbDepartamentProduct.TabIndex = 57;
@@ -303,8 +397,18 @@ namespace Punto_de_Venta
             // 
             this.cbMeasureProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMeasureProduct.FormattingEnabled = true;
+<<<<<<< HEAD
             this.cbMeasureProduct.Location = new System.Drawing.Point(351, 297);
             this.cbMeasureProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+=======
+            this.cbMeasureProduct.Items.AddRange(new object[] {
+            "Kilogramos",
+            "Gramos",
+            "Litros",
+            "Mililitros",
+            "Piezas"});
+            this.cbMeasureProduct.Location = new System.Drawing.Point(261, 234);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.cbMeasureProduct.Name = "cbMeasureProduct";
             this.cbMeasureProduct.Size = new System.Drawing.Size(193, 24);
             this.cbMeasureProduct.TabIndex = 58;
@@ -313,8 +417,12 @@ namespace Punto_de_Venta
             // dtpChangeDateProduct
             // 
             this.dtpChangeDateProduct.Enabled = false;
+<<<<<<< HEAD
             this.dtpChangeDateProduct.Location = new System.Drawing.Point(351, 630);
             this.dtpChangeDateProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+=======
+            this.dtpChangeDateProduct.Location = new System.Drawing.Point(261, 505);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.dtpChangeDateProduct.Name = "dtpChangeDateProduct";
             this.dtpChangeDateProduct.Size = new System.Drawing.Size(193, 22);
             this.dtpChangeDateProduct.TabIndex = 60;
@@ -323,19 +431,38 @@ namespace Punto_de_Venta
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label8.Location = new System.Drawing.Point(99, 628);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label8.Location = new System.Drawing.Point(72, 503);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(228, 30);
             this.label8.TabIndex = 59;
             this.label8.Text = "Fecha de cambio";
             // 
+<<<<<<< HEAD
+=======
+            // txtActiveProduct
+            // 
+            this.txtActiveProduct.Location = new System.Drawing.Point(261, 553);
+            this.txtActiveProduct.Multiline = true;
+            this.txtActiveProduct.Name = "txtActiveProduct";
+            this.txtActiveProduct.Size = new System.Drawing.Size(146, 22);
+            this.txtActiveProduct.TabIndex = 62;
+            // 
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label13.Location = new System.Drawing.Point(113, 689);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label13.Location = new System.Drawing.Point(83, 553);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(206, 30);
             this.label13.TabIndex = 61;
@@ -347,8 +474,24 @@ namespace Punto_de_Venta
             this.dataGridProduct.AllowUserToDeleteRows = false;
             this.dataGridProduct.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+<<<<<<< HEAD
             this.dataGridProduct.Location = new System.Drawing.Point(607, 148);
             this.dataGridProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+=======
+            this.dataGridProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codProdProd,
+            this.desProdu,
+            this.DepInv,
+            this.UniInv,
+            this.CosInv,
+            this.PreInv,
+            this.fechProd,
+            this.ExisInv,
+            this.ReorProd,
+            this.CambioPro,
+            this.actiPro});
+            this.dataGridProduct.Location = new System.Drawing.Point(455, 120);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.dataGridProduct.Name = "dataGridProduct";
             this.dataGridProduct.ReadOnly = true;
             this.dataGridProduct.RowHeadersWidth = 51;
@@ -356,6 +499,7 @@ namespace Punto_de_Venta
             this.dataGridProduct.TabIndex = 98;
             this.dataGridProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProduct_CellClick);
             // 
+<<<<<<< HEAD
             // txtNameProduct
             // 
             this.txtNameProduct.Location = new System.Drawing.Point(351, 110);
@@ -389,16 +533,87 @@ namespace Punto_de_Venta
             this.cbActiveProduct.Size = new System.Drawing.Size(193, 24);
             this.cbActiveProduct.TabIndex = 101;
             this.cbActiveProduct.SelectedIndexChanged += new System.EventHandler(this.cbActiveProduct_SelectedIndexChanged);
+=======
+            // codProdProd
+            // 
+            this.codProdProd.HeaderText = "Código del Producto";
+            this.codProdProd.Name = "codProdProd";
+            this.codProdProd.ReadOnly = true;
+            // 
+            // desProdu
+            // 
+            this.desProdu.HeaderText = "Descripción";
+            this.desProdu.Name = "desProdu";
+            this.desProdu.ReadOnly = true;
+            // 
+            // DepInv
+            // 
+            this.DepInv.HeaderText = "Departamento";
+            this.DepInv.Name = "DepInv";
+            this.DepInv.ReadOnly = true;
+            // 
+            // UniInv
+            // 
+            this.UniInv.HeaderText = "Unidad de Medida";
+            this.UniInv.Name = "UniInv";
+            this.UniInv.ReadOnly = true;
+            // 
+            // CosInv
+            // 
+            this.CosInv.HeaderText = "Costo";
+            this.CosInv.Name = "CosInv";
+            this.CosInv.ReadOnly = true;
+            // 
+            // PreInv
+            // 
+            this.PreInv.HeaderText = "Precio Unitario";
+            this.PreInv.Name = "PreInv";
+            this.PreInv.ReadOnly = true;
+            // 
+            // fechProd
+            // 
+            this.fechProd.HeaderText = "Fecha de alta";
+            this.fechProd.Name = "fechProd";
+            this.fechProd.ReadOnly = true;
+            // 
+            // ExisInv
+            // 
+            this.ExisInv.HeaderText = "Existencia";
+            this.ExisInv.Name = "ExisInv";
+            this.ExisInv.ReadOnly = true;
+            // 
+            // ReorProd
+            // 
+            this.ReorProd.HeaderText = "Punto de Reorden";
+            this.ReorProd.Name = "ReorProd";
+            this.ReorProd.ReadOnly = true;
+            // 
+            // CambioPro
+            // 
+            this.CambioPro.HeaderText = "Fecha de cambio";
+            this.CambioPro.Name = "CambioPro";
+            this.CambioPro.ReadOnly = true;
+            // 
+            // actiPro
+            // 
+            this.actiPro.HeaderText = "Producto Activo";
+            this.actiPro.Name = "actiPro";
+            this.actiPro.ReadOnly = true;
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             // 
             // productsScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(233)))), ((int)(((byte)(227)))));
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1245, 777);
             this.Controls.Add(this.cbActiveProduct);
             this.Controls.Add(this.txtNameProduct);
             this.Controls.Add(this.label14);
+=======
+            this.ClientSize = new System.Drawing.Size(934, 631);
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             this.Controls.Add(this.dataGridProduct);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dtpChangeDateProduct);
@@ -462,9 +677,23 @@ namespace Punto_de_Venta
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridProduct;
+<<<<<<< HEAD
         private System.Windows.Forms.TextBox txtNameProduct;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cbActiveProduct;
         private System.Windows.Forms.ComboBox cbDepartamentProduct;
+=======
+        private System.Windows.Forms.DataGridViewTextBoxColumn codProdProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desProdu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UniInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CosInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PreInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExisInv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReorProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CambioPro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn actiPro;
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
     }
 }

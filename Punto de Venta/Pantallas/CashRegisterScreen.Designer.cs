@@ -39,6 +39,8 @@ namespace Punto_de_Venta
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbCashRegister = new System.Windows.Forms.ComboBox();
+            this.NumCaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponibility = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCashRegister)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +69,10 @@ namespace Punto_de_Venta
             this.dataGridCashRegister.RowHeadersWidth = 51;
             this.dataGridCashRegister.Size = new System.Drawing.Size(608, 297);
             this.dataGridCashRegister.TabIndex = 51;
+<<<<<<< HEAD
             this.dataGridCashRegister.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCashRegister_CellClick);
+=======
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             // 
             // btnDeleteCashRegister
             // 
@@ -158,7 +163,24 @@ namespace Punto_de_Venta
             this.cbCashRegister.Name = "cbCashRegister";
             this.cbCashRegister.Size = new System.Drawing.Size(336, 24);
             this.cbCashRegister.TabIndex = 53;
+<<<<<<< HEAD
             this.cbCashRegister.SelectedIndexChanged += new System.EventHandler(this.cbCashRegister_SelectedIndexChanged);
+=======
+            // 
+            // NumCaja
+            // 
+            this.NumCaja.HeaderText = "Número de Caja";
+            this.NumCaja.Name = "NumCaja";
+            this.NumCaja.ReadOnly = true;
+            this.NumCaja.Width = 200;
+            // 
+            // Disponibility
+            // 
+            this.Disponibility.HeaderText = "Disponibilidad";
+            this.Disponibility.Name = "Disponibility";
+            this.Disponibility.ReadOnly = true;
+            this.Disponibility.Width = 200;
+>>>>>>> parent of a78bc4f (Listo, espero jsjsjs)
             // 
             // CashRegisterScreen
             // 
